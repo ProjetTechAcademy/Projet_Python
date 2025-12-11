@@ -13,11 +13,12 @@ window.dbRessources = {
 
     // --- Module 01 : Analyser les besoins client ---
     "B1_M01_S001_La_veille_et_linnovation": {
-        video: "",
-        info: "",
-        pres: "",
-        pdf: ""
+        video: "https://drive.google.com/file/d/1v-SkshpxUUQbRa-kpRWX71rME3ZkIo5t/view?usp=sharing",
+        info:  "https://drive.google.com/file/d/1_jIUvYOrpshFHRC_aWuXCybVZDqTQiwc/view?usp=sharing",
+        pres: "https://drive.google.com/file/d/1E6Hk9kVz6mCEgr5vWKL0xv9JGUQEbv42/view?usp=sharing",
+        pdf: "https://drive.google.com/file/d/1_jIUvYOrpshFHRC_aWuXCybVZDqTQiwc/view?usp=sharing"
     },
+
     "B1_M01_S002_Les_modes_dinnovation": {
         video: "",
         info: "",

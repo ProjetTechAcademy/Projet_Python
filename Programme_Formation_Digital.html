@@ -203,6 +203,78 @@
             transition: width 0.5s ease-in-out;
             border-radius: 999px;
         }
+
+        /* === STYLES DES ICÔNES RESSOURCES === */
+        /* Configuration de base des boutons : transition fluide, pas de bordure */
+        .resource-btn { 
+            background: none; border: none; cursor: pointer; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            font-size: 1rem; margin: 0 3px; 
+            padding: 4px;
+        }
+        
+        /* Effet au survol : on enlève la transparence et on grossit un peu */
+        .resource-btn:hover { opacity: 1; transform: scale(1.2); }
+
+        /* === COULEURS "FANTÔMES" (30%) ET ACTIVES (100%) === */
+        
+        /* VIDÉO : Rouge */
+        .icon-video { color: rgba(239, 68, 68, 0.3); } /* Rouge 30% */
+        .icon-video.active, .icon-video:hover { color: rgba(239, 68, 68, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.2)); }
+
+        /* INFO : Cyan */
+        .icon-info { color: rgba(6, 182, 212, 0.3); } /* Cyan 30% */
+        .icon-info.active, .icon-info:hover { color: rgba(6, 182, 212, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(6, 182, 212, 0.2)); }
+
+        /* PRÉSENTATION : Orange */
+        .icon-pres { color: rgba(249, 115, 22, 0.3); } /* Orange 30% */
+        .icon-pres.active, .icon-pres:hover { color: rgba(249, 115, 22, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(249, 115, 22, 0.2)); }
+
+        /* PDF : Rouge Foncé */
+        .icon-pdf { color: rgba(220, 38, 38, 0.3); } /* Rouge foncé 30% */
+        .icon-pdf.active, .icon-pdf:hover { color: rgba(220, 38, 38, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.2)); }
+
+        /* AGENDA : Or/Doré (Toujours dispo, donc pas de classe .active spécifique nécessaire pour la couleur de base, mais on le met en style "actif" au survol) */
+        .icon-clock { color: rgba(217, 165, 38, 0.3); } /* Or 30% */
+        .icon-clock:hover { color: rgba(217, 165, 38, 1); opacity: 1; transform: scale(1.2); }
+
+        /* === MODALE AGENDA === */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 44, 72, 0.8); /* Bleu nuit transparent */
+            display: flex; justify-content: center; align-items: center;
+            z-index: 20000; opacity: 0; visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+        .modal-overlay.open { opacity: 1; visibility: visible; }
+        
+        .modal-card {
+            background: white; width: 90%; max-width: 450px;
+            border-radius: 20px; padding: 25px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid var(--cta);
+        }
+        .modal-overlay.open .modal-card { transform: translateY(0); }
+        
+        .modal-title { font-family: 'Playfair Display', serif; color: var(--brand-blue); font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; text-align: center; }
+        .modal-subtitle { text-align: center; color: #64748b; font-size: 0.9rem; margin-bottom: 20px; }
+        
+        .delay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        .delay-btn {
+            background: #f1f5f9; border: 1px solid #e2e8f0; color: var(--brand-blue);
+            padding: 12px; border-radius: 10px; font-weight: 600; cursor: pointer;
+            transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .delay-btn:hover { background: var(--cta); color: white; border-color: var(--cta); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); }
+        
+        .close-modal {
+            background: transparent; border: none; color: #94a3b8; width: 100%; padding: 10px;
+            cursor: pointer; font-size: 0.9rem; text-decoration: underline;
+        }
+        .close-modal:hover { color: var(--brand-blue); }
+
     </style>
 </head>
 <body class="bg-[#F6F2E8] text-gray-800 font-sans flex flex-col min-h-screen">
@@ -391,6 +463,28 @@
         </div>
     </footer>
 
+    <!-- MODALE AGENDA -->
+    <div id="calendar-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h3 class="modal-title">📅 Planifier ma révision</h3>
+            <p class="modal-subtitle">Choisissez quand vous souhaitez revoir : <br><strong id="modal-topic-name" class="text-[#D9A526]">Nom du sujet</strong></p>
+            
+            <div class="delay-grid">
+                <button class="delay-btn" onclick="addToCalendar(3)">🚀 Dans 3 Jours</button>
+                <button class="delay-btn" onclick="addToCalendar(7)">🧠 Dans 7 Jours</button>
+                <button class="delay-btn" onclick="addToCalendar(10)">📅 Dans 10 Jours</button>
+                <button class="delay-btn" onclick="addToCalendar(30)">📆 Dans 1 Mois</button>
+                <button class="delay-btn" onclick="addToCalendar(60)" style="grid-column: span 2;">🎓 Dans 2 Mois (Expert)</button>
+            </div>
+            
+            <button class="close-modal" onclick="closeCalendarModal()">Annuler</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT EXTERNE (BDD) -->
+    <!-- Important : Ce fichier doit exister pour que les icônes s'activent -->
+    <script src="database.js"></script>
+
     <!-- SCRIPT POUR LES ONGLETS ET GÉNÉRATION DYNAMIQUE -->
     <script>
         // 1. Données du Programme (Injectées dynamiquement pour éviter la surcharge HTML)
@@ -438,7 +532,10 @@
         // État de progression global (stocké dans le localStorage)
         let userProgress = JSON.parse(localStorage.getItem('devEliteProgress')) || {};
 
-        // CORRECTION IMPORTANTE ICI : Renommage en openTab pour correspondre au HTML et correction des IDs
+        // Variables pour la modale
+        let currentTopicForCalendar = "";
+        let currentResKeyForCalendar = "";
+
         function openTab(idString) {
             // Nettoyage visuel de tous les contenus
             document.querySelectorAll('.tab-content').forEach(el => {
@@ -451,8 +548,6 @@
             if (content) {
                 content.classList.remove('hidden');
                 content.classList.add('active');
-            } else {
-                console.error(`Erreur : Le contenu avec l'ID tab-${idString} n'existe pas.`);
             }
             
             // Gestion des boutons
@@ -533,6 +628,71 @@
             if(txtGlobal) txtGlobal.innerText = `${pctGlobal}%`;
         }
 
+        // --- GESTION DE L'AGENDA ---
+
+        function openCalendarModal(topicName, resKey) {
+            currentTopicForCalendar = topicName;
+            currentResKeyForCalendar = resKey;
+            
+            // Mise à jour du texte de la modale
+            document.getElementById('modal-topic-name').innerText = topicName;
+            
+            // Affichage de la modale
+            document.getElementById('calendar-modal').classList.add('open');
+        }
+
+        function closeCalendarModal() {
+            document.getElementById('calendar-modal').classList.remove('open');
+        }
+
+        function addToCalendar(daysToAdd) {
+            if (!currentTopicForCalendar) return;
+
+            // 1. Calcul de la date
+            const date = new Date();
+            date.setDate(date.getDate() + daysToAdd);
+            
+            // Formatage pour Google Agenda : YYYYMMDD
+            // On ajoute 'T090000' pour mettre ça à 9h du matin par défaut (facultatif mais plus propre)
+            // Ou on met juste la date pour un événement "Journée entière" (recommandé pour des tâches)
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            const dateString = `${year}${month}${day}`;
+            
+            // Pour un événement d'une journée entière, start = end (ou start = day, end = day+1)
+            // Google Agenda accepte YYYYMMDD/YYYYMMDD pour un événement sur la journée
+            const nextDay = new Date(date);
+            nextDay.setDate(date.getDate() + 1);
+            const nextYear = nextDay.getFullYear();
+            const nextMonth = String(nextDay.getMonth() + 1).padStart(2, '0');
+            const nextDayStr = String(nextDay.getDate()).padStart(2, '0');
+            const nextDateString = `${nextYear}${nextMonth}${nextDayStr}`;
+
+            // 2. Construction de l'URL
+            const title = encodeURIComponent(`Révision : ${currentTopicForCalendar}`);
+            
+            // Lien vers le lecteur (Attention : il faudra mettre votre VRAI domaine si ce n'est pas en local)
+            // Pour l'instant on met une URL relative qui sera cliquable si l'utilisateur est connecté,
+            // ou on peut mettre une URL absolue si vous hébergez sur Github Pages
+            const link = `https://projettechacademy.github.io/Projet_Python/lecteur.html?id=${currentResKeyForCalendar}`;
+            const details = encodeURIComponent(`C'est l'heure de la révision !\n\nLien direct vers le cours :\n${link}\n\nBon courage ! 🚀`);
+            
+            const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dateString}/${nextDateString}&details=${details}`;
+
+            // 3. Ouverture
+            window.open(gCalUrl, '_blank');
+            
+            // 4. Fermeture modale
+            closeCalendarModal();
+        }
+
+        // Fermer la modale si on clique dehors
+        document.getElementById('calendar-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeCalendarModal();
+        });
+
+
         function renderModules(blockId) {
             const container = document.getElementById(`modules-container-${blockId}`);
             if(!container) return;
@@ -574,9 +734,25 @@
                     <div class="accordion-content hidden bg-white border-t border-gray-100">
                         <div class="p-1 space-y-1">
                             ${module.topics.map((topic, tIndex) => {
+                                // Clé pour localStorage (checkbox)
                                 const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+                                
+                                // Clé pour database.js (ressources) - DOIT matcher la logique du fichier database.js
+                                // J'utilise la même logique que votre fichier uploadé
+                                const resKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '');
+                                
                                 const isChecked = userProgress[dbKey] ? 'checked' : '';
                                 const textStyle = userProgress[dbKey] ? 'line-through text-slate-400' : 'text-gray-700';
+
+                                // Vérification des ressources via database.js si disponible
+                                let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '';
+                                
+                                if (typeof window.dbRessources !== 'undefined' && window.dbRessources[resKey]) {
+                                    if(window.dbRessources[resKey].video) hasVideo = 'active';
+                                    if(window.dbRessources[resKey].info) hasInfo = 'active';
+                                    if(window.dbRessources[resKey].pres) hasPres = 'active';
+                                    if(window.dbRessources[resKey].pdf) hasPdf = 'active';
+                                }
 
                                 return `
                                 <div class="flex items-center justify-between py-2 px-3 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors group">
@@ -584,9 +760,20 @@
                                         <div class="checkbox-wrapper">
                                             <input type="checkbox" id="${dbKey}" ${isChecked} onchange="toggleTopic('${dbKey}')">
                                         </div>
-                                        <a href="lecteur.html?id=${dbKey}" target="_blank" id="link-${dbKey}" class="text-sm font-medium truncate flex-1 ${textStyle} hover:text-[#B4792A] transition-colors">
+                                        <a href="lecteur.html?id=${resKey}" target="_blank" id="link-${dbKey}" class="text-sm font-medium truncate flex-1 ${textStyle} hover:text-[#B4792A] transition-colors">
                                             ${topic}
                                         </a>
+                                    </div>
+                                    
+                                    <!-- ICONS RESSOURCES (Partie Droite) -->
+                                    <div class="flex items-center gap-1 ml-2">
+                                        <button class="resource-btn icon-video ${hasVideo}" title="Vidéo" onclick="window.open('lecteur.html?id=${resKey}', '_blank')"><i class="fas fa-video"></i></button>
+                                        <button class="resource-btn icon-info ${hasInfo}" title="Infographie"><i class="fas fa-chart-pie"></i></button>
+                                        <button class="resource-btn icon-pres ${hasPres}" title="Présentation"><i class="fas fa-project-diagram"></i></button>
+                                        <button class="resource-btn icon-pdf ${hasPdf}" title="PDF"><i class="fas fa-file-pdf"></i></button>
+                                        <div class="w-px h-4 bg-gray-200 mx-1"></div>
+                                        <!-- BOUTON AGENDA (Réintégré avec la Modale) -->
+                                        <button class="resource-btn icon-clock" title="Planifier révision" onclick="openCalendarModal('${topic.replace(/'/g, "\\'")}', '${resKey}')"><i class="far fa-clock"></i></button>
                                     </div>
                                 </div>`;
                             }).join('')}
@@ -598,8 +785,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            openTab('b1'); // Appel de la fonction corrigée
-            updateAllProgress(); // Init progress bars
+            openTab('b1'); 
+            updateAllProgress(); 
         });
     </script>
 </body>
