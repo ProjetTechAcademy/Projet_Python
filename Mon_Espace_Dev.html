@@ -3,61 +3,67 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>🪪 Mon Espace Juriste - Tableau de bord personnel</title>
+    <title>💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</title>
     
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Outfit:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
 
     <style>
         /* ========================================= */
-        /* STYLES ET VARIABLES             */
+        /* STYLES ET VARIABLES - PALETTE MATHILDE    */
         /* ========================================= */
         :root { 
-            /* --- Tes couleurs personnalisées --- */
-            --brand-blue: #0F2C48; 
-            --brandGold: #D9A526; 
-            --ivory: #F6F2E8; 
-            --footer-bg: #0F2C48; 
-            --footer-text: #F6F2E8; 
-            --color-alert: #B4792A;
+            /* --- Nouvelle Palette --- */
+            --brand-blue: #0F2C48;   /* Titres & Séparations */
+            --brand-cta: #D9A526;    /* Boutons CTA (Jaune) */
+            --brand-ivory: #F6F2E8;  /* Surfaces / Cartes */
+            --brand-bronze: #B4792A; /* Alertes / Éditions */
             
-            /* Alias pour le Dashboard existant pour compatibilité */
-            --cta: #D9A526;
-            --alert: #B4792A;
+            /* Alias fonctionnels pour le code existant */
+            --python-blue: var(--brand-blue);
+            --python-yellow: var(--brand-cta);
+            --jungle-green: var(--brand-cta); /* On remplace le vert par le Jaune/Bronze pour rester dans le thème */
+            --alert: var(--brand-bronze);
+            
+            --footer-bg: var(--brand-blue); 
+            --footer-text: var(--brand-ivory); 
         }
         
         body { 
             margin: 0; 
             font-family: 'Outfit', sans-serif; 
-            background: var(--ivory); 
+            background-color: #ffffff; /* Fond neutre pour faire ressortir l'Ivoire */
+            background-image: radial-gradient(var(--brand-blue) 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
             color: var(--brand-blue); 
             display: flex; 
             flex-direction: column; 
             min-height: 100vh; 
         }
         
+        /* Font pour le code */
+        .font-code { font-family: 'Fira Code', monospace; }
+
         /* --- CSS DU HEADER --- */
         .top-bar { 
-            background: linear-gradient(135deg, #B4792A, #F2C94C); 
+            background: var(--brand-blue); /* Bleu #0F2C48 */
             padding: 12px 20px; 
             position: sticky; 
             top: 0; 
             z-index: 9999; 
-            border-bottom: 4px solid var(--brand-blue); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--brand-cta); /* Jaune #D9A526 */
+            box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
         }
         
         .top-bar-container { 
             width: 100%; 
-            max-width: 100%; 
             padding: 0 10px; 
-            margin: 0; 
             display: flex; 
             align-items: center; 
             gap: 16px; 
@@ -72,332 +78,336 @@
         
         .logo-top { 
             width: 64px; height: 64px; 
-            border-radius: 8px; object-fit: cover; 
-            border: 2px solid var(--brand-blue); 
-            background: #fff; 
+            border-radius: 12px; object-fit: contain; 
+            background: var(--brand-ivory); 
+            padding: 5px;
+            border: 2px solid var(--brand-cta);
             transition: transform 0.3s ease;
         }
-        .logo-top:hover { transform: scale(1.05); }
+        .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
         .identity-stack { display: flex; flex-direction: column; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
-        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .club-title-main { 
+            font-family: 'Fira Code', monospace; 
+            font-weight: 700; 
+            color: var(--brand-ivory); /* Texte clair sur fond bleu */
+            font-size: 1.0rem; 
+            letter-spacing: -0.5px;
+        }
+        .club-subtitle { 
+            color: var(--brand-cta); /* Jaune sur fond bleu */
+            font-weight: 600; 
+            font-size: 0.8rem; 
+        }
         
         .top-center { display: flex; gap: 10px; align-items: center; }
         
         .header-icon-btn { 
             width: 44px; height: 44px; flex-shrink: 0;
-            border-radius: 50%; 
+            border-radius: 8px; 
             display: inline-flex; align-items: center; justify-content: center; 
             text-decoration: none; 
-            background: linear-gradient(135deg, var(--brandGold), #B4792A); 
-            color: #fff; 
-            border: 1px solid rgba(255, 255, 255, 0.4); 
+            background: rgba(246, 242, 232, 0.1); /* Transparence Ivoire */
+            color: var(--brand-ivory); 
+            border: 1px solid rgba(217, 165, 38, 0.3); 
             transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             font-size: 1.2rem;
             position: relative;
         }
-        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
-        .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+        .header-icon-btn:hover { 
+            transform: translateY(-3px); 
+            background: var(--brand-cta); 
+            color: var(--brand-blue);
+            border-color: var(--brand-ivory); 
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.5);
+        }
         
         .btn-portfolio-cosmic { 
             padding: 8px 18px; 
-            border-radius: 999px; 
-            background: var(--brand-blue); 
-            color: var(--brandGold); 
+            border-radius: 8px; 
+            background: var(--brand-cta); /* CTA Jaune */
+            color: var(--brand-blue); 
             text-decoration: none; 
+            font-family: 'Fira Code', monospace;
             font-weight: 700; 
             display: inline-flex; gap: 8px; align-items: center; 
-            transition: background 0.3s, color 0.3s;
+            transition: all 0.3s;
             white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+            box-shadow: 4px 4px 0px var(--brand-bronze); /* Ombre Bronze */
+            border: 1px solid var(--brand-ivory);
         }
-        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+        .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--brand-bronze); background: var(--brand-ivory); }
 
-        /* --- STYLES SPÉCIFIQUES AU DASHBOARD --- */
+        /* --- DASHBOARD CARDS --- */
         .dashboard-card {
-            background: white; border-radius: 16px; padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); border: 1px solid rgba(217, 165, 38, 0.2);
+            background: var(--brand-ivory); /* Surface Ivoire #F6F2E8 */
+            border-radius: 12px; padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(15, 44, 72, 0.1); 
+            border: 1px solid rgba(15, 44, 72, 0.1);
             transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column;
+            position: relative;
+            overflow: hidden;
         }
-        .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .dashboard-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--brand-blue), var(--brand-cta));
+        }
+        .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(15, 44, 72, 0.15); border-color: var(--brand-cta); }
         
-        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9; }
-        .card-icon { width: 36px; height: 36px; border-radius: 8px; background-color: rgba(15, 44, 72, 0.1); color: var(--brand-blue); display: flex; align-items: center; justify-content: center; }
+        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px dashed rgba(15, 44, 72, 0.15); }
+        .card-icon { width: 36px; height: 36px; border-radius: 8px; background-color: var(--brand-blue); color: var(--brand-cta); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
         
-        .input-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-blue); margin-bottom: 4px; opacity: 0.8; }
-        .styled-input, .styled-select { width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #f8fafc; color: var(--brand-blue); font-size: 14px; transition: all 0.2s; }
-        .styled-input:focus, .styled-select:focus { outline: none; border-color: var(--cta); background-color: white; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.1); }
+        .input-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; font-family: 'Fira Code', monospace; color: var(--brand-blue); margin-bottom: 4px; opacity: 0.8; }
+        .styled-input, .styled-select { 
+            width: 100%; padding: 10px 12px; border-radius: 6px; 
+            border: 2px solid rgba(15, 44, 72, 0.2); background-color: #fff; 
+            color: var(--brand-blue); font-family: 'Fira Code', monospace; font-size: 0.9rem; transition: all 0.2s; 
+        }
+        .styled-input:focus, .styled-select:focus { outline: none; border-color: var(--brand-cta); background-color: #fff; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.2); }
         
-        /* Styles pour la Checklist des compétences */
+        /* --- CHECKLIST STYLE --- */
         .competence-card {
-            background: #fff; border: 1px solid rgba(15, 44, 72, 0.1); border-radius: 12px; padding: 0;
+            background: var(--brand-ivory); /* Ivoire */
+            border: 1px solid rgba(15, 44, 72, 0.1); border-radius: 12px; 
             transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;
             height: 100%;
         }
-        .competence-card:hover { border-color: var(--cta); box-shadow: 0 10px 30px rgba(217, 165, 38, 0.15); }
+        .competence-card:hover { border-color: var(--brand-cta); box-shadow: 0 10px 30px rgba(217, 165, 38, 0.15); }
         
-        .comp-header { padding: 20px; background: rgba(15, 44, 72, 0.03); border-bottom: 1px solid #f1f5f9; }
+        .comp-header { padding: 20px; background: rgba(15, 44, 72, 0.05); border-bottom: 1px solid rgba(15, 44, 72, 0.1); }
         .comp-body { padding: 20px; flex-grow: 1; overflow-y: auto; max-height: 400px; }
         
-        .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; color: #475569; cursor: pointer; transition: all 0.2s; }
-        .checklist-item:hover { color: var(--brand-blue); transform: translateX(2px); }
+        .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; color: var(--brand-blue); cursor: pointer; transition: all 0.2s; font-family: 'Fira Code', monospace; font-size: 0.8rem; }
+        .checklist-item:hover { color: var(--brand-bronze); transform: translateX(2px); }
         .checklist-item input[type="checkbox"] { 
-            accent-color: var(--cta); width: 18px; height: 18px; margin-top: 2px; cursor: pointer; border-radius: 4px;
+            accent-color: var(--brand-cta); width: 18px; height: 18px; margin-top: 2px; cursor: pointer;
         }
-        .checklist-item.completed span { text-decoration: line-through; color: #94a3b8; }
+        .checklist-item.completed span { text-decoration: line-through; color: rgba(15, 44, 72, 0.4); }
 
-        .progress-mini-bar { width: 100%; height: 6px; background: #e2e8f0; margin-top: 15px; border-radius: 99px; overflow: hidden; }
-        .progress-mini-fill { height: 100%; background: linear-gradient(90deg, var(--cta), #F2C94C); width: 0%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 99px; }
+        .progress-mini-bar { width: 100%; height: 8px; background: rgba(15, 44, 72, 0.1); margin-top: 15px; border-radius: 4px; overflow: hidden; }
+        .progress-mini-fill { height: 100%; background: linear-gradient(90deg, var(--brand-cta), var(--brand-bronze)); width: 0%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        .prog-block { background: white; border-radius: 12px; padding: 20px; border-left: 4px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.3s; }
-        .prog-block:hover { transform: translateX(4px); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .prog-block.b-intro { border-color: #94a3b8; }
-        .prog-block.b-strat { border-color: var(--cta); }
-        .prog-block.b-ops { border-color: var(--cta); }
-        .prog-block.b-litige { border-color: var(--alert); }
+        /* --- PROGRAMME BLOCKS --- */
+        .prog-block { 
+            background: #fff; color: var(--brand-blue); 
+            border-radius: 12px; padding: 20px; 
+            border-left: 4px solid var(--brand-cta); 
+            box-shadow: 0 4px 6px rgba(15, 44, 72, 0.05); 
+            font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(15, 44, 72, 0.1);
+        }
+        .prog-block h4 { color: var(--brand-blue); margin-top: 0; }
         
-        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); } }
-        .timer-active { border-color: var(--alert) !important; animation: pulse-red 2s infinite; }
+        /* Animation Timer (Alerte = Bronze) */
+        @keyframes pulse-bronze { 0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); } }
+        .timer-active { border-color: var(--brand-bronze) !important; animation: pulse-bronze 2s infinite; }
 
-        .text-cta { color: var(--cta); }
-        .text-brand-blue { color: var(--brand-blue); }
-        .bg-brand-blue { background-color: var(--brand-blue); }
-        .text-alert { color: var(--alert); }
-        .border-alert\/30 { border-color: rgba(180, 121, 42, 0.3); }
-
-        /* --- CSS DU FOOTER --- */
-        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
+        /* --- FOOTER --- */
+        .main-footer { background: var(--brand-blue); color: var(--brand-ivory); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brand-cta); font-family: 'Fira Code', monospace; font-size: 0.85rem; }
         .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .footer-left { display: flex; gap: 12px; align-items: center; }
-        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
-        
-        .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
-        .footer-contact-link { 
-            color: var(--footer-text); 
-            text-decoration: none; 
-            transition: color 0.2s; 
-            display: inline-flex; align-items: center; gap: 6px;
-        }
-        .footer-contact-link:hover { color: var(--brandGold); text-decoration: underline; }
-        
-        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-        .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-        
-        .icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0;
-            border-radius: 50%; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            background: rgba(255, 255, 255, 0.06); 
-            color: var(--footer-text); 
-            text-decoration: none; 
-            border: 1px solid rgba(217, 165, 38, 0.15); 
-            transition: all 0.2s;
-            font-size: 1.1rem;
-        }
-        .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
-        
-        .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+        .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--brand-cta); padding: 2px; background: var(--brand-ivory); }
+        .footer-link { color: var(--brand-cta); text-decoration: none; }
+        .footer-link:hover { text-decoration: underline; color: #fff; }
 
-        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        /* Helpers Text */
+        .text-brand-blue { color: var(--brand-blue); }
+        .text-brand-cta { color: var(--brand-cta); }
+        .text-brand-bronze { color: var(--brand-bronze); }
 
-        /* --- RESPONSIVE MOBILE --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 1100px) {
-            .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; padding-bottom: 5px; }
+            .top-bar-container { flex-direction: column; text-align: center; }
             .top-left { margin-right: 0; flex-direction: column; text-align: center; }
-            .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
-            .top-center::-webkit-scrollbar { height: 4px; }
-            .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
+            .top-center { overflow-x: auto; width: 100%; padding-bottom: 10px; justify-content: center; }
             .footer-container { flex-direction: column; text-align: center; }
-            .footer-left { flex-direction: column; }
-            .footer-details { align-items: center; margin-top: 10px; }
-            .footer-right { align-items: center; width: 100%; margin-top: 20px; }
-            .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
-            .footer-divider { display: none; } 
         }
     </style>
 </head>
-<body onload="loadUserData()">
+<body onload="loadDevData()">
 
   <!-- ============================================ -->
-  <!-- DÉBUT DU HEADER -->
+  <!-- HEADER -->
   <!-- ============================================ -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
       
-      <!-- Logo & Titre (Aligné à Gauche) -->
+      <!-- Logo & Titre -->
       <div class="top-left">
-        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
-          <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        <a href="#" title="Root">
+          <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
         </a>
         <div class="identity-stack">
-          <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
-          <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+          <!-- TITRE IMPOSÉ -->
+          <div class="club-title-main">💫 The Dev Elite Club By Studi ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
       </div>
 
-      <!-- Navigation Icônes (Défilable sur mobile) -->
-      <nav class="top-center" aria-label="Navigation principale">
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">
-          <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
-        </a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="Fiche RNCP" target="_blank">📚</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+      <!-- Navigation Icônes Dev -->
+      <nav class="top-center">
+        <a class="header-icon-btn" href="#" title="Mon Profil"><i class="fa-solid fa-user-astronaut"></i></a>
+        <a class="header-icon-btn" href="#" title="Home / Terminal"><i class="fa-solid fa-terminal"></i></a>
+        <a class="header-icon-btn" href="#" title="Dashboard"><i class="fa-solid fa-chart-line"></i></a>
+        <a class="header-icon-btn" href="#" title="Planning Live"><i class="fa-regular fa-calendar-check"></i></a>
+        <a class="header-icon-btn" href="#" title="Documentation"><i class="fa-solid fa-book-journal-whills"></i></a>
+        <a class="header-icon-btn" href="#" title="Projets / GitHub"><i class="fa-brands fa-github"></i></a>
+        <a class="header-icon-btn" href="#" title="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
       </nav>
 
       <!-- Bouton EXPERT -->
       <div>
-        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
-           <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"> 
-           Expert
+        <a class="btn-portfolio-cosmic" href="#" target="_blank" title="Mon Portfolio">
+           <i class="fa-solid fa-code"></i>
+           Dev Portfolio
         </a>
       </div>
     </div>
   </div>
-  <!-- ============================================ -->
-  <!-- FIN DU HEADER -->
-  <!-- ============================================ -->
 
   <!-- CONTENU DU DASHBOARD -->
   <main class="flex-grow container mx-auto px-4 py-8 space-y-10">
 
-    <div class="text-center">
-        <!-- TITRE SUR UNE LIGNE COMME DEMANDÉ PRÉCÉDEMMENT -->
-        <h1 class="text-4xl font-bold brand-font text-brand-blue mb-4">
-            Mon Espace Juriste 🪪 Tableau de bord personnel 📊
+    <div class="text-center space-y-2">
+        <h1 class="text-3xl md:text-4xl font-bold font-code text-brand-blue">
+            &lt;Systeme_Central /&gt; 
+            <span class="text-brand-cta">Tableau de bord</span> 
+            <span class="text-brand-bronze">Python</span> 🐍
         </h1>
+        <p class="text-brand-blue font-code text-sm opacity-80">Bachelor Développeur d’Application Python • RNCP 36146</p>
     </div>
 
-    <div class="text-center">
-        <h2 class="text-3xl font-bold brand-font text-brand-blue mb-2">
-            Bienvenue, Maître <span id="displayFullName" class="text-cta">Juriste</span> ! 👩‍⚖️
+    <!-- Message de Bienvenue (Surface Ivoire) -->
+    <div class="text-center bg-[var(--brand-ivory)] p-6 rounded-xl border-l-4 border-[var(--brand-bronze)] shadow-sm mx-auto max-w-4xl border border-gray-200">
+        <h2 class="text-2xl font-bold font-code text-brand-blue mb-2">
+            print(f"Bienvenue, <span id="displayFullName" class="text-brand-bronze">Dev</span> !")
         </h2>
-        <p id="welcomeTagline" class="text-gray-500 italic text-lg"></p>
+        <p id="welcomeTagline" class="text-brand-blue italic font-code opacity-70">
+            "While(alive): code(); eat(); sleep();"
+        </p>
+        
+        <!-- Alerte création de section (Bronze) -->
+        <div class="mt-4 bg-[#fdf2e9] text-[#B4792A] p-3 rounded-md text-xs font-bold border border-[#B4792A] inline-block font-code">
+            <i class="fa-solid fa-triangle-exclamation mr-2"></i> Section "Après ma formation" en cours de création (ref: Newsletter)
+        </div>
     </div>
 
     <!-- CARTES SUPERIEURES -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <div class="dashboard-card border-t-4 border-t-brand-blue">
+        <!-- CARTE PROFIL -->
+        <div class="dashboard-card">
             <div class="card-header">
-                <div class="card-icon"><i class="fa-solid fa-id-card"></i></div>
-                <h3 class="font-bold text-lg text-brand-blue">Mon Profil</h3>
+                <div class="card-icon"><i class="fa-solid fa-id-badge"></i></div>
+                <h3 class="font-bold text-lg text-brand-blue font-code">Config User</h3>
             </div>
             <div class="space-y-4 flex-grow">
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="input-label">Prénom</label>
-                        <input type="text" id="userName" placeholder="Votre Prénom" class="styled-input" onchange="saveUserData()">
+                        <label class="input-label">User.FirstName</label>
+                        <input type="text" id="userName" class="styled-input" onchange="saveDevData()">
                     </div>
                     <div>
-                        <label class="input-label">Nom</label>
-                        <input type="text" id="userSurname" placeholder="Votre Nom" class="styled-input" onchange="saveUserData()">
+                        <label class="input-label">User.LastName</label>
+                        <input type="text" id="userSurname" class="styled-input" onchange="saveDevData()">
                     </div>
                 </div>
                 
                 <div>
-                    <label class="input-label text-cta">🎓 Spécialité (Programme)</label>
-                    <select id="userSpecialization" class="styled-select font-bold" onchange="saveUserData()">
-                        <option value="social">⚖️ Droit Social</option>
-                        <option value="affaires">💼 Droit des Affaires</option>
-                        <option value="entreprise">🏢 Juriste d'Entreprise</option>
+                    <label class="input-label text-brand-bronze">Track (Spécialité)</label>
+                    <select id="userSpecialization" class="styled-select font-bold" onchange="saveDevData()">
+                        <option value="python_web">🐍 Python Web (Django/Flask)</option>
+                        <option value="python_data">📊 Python Data (Pandas/IA)</option>
+                        <option value="python_mobile">📱 Python & Mobile (React Native)</option>
                     </select>
                 </div>
 
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="input-label">Promo</label>
-                        <select id="promoSelect" class="styled-select" onchange="saveUserData()">
-                            </select>
+                <div>
+                    <label class="input-label">Team Pédagogique (Ref)</label>
+                    <div class="text-xs text-brand-blue font-code bg-white border border-gray-200 p-2 rounded">
+                        <strong>Lead:</strong> Grégory RENUY<br>
+                        <strong>Ref Pédago:</strong> Albérick PUSSAT<br>
+                        <strong>Formateur Ref:</strong> Ala ATRASH
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARTE CALENDRIER -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <div class="card-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <h3 class="font-bold text-lg text-brand-blue font-code">Runtime & Dates</h3>
+            </div>
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 gap-2">
                     <div>
-                        <label class="input-label">Session</label>
-                        <select id="sessionNb" class="styled-select" onchange="saveUserData()">
-                            <option value="1">Session 1</option>
-                            <option value="2">Session 2</option>
+                        <label class="input-label">Session (Promo)</label>
+                        <select id="promoSelect" class="styled-select" onchange="updateDeadlinesFromPromo()">
+                            <option value="juin2025">Promo JUIN 2025</option>
+                            <option value="dec2025">Promo DECEMBRE 2025</option>
                         </select>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="dashboard-card border-t-4 border-t-cta">
-            <div class="card-header">
-                <div class="card-icon"><i class="fa-regular fa-calendar-alt"></i></div>
-                <h3 class="font-bold text-lg text-brand-blue">Calendrier Formation</h3>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="input-label">Début de formation</label>
-                    <input type="date" id="startDate" class="styled-input" onchange="saveUserData()">
-                </div>
-                <div>
-                    <label class="input-label">Fin de formation</label>
-                    <input type="date" id="endDate" class="styled-input" onchange="saveUserData()">
-                </div>
-                <div class="bg-gray-50 p-3 rounded-lg text-sm space-y-2 border border-gray-200 mt-2">
-                    <div class="flex justify-between">
-                        <span class="text-gray-500"><i class="fas fa-briefcase text-cta mr-1"></i> Stage conseillé</span>
-                        <span class="font-bold text-brand-blue">8 semaines</span>
+                <div class="p-3 rounded-lg text-sm space-y-2 border border-dashed border-gray-300 bg-white mt-2 font-code">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500"><i class="fas fa-clock mr-1 text-brand-cta"></i> Durée Continue</span>
+                        <span class="font-bold text-brand-blue">10 mois (500h)</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span class="text-gray-500"><i class="fas fa-graduation-cap text-cta mr-1"></i> Examens</span>
-                        <span class="font-bold text-brand-blue">Juin & Décembre</span>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500"><i class="fas fa-business-time mr-1 text-brand-cta"></i> Alternance</span>
+                        <span class="font-bold text-brand-blue">18 mois (609h)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-500"><i class="fas fa-briefcase mr-1 text-brand-cta"></i> Stage</span>
+                        <span class="font-bold text-brand-bronze">Rec. 3 mois min</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="timerCard" class="dashboard-card border-t-4 border-t-alert">
+        <!-- CARTE DEADLINE -->
+        <div id="timerCard" class="dashboard-card">
             <div class="card-header">
-                <div class="card-icon text-alert"><i class="fa-solid fa-hourglass-half"></i></div>
-                <h3 class="font-bold text-lg text-alert">Deadline Évaluations</h3>
+                <div class="card-icon text-brand-bronze bg-[#fdf2e9]"><i class="fa-solid fa-bomb"></i></div>
+                <h3 class="font-bold text-lg text-brand-bronze font-code">Next Deadline</h3>
             </div>
             <div class="space-y-4 flex flex-col h-full justify-between">
                 <div>
-                    <label class="input-label">Date limite de dépôt</label>
-                    <input type="date" id="evalDeadline" class="styled-input border-alert/30 text-alert font-bold" onchange="saveUserData()">
+                    <label class="input-label">Prochaine Échéance</label>
+                    <div id="deadlineLabel" class="font-bold text-sm text-brand-blue mb-1">Dépôt 1 (Bloc 1, 2 & 3)</div>
+                    <input type="date" id="evalDeadline" class="styled-input border-[#B4792A] text-[#B4792A] font-bold bg-[#fdf2e9]" readonly>
                 </div>
 
-                <div id="countdownDisplay" class="hidden grid grid-cols-4 gap-2 text-center mt-2">
-                    <div class="bg-brand-blue text-white p-2 rounded-lg">
+                <div id="countdownDisplay" class="grid grid-cols-4 gap-2 text-center mt-2 font-code">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
                         <div class="text-xl font-bold" id="cd-days">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Jours</div>
+                        <div class="text-[8px] uppercase">Days</div>
                     </div>
-                    <div class="bg-brand-blue text-white p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
                         <div class="text-xl font-bold" id="cd-hours">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Hrs</div>
+                        <div class="text-[8px] uppercase">Hrs</div>
                     </div>
-                    <div class="bg-brand-blue text-white p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
                         <div class="text-xl font-bold" id="cd-min">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Min</div>
+                        <div class="text-[8px] uppercase">Min</div>
                     </div>
-                    <div class="bg-brand-blue text-white p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
                         <div class="text-xl font-bold" id="cd-sec">00</div>
-                        <div class="text-[9px] uppercase opacity-70">Sec</div>
+                        <div class="text-[8px] uppercase">Sec</div>
                     </div>
                 </div>
-                <p id="countdownPlaceholder" class="text-center text-sm text-gray-400 italic py-4">
-                    Sélectionnez une date pour activer le compte à rebours.
-                </p>
             </div>
         </div>
 
     </div>
 
-    <!-- SECTION COMPÉTENCES À VALIDER (RNCP 40844) -->
+    <!-- SECTION COMPÉTENCES RNCP 36146 -->
     <section id="competences-rncp">
-        <div class="flex items-center gap-3 mb-6 border-b-2 border-cta pb-2">
-            <h3 class="text-2xl font-bold text-brand-blue brand-font">Compétences à Valider (RNCP 40844)</h3>
-            <span class="text-sm bg-cta text-white px-3 py-1 rounded-full font-bold shadow-sm">Juriste d'entreprise</span>
+        <div class="flex items-center gap-3 mb-6 border-b-4 border-brand-cta pb-2">
+            <h3 class="text-2xl font-bold text-brand-blue font-code">
+                <i class="fa-brands fa-python text-brand-cta mr-2"></i>Compétences RNCP 36146
+            </h3>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -405,178 +415,184 @@
             <div class="competence-card">
                 <div class="comp-header">
                     <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-brand-blue text-lg">BLOC 1</h4>
-                        <i class="fa-solid fa-chess-queen text-cta text-xl"></i>
+                        <h4 class="font-bold text-brand-blue text-lg font-code">BLOC 1</h4>
+                        <i class="fa-solid fa-pen-ruler text-brand-cta text-xl"></i>
                     </div>
-                    <p class="text-sm text-gray-600 font-medium mt-1">Pilotage stratégique de la fonction juridique</p>
+                    <p class="text-sm text-gray-600 font-medium mt-1">Conception & Spécification</p>
                     <div class="progress-mini-bar"><div class="progress-mini-fill" id="prog-bar-1"></div></div>
                 </div>
-                <div class="comp-body" id="checklist-bloc-1">
-                    <!-- Généré par JS -->
-                </div>
+                <div class="comp-body" id="checklist-bloc-1"></div>
             </div>
 
             <!-- Bloc 2 -->
             <div class="competence-card">
                 <div class="comp-header">
                     <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-brand-blue text-lg">BLOC 2</h4>
-                        <i class="fa-solid fa-handshake text-cta text-xl"></i>
+                        <h4 class="font-bold text-brand-blue text-lg font-code">BLOC 2</h4>
+                        <i class="fa-solid fa-list-check text-brand-cta text-xl"></i>
                     </div>
-                    <p class="text-sm text-gray-600 font-medium mt-1">Accompagnement opérationnel & acteurs internes</p>
+                    <p class="text-sm text-gray-600 font-medium mt-1">Gestion, Pilotage & Testing</p>
                     <div class="progress-mini-bar"><div class="progress-mini-fill" id="prog-bar-2"></div></div>
                 </div>
-                <div class="comp-body" id="checklist-bloc-2">
-                    <!-- Généré par JS -->
-                </div>
+                <div class="comp-body" id="checklist-bloc-2"></div>
             </div>
 
             <!-- Bloc 3 -->
             <div class="competence-card">
                 <div class="comp-header">
                     <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-brand-blue text-lg">BLOC 3</h4>
-                        <i class="fa-solid fa-gavel text-alert text-xl"></i>
+                        <h4 class="font-bold text-brand-blue text-lg font-code">BLOC 3</h4>
+                        <i class="fa-solid fa-code text-brand-bronze text-xl"></i>
                     </div>
-                    <p class="text-sm text-gray-600 font-medium mt-1">Gestion des précontentieux et contentieux</p>
+                    <p class="text-sm text-gray-600 font-medium mt-1">Développement Solution Digitale</p>
                     <div class="progress-mini-bar"><div class="progress-mini-fill" id="prog-bar-3"></div></div>
                 </div>
-                <div class="comp-body" id="checklist-bloc-3">
-                    <!-- Généré par JS -->
-                </div>
+                <div class="comp-body" id="checklist-bloc-3"></div>
             </div>
         </div>
     </section>
 
+    <!-- PROGRAMME DETAILLE (Roadmap) -->
     <section>
-        <div class="flex items-center gap-3 mb-6 border-b-2 border-cta pb-2">
-            <h3 class="text-2xl font-bold text-brand-blue brand-font">Programme Académique</h3>
-            <span class="text-sm bg-white border border-cta text-brand-blue px-3 py-1 rounded-full font-bold shadow-sm" id="programLabel">Spécialité...</span>
+        <div class="flex items-center gap-3 mb-6 border-b-4 border-brand-blue pb-2">
+            <h3 class="text-2xl font-bold text-brand-blue font-code">Programme & Roadmap</h3>
+            <span class="text-sm bg-brand-blue text-brand-ivory px-3 py-1 rounded font-code shadow-sm" id="programLabel">Fullstack Python</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="programContainer">
-            </div>
+            <!-- Généré par JS -->
+        </div>
+        
+        <!-- INFO EVALUATION (Newsletter) -->
+        <div class="mt-8 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+            <h4 class="font-bold text-lg mb-4 font-code text-brand-blue">ℹ️ Notes sur les Examens (Newsletter)</h4>
+            <ul class="list-disc pl-5 space-y-2 text-sm text-gray-600 font-code">
+                <li><strong class="text-brand-cta">Note 11</strong> = Validé ✅ | <strong class="text-brand-bronze">Note 9</strong> = Non Validé ❌</li>
+                <li>Correction sous 7 à 10 jours ouvrés.</li>
+                <li>Rattrapage possible (2ème dépôt) si non validé.</li>
+                <li>Soutenance orale finale obligatoire après validation des 3 blocs.</li>
+                <li>Diplôme envoyé 6 mois à 1 an après le jury final.</li>
+            </ul>
+        </div>
     </section>
 
   </main>
 
   <!-- ============================================ -->
-  <!-- DÉBUT DU FOOTER -->
+  <!-- FOOTER -->
   <!-- ============================================ -->
-  <footer class="main-footer" role="contentinfo">
+  <footer class="main-footer">
     <div class="footer-container">
-      <div class="footer-left">
-        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
-          <!-- Logo MMPA -->
-          <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
-        </a>
+      <div class="flex flex-col md:flex-row gap-4 items-center">
+        <!-- Logo -->
+        <div class="bg-white p-2 rounded-lg">
+             <i class="fa-brands fa-python text-3xl text-brand-blue"></i>
+        </div>
         
-        <!-- DÉTAILS DE CONTACT -->
-        <div class="footer-details">
-          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
-          
-          <!-- Email cliquable -->
-          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">
-              📧 mathilde.martine.paisley@gmail.com
-          </a>
-          
-          <!-- Téléphone cliquable -->
-          <a href="tel:0685900887" class="footer-contact-link">
-              📲 06 85 90 08 87
-          </a>
+        <!-- Contact -->
+        <div class="flex flex-col gap-1 text-center md:text-left">
+          <div class="font-bold text-brand-ivory text-lg">Mathilde Martine PAISLEY</div>
+          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-link">mathilde.martine.paisley@gmail.com</a>
+          <a href="tel:0685900887" class="footer-link">06 85 90 08 87</a>
         </div>
       </div>
 
-      <div class="footer-right">
-        <div class="footer-links-row" aria-label="Liens utilitaires">
-            <!-- Liens de navigation footer (Emojis) -->
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="Fiche RNCP" target="_blank">📚</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
-            
-            <div class="footer-divider"></div>
-
-            <!-- Réseaux Sociaux (FontAwesome) -->
-            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
-            <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
-            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
-            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
-            <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
-        </div>
-      </div>
-
-      <div class="copyright">
-        💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
-        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      <div class="flex flex-col items-center md:items-end gap-4 mt-6 md:mt-0">
+         <div class="flex gap-4 text-2xl">
+            <a href="#" class="footer-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="footer-link"><i class="fab fa-discord"></i></a>
+            <a href="#" class="footer-link"><i class="fab fa-stack-overflow"></i></a>
+            <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
+         </div>
+         <div class="text-xs text-brand-ivory text-center md:text-right opacity-70">
+            💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br>
+            Code with ❤️ and ☕ by Mathilde
+         </div>
       </div>
     </div>
   </footer>
-  <!-- ============================================ -->
-  <!-- FIN DU FOOTER -->
-  <!-- ============================================ -->
-
-<div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    // Init Icons (Si tu utilises Lucide dans le corps de page)
-    if(typeof lucide !== 'undefined') {
-        lucide.createIcons();
-    }
+    // --- DATA & LOGIC 110% DEV ---
 
-    // Back to top scroll
-    window.addEventListener('scroll', () => {
-        const btn = document.getElementById('backToTop');
-        if (btn) {
-            if (window.scrollY > 300) btn.classList.add('show'); else btn.classList.remove('show');
-        }
-    });
-
-    // Hauteur du Header
-    function updateHeaderHeight() { 
-        const header = document.getElementById('mainHeader'); 
-        if(header) {
-            document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
-        }
-    }
-    window.addEventListener('load', updateHeaderHeight); 
-    window.addEventListener('resize', updateHeaderHeight);
-
-    // --- LOGIQUE DASHBOARD ---
-
-    // Compétences RNCP 40844
-    const rncpSkills = {
+    // Données issues de la Fiche Formation & Newsletter
+    const pythonSkills = {
         bloc1: [
-            "Mettre en place une veille juridique (collecte, analyse, diffusion)",
-            "Définir la stratégie juridique & chantiers prioritaires avec la direction",
-            "Réaliser un audit juridique (collecte docs, entretiens, analyse process)",
-            "Elaborer les politiques internes de conformité (règles et directives)",
-            "Mettre en place un système d'archivage numérique sécurisé et conforme"
+            "Analyser les besoins client & Benchmark (Cahier des charges)",
+            "Définir l'architecture logicielle (UML, Merise)",
+            "Maquetter la solution (Adobe XD / Figma)",
+            "Planifier avec Méthodes Agiles (Scrum, Kanban)",
+            "Étude de faisabilité & Analyse des risques"
         ],
         bloc2: [
-            "Conseiller juridiquement les départements opérationnels (avis, recos)",
-            "Accompagner les décisions stratégiques (RSE, Fiscal, Projets)",
-            "Rédiger et valider les contrats & clauses spécifiques (protection risques)",
-            "Mettre en œuvre des actions de formation et sensibilisation (Culture juridique)",
-            "Coordonner une équipe juridique & transverse (efficacité collective)"
+            "Gestion de projet avec JIRA / Trello / GanttProject",
+            "Mise en place de Tests Unitaires & Fonctionnels (PHPUnit, Mocks)",
+            "Testing End-to-End & Tests d'acceptation",
+            "Intégration Continue (CI/CD) & Git/GitHub/GitLab",
+            "Pilotage équipe & Résolution de crise"
         ],
         bloc3: [
-            "Mettre en œuvre les règlements amiables & négociations",
-            "Élaborer une stratégie de défense juridique avec avocats/conseils",
-            "Développer des plans de gestion de crise (protocoles risques critiques)",
-            "Exécuter et suivre la mise en œuvre des décisions judiciaires"
+            "Dev Web Front: HTML5 / CSS3 / Bootstrap / JS (DOM, Ajax, JSON)",
+            "Dev Back PHP: POO, MVC, SQL (MySQL/PostgreSQL)",
+            "Dev Application Python: Flask / Django / ORM",
+            "Data Viz Python: Pandas, Matplotlib, Seaborn",
+            "Dev Mobile: React Native & API Rest"
         ]
     };
 
+    const deadlinesInfo = {
+        "juin2025": {
+            depot1: "2025-04-23",
+            depotFinal: "2025-05-23",
+            video: "2025-06-27",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "dec2025": {
+            depot1: "2025-09-22",
+            depotFinal: "2025-10-21",
+            video: "2025-11-21",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        }
+    };
+
+    // Programme Détaillé
+    const programsData = {
+        python_web: {
+            label: "Python Fullstack Web 🌐",
+            tagline: "if (brain != empty) { keep_coding(); }",
+            blocks: [
+                { title: "Conception & UX/UI", hours: "Bloc 1", items: ["Cahier des charges", "Adobe XD / Figma", "UML & Merise", "Agile Scrum"] },
+                { title: "Front-End", hours: "Bloc 3", items: ["HTML5 & CSS3", "Bootstrap & SASS", "JavaScript & JQuery", "Responsive Design"] },
+                { title: "Back-End & DB", hours: "Bloc 3", items: ["PHP & SQL", "Base de données Relationnelle", "Python & Algorithmique", "POO & MVC"] },
+                { title: "Frameworks Python", hours: "Bloc 3", items: ["Django (MVT)", "Flask", "API Rest", "Déploiement Cloud"] }
+            ]
+        },
+        python_data: {
+            label: "Python Data & IA 📊",
+            tagline: "import pandas as pd; df.analyze()",
+            blocks: [
+                { title: "Bases Python", hours: "Bloc 3", items: ["Syntaxe & Variables", "Structures de données", "Algorithmique avancée", "Modules & Packages"] },
+                { title: "Data Management", hours: "Bloc 3", items: ["SQL & NoSQL (MongoDB)", "ORM Python", "Manipulation fichiers", "Nettoyage de données"] },
+                { title: "Data Visualization", hours: "Bloc 3", items: ["Numpy & Pandas", "Matplotlib & Seaborn", "Streamlit", "Dashboarding"] },
+                { title: "Architecture", hours: "Bloc 1", items: ["Spécification Data", "Architecture centrée données", "Sécurité & RGPD", "Qualité logicielle"] }
+            ]
+        },
+        python_mobile: {
+            label: "Mobile & Cross-Platform 📱",
+            tagline: "const app = new MobileApp();",
+            blocks: [
+                { title: "Ecosystème Mobile", hours: "Bloc 3", items: ["Architecture Mobile", "React Native Basics", "Expo & CLI", "Navigation"] },
+                { title: "Développement", hours: "Bloc 3", items: ["Components & Props", "State Management (Redux)", "Appels API / Fetch", "Stockage local"] },
+                { title: "Backend Python", hours: "Bloc 3", items: ["API avec Django/Flask", "Authentification (OAuth)", "Sécurité API", "Base de données"] },
+                { title: "Testing & Deploy", hours: "Bloc 2", items: ["Tests Unitaires", "Debugging", "Déploiement Stores", "Maintenance"] }
+            ]
+        }
+    };
+
     function initCompetences() {
-        const stored = localStorage.getItem('juristEliteSkills_V2');
+        const stored = localStorage.getItem('devEliteSkills_V1');
         const checkedState = stored ? JSON.parse(stored) : {};
 
         ['bloc1', 'bloc2', 'bloc3'].forEach((bloc, index) => {
@@ -584,15 +600,15 @@
             if(!container) return;
             
             container.innerHTML = '';
-            rncpSkills[bloc].forEach((skill, i) => {
-                const id = `${bloc}-skill-${i}`;
+            pythonSkills[bloc].forEach((skill, i) => {
+                const id = `${bloc}-dev-skill-${i}`;
                 const isChecked = checkedState[id] || false;
                 
                 const div = document.createElement('div');
                 div.className = `checklist-item ${isChecked ? 'completed' : ''}`;
                 div.innerHTML = `
                     <input type="checkbox" id="${id}" ${isChecked ? 'checked' : ''} onchange="toggleSkill('${id}', '${bloc}')">
-                    <label for="${id}" class="cursor-pointer"><span>${skill}</span></label>
+                    <label for="${id}"><span>> ${skill}</span></label>
                 `;
                 container.appendChild(div);
             });
@@ -601,12 +617,12 @@
     }
 
     function toggleSkill(id, bloc) {
-        const stored = localStorage.getItem('juristEliteSkills_V2');
+        const stored = localStorage.getItem('devEliteSkills_V1');
         const checkedState = stored ? JSON.parse(stored) : {};
         
         const checkbox = document.getElementById(id);
         checkedState[id] = checkbox.checked;
-        localStorage.setItem('juristEliteSkills_V2', JSON.stringify(checkedState));
+        localStorage.setItem('devEliteSkills_V1', JSON.stringify(checkedState));
 
         checkbox.closest('.checklist-item').classList.toggle('completed', checkbox.checked);
         
@@ -618,86 +634,36 @@
         const container = document.getElementById(`checklist-bloc-${index}`);
         const checkboxes = container.querySelectorAll('input[type="checkbox"]');
         const checked = container.querySelectorAll('input[type="checkbox"]:checked');
-        
         const percent = Math.round((checked.length / checkboxes.length) * 100);
         document.getElementById(`prog-bar-${index}`).style.width = `${percent}%`;
     }
 
-    initCompetences();
-
-    // Promo Select
-    function initPromoSelect() {
-        const select = document.getElementById('promoSelect');
-        if(!select) return;
-        select.innerHTML = '';
-        const months = ['Juin', 'Décembre'];
-        const startYear = 2026;
-        const endYear = 2030;
-
-        for (let year = startYear; year <= endYear; year++) {
-            months.forEach(month => {
-                const opt = document.createElement('option');
-                const val = `${month} ${year}`;
-                opt.value = val;
-                opt.text = `Promo ${val}`;
-                select.appendChild(opt);
-            });
-        }
+    function updateDeadlinesFromPromo() {
+        const promo = document.getElementById('promoSelect').value;
+        const dates = deadlinesInfo[promo];
+        
+        // On affiche par défaut le prochain gros dépôt (ici dépôt final pour l'exemple, ou le 1er selon la date actuelle)
+        // Pour l'exercice, on fixe au 1er depot
+        document.getElementById('deadlineLabel').innerText = dates.label1;
+        document.getElementById('evalDeadline').value = dates.depot1;
+        
+        saveDevData();
+        updateCountdown(dates.depot1);
     }
-    initPromoSelect();
 
-    // Data Programmes
-    const programsData = {
-        social: {
-            label: "Droit Social ⚖️",
-            tagline: "Prête à conquérir le Droit Social ? 🚀",
-            blocks: [
-                { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit Social & Organisation", "Propriété Intellectuelle", "Droit des Sociétés", "Concurrence & IA"] },
-                { title: "Pilotage RH", color: "b-strat", hours: "180h", items: ["Veille Sociale & Audit", "Compliance & Conformité", "Politique Rémunération", "Transformation RH"] },
-                { title: "Accompagnement", color: "b-ops", hours: "165h", items: ["Conseil Juridique", "Contrats & Ruptures", "Relations Collectives", "Diagnostic RH"] },
-                { title: "Contentieux", color: "b-litige", hours: "85h", items: ["Risques Prud'homaux", "Gestion de Crise", "Contentieux URSSAF", "Exécution Décisions"] }
-            ]
-        },
-        affaires: {
-            label: "Droit des Affaires 💼",
-            tagline: "Prête à conquérir le Business ? 💼",
-            blocks: [
-                { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit des Obligations", "Baux Commerciaux", "Fiscalité des Affaires", "Procédures Collectives"] },
-                { title: "Stratégie Business", color: "b-strat", hours: "180h", items: ["Veille & Audit d'Acquisition", "Compliance & Sapin II", "RGPD & Data", "Management Juridique"] },
-                { title: "Contrats & Ops", color: "b-ops", hours: "165h", items: ["Négociation Contractuelle", "Fusions-Acquisitions", "Propriété Industrielle", "Ingénierie Sociétaire"] },
-                { title: "Litiges Affaires", color: "b-litige", hours: "85h", items: ["Contentieux Commercial", "Arbitrage & Médiation", "Droit Pénal des Affaires", "Recouvrement"] }
-            ]
-        },
-        entreprise: {
-            label: "Juriste d'Entreprise 🏢",
-            tagline: "Prête à piloter l'Entreprise ? 🏢",
-            blocks: [
-                { title: "Fondamentaux", color: "b-intro", hours: "~173h", items: ["Droit Civil & Commercial", "Financement Entreprise", "Droit des Sociétés", "Propriété Intellectuelle"] },
-                { title: "Pilotage Global", color: "b-strat", hours: "180h", items: ["Veille Stratégique", "Politiques Conformité", "Digitalisation Juridique", "Gestion des Risques"] },
-                { title: "Business Partner", color: "b-ops", hours: "165h", items: ["Conseil Direction", "Techniques Contractuelles", "Gestion Budgétaire", "RSE & Éthique"] },
-                { title: "Gestion Crise", color: "b-litige", hours: "85h", items: ["Précontentieux", "Stratégie Judiciaire", "Médiation", "Suivi Exécution"] }
-            ]
-        }
-    };
-
-    // Local Storage
-    function saveUserData() {
+    function saveDevData() {
         const data = {
             name: document.getElementById('userName').value,
             surname: document.getElementById('userSurname').value,
             specialization: document.getElementById('userSpecialization').value,
-            promo: document.getElementById('promoSelect').value,
-            session: document.getElementById('sessionNb').value,
-            startDate: document.getElementById('startDate').value,
-            endDate: document.getElementById('endDate').value,
-            evalDeadline: document.getElementById('evalDeadline').value
+            promo: document.getElementById('promoSelect').value
         };
-        localStorage.setItem('juristEliteData_V13', JSON.stringify(data));
+        localStorage.setItem('devEliteData_V1', JSON.stringify(data));
         updateUI(data);
     }
 
-    function loadUserData() {
-        const storedData = localStorage.getItem('juristEliteData_V13');
+    function loadDevData() {
+        const storedData = localStorage.getItem('devEliteData_V1');
         let data;
         if (storedData) {
             data = JSON.parse(storedData);
@@ -705,34 +671,31 @@
             data = { 
                 name: 'Mathilde Martine',
                 surname: 'PAISLEY',
-                specialization: 'social', 
-                promo: 'Juin 2027',
-                startDate: '2025-12-03',
-                endDate: '2026-09-30',
-                evalDeadline: '2027-06-18'
+                specialization: 'python_web', 
+                promo: 'juin2025'
             };
         }
 
         if(document.getElementById('userName')) document.getElementById('userName').value = data.name || "";
         if(document.getElementById('userSurname')) document.getElementById('userSurname').value = data.surname || "";
-        if(document.getElementById('userSpecialization')) document.getElementById('userSpecialization').value = data.specialization || "social";
-        if(document.getElementById('promoSelect')) document.getElementById('promoSelect').value = data.promo || "Juin 2027";
-        if(document.getElementById('sessionNb')) document.getElementById('sessionNb').value = data.session || "1";
-        if(document.getElementById('startDate')) document.getElementById('startDate').value = data.startDate || "";
-        if(document.getElementById('endDate')) document.getElementById('endDate').value = data.endDate || "";
-        if(document.getElementById('evalDeadline')) document.getElementById('evalDeadline').value = data.evalDeadline || "";
+        if(document.getElementById('userSpecialization')) document.getElementById('userSpecialization').value = data.specialization || "python_web";
+        if(document.getElementById('promoSelect')) document.getElementById('promoSelect').value = data.promo || "juin2025";
         
         updateUI(data);
+        initCompetences();
+        
+        // Force update deadline based on promo
+        updateDeadlinesFromPromo();
     }
 
     function updateUI(data) {
         const fullName = `${data.name || ''} ${data.surname || ''}`.trim();
         const displayEl = document.getElementById('displayFullName');
-        if(displayEl) displayEl.innerText = fullName || "Juriste";
+        if(displayEl) displayEl.innerText = fullName || "Dev";
 
-        const spec = data.specialization || 'social';
+        const spec = data.specialization || 'python_web';
         const program = programsData[spec];
-        if(document.getElementById('welcomeTagline')) document.getElementById('welcomeTagline').innerText = program.tagline;
+        if(document.getElementById('welcomeTagline')) document.getElementById('welcomeTagline').innerText = `"${program.tagline}"`;
         if(document.getElementById('programLabel')) document.getElementById('programLabel').innerText = program.label;
 
         const container = document.getElementById('programContainer');
@@ -740,50 +703,30 @@
             container.innerHTML = '';
             program.blocks.forEach((block, idx) => {
                 const html = `
-                <div class="prog-block ${block.color}">
+                <div class="prog-block">
                     <div class="flex justify-between items-start mb-3">
-                        <h4 class="font-bold text-lg text-brand-blue">${idx + 1}️⃣ ${block.title}</h4>
-                        <span class="bg-gray-100 text-xs font-bold px-2 py-1 rounded text-gray-600">${block.hours}</span>
+                        <h4 class="font-bold text-lg">${idx + 1}. ${block.title}</h4>
+                        <span class="bg-brand-blue text-xs px-2 py-1 rounded text-white">${block.hours}</span>
                     </div>
                     <ul class="space-y-2 text-sm text-gray-600">
-                        ${block.items.map(item => `<li><i class="fa-solid fa-check text-green-500 mr-2"></i>${item}</li>`).join('')}
+                        ${block.items.map(item => `<li><i class="fa-solid fa-terminal text-brand-cta mr-2"></i>${item}</li>`).join('')}
                     </ul>
                 </div>`;
                 container.innerHTML += html;
             });
         }
-        updateCountdown(data.evalDeadline);
     }
 
     let countdownInterval;
     function updateCountdown(deadlineDate) {
-        const displayEl = document.getElementById('countdownDisplay');
-        const placeholderEl = document.getElementById('countdownPlaceholder');
-        const timerCard = document.getElementById('timerCard');
-
-        if(!displayEl || !placeholderEl || !timerCard) return;
-
-        if (!deadlineDate) {
-            displayEl.classList.add('hidden');
-            placeholderEl.classList.remove('hidden');
-            timerCard.classList.remove('timer-active');
-            return;
-        }
-
-        placeholderEl.classList.add('hidden');
-        displayEl.classList.remove('hidden');
         if (countdownInterval) clearInterval(countdownInterval);
-
+        
         function calculate() {
             const now = new Date().getTime();
             const deadline = new Date(deadlineDate).getTime();
             const distance = deadline - now;
-
-            if (distance < 0) {
-                clearInterval(countdownInterval);
-                timerCard.classList.remove('timer-active');
-                return;
-            }
+            
+            if (distance < 0) return;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -794,8 +737,9 @@
             if(document.getElementById('cd-hours')) document.getElementById('cd-hours').innerText = hours < 10 ? "0" + hours : hours;
             if(document.getElementById('cd-min')) document.getElementById('cd-min').innerText = minutes < 10 ? "0" + minutes : minutes;
             if(document.getElementById('cd-sec')) document.getElementById('cd-sec').innerText = seconds < 10 ? "0" + seconds : seconds;
-
-            if (days < 7) timerCard.classList.add('timer-active');
+            
+            const timerCard = document.getElementById('timerCard');
+            if (days < 30) timerCard.classList.add('timer-active');
             else timerCard.classList.remove('timer-active');
         }
         calculate();
