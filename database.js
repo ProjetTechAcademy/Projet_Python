@@ -8,9 +8,10 @@
 window.dbRessources = {
 
     // ==================================================================
-    // BLOC 1 : CONCEPTION ET SPÉCIFICATION
+    // BLOC 1 : CONCEPTION ET SPÉCIFICATION D'UNE SOLUTION DIGITALE
     // ==================================================================
 
+    // --- Module 01 : Analyser les besoins client ---
     "B1_M01_S001_La_veille_et_linnovation": {
         video: "",
         info: "",
@@ -96,6 +97,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 02 : Définir les options techniques ---
     "B1_M02_S001_Les_specificites_du_projet_digital": {
         video: "",
         info: "",
@@ -157,6 +159,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 03 : Découvrir Adobe XD ---
     "B1_M03_S001_Presentation_generale": {
         video: "",
         info: "",
@@ -242,6 +245,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 04 : Utiliser Figma ---
     "B1_M04_S001_Presentation_de_lapplication": {
         video: "",
         info: "",
@@ -273,6 +277,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 05 : Méthodologie et Roadmap ---
     "B1_M05_S001_Introduction_a_lorganisation_dun_projet_digital": {
         video: "",
         info: "",
@@ -346,6 +351,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 06 : Concevoir une solution digitale ---
     "B1_M06_S001_La_realisation_dune_etude_dopportunite": {
         video: "",
         info: "",
@@ -419,6 +425,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 07 : Méthodologies Agiles ---
     "B1_M07_S001_Les_methodologies_agiles": {
         video: "",
         info: "",
@@ -444,6 +451,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 08 : Architecture Logicielle ---
     "B1_M08_S001_Larchitecture_en_appels_et_retours": {
         video: "",
         info: "",
@@ -481,6 +489,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 09 : Spécification Fonctionnelle ---
     "B1_M09_S001_Comprendre_les_objectifs_de_la_specification_fonctionnelle": {
         video: "",
         info: "",
@@ -494,6 +503,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 10 : Cahier des charges fonctionnel ---
     "B1_M10_S001_Le_cahier_des_charges_fonctionnel_:_le_contexte_du_projet_et_ses_enjeux": {
         video: "",
         info: "",
@@ -537,6 +547,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 11 : Objectifs SMART et Droit ---
     "B1_M11_S001_Le_recueil_et_lanalyse_des_besoins": {
         video: "",
         info: "",
@@ -608,6 +619,7 @@ window.dbRessources = {
     // BLOC 2 : GESTION, PILOTAGE ET TESTING
     // ==================================================================
 
+    // --- Module 01 : Trello ---
     "B2_M01_S001_Lapplication_Trello": {
         video: "",
         info: "",
@@ -681,6 +693,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 02 : JIRA ---
     "B2_M02_S001_Decouvrir_JIRA": {
         video: "",
         info: "",
@@ -718,6 +731,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 03 : GanttProject ---
     "B2_M03_S001_Apprendre_a_utiliser_Gantt_project": {
         video: "",
         info: "",
@@ -779,6 +793,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 04 : Modélisation UML ---
     "B2_M04_S001_Introduction_a_la_modelisation_conceptuelle_de_donnees_avec_UML": {
         video: "",
         info: "",
@@ -870,6 +885,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 05 : Scrum ---
     "B2_M05_S001_Comprendre_les_differents_cycles_de_vie_des_projets_en_methode_Agile": {
         video: "",
         info: "",
@@ -919,6 +935,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 06 : Kanban ---
     "B2_M06_S001_Lapplication_Smartsheet": {
         video: "",
         info: "",
@@ -932,6 +949,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 07 : Tester son application Web ---
     "B2_M07_S001Lexamen_des_exigences": {
         video: "",
         info: "",
@@ -993,6 +1011,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 08 : Réaliser des tests fonctionnels ---
     "B2_M08_S001_Les_notions_de_test_unitaire_et_test_fonctionnel": {
         video: "",
         info: "",
@@ -1054,6 +1073,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 09 : Proposer des solutions suite à un audit ---
     "B2_M09_S001_La_resolution_dune_situation_critique_pour_la_survie_du_projet": {
         video: "",
         info: "",
@@ -1104,9 +1124,10 @@ window.dbRessources = {
     },
 
     // ==================================================================
-    // BLOC 3 : DÉVELOPPEMENT PYTHON
+    // BLOC 3 : DÉVELOPPEMENT D'UNE SOLUTION DIGITALE AVEC PYTHON
     // ==================================================================
 
+    // --- Module 01 : Piloter la production de contenus digitaux ---
     "B3_M01_S001_Comment_et_pourquoi_se_former_a_la_production_de_contenus_digitaux_?": {
         video: "",
         info: "",
@@ -1156,6 +1177,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 02 : HTML, CSS et Bootstrap ---
     "B3_M02_S001_Introduction_HTML_et_CSS": {
         video: "",
         info: "",
@@ -1307,6 +1329,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 03 : JavaScript ---
     "B3_M03_S001_La_programmation_evenementielle_en_JavaScript": {
         video: "",
         info: "",
@@ -1368,6 +1391,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 04 : PHP ---
     "B3_M04_S001_PHP_et_HTML_(sorties)": {
         video: "",
         info: "",
@@ -1507,6 +1531,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 05 : Base de données relationnelle ---
     "B3_M05_S001_Introduction_generale_aux_bases_de_donnees,_notion_de_SGBDR": {
         video: "",
         info: "",
@@ -1616,6 +1641,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 06 : Base de données non relationnelle ---
     "B3_M06_S001_Introduction_NOSQL": {
         video: "",
         info: "",
@@ -1629,6 +1655,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 07 : Python Web ---
     "B3_M07_S001_Linterpreteur_de_commande_Python": {
         video: "",
         info: "",
@@ -1882,6 +1909,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 08 : Mobile React Native ---
     "B3_M08_S001_Le_developpement_Mobile": {
         video: "",
         info: "",
@@ -2003,6 +2031,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 09 : Concevoir une API ---
     "B3_M09_S001_Presentation_des_API": {
         video: "",
         info: "",
@@ -2022,6 +2051,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 10 : Utiliser des API ---
     "B3_M10_S001_Les_API_dauthentification_(OAuth,_..)": {
         video: "",
         info: "",
@@ -2041,6 +2071,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 11 : Gestion de version ---
     "B3_M11_S001_Introduction_a_la_ligne_de_commande": {
         video: "",
         info: "",
@@ -2102,6 +2133,7 @@ window.dbRessources = {
         pdf: ""
     },
 
+    // --- Module 12 : Maintenance et Documentation ---
     "B3_M12_S001_La_documentation_de_larchitecture_et_du_code": {
         video: "",
         info: "",

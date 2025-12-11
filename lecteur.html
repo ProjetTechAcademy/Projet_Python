@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lecteur de Cours — The Jurist Elite Club</title>
+    <title>Lecteur de Cours — The Dev Elite Club</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -12,94 +12,82 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
     <style>
-        /* --- DESIGN 2025 (COPIE CONFORME INDEX.HTML) --- */
+        /* === VARIABLES & GLOBAL === */
         :root {
-            --brand-blue: #0F2C48;
-            --brandGold: #D9A526;
-            --ivory: #F6F2E8;
-            --footer-bg: #0F2C48;
-            --footer-text: #F6F2E8;
+            --cta: #D9A526;       /* Or */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;     
+            --bronze: #B4792A;    
+            --bg-page: #FDFBF7;
         }
 
         body { 
-            font-family: 'Outfit', sans-serif; 
+            margin: 0; 
             background-color: var(--ivory); 
             color: var(--brand-blue); 
-            margin: 0;
+            font-family: 'Outfit', sans-serif; 
             display: flex; flex-direction: column; min-height: 100vh;
-            /* Espace pour la barre d'outils qui est en position fixed */
-            padding-top: 70px; 
+            padding-top: 80px; /* Espace pour la barre fixe */
         }
 
-        /* --- HEADER ADAPTÉ (Sticky sous la toolbar) --- */
-        .top-bar { 
-            background: linear-gradient(135deg, #B4792A, #F2C94C); 
-            padding: 12px 20px; 
-            position: sticky; 
-            /* On le place juste en dessous de la toolbar (environ 60-70px) */
-            top: 70px; 
-            z-index: 900; 
-            border-bottom: 4px solid var(--brand-blue); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        /* --- 1. HEADER (HAUT) --- */
+        .top-bar {
+            background-color: var(--brand-blue);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
+            border-bottom: 4px solid var(--cta);
+        }
+        
+        .top-bar-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
         }
 
-        .top-bar-container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 16px; 
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        
+        .logo-placeholder {
+            width: 60px; height: 60px; border-radius: 50%; 
+            border: 2px solid var(--cta); background: white; color: var(--brand-blue);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
         }
 
-        .top-left { display: flex; align-items: center; gap: 14px; }
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
 
-        .logo-top { 
-            width: 64px; height: 64px; 
-            border-radius: 8px; object-fit: cover; 
-            border: 2px solid var(--brand-blue); 
-            background: #fff; 
-            transition: transform 0.3s ease;
+        .top-bar-center { display: flex; gap: 12px; align-items: center; }
+        
+        .header-icon-btn {
+            position: relative; width: 40px; height: 40px; border-radius: 50%;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
-        .logo-top:hover { transform: scale(1.05); }
-
-        .identity-stack { display: flex; flex-direction: column; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
-        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-
-        .top-center { display: flex; gap: 10px; align-items: center; }
-
-        .header-icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0;
-            border-radius: 50%; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            text-decoration: none; 
-            background: linear-gradient(135deg, var(--brandGold), #B4792A); 
-            color: #fff; 
-            border: 1px solid rgba(255, 255, 255, 0.4); 
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            font-size: 1.2rem;
-            position: relative;
+        .header-icon-btn:hover { 
+            transform: translateY(-3px) scale(1.1); 
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
         }
-        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
-        .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-
-        .btn-portfolio-cosmic { 
-            padding: 8px 18px; 
-            border-radius: 999px; 
-            background: var(--brand-blue); 
-            color: var(--brandGold); 
-            text-decoration: none; 
-            font-weight: 700; 
-            display: inline-flex; gap: 8px; align-items: center; 
-            transition: background 0.3s, color 0.3s;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+        
+        .header-icon-btn::after {
+            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
+            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
         }
-        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-        /* --- ZONE CONTENU PRINCIPAL --- */
+        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+
+        /* --- ZONE CONTENU (CARTES) --- */
         .main-wrapper {
             flex: 1;
             max-width: 1300px; width: 95%; margin: 40px auto;
@@ -110,7 +98,6 @@
         h1 { color: #0F2C48; font-size: 2rem; font-weight: 800; margin-bottom: 10px; line-height: 1.2; font-family: 'Playfair Display', serif; }
         .course-id-tag { background: #D9A526; color: #fff; padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 10px; display: inline-block; }
 
-        /* --- GRILLE 5 CARTES (Conservée) --- */
         .inspiration-grid { display: grid; grid-template-columns: repeat(1, 1fr); gap: 25px; width: 100%; }
         @media (min-width: 768px) { .inspiration-grid { grid-template-columns: repeat(2, 1fr); } .card-music-span { grid-column: span 2; } }
         @media (min-width: 1200px) { 
@@ -119,7 +106,6 @@
             .card-music-span { grid-column: 2 / span 2; grid-row: 2; }
         }
 
-        /* --- STYLES DES CARTES --- */
         .card-box {
             background: white; border-radius: 20px; padding: 30px;
             box-shadow: 0 10px 30px rgba(15, 44, 72, 0.05); border: 1px solid rgba(15, 44, 72, 0.05);
@@ -144,80 +130,99 @@
         .card-action { margin-top: 20px; font-size: 0.8rem; color: #D9A526; font-weight: 700; text-transform: uppercase; opacity: 0; transition: 0.3s; }
         .card-clickable:hover .card-action { opacity: 1; }
 
-        /* --- FOOTER --- */
-        .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
-        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .footer-left { display: flex; gap: 12px; align-items: center; }
-        .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
-        .footer-details { color: var(--footer-text); opacity: 0.95; }
+        /* --- 2. FOOTER (BAS) --- */
+        .main-footer {
+            background-color: var(--brand-blue); color: #F6F2E8;
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            width: 100%; margin-top: auto; 
+        }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        
+        .footer-logo-placeholder {
+            width: 60px; height: 60px; border-radius: 8px; 
+            border: 2px solid var(--cta); background: #fff; color: var(--brand-blue);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+        }
 
-        .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-        .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--cta); }
+
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
 
         .icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0;
-            border-radius: 50%; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            background: rgba(255, 255, 255, 0.06); 
-            color: var(--footer-text); 
-            text-decoration: none; 
-            border: 1px solid rgba(217, 165, 38, 0.15); 
-            transition: all 0.2s;
-            font-size: 1.1rem;
+            position: relative; width: 45px; height: 45px; border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 1.3rem; text-decoration: none; 
+            transition: all 0.3s; cursor: pointer; color: #fff; 
         }
-        .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
 
-        .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
-        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+        .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background-color: #fff; color: var(--brand-blue); padding: 5px 12px; border-radius: 20px;
+            font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
-        @media (max-width: 1100px) {
-            .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; }
-            .top-left { flex-direction: column; text-align: center; }
-            .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
-            .top-center::-webkit-scrollbar { height: 4px; }
-            .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
-            .footer-container { flex-direction: column; text-align: center; }
-            .footer-left { flex-direction: column; }
-            .footer-right { align-items: center; width: 100%; }
-            .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
-            .footer-divider { display: none; } 
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NOUVEAU HEADER (Identique Index) -->
-    <div class="top-bar" id="mainHeader">
+    <!-- === ZONE HEADER === -->
+    <div class="top-bar">
         <div class="top-bar-container">
-        <div class="top-left">
-        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
-        <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
-        </a>
-        <div class="identity-stack">
-        <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
-        <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
-        </div>
-        </div>
-        <nav class="top-center" aria-label="Navigation principale">
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
-        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
-        </a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-        <a class="header-icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
-        </nav>
-        <div>
-        <a class="btn-portfolio-cosmic" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
-        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
-        Expert
-        </a>
-        </div>
+            <div class="top-bar-left">
+                <div class="logo-placeholder">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Dev Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
+                </div>
+            </div>
+            
+            <div class="top-bar-center">
+                <a href="index.html" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
+                    <i class="fas fa-home"></i> 
+                </a>
+                <a href="#" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
+                <a href="#" class="header-icon-btn" aria-label="Lexique" data-tooltip="Lexique">📜</a>
+                <a href="#" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
+                <a href="#" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                <a href="#" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
+                    <i class="fas fa-user"></i> 
+                </a>
+            </div>
+
+            <a href="#" class="btn-portfolio-cosmic">
+                <span>📄</span> Mon portfolio
+            </a>
         </div>
     </div>
 
@@ -227,33 +232,37 @@
         <div class="header-course">
             <div class="course-id-tag" id="course-id-display">MODULE</div>
             <h1 id="course-title">Chargement du module...</h1>
-            <p class="text-slate-500 italic mt-2"><i class="fa-solid fa-arrow-up animate-bounce"></i> Utilise la barre d'outils ci-dessus pour accéder au cours (Audio, Vidéo, Fiches...)</p>
+            <p class="text-slate-500 italic mt-2"><i class="fa-solid fa-arrow-up animate-bounce"></i> Utilise la barre d'outils ci-dessus pour accéder aux liens (Vidéo, PDF, etc.)</p>
         </div>
 
         <div class="inspiration-grid">
             
+            <!-- CARTE 1 : MINDSET (Phrases de Dev) -->
             <div class="card-box">
                 <i class="fa-solid fa-brain card-bg-icon"></i>
-                <div class="card-badge badge-mindset"><i class="fa-solid fa-fire"></i> Mental d'Acier</div>
+                <div class="card-badge badge-mindset"><i class="fa-solid fa-fire"></i> Mindset Dev</div>
                 <div class="card-content" id="txt-mindset">...</div>
                 <div class="card-sub" id="sub-mindset"></div>
             </div>
 
+            <!-- CARTE 2 : ASTUCE (Tips Python) -->
             <div class="card-box">
                 <i class="fa-solid fa-toolbox card-bg-icon"></i>
-                <div class="card-badge badge-method"><i class="fa-solid fa-lightbulb"></i> Astuce Pro</div>
+                <div class="card-badge badge-method"><i class="fa-solid fa-lightbulb"></i> Astuce Code</div>
                 <div class="card-content" id="txt-method">...</div>
                 <div class="card-sub" id="sub-method"></div>
             </div>
 
+            <!-- CARTE 3 : CULTURE TECH (Liens) -->
             <div class="card-box card-clickable" id="link-culture">
                 <i class="fa-solid fa-book-open card-bg-icon"></i>
-                <div class="card-badge badge-culture"><i class="fa-solid fa-seedling"></i> Culture Juridique</div>
+                <div class="card-badge badge-culture"><i class="fa-solid fa-seedling"></i> Culture Tech</div>
                 <div class="card-content" id="txt-culture">...</div>
                 <div class="card-sub" id="sub-culture"></div>
                 <div class="card-action"><i class="fa-solid fa-external-link-alt"></i> Consulter</div>
             </div>
 
+            <!-- CARTE 4 : RÉSEAU (Liens) -->
             <div class="card-box card-clickable card-network" id="link-network">
                 <i class="fa-brands fa-linkedin card-bg-icon"></i>
                 <div class="card-badge badge-network"><i class="fa-brands fa-linkedin-in"></i> Réseau Pro</div>
@@ -262,9 +271,10 @@
                 <div class="card-action"><i class="fa-solid fa-user-plus"></i> Voir le profil</div>
             </div>
 
+            <!-- CARTE 5 : MUSIQUE (Liens YouTube) -->
             <div class="card-box card-clickable card-music-span" id="link-music">
                 <i class="fa-solid fa-music card-bg-icon"></i>
-                <div class="card-badge badge-music"><i class="fa-solid fa-headphones"></i> Ambiance Travail</div>
+                <div class="card-badge badge-music"><i class="fa-solid fa-headphones"></i> Vibe de Codeur</div>
                 <div class="card-content" id="txt-music">...</div>
                 <div class="card-sub" id="sub-music">Clique pour lancer la musique</div>
                 <div class="card-action"><i class="fa-solid fa-play"></i> Écouter</div>
@@ -274,176 +284,168 @@
 
     </div>
 
-    <!-- NOUVEAU FOOTER (Identique Index) -->
-    <footer class="main-footer" role="contentinfo">
+    <!-- === ZONE FOOTER === -->
+    <footer class="main-footer">
         <div class="footer-container">
-        <div class="footer-left">
-        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
-        <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
-        </a>
-        <div class="footer-details">
-        <div style="font-weight:700; font-size: 1.1rem;">Mathilde Martine PAISLEY</div>
-        <div style="opacity:0.95; margin-top:6px; font-size: 0.9rem;">
-        📧 Mathilde.martine.paisley@gmail.com <br class="md:hidden"> • 📲 06 85 90 08 87
-        </div>
-        </div>
-        </div>
-        <div class="footer-right">
-        <div class="footer-links-row" aria-label="Liens utilitaires">
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
-        <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-        <a class="icon-btn" href="https://www.google.com/search?q=https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
-                <div class="footer-divider"></div>
-        
-                <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
-                <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
-                <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
-                <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
-                <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
+            <div class="footer-content">
+                
+                <div class="footer-identity">
+                    <div class="footer-logo-placeholder">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation & Réseaux</div>
+                        <div class="icon-dock">
+                            <a href="#" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
+                            <a href="#" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <a href="#" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
+                            <a href="#" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
+                            <a href="#" class="icon-btn" data-tooltip="Profil"><span class="brand-nav">👤</span></a>
+                            
+                            <div class="dock-separator"></div>
+
+                            <a href="#" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
+                            <a href="#" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
+                            <a href="#" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
+                            <a href="#" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
+                            <a href="#" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
-          <div class="copyright">
-            💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
-            By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
-          </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
+                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Scripts pour la Database et la Toolbar -->
     <script src="database.js"></script>
     <script src="toolbar_injector.js"></script>
 
     <script>
-        // 1. GESTION DU TITRE (Compatible avec les nouvelles clés Bx_Mx_Sx)
+        // 1. GESTION DU TITRE ET ID DU COURS
         const params = new URLSearchParams(window.location.search);
         const courseId = params.get('id');
         if(courseId) {
+            // Nettoyage de l'ID pour l'affichage (enlève les _ et autres caractères)
             const parts = courseId.split('_');
             let cleanTitle = courseId.replace(/_/g, ' ');
             let idTag = "MODULE";
             
-            // Logique pour détecter B0_M01 etc.
+            // Si le format est Bx_Mx_Sx, on extrait le code
             if(parts.length > 3) {
-                // On essaie de récupérer le tag Bx_Mx_Sx
-                idTag = parts.slice(0, 3).join(' '); 
-                cleanTitle = parts.slice(3).join(' '); 
+                idTag = parts.slice(0, 3).join(' '); // B1 M01 S001
+                cleanTitle = parts.slice(3).join(' '); // Le reste est le titre
             }
             
             document.getElementById('course-title').textContent = cleanTitle;
             document.getElementById('course-id-display').textContent = idTag;
-            document.title = cleanTitle + " - JEC"; 
+            document.title = cleanTitle + " - Dev Elite Club"; 
         }
 
         // ============================================================
-        // 🇫🇷 BASE DE DONNÉES 100% FRANCOPHONE & FIABLE (CONSERVÉE)
+        // 🐍 BASE DE DONNÉES ALÉATOIRE "DEV / PYTHON"
         // ============================================================
         
-        // 1. MINDSET (En français)
+        // 1. MINDSET (Phrases de Codeurs)
         const dbMindset = [
-            { txt: "« Nul n'est censé ignorer la loi. »", sub: "Adage fondamental" },
-            { txt: "« La loi est dure, mais c'est la loi. »", sub: "Dura lex, sed lex" },
-            { txt: "« Tu es l'architecte de ton avenir. »", sub: "Jurist Elite Club" },
-            { txt: "« Pas de peine sans loi. »", sub: "Principe de Légalité" },
-            { txt: "« La rigueur d'aujourd'hui est la réussite de demain. »", sub: "MMPA" },
-            { txt: "« Les contrats tiennent lieu de loi à ceux qui les ont faits. »", sub: "Code Civil, Art 1103" },
-            { txt: "« La liberté des uns s'arrête là où commence celle des autres. »", sub: "Devise républicaine" },
-            { txt: "« On ne naît pas juriste, on le devient par le travail. »", sub: "Motivation" },
-            { txt: "« Un mauvais arrangement vaut mieux qu'un bon procès. »", sub: "Honoré de Balzac" },
-            { txt: "« Le doute est le commencement de la sagesse. »", sub: "Aristote" },
-            { txt: "« La forme donne l'être à la chose. »", sub: "Adage juridique" },
-            { txt: "« Ne remets jamais à demain la fiche d'arrêt d'aujourd'hui. »", sub: "Conseil d'ami" },
-            { txt: "« La justice est le pain du peuple. »", sub: "Chateaubriand" },
-            { txt: "« Tout ce qui n'est pas défendu par la loi ne peut être empêché. »", sub: "DDHC 1789" },
-            { txt: "« Gouverner, c'est prévoir. »", sub: "Émile de Girardin" }
+            { txt: "« Talk is cheap. Show me the code. »", sub: "Linus Torvalds" },
+            { txt: "« Le code est comme l'humour. Si tu dois l'expliquer, c'est qu'il est mauvais. »", sub: "Cory House" },
+            { txt: "« Il n'y a pas de code sans bug, seulement des bugs non trouvés. »", sub: "Réalité du Dev" },
+            { txt: "« Premature optimization is the root of all evil. »", sub: "Donald Knuth" },
+            { txt: "« Un bon programmeur regarde des deux côtés avant de traverser une rue à sens unique. »", sub: "Doug Linder" },
+            { txt: "« C'est en codant qu'on devient codeur. »", sub: "La base" },
+            { txt: "« Keep it simple, stupid. »", sub: "Principe KISS" },
+            { txt: "« Python is executable pseudocode. »", sub: "Bruce Eckel" },
+            { txt: "« La simplicité est la sophistication suprême. »", sub: "Léonard de Vinci (Appliqué au code)" },
+            { txt: "« Ne te répète pas. »", sub: "Principe DRY (Don't Repeat Yourself)" }
         ];
 
-        // 2. MÉTHODE (Astuces Pro)
+        // 2. MÉTHODE (Astuces Python)
         const dbMethod = [
-            { txt: "Le Syllogisme Juridique", sub: "Majeure (Règle) > Mineure (Faits) > Conclusion. Toujours." },
-            { txt: "La Veille Hebdomadaire", sub: "Consacre 1h le vendredi à lire l'actu juridique." },
-            { txt: "Vocabulaire Précis", sub: "Un contrat 'stipule', la loi 'dispose'. Ne confonds jamais." },
-            { txt: "Fiche d'Arrêt", sub: "Faits, Procédure, Prétentions, Problème de droit, Solution." },
-            { txt: "Méthode Pomodoro", sub: "25 min de travail intense, 5 min de pause. Efficacité garantie." },
-            { txt: "Qualification des Faits", sub: "Transforme l'histoire du client en langage juridique." },
-            { txt: "Le Plan Détaillé", sub: "I. A. B. / II. A. B. - Pas de dissertation sans plan." },
-            { txt: "Citer ses sources", sub: "Indique toujours l'article du Code ou l'arrêt de Cassation." },
-            { txt: "La Relecture", sub: "Une faute d'orthographe décrédibilise tout un raisonnement." },
-            { txt: "Gestion du Stress", sub: "Respire. Un problème juridique a toujours une solution." },
-            { txt: "Organisation", sub: "Prépare ton agenda de la semaine le dimanche soir." },
-            { txt: "Curiosité", sub: "Va lire la décision entière sur Légifrance, pas juste le résumé." }
+            { txt: "Utilise `enumerate()`", sub: "Plutôt que `range(len())` pour avoir l'index et la valeur." },
+            { txt: "List Comprehension", sub: "[x*2 for x in list] est plus rapide et lisible qu'une boucle for." },
+            { txt: "Le Zen de Python", sub: "Tape `import this` dans ton terminal. Lis-le." },
+            { txt: "Utilise `f-strings`", sub: "`f'Salut {nom}'` est le standard moderne pour formater du texte." },
+            { txt: "Gère tes exceptions", sub: "Utilise `try...except` pour éviter que ton programme ne crash." },
+            { txt: "Commente ton code", sub: "Pas pour les autres, mais pour toi dans 6 mois." },
+            { txt: "Environnements Virtuels", sub: "Toujours un `venv` par projet. Toujours." },
+            { txt: "Nommage explicite", sub: "`user_age` vaut mieux que `x` ou `a`." }
         ];
 
-        // 3. CULTURE (Ressources FR Vérifiées)
+        // 3. CULTURE (Liens Tech)
         const dbCulture = [
-            { txt: "Légifrance", sub: "Le service public de la diffusion du droit.", url: "https://www.legifrance.gouv.fr/" },
-            { txt: "Village de la Justice", sub: "Le 1er site de la communauté du droit.", url: "https://www.village-justice.com/" },
-            { txt: "Le Petit Juriste", sub: "Le journal des étudiants en droit.", url: "https://www.lepetitjuriste.fr/" },
-            { txt: "Dalloz Actualité", sub: "L'actualité juridique décryptée.", url: "https://www.dalloz-actualite.fr/" },
-            { txt: "Conseil Constitutionnel", sub: "Les décisions des Sages.", url: "https://www.conseil-constitutionnel.fr/" },
-            { txt: "Cour de Cassation", sub: "Site officiel de la haute juridiction.", url: "https://www.courdecassation.fr/" },
-            { txt: "Jurixio (YouTube)", sub: "Vidéos de révision claires et nettes.", url: "https://www.youtube.com/c/Jurixio" },
-            { txt: "Le Droit en 5 minutes", sub: "Comprendre les notions clés en vidéo.", url: "https://www.youtube.com/channel/UCyXqW5V_oXNlB9Hk_w_wXg" },
-            { txt: "CNIL.fr", sub: "Tout savoir sur le RGPD et la data.", url: "https://www.cnil.fr/" },
-            { txt: "Service-Public.fr", sub: "Le droit pratique pour les citoyens.", url: "https://www.service-public.fr/" },
-            { txt: "L'art de la guerre", sub: "Livre : Stratégie indispensable pour la négociation.", url: "https://www.fnac.com/livre/L-Art-de-la-guerre-Sun-Tzu" },
-            { txt: "Code Civil", sub: "Livre : Ton outil de travail principal.", url: "https://www.boutique-dalloz.fr/code-civil-2025" }
+            { txt: "Python.org", sub: "La bible officielle. Documentation et downloads.", url: "https://www.python.org/" },
+            { txt: "Real Python", sub: "Tutoriels de très haute qualité pour tous niveaux.", url: "https://realpython.com/" },
+            { txt: "Stack Overflow", sub: "Là où tu trouveras 99% de tes réponses.", url: "https://stackoverflow.com/" },
+            { txt: "GitHub Trending", sub: "Voir ce qui se fait de chaud en ce moment.", url: "https://github.com/trending" },
+            { txt: "Dev.to", sub: "Communauté de développeurs bienveillante.", url: "https://dev.to/" },
+            { txt: "Hacker News", sub: "L'actualité tech brute et sans filtre.", url: "https://news.ycombinator.com/" },
+            { txt: "W3Schools Python", sub: "Idéal pour réviser la syntaxe de base.", url: "https://www.w3schools.com/python/" }
         ];
 
-        // 4. RÉSEAU (Profils & Instituts FR)
+        // 4. RÉSEAU (Profils & Entreprises)
         const dbNetwork = [
-            { txt: "Conseil National des Barreaux", sub: "Institution représentative des avocats.", url: "https://www.linkedin.com/company/cnb/" },
-            { txt: "Village de la Justice", sub: "Suivre l'actualité des carrières.", url: "https://www.linkedin.com/company/village-justice/" },
-            { txt: "Editions Dalloz", sub: "L'excellence juridique sur LinkedIn.", url: "https://www.linkedin.com/company/editions-dalloz/" },
-            { txt: "AFJE", sub: "Assoc. Française des Juristes d'Entreprise.", url: "https://www.linkedin.com/company/afje/" },
-            { txt: "ANDRH", sub: "Association Nationale des DRH.", url: "https://www.linkedin.com/company/andrh/" },
-            { txt: "Francis Lefebvre Formation", sub: "Leader de la formation juridique.", url: "https://www.linkedin.com/company/francis-lefebvre-formation/" },
-            { txt: "Fidal", sub: "Grand cabinet d'avocats d'affaires.", url: "https://www.linkedin.com/company/fidal/" },
-            { txt: "EY Société d'Avocats", sub: "Droit et fiscalité des affaires.", url: "https://www.linkedin.com/company/ey-societe-d-avocats/" },
-            { txt: "Studi Droit", sub: "Ton école : retrouve les anciens élèves.", url: "https://www.linkedin.com/school/studi-fr/" },
-            { txt: "Cercle Montesquieu", sub: "Directeurs juridiques de France.", url: "https://www.linkedin.com/company/cercle-montesquieu/" },
-            { txt: "Lamy Liaisons", sub: "Actualités juridiques et RH.", url: "https://www.linkedin.com/company/lamy-liaisons/" }
+            { txt: "Station F", sub: "Le plus grand campus de startups au monde (Paris).", url: "https://stationf.co/" },
+            { txt: "La French Tech", sub: "L'écosystème des startups françaises.", url: "https://lafrenchtech.com/fr/" },
+            { txt: "Google Developers", sub: "Ressources et communautés Google.", url: "https://developers.google.com/" },
+            { txt: "Microsoft Reactor", sub: "Hub pour les développeurs et startups.", url: "https://developer.microsoft.com/en-us/reactor/" },
+            { txt: "Malt", sub: "Plateforme pour les freelances tech.", url: "https://www.malt.fr/" },
+            { txt: "Welcome to the Jungle", sub: "Trouver un job dans une boite tech cool.", url: "https://www.welcometothejungle.com/fr" }
         ];
 
-        // 5. VIBE (Vraie Musique / Ambiances de travail)
+        // 5. VIBE (Musique pour Coder)
         const dbMusic = [
-            { txt: "Radio Classique (Direct)", sub: "La radio idéale pour se concentrer.", url: "https://www.radioclassique.fr/direct/" },
-            { txt: "FIP Radio (Direct)", sub: "L'éclectisme musical français, sans pub.", url: "https://www.radiofrance.fr/fip" },
-            { txt: "Piano Français (Sofiane Pamart)", sub: "Mélodies douces pour l'étude.", url: "https://www.youtube.com/watch?v=videoseries?list=PLw-VjHDlEOgsWqOXW_T_GXoQAqE1gKkG6" },
-            { txt: "Ambiance Bibliothèque", sub: "Bruit blanc calme pour focus.", url: "https://www.youtube.com/watch?v=4vIQON2fDWM" },
-            { txt: "Jazz de Paris", sub: "Ambiance café parisien relaxante.", url: "https://www.youtube.com/watch?v=3jWRrafhO7M" },
-            { txt: "Musique Classique (Focus)", sub: "Mozart pour l'intelligence.", url: "https://www.youtube.com/watch?v=RDfjXj5EGqI" },
-            { txt: "Pluie et Tonnerre", sub: "Son naturel pour s'isoler.", url: "https://www.youtube.com/watch?v=mPZKDNFkNps" },
-            { txt: "Lofi Girl (Concert)", sub: "Beats calmes pour étudier (Le classique).", url: "https://www.youtube.com/watch?v=jfKfPfyJRdk" },
-            { txt: "Deep Focus", sub: "Musique instrumentale pour travailler.", url: "https://www.youtube.com/watch?v=5qap5aO4i9A" },
-            { txt: "Hans Zimmer (Interstellar)", sub: "Pour les sessions de révision épiques.", url: "https://www.youtube.com/watch?v=UDVtMYqUAyw" }
+            { txt: "Lofi Girl (Coding)", sub: "Le classique indémodable pour se concentrer.", url: "https://www.youtube.com/watch?v=jfKfPfyJRdk" },
+            { txt: "Synthwave Radio", sub: "Ambiance Hacker / Cyberpunk pour coder vite.", url: "https://www.youtube.com/watch?v=4xDzrJKXOOY" },
+            { txt: "Hans Zimmer (Interstellar)", sub: "Pour coder des algorithmes complexes.", url: "https://www.youtube.com/watch?v=UDVtMYqUAyw" },
+            { txt: "Deep Focus Music", sub: "Binaural beats pour une concentration maximale.", url: "https://www.youtube.com/watch?v=5qap5aO4i9A" },
+            { txt: "Zelda & Chill", sub: "Nostalgie et calme pour le debugging.", url: "https://www.youtube.com/watch?v=GdzrrWA8e7A" },
+            { txt: "Jazz Hop", sub: "Détente absolue pour le CSS.", url: "https://www.youtube.com/watch?v=5yx6BWlEVcY" },
+            { txt: "Rain Sounds", sub: "Bruit de pluie pour s'isoler du monde.", url: "https://www.youtube.com/watch?v=mPZKDNFkNps" }
         ];
 
         // --- MOTEUR DE TIRAGE ALÉATOIRE ---
         function setCard(category, idTxt, idSub, idLink = null) {
+            // Sélection aléatoire
             const randomItem = category[Math.floor(Math.random() * category.length)];
+            
+            // Injection du texte
             document.getElementById(idTxt).textContent = randomItem.txt;
             document.getElementById(idSub).textContent = randomItem.sub;
             
             // Si c'est une carte cliquable (avec lien)
             if(idLink && randomItem.url) {
                 const card = document.getElementById(idLink);
+                // Au clic, on ouvre le lien
                 card.onclick = function() { window.open(randomItem.url, '_blank'); };
             }
         }
 
-        // Lancer les dés !
-        setCard(dbMindset, 'txt-mindset', 'sub-mindset');
-        setCard(dbMethod, 'txt-method', 'sub-method');
-        setCard(dbCulture, 'txt-culture', 'sub-culture', 'link-culture');
-        setCard(dbNetwork, 'txt-network', 'sub-network', 'link-network');
-        setCard(dbMusic, 'txt-music', 'sub-music', 'link-music');
+        // Lancement des dés au chargement de la page ! 🎲
+        window.onload = function() {
+            setCard(dbMindset, 'txt-mindset', 'sub-mindset');
+            setCard(dbMethod, 'txt-method', 'sub-method');
+            setCard(dbCulture, 'txt-culture', 'sub-culture', 'link-culture');
+            setCard(dbNetwork, 'txt-network', 'sub-network', 'link-network');
+            setCard(dbMusic, 'txt-music', 'sub-music', 'link-music');
+        };
 
     </script>
 
