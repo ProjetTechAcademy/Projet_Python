@@ -27,7 +27,9 @@
             color: var(--brand-blue); 
             font-family: 'Outfit', sans-serif; 
             display: flex; flex-direction: column; min-height: 100vh;
-            padding-top: 80px; /* Espace pour la barre fixe */
+            /* CORRECTION ICI : Augmentation du padding pour éviter que le header cache le contenu */
+            /* On prévoit de la place pour la toolbar (env 60px) + le header (env 100px) */
+            padding-top: 180px; 
         }
 
         /* --- 1. HEADER (HAUT) --- */
@@ -35,7 +37,10 @@
             background-color: var(--brand-blue);
             padding: 15px 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: fixed; top: 0; left: 0; right: 0; z-index: 10000;
+            position: fixed; 
+            /* CORRECTION : On descend le header pour laisser la place à la toolbar injectée */
+            top: 60px; 
+            left: 0; right: 0; z-index: 9000; /* Z-index inférieur à la toolbar */
             border-bottom: 4px solid var(--cta);
         }
         

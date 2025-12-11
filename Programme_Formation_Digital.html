@@ -137,6 +137,15 @@
             border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
         }
 
+        @media (max-width: 768px) {
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
+        }
+
         /* --- STYLES SPÉCIFIQUES AU CONTENU (Programme) --- */
         details > summary { list-style: none; }
         details > summary::-webkit-details-marker { display: none; }
@@ -170,6 +179,30 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Styles Progression & Checkboxes */
+        .checkbox-wrapper input[type="checkbox"] {
+            accent-color: var(--cta);
+            width: 1.1em; height: 1.1em; cursor: pointer;
+        }
+        .checkbox-wrapper input:checked + a {
+            text-decoration: line-through; 
+            color: #94a3b8; /* Gris clair une fois coché */
+        }
+        .progress-bar-container {
+            background-color: #e2e8f0;
+            border-radius: 999px;
+            height: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--cta), #f59e0b);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+            border-radius: 999px;
+        }
     </style>
 </head>
 <body class="bg-[#F6F2E8] text-gray-800 font-sans flex flex-col min-h-screen">
@@ -189,13 +222,18 @@
             </div>
             
             <div class="top-bar-center">
-                <a href="#" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
+                <!-- LIEN ACCUEIL HEADER -->
+                <a href="https://projettechacademy.github.io/Projet_Python/" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
                     <i class="fas fa-home"></i> 
                 </a>
+                
                 <a href="#" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
                 <a href="#" class="header-icon-btn" aria-label="Lexique" data-tooltip="Lexique">📜</a>
                 <a href="#" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
-                <a href="#" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                
+                <!-- LIEN PLANNING HEADER -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html#" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
+                
                 <a href="#" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
                     <i class="fas fa-user"></i> 
                 </a>
@@ -210,49 +248,76 @@
     <!-- CONTENU PRINCIPAL (Le Programme) -->
     <main class="flex-grow p-6">
         <div class="max-w-6xl mx-auto">
-            <!-- En-tête de section -->
+            <!-- En-tête de section avec Barre Globale -->
             <div class="text-center mb-8">
                 <h1 class="text-4xl font-bold text-[#0F2C48] mb-2 font-['Playfair_Display']">Programme de Formation Digital</h1>
                 <p class="text-[#D9A526] font-medium text-lg uppercase tracking-wider">The Dev Elite Club</p>
+                
+                <!-- Barre de Progression Globale -->
+                <div class="mt-6 max-w-md mx-auto">
+                    <div class="flex justify-between text-sm font-bold text-[#0F2C48] mb-1">
+                        <span>Progression Globale</span>
+                        <span id="global-progress-text">0%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div id="global-progress-bar" class="progress-bar-fill"></div>
+                    </div>
+                </div>
             </div>
 
             <!-- NAVIGATION DES ONGLETS -->
             <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <!-- Notez bien les IDs utilisés ici: 'btn-b1', 'btn-b2', etc. -->
                 <button onclick="openTab('b1')" id="btn-b1" class="tab-btn active px-8 py-4 rounded-xl font-bold text-lg shadow-sm bg-white text-[#0F2C48] flex items-center gap-3">
                     <span class="bg-[#D9A526] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">1</span>
-                    Conception & Spécification
+                    <div>Conception <br><span class="text-xs font-normal" id="prog-b1-text">0%</span></div>
                 </button>
                 <button onclick="openTab('b2')" id="btn-b2" class="tab-btn px-8 py-4 rounded-xl font-bold text-lg shadow-sm bg-white text-[#0F2C48] flex items-center gap-3">
                     <span class="bg-gray-300 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center text-sm transition-colors group-hover:bg-[#D9A526]">2</span>
-                    Gestion, Pilotage & Testing
+                    <div>Gestion <br><span class="text-xs font-normal" id="prog-b2-text">0%</span></div>
                 </button>
                 <button onclick="openTab('b3')" id="btn-b3" class="tab-btn px-8 py-4 rounded-xl font-bold text-lg shadow-sm bg-white text-[#0F2C48] flex items-center gap-3">
                     <span class="bg-gray-300 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center text-sm transition-colors group-hover:bg-[#D9A526]">3</span>
-                    Développement (Python/Web)
+                    <div>Dev Python <br><span class="text-xs font-normal" id="prog-b3-text">0%</span></div>
                 </button>
             </div>
 
             <!-- CONTENU DES ONGLETS -->
             <div class="bg-white rounded-2xl shadow-xl p-8 min-h-[500px]">
 
-                <!-- BLOC 1 CONTENT -->
+                <!-- BLOC 1 CONTENT (ID: tab-b1) -->
                 <div id="tab-b1" class="tab-content active space-y-4">
-                    <h2 class="text-2xl font-bold text-[#0F2C48] mb-6 border-b-2 border-[#D9A526] pb-2 inline-block">B1_Conception et spécification d'une solution digitale</h2>
-                    
+                    <div class="flex justify-between items-center mb-6 border-b-2 border-[#D9A526] pb-2">
+                        <h2 class="text-2xl font-bold text-[#0F2C48]">B1_Conception et spécification d'une solution digitale</h2>
+                        <div class="text-right">
+                            <span class="text-sm text-gray-500">Progression Bloc 1</span>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full mt-1"><div id="bar-b1" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                        </div>
+                    </div>
                     <div id="modules-container-1"></div>
                 </div>
 
-                <!-- BLOC 2 CONTENT -->
+                <!-- BLOC 2 CONTENT (ID: tab-b2) -->
                 <div id="tab-b2" class="tab-content space-y-4">
-                    <h2 class="text-2xl font-bold text-[#0F2C48] mb-6 border-b-2 border-[#D9A526] pb-2 inline-block">B2_Gestion, pilotage et testing d'une Solution Digitale</h2>
-                    
+                    <div class="flex justify-between items-center mb-6 border-b-2 border-[#D9A526] pb-2">
+                        <h2 class="text-2xl font-bold text-[#0F2C48]">B2_Gestion, pilotage et testing d'une Solution Digitale</h2>
+                        <div class="text-right">
+                            <span class="text-sm text-gray-500">Progression Bloc 2</span>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full mt-1"><div id="bar-b2" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                        </div>
+                    </div>
                     <div id="modules-container-2"></div>
                 </div>
 
-                <!-- BLOC 3 CONTENT -->
+                <!-- BLOC 3 CONTENT (ID: tab-b3) -->
                 <div id="tab-b3" class="tab-content space-y-4">
-                    <h2 class="text-2xl font-bold text-[#0F2C48] mb-6 border-b-2 border-[#D9A526] pb-2 inline-block">B3_Développement d’une solution digitale avec Python</h2>
-                    
+                    <div class="flex justify-between items-center mb-6 border-b-2 border-[#D9A526] pb-2">
+                        <h2 class="text-2xl font-bold text-[#0F2C48]">B3_Développement d’une solution digitale avec Python</h2>
+                        <div class="text-right">
+                            <span class="text-sm text-gray-500">Progression Bloc 3</span>
+                            <div class="w-32 h-2 bg-gray-200 rounded-full mt-1"><div id="bar-b3" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                        </div>
+                    </div>
                     <div id="modules-container-3"></div>
                 </div>
 
@@ -290,10 +355,15 @@
                         <div class="dock-label">Navigation & Réseaux</div>
                         <div class="icon-dock">
                             <!-- Navigation -->
-                            <a href="#" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
+                            <!-- LIEN ACCUEIL FOOTER -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
+                            
                             <a href="#" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
                             <a href="#" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                            <a href="#" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
+                            
+                            <!-- LIEN PLANNING FOOTER -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html#" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
+                            
                             <a href="#" class="icon-btn" data-tooltip="Profil"><span class="brand-nav">👤</span></a>
                             
                             <!-- Séparateur -->
@@ -365,70 +435,172 @@
             ]
         };
 
-        // 2. Gestion des Onglets
-        function openTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
+        // État de progression global (stocké dans le localStorage)
+        let userProgress = JSON.parse(localStorage.getItem('devEliteProgress')) || {};
+
+        // CORRECTION IMPORTANTE ICI : Renommage en openTab pour correspondre au HTML et correction des IDs
+        function openTab(idString) {
+            // Nettoyage visuel de tous les contenus
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active'); // Utilisation de la classe .active définie en CSS
+                el.classList.add('hidden');    // Utilisation de la classe .hidden de Tailwind
             });
+
+            // Affichage du contenu ciblé (ex: tab-b1)
+            const content = document.getElementById(`tab-${idString}`);
+            if (content) {
+                content.classList.remove('hidden');
+                content.classList.add('active');
+            } else {
+                console.error(`Erreur : Le contenu avec l'ID tab-${idString} n'existe pas.`);
+            }
+            
+            // Gestion des boutons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            document.getElementById('tab-' + tabId).classList.add('active');
-            document.getElementById('btn-' + tabId).classList.add('active');
+            
+            // Activation du bouton ciblé (ex: btn-b1)
+            const btn = document.getElementById(`btn-${idString}`);
+            if (btn) {
+                btn.classList.add('active');
+            }
+
+            // Génération du contenu (on extrait le numéro, ex: 'b1' -> 1)
+            const blockNumber = idString.replace('b', '');
+            renderModules(blockNumber);
         }
 
-        // 3. Génération dynamique des modules (au chargement)
-        document.addEventListener('DOMContentLoaded', () => {
-            // Pour chaque bloc (1, 2, 3)
+        // Fonction pour basculer l'état coché/décoché
+        function toggleTopic(id) {
+            if (userProgress[id]) {
+                delete userProgress[id];
+            } else {
+                userProgress[id] = true;
+            }
+            localStorage.setItem('devEliteProgress', JSON.stringify(userProgress));
+            
+            // Mise à jour visuelle immédiate
+            const checkbox = document.getElementById(id);
+            const link = document.getElementById('link-' + id);
+            
+            // Update UI styles (barré/débarré) sans recharger tout
+            if (userProgress[id]) {
+                link.classList.add('line-through', 'text-slate-400');
+            } else {
+                link.classList.remove('line-through', 'text-slate-400');
+            }
+            
+            // Recalcul des barres
+            updateAllProgress();
+        }
+
+        function updateAllProgress() {
+            let totalGlobal = 0, doneGlobal = 0;
+            
             [1, 2, 3].forEach(blocId => {
-                const container = document.getElementById(`modules-container-${blocId}`);
+                let totalBloc = 0, doneBloc = 0;
                 const data = programData[blocId];
-
+                
                 if(data) {
-                    data.forEach((module, index) => {
-                        const details = document.createElement('details');
-                        details.className = "group/module bg-gray-50 rounded-lg p-4 border border-gray-100 hover:border-[#D9A526] transition-colors";
-                        
-                        const summary = document.createElement('summary');
-                        summary.className = "cursor-pointer font-semibold text-gray-700 hover:text-[#0F2C48] flex items-center";
-                        summary.innerHTML = `<span class="arrow text-[#D9A526]">▶</span> ${module.title}`;
-                        
-                        const ul = document.createElement('ul');
-                        ul.className = "ml-8 mt-3 list-disc space-y-1 text-sm text-gray-600 border-l-2 border-gray-200 pl-4";
-                        
+                    data.forEach(module => {
                         module.topics.forEach(topic => {
-                            const li = document.createElement('li');
-                            const a = document.createElement('a');
-                            a.className = "hover:text-[#B4792A] hover:underline";
-                            a.textContent = topic;
-                            
-                            // Logique de lien vers le lecteur (Nettoyage ID)
-                            const cleanId = topic
-                                .replace(/ /g, '_')
-                                .replace(/-/g, '_')
-                                .replace(/'/g, '')
-                                .replace(/’/g, '')
-                                .replace(/\./g, '')
-                                .replace(/,/g, '')
-                                .replace(/!/g, '')
-                                .replace(/\?/g, '')
-                                .replace(/:/g, '');
-
-                            a.href = `lecteur.html?id=${cleanId}`;
-                            a.target = "_blank";
-                            
-                            li.appendChild(a);
-                            ul.appendChild(li);
+                            const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+                            totalBloc++;
+                            if (userProgress[dbKey]) doneBloc++;
                         });
-
-                        details.appendChild(summary);
-                        details.appendChild(ul);
-                        container.appendChild(details);
                     });
                 }
+                
+                totalGlobal += totalBloc;
+                doneGlobal += doneBloc;
+                
+                // Update Barre Bloc
+                const pctBloc = totalBloc === 0 ? 0 : Math.round((doneBloc / totalBloc) * 100);
+                const barBloc = document.getElementById(`bar-b${blocId}`);
+                const txtBloc = document.getElementById(`prog-b${blocId}-text`);
+                
+                if(barBloc) barBloc.style.width = `${pctBloc}%`;
+                if(txtBloc) txtBloc.innerText = `${pctBloc}%`;
             });
+
+            // Update Barre Globale
+            const pctGlobal = totalGlobal === 0 ? 0 : Math.round((doneGlobal / totalGlobal) * 100);
+            const barGlobal = document.getElementById('global-progress-bar');
+            const txtGlobal = document.getElementById('global-progress-text');
+            
+            if(barGlobal) barGlobal.style.width = `${pctGlobal}%`;
+            if(txtGlobal) txtGlobal.innerText = `${pctGlobal}%`;
+        }
+
+        function renderModules(blockId) {
+            const container = document.getElementById(`modules-container-${blockId}`);
+            if(!container) return;
+            container.innerHTML = '';
+            
+            const data = programData[blockId];
+            if(!data) return;
+
+            data.forEach((module, mIndex) => {
+                const modId = `acc-b${blockId}-m${mIndex}`;
+                
+                // Calcul progression module local
+                let totalMod = 0, doneMod = 0;
+                module.topics.forEach(t => {
+                   const key = t.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+                   totalMod++;
+                   if(userProgress[key]) doneMod++;
+                });
+                const pctMod = totalMod === 0 ? 0 : Math.round((doneMod / totalMod) * 100);
+                
+                const html = `
+                <div class="module-accordion mb-4 border border-gray-200 rounded-lg overflow-hidden" id="${modId}">
+                    <div class="accordion-header bg-gray-50 p-4 cursor-pointer flex justify-between items-center hover:bg-gray-100 transition-colors" onclick="this.parentElement.classList.toggle('open'); this.parentElement.querySelector('.accordion-content').classList.toggle('hidden');">
+                        <div class="flex items-center gap-3 flex-1">
+                            <div class="w-1.5 h-6 bg-yellow-500 rounded-full"></div>
+                            <div>
+                                <h3 class="font-bold text-gray-800 text-sm md:text-base">${module.title}</h3>
+                                <div class="text-xs text-gray-400 mt-1 flex items-center gap-2">
+                                    <div class="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-green-500" style="width:${pctMod}%"></div>
+                                    </div>
+                                    <span>${doneMod}/${totalMod}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+                    </div>
+                    
+                    <div class="accordion-content hidden bg-white border-t border-gray-100">
+                        <div class="p-1 space-y-1">
+                            ${module.topics.map((topic, tIndex) => {
+                                const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+                                const isChecked = userProgress[dbKey] ? 'checked' : '';
+                                const textStyle = userProgress[dbKey] ? 'line-through text-slate-400' : 'text-gray-700';
+
+                                return `
+                                <div class="flex items-center justify-between py-2 px-3 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors group">
+                                    <div class="flex items-center gap-3 flex-1 overflow-hidden">
+                                        <div class="checkbox-wrapper">
+                                            <input type="checkbox" id="${dbKey}" ${isChecked} onchange="toggleTopic('${dbKey}')">
+                                        </div>
+                                        <a href="lecteur.html?id=${dbKey}" target="_blank" id="link-${dbKey}" class="text-sm font-medium truncate flex-1 ${textStyle} hover:text-[#B4792A] transition-colors">
+                                            ${topic}
+                                        </a>
+                                    </div>
+                                </div>`;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>`;
+                container.innerHTML += html;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            openTab('b1'); // Appel de la fonction corrigée
+            updateAllProgress(); // Init progress bars
         });
     </script>
-
 </body>
 </html>
