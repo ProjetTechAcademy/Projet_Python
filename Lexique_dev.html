@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lexique Dev - Expert Python/Web</title>
+    
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CHARTE GRAPHIQUE MATHILDE === */
+        :root {
+            --cta: #D9A526;        /* Jaune */
+            --brand-blue: #0F2C48; /* Bleu Nuit */
+            --ivory: #F6F2E8;      /* Ivoire */
+            --bronze: #B4792A;     /* Bronze */
+            
+            /* Couleurs Lexique Tech */
+            --bg-vulg: #f3e8ff;    --border-vulg: #9333ea;    --text-vulg: #6b21a8;    /* Violet (Simple) */
+            --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985; /* Bleu (Tech) */
+            --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;   /* Jaune (Tips) */
+            --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;   /* Rouge (Warning) */
+            --bg-code: #f0fdf4;   --border-code: #16a34a;   --text-code: #166534;     /* Vert (Code) */
+        }
+
+        body { margin: 0; background-color: var(--ivory); color: var(--brand-blue); font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh; }
+        .font-code { font-family: 'Fira Code', monospace; }
+
+        /* HEADER & FOOTER (Styles identiques aux autres pages) */
+        .top-bar { background: var(--brand-blue); padding: 12px 20px; position: sticky; top: 0; z-index: 9999; border-bottom: 4px solid var(--cta); box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3); }
+        .top-bar-container { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .top-left { display: flex; align-items: center; gap: 14px; margin-right: auto; }
+        .logo-top { width: 64px; height: 64px; border-radius: 12px; object-fit: contain; background: var(--ivory); padding: 5px; border: 2px solid var(--cta); transition: transform 0.3s ease; }
+        .logo-top:hover { transform: rotate(10deg) scale(1.1); }
+        .identity-stack { display: flex; flex-direction: column; }
+        .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+        .club-subtitle { color: var(--cta); font-weight: 600; font-size: 0.8rem; }
+        .top-center { display: flex; gap: 10px; align-items: center; }
+        .header-icon-btn { width: 44px; height: 44px; flex-shrink: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; background: rgba(246, 242, 232, 0.1); color: var(--ivory); border: 1px solid rgba(217, 165, 38, 0.3); transition: all 0.2s ease; font-size: 1.2rem; }
+        .header-icon-btn:hover { transform: translateY(-3px); background: var(--cta); color: var(--brand-blue); border-color: var(--ivory); }
+        .btn-portfolio-cosmic { padding: 8px 18px; border-radius: 8px; background: var(--cta); color: var(--brand-blue); text-decoration: none; font-family: 'Fira Code', monospace; font-weight: 700; display: inline-flex; gap: 8px; align-items: center; transition: all 0.3s; white-space: nowrap; box-shadow: 4px 4px 0px var(--bronze); border: 1px solid var(--ivory); }
+        .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
+
+        /* MAIN CONTENT */
+        main { flex-grow: 1; max-width: 1200px; margin: 0 auto; padding: 40px 20px; width: 100%; }
+        .page-title { text-align: center; font-family: 'Fira Code', monospace; font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; }
+        .page-intro { text-align: center; color: var(--bronze); margin-bottom: 40px; font-weight: 600; font-family: 'Outfit', sans-serif; }
+
+        .controls-section { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid var(--cta); }
+        .search-input { width: 100%; padding: 15px 25px; border-radius: 8px; border: 2px solid #e5e7eb; font-size: 1.1rem; outline: none; transition: 0.3s; margin-bottom: 15px; font-family: 'Fira Code', monospace; }
+        .search-input:focus { border-color: var(--cta); box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.1); }
+        
+        .filters-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .filter-btn { padding: 8px 20px; border-radius: 8px; border: 2px solid var(--brand-blue); background: transparent; color: var(--brand-blue); font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.9rem; font-family: 'Fira Code', monospace; }
+        .filter-btn:hover, .filter-btn.active { background: var(--brand-blue); color: var(--ivory); box-shadow: 4px 4px 0px var(--cta); transform: translate(-2px, -2px); }
+
+        /* CARDS GRID */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+
+        .expert-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+        .expert-card:hover { transform: translateY(-5px); border-color: var(--cta); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+        .card-top { padding: 25px 20px; border-bottom: 1px solid #f1f5f9; position: relative; background: #fff; z-index: 2; }
+        .badges-group { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; }
+        .badge-circle { padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; color: white; font-family: 'Fira Code', monospace; }
+        .bg-front { background-color: #E34F26; } /* Orange HTML */
+        .bg-back { background-color: #3776AB; } /* Bleu Python */
+        .bg-devops { background-color: #000000; } 
+        .bg-gestion { background-color: #10b981; } 
+
+        .term-row { margin-top: 10px; display: flex; align-items: center; gap: 10px; justify-content: center; }
+        .tech-term { font-family: 'Fira Code', monospace; font-size: 1.6rem; font-weight: 700; color: var(--brand-blue); }
+        .pronounce-btn { background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; cursor: pointer; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
+        .pronounce-btn:hover { background-color: #0284c7; color: white; transform: scale(1.1); }
+
+        .translation { text-align: center; color: var(--bronze); font-weight: 600; font-size: 0.9rem; margin-top: 5px; font-style: italic; }
+        
+        .definition-container { background: #f8fafc; padding: 15px 20px; border-left: 4px solid var(--cta); }
+        .definition-text { font-weight: 500; color: var(--brand-blue); font-size: 0.95rem; line-height: 1.6; }
+
+        .expert-toggle { width: 100%; padding: 15px; background: #f1f5f9; border: none; color: var(--brand-blue); font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+        .expert-toggle:hover { background: var(--cta); color: white; }
+        .expert-toggle.active .chevron { transform: rotate(180deg); }
+
+        .expert-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #fff; padding: 0 20px; }
+        .expert-content.open { max-height: 2000px; padding-bottom: 20px; }
+
+        .expert-block { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid transparent; }
+        .b-vulg { background: var(--bg-vulg); border-color: var(--border-vulg); color: var(--text-vulg); }
+        .b-context { background: var(--bg-context); border-color: var(--border-context); color: var(--text-context); }
+        .b-advice { background: var(--bg-advice); border-color: var(--border-advice); color: var(--text-advice); }
+        .b-danger { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
+        .b-code { background: var(--bg-code); border-color: var(--border-code); color: var(--text-code); font-family: 'Fira Code', monospace; }
+
+        .block-title { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 4px; font-family: 'Fira Code', monospace; }
+
+        /* Footer identique */
+        .main-footer { background: var(--brand-blue); color: var(--ivory); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--cta); font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+        .icon-btn { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); color: var(--ivory); text-decoration: none; border: 1px solid rgba(217, 165, 38, 0.15); transition: all 0.2s; }
+        .icon-btn:hover { background: var(--cta); color: var(--brand-blue); }
+        .footer-links-row { display: flex; gap: 8px; }
+
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; box-shadow: 4px 4px 0px var(--bronze); border: 2px solid var(--brand-blue); }
+        #backToTop.show { opacity: 1; pointer-events: all; }
+    </style>
+</head>
+<body onload="renderDictionary()">
+
+    <!-- HEADER -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-left">
+                <a href="index.html">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo" class="logo-top">
+                </a>
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Dev Elite Club By Studi ✨</span>
+                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
+                </div>
+            </div>
+            
+            <div class="top-bar-center">
+                <a href="index.html" class="header-icon-btn" title="Terminal"><i class="fa-solid fa-terminal"></i></a>
+                <a href="Mon_Espace_Dev.html" class="header-icon-btn" title="Dashboard"><i class="fa-solid fa-chart-line"></i></a>
+                <a href="#" class="header-icon-btn" title="Lexique" style="background:var(--cta); color:var(--brand-blue);"><i class="fa-solid fa-book-journal-whills"></i></a>
+                <a href="A_propos_de_moi.html" class="header-icon-btn" title="Profil"><i class="fa-solid fa-user"></i></a>
+            </div>
+
+            <a href="#" class="btn-portfolio-cosmic"><span>📄</span> Portfolio</a>
+        </div>
+    </div>
+
+    <main>
+        <div class="page-title">Lexique Dev & Tech 💻</div>
+        <p class="page-intro">Le jargon du développeur traduit en humain (Python, Web, Agile)</p>
+
+        <section class="controls-section">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher (ex: API, Git, Scrum...)">
+            <div class="filters-container">
+                <button class="filter-btn active" onclick="filterTerms('all')">ALL</button>
+                <button class="filter-btn" onclick="filterTerms('Front')">FRONT-END</button>
+                <button class="filter-btn" onclick="filterTerms('Back')">BACK-END / PYTHON</button>
+                <button class="filter-btn" onclick="filterTerms('DevOps')">DEVOPS / TOOLS</button>
+                <button class="filter-btn" onclick="filterTerms('Gestion')">AGILE / GESTION</button>
+            </div>
+        </section>
+
+        <div id="dictionary-grid" class="cards-grid">
+            <!-- Injecté par JS -->
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div>
+                <div class="font-bold text-lg mb-1">Mathilde Martine PAISLEY</div>
+                <a href="mailto:mathilde.martine.paisley@gmail.com" class="text-brand-cta hover:text-white">mathilde.martine.paisley@gmail.com</a>
+            </div>
+            <div class="footer-links-row">
+                <a href="https://discord.gg/redT9wEE6T" target="_blank" class="icon-btn"><i class="fab fa-discord"></i></a>
+                <a href="#" class="icon-btn"><i class="fab fa-github"></i></a>
+                <a href="#" class="icon-btn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="text-center mt-6 text-xs opacity-50">© 2025 The Dev Elite Club - Studi</div>
+    </footer>
+
+    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        // --- BASE DE DONNÉES TECH (ENGLISH -> FRENCH) ---
+        const lexiqueDB = [
+            { l: "API", t: "Application Programming Interface", d: "Interface permettant à deux logiciels de communiquer entre eux.", g: ["Back", "Front"], vul: "Le serveur au resto. Tu lui donnes ta commande (requête), il va en cuisine (serveur) et te ramène le plat (réponse).", cp: "REST et GraphQL sont les standards actuels.", e: "L'API Météo France envoie la température à ton appli smartphone." },
+            { l: "Algorithm", t: "Algorithme", d: "Suite d'instructions précises pour résoudre un problème.", g: ["Back", "Front"], vul: "La recette de cuisine. Étape 1, Étape 2... Si tu suis tout, tu as le gâteau.", cp: "Optimise tes algos pour ne pas ralentir le site (Complexité O(n)).", e: "L'algorithme de tri de Google pour afficher les résultats." },
+            { l: "Backend", t: "Arrière-boutique", d: "Partie invisible du site (Serveur, Base de données, Logique).", g: ["Back"], vul: "Le moteur de la voiture. C'est moche, y'a de l'huile, mais c'est ça qui fait avancer.", cp: "Python (Django/Flask), PHP, Node.js sont des technos Backend.", v: "Ne jamais faire confiance aux données venant du Front." },
+            { l: "Bug", t: "Insecte (Erreur)", d: "Erreur dans le code provoquant un comportement inattendu.", g: ["Back", "Front"], vul: "Le grain de sable dans l'engrenage. Ça marche pas comme prévu.", cp: "Utilise un Debugger pour suivre le code pas à pas.", e: "Cliquer sur 'Payer' ferme l'application = Bug." },
+            { l: "CSS", t: "Cascading Style Sheets", d: "Langage de style pour mettre en forme le HTML.", g: ["Front"], vul: "Le maquillage et les vêtements du site. Sans CSS, le web est tout nu et moche.", cp: "Utilise Flexbox ou Grid pour la mise en page moderne.", e: "color: red; font-size: 20px;" },
+            { l: "Commit", t: "Valider/Enregistrer", d: "Sauvegarde d'un état du code dans l'historique Git.", g: ["DevOps"], vul: "Le point de sauvegarde dans un jeu vidéo. Si tu meurs après, tu repars de là.", cp: "Fais des commits atomiques (une seule tâche par commit).", v: "Message de commit clair impératif ! (ex: 'Fix login button')" },
+            { l: "Deployment", t: "Déploiement", d: "Action de mettre le code en ligne sur un serveur (Production).", g: ["DevOps"], vul: "La mise à l'eau du navire. On passe de l'atelier au grand public.", cp: "Utilise la CI/CD pour automatiser ça.", e: "Deployer sur Heroku ou Vercel." },
+            { l: "Database", t: "Base de données", d: "Système stockant les informations de manière structurée.", g: ["Back"], vul: "L'armoire de classement géante. On y range les utilisateurs, les produits, les commandes.", cp: "SQL (MySQL, PostgreSQL) ou NoSQL (MongoDB).", e: "SELECT * FROM users WHERE age > 18;" },
+            { l: "Framework", t: "Cadre de travail", d: "Ensemble d'outils et de conventions pour coder plus vite.", g: ["Back", "Front"], vul: "La maison en kit. Tu as déjà les murs et le toit, tu n'as plus qu'à décorer.", cp: "Django (Python), React (JS), Symfony (PHP).", v: "Apprends les bases du langage avant le framework." },
+            { l: "Frontend", t: "Devanture", d: "Partie visible du site (Interface, Boutons, Animations).", g: ["Front"], vul: "La carrosserie et le tableau de bord. Ce que l'utilisateur touche.", cp: "HTML, CSS, JavaScript sont les rois du Front.", e: "Un bouton qui change de couleur au survol." },
+            { l: "Fullstack", t: "Pile complète", d: "Développeur maîtrisant à la fois le Front et le Back.", g: ["Back", "Front"], vul: "Le couteau suisse. Il peut tout faire, de la base de données au bouton CSS.", cp: "Très recherché en startup, mais dur d'être expert partout.", e: "Un dév qui fait du React (Front) ET du Python (Back)." },
+            { l: "Git", t: "Abruti (argot UK)", d: "Système de contrôle de version (VCS) pour gérer l'historique du code.", g: ["DevOps"], vul: "La machine à remonter le temps du code. On peut revenir en arrière si on casse tout.", cp: "Indispensable. Apprends git add, commit, push, pull.", v: "Git n'est pas GitHub (l'outil vs l'hébergeur)." },
+            { l: "HTML", t: "HyperText Markup Language", d: "Langage de balisage pour structurer le contenu Web.", g: ["Front"], vul: "Le squelette du site. Les os qui tiennent tout (titres, paragraphes, images).", cp: "Utilise des balises sémantiques (<article>, <nav>) pour le SEO.", e: "<h1>Mon Titre</h1>" },
+            { l: "IDE", t: "Env. de Dév. Intégré", d: "Logiciel complet pour coder (VS Code, PyCharm).", g: ["DevOps"], vul: "L'établi du menuisier avec tous les outils à portée de main.", cp: "Installe des extensions (Prettier, Linter) pour t'aider.", v: "Ne code pas dans le Bloc-notes !" },
+            { l: "JSON", t: "JS Object Notation", d: "Format de texte léger pour échanger des données.", g: ["Front", "Back"], vul: "Le langage universel entre les programmes. C'est du texte facile à lire.", cp: "Format clé/valeur.", e: "{ \"nom\": \"Mathilde\", \"role\": \"Dev\" }" },
+            { l: "Library", t: "Bibliothèque", d: "Collection de fonctions prêtes à l'emploi.", g: ["Back", "Front"], vul: "La boîte à outils. Tu prends juste le marteau dont tu as besoin.", cp: "Pandas est une librairie Python pour la Data.", v: "Différent du framework (qui impose une structure)." },
+            { l: "Merge", t: "Fusionner", d: "Action de réunir deux branches de code ensemble.", g: ["DevOps"], vul: "Le confluent de deux rivières. Le code de Mathilde rejoint le code principal.", cp: "Attention aux conflits si on a touché aux mêmes lignes !", e: "git merge feature-login" },
+            { l: "Open Source", t: "Code ouvert", d: "Logiciel dont le code est public et modifiable par tous.", g: ["DevOps"], vul: "La recette de cuisine publiée dans le journal. Tout le monde peut l'améliorer.", cp: "Python et Linux sont open source.", v: "Vérifie les licences avant d'utiliser en pro." },
+            { l: "Pull Request", t: "Demande de tirage (PR)", d: "Demande pour fusionner son code dans le projet principal.", g: ["DevOps"], vul: "Je lève la main : 'J'ai fini ma tâche, vous pouvez vérifier et l'ajouter ?'", cp: "On fait une Code Review à ce moment-là.", e: "Créer une PR sur GitHub." },
+            { l: "Python", t: "Python (Serpent)", d: "Langage de programmation polyvalent et lisible.", g: ["Back"], vul: "Le langage couteau-suisse. Simple à lire, puissant pour le Web et l'IA.", cp: "Indentation obligatoire ! Sinon Error.", e: "print('Hello World')" },
+            { l: "Query", t: "Requête", d: "Demande d'information à une base de données.", g: ["Back"], vul: "La question qu'on pose à l'archiviste : 'Donne-moi tous les clients de Paris'.", cp: "Optimise tes queries SQL pour la vitesse.", e: "SELECT * FROM users" },
+            { l: "Refactoring", t: "Restructuration", d: "Réécrire le code pour l'améliorer sans changer son comportement.", g: ["Back", "Front"], vul: "Le ménage de printemps. On range, on nettoie, mais la maison reste la même.", cp: "Fais-le régulièrement pour éviter la dette technique.", v: "Ne casse pas les tests !" },
+            { l: "Responsive", t: "Réactif / Adaptatif", d: "Site qui s'adapte à la taille de l'écran (Mobile/Desktop).", g: ["Front"], vul: "Le site élastique. Il est beau sur iPhone comme sur grand écran.", cp: "Utilise les Media Queries CSS.", e: "@media (max-width: 600px) { ... }" },
+            { l: "Scrum", t: "Mêlée (Rugby)", d: "Méthode agile de gestion de projet par itérations (Sprints).", g: ["Gestion"], vul: "On avance par petits pas de 2 semaines, on fait le bilan, et on recommence.", cp: "Rituel : Daily Meeting (réunion debout 15min).", v: "Le Scrum Master n'est pas un chef, c'est un facilitateur." },
+            { l: "Sprint", t: "Course rapide", d: "Cycle de travail court (1 à 4 semaines) en Agile.", g: ["Gestion"], vul: "Une manche du jeu. On se fixe un objectif pour 2 semaines et on fonce.", cp: "À la fin, on doit avoir un produit qui marche (démo).", e: "Sprint 3 : Faire la page Login." },
+            { l: "SQL", t: "Structured Query Language", d: "Langage pour parler aux bases de données relationnelles.", g: ["Back"], vul: "La langue des tableaux Excel géants.", cp: "SELECT, INSERT, UPDATE, DELETE (CRUD).", v: "Attention aux injections SQL (sécurité)." },
+            { l: "Stack", t: "Pile", d: "Ensemble des technologies utilisées pour un projet.", g: ["DevOps"], vul: "La liste des ingrédients du projet.", e: "Stack MERN (Mongo, Express, React, Node) ou LAMP (Linux, Apache, MySQL, PHP)." },
+            { l: "Terminal", t: "Console", d: "Interface textuelle pour commander l'ordinateur.", g: ["DevOps"], vul: "L'écran noir des hackers dans les films. On tape des commandes, pas de souris.", cp: "Apprends les commandes Linux de base (cd, ls, mkdir).", v: "sudo rm -rf / (Ne tape jamais ça !)" },
+            { l: "User Story", t: "Histoire utilisateur", d: "Description d'une fonctionnalité du point de vue de l'utilisateur.", g: ["Gestion"], vul: "Le ticket de tâche. 'En tant que [rôle], je veux [action] pour [bénéfice]'.", cp: "Base du backlog Agile.", e: "En tant qu'admin, je veux bannir un user pour nettoyer le site." },
+            { l: "Variable", t: "Variable", d: "Boîte nommée pour stocker une valeur.", g: ["Back", "Front"], vul: "Un carton avec une étiquette. On met 'Mathilde' dans le carton 'Nom'.", cp: "Donne des noms explicites (user_age, pas x).", e: "nom = 'Mathilde'" },
+            { l: "Wireframe", t: "Fil de fer", d: "Maquette basse fidélité, croquis de l'interface.", g: ["Gestion"], vul: "Le brouillon du site. Juste des carrés et des traits pour voir où va quoi.", cp: "Fait sur papier ou Figma avant de coder.", v: "Pas de couleurs ni de design final ici." }
+        ];
+
+        function renderDictionary(filter = 'all', searchQuery = '') {
+            const grid = document.getElementById('dictionary-grid');
+            grid.innerHTML = '';
+            
+            const sortedData = lexiqueDB.sort((a, b) => a.l.localeCompare(b.l));
+
+            const filteredData = sortedData.filter(item => {
+                const tags = item.g || []; 
+                const matchTag = filter === 'all' || tags.includes(filter);
+                const query = searchQuery.toLowerCase();
+                const matchSearch = (item.l || "").toLowerCase().includes(query) || (item.t || "").toLowerCase().includes(query);
+                return matchTag && matchSearch;
+            });
+
+            if (filteredData.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#888;">Aucun terme trouvé.</div>';
+                return;
+            }
+
+            filteredData.forEach((item, index) => {
+                let badgesHtml = '';
+                if(item.g) {
+                    item.g.forEach(tag => {
+                        let bgClass = 'bg-devops';
+                        if (tag === 'Front') bgClass = 'bg-front';
+                        if (tag === 'Back') bgClass = 'bg-back';
+                        if (tag === 'Gestion') bgClass = 'bg-gestion';
+                        badgesHtml += `<div class="badge-circle ${bgClass}">${tag}</div>`;
+                    });
+                }
+
+                const card = `
+                    <div class="expert-card">
+                        <div class="card-top">
+                            <div class="badges-group">${badgesHtml}</div>
+                            <div class="term-row">
+                                <div class="tech-term">${item.l}</div>
+                                <button class="pronounce-btn" onclick="speakText('${item.l.replace(/'/g, "\\'")}')" title="Listen (English)">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="translation">${item.t}</div>
+                        </div>
+
+                        <div class="definition-container">
+                            <div class="definition-text">${item.d}</div>
+                        </div>
+
+                        <div class="p-4 pt-2">
+                            <div class="expert-block b-vulg">
+                                <span class="block-title">💜 Pour faire simple</span>
+                                <span>${item.vul}</span>
+                            </div>
+                            
+                            <button class="expert-toggle" onclick="toggleExpert(this, 'content-${index}')">
+                                <span>Déployer la Doc</span>
+                                <i class="fas fa-chevron-down chevron"></i>
+                            </button>
+
+                            <div class="expert-content" id="content-${index}">
+                                ${item.cp ? `<div class="expert-block b-advice"><span class="block-title">🟨 Pro Tip</span>${item.cp}</div>` : ''}
+                                ${item.v ? `<div class="expert-block b-danger"><span class="block-title">🟥 Warning</span>${item.v}</div>` : ''}
+                                ${item.e ? `<div class="expert-block b-code"><span class="block-title">🟩 Code / Exemple</span><code>${item.e}</code></div>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function toggleExpert(btn, contentId) {
+            btn.classList.toggle('active');
+            const content = document.getElementById(contentId);
+            content.classList.toggle('open');
+            const span = btn.querySelector('span');
+            span.textContent = content.classList.contains('open') ? "Masquer la Doc" : "Déployer la Doc";
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US'; // Prononciation Anglaise pour les termes Tech
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        window.filterTerms = function(tag) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('onclick').includes(`'${tag}'`)) btn.classList.add('active');
+            });
+            renderDictionary(tag, document.getElementById('searchInput').value);
+        };
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            let activeTag = 'all';
+            const activeBtn = document.querySelector('.filter-btn.active');
+            if (activeBtn) {
+                const text = activeBtn.innerText;
+                if (text.includes('FRONT')) activeTag = 'Front';
+                else if (text.includes('BACK')) activeTag = 'Back';
+                else if (text.includes('DEVOPS')) activeTag = 'DevOps';
+                else if (text.includes('AGILE')) activeTag = 'Gestion';
+            }
+            renderDictionary(activeTag, e.target.value);
+        });
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) backToTop.classList.add('show');
+            else backToTop.classList.remove('show');
+        });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+</body>
+</html>
