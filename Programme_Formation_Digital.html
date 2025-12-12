@@ -746,12 +746,13 @@
 
                                 // Vérification des ressources via database.js si disponible
                                 let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '';
+                                let videoLink = '', infoLink = '', presLink = '', pdfLink = '';
                                 
                                 if (typeof window.dbRessources !== 'undefined' && window.dbRessources[resKey]) {
-                                    if(window.dbRessources[resKey].video) hasVideo = 'active';
-                                    if(window.dbRessources[resKey].info) hasInfo = 'active';
-                                    if(window.dbRessources[resKey].pres) hasPres = 'active';
-                                    if(window.dbRessources[resKey].pdf) hasPdf = 'active';
+                                    if(window.dbRessources[resKey].video) { hasVideo = 'active'; videoLink = window.dbRessources[resKey].video; }
+                                    if(window.dbRessources[resKey].info) { hasInfo = 'active'; infoLink = window.dbRessources[resKey].info; }
+                                    if(window.dbRessources[resKey].pres) { hasPres = 'active'; presLink = window.dbRessources[resKey].pres; }
+                                    if(window.dbRessources[resKey].pdf) { hasPdf = 'active'; pdfLink = window.dbRessources[resKey].pdf; }
                                 }
 
                                 return `
@@ -767,10 +768,10 @@
                                     
                                     <!-- ICONS RESSOURCES (Partie Droite) -->
                                     <div class="flex items-center gap-1 ml-2">
-                                        <button class="resource-btn icon-video ${hasVideo}" title="Vidéo" onclick="window.open('lecteur.html?id=${resKey}', '_blank')"><i class="fas fa-video"></i></button>
-                                        <button class="resource-btn icon-info ${hasInfo}" title="Infographie"><i class="fas fa-chart-pie"></i></button>
-                                        <button class="resource-btn icon-pres ${hasPres}" title="Présentation"><i class="fas fa-project-diagram"></i></button>
-                                        <button class="resource-btn icon-pdf ${hasPdf}" title="PDF"><i class="fas fa-file-pdf"></i></button>
+                                        <button class="resource-btn icon-video ${hasVideo}" title="Vidéo" onclick="${videoLink ? `window.open('${videoLink}', '_blank')` : ''}"><i class="fas fa-video"></i></button>
+                                        <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
+                                        <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
+                                        <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
                                         <!-- BOUTON AGENDA (Réintégré avec la Modale) -->
                                         <button class="resource-btn icon-clock" title="Planifier révision" onclick="openCalendarModal('${topic.replace(/'/g, "\\'")}', '${resKey}')"><i class="far fa-clock"></i></button>
