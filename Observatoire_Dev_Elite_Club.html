@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💫 L'Observatoire Complet des Outils Dev 2025 ✨ The Dev Elite Club 🐍</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* ================================================================= */
+        /* 🎨 DESIGN SYSTEM - THE DEV ELITE CLUB */
+        /* ================================================================= */
+        
+        :root {
+            --cta: #D9A526;       /* Or - Call to Action */
+            --brand-blue: #0F2C48; /* Bleu Nuit - Fond Header/Footer */
+            --ivory: #F6F2E8;     /* Ivoire - Fond Page/Elements */
+            --bronze: #B4792A;    /* Bronze - Accents */
+            --card-border: rgba(15, 44, 72, 0.08);
+            
+            /* Tag Colors */
+            --tag-dev-bg: #E3F2FD; --tag-dev-text: #1565C0;
+            --tag-design-bg: #FCE4EC; --tag-design-text: #C2185B;
+            --tag-prod-bg: #E8F5E9; --tag-prod-text: #2E7D32;
+            --tag-learn-bg: #FFF3E0; --tag-learn-text: #E65100;
+            --tag-google-bg: #E8F0FE; --tag-google-text: #1967D2;
+        }
+
+        body { 
+            margin: 0; 
+            background-color: var(--ivory); 
+            color: var(--brand-blue); 
+            font-family: 'Outfit', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+
+        /* --- HEADER --- */
+        .top-bar {
+            background-color: var(--brand-blue);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 10000;
+            border-bottom: 4px solid var(--cta);
+        }
+        
+        .top-bar-container {
+            max-width: 1400px; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+        }
+
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        
+        .logo-placeholder {
+            width: 60px; height: 60px; border-radius: 50%; 
+            border: 2px solid var(--cta); background: white; color: var(--brand-blue);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+
+        .top-bar-center { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+        
+        /* BOUTONS RONDS */
+        .header-icon-btn, .icon-btn {
+            position: relative; width: 45px; height: 45px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; 
+            cursor: pointer;
+        }
+
+        .header-icon-btn {
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 1px solid rgba(255,255,255,0.2); color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .header-icon-btn:hover { 
+            transform: translateY(-3px) scale(1.1); 
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
+        }
+
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(217, 165, 38, 0.3); color: #fff;
+        }
+        .icon-btn:hover { 
+            transform: translateY(-5px) scale(1.1); 
+            background: #fff; border-color: #fff; color: var(--brand-blue); 
+        }
+        
+        /* Tooltip */
+        .header-icon-btn::after, .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; 
+            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        
+        .header-icon-btn::after { top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px); }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .icon-btn::after { bottom: 130%; left: 50%; transform: translateX(-50%) translateY(10px); }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        /* Animation bouton Portfolio */
+        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+
+
+        /* --- CONTENU PRINCIPAL --- */
+        .main-content { flex: 1; padding: 30px 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+        /* INTRO */
+        .intro-section { 
+            background: #fff; 
+            padding: 25px 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 8px 25px rgba(15,44,72,0.04); 
+            margin-bottom: 30px; 
+            text-align: center; 
+            border: 1px solid var(--card-border);
+            position: relative; overflow: hidden;
+        }
+        
+        .page-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--brand-blue); margin: 0; font-weight: 700; }
+        .live-badge { background-color: #ff3b30; color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; animation: pulse-red 2s infinite; display: inline-block; vertical-align: middle; margin-left: 10px;}
+        @keyframes pulse-red { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+
+        /* TECH RADAR */
+        .tech-radar { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 20px; padding-top: 15px; border-top: 1px dashed rgba(15, 44, 72, 0.1); }
+        .radar-badge {
+            background: rgba(246, 242, 232, 0.6); border: 1px solid var(--cta); color: var(--brand-blue);
+            padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+            display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;
+        }
+        .radar-badge:hover { transform: translateY(-2px); background: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+        /* --- TABS SYSTEM --- */
+        .tabs-container {
+            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 30px;
+        }
+        .tab-btn {
+            background: #fff; border: 1px solid rgba(15, 44, 72, 0.1); color: var(--brand-blue);
+            padding: 12px 24px; border-radius: 50px; font-family: 'Montserrat', sans-serif;
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.3s ease;
+            display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .tab-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.08); }
+        
+        .tab-btn.active {
+            background: var(--brand-blue); color: var(--cta); border-color: var(--brand-blue);
+            box-shadow: 0 6px 15px rgba(15, 44, 72, 0.3);
+        }
+        
+        /* Special style for Google Tab when active */
+        .tab-btn[data-tab="google"].active {
+            background: #fff; color: #4285F4; border: 2px solid #4285F4;
+        }
+        
+        /* RECHERCHE */
+        .search-container { max-width: 500px; margin: 0 auto 30px auto; position: relative; }
+        .search-input { width: 100%; padding: 12px 25px; border-radius: 50px; border: 2px solid var(--cta); font-family: 'Outfit', sans-serif; font-size: 0.95rem; outline: none; box-shadow: 0 4px 15px rgba(217, 165, 38, 0.1); }
+        .search-icon { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: var(--cta); }
+
+        /* GRID */
+        .ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* CARTE OUTIL */
+        .ai-card { 
+            background: white; border-radius: 16px; padding: 20px; 
+            position: relative; border: 1px solid var(--card-border); 
+            transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between; 
+            height: 100%; overflow: hidden;
+        }
+        .ai-card:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(15, 44, 72, 0.08); border-color: var(--cta); }
+        
+        .rank-badge { 
+            position: absolute; top: 0; right: 0; 
+            background: linear-gradient(135deg, var(--cta), #B4792A); 
+            color: white; padding: 4px 12px; border-bottom-left-radius: 12px; 
+            font-weight: 800; font-size: 0.9rem; z-index: 2;
+        }
+
+        .bon-plan-sticker {
+            position: absolute; top: 0; left: 0;
+            background: #FFEB3B; color: #E65100;
+            padding: 4px 10px; font-size: 0.7rem; font-weight: 800;
+            border-bottom-right-radius: 12px; box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            z-index: 2; text-transform: uppercase;
+        }
+
+        .card-header { margin-bottom: 10px; margin-top: 15px; } 
+        .ai-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--brand-blue); margin: 0; line-height: 1.2; display: flex; align-items: center; gap: 8px;}
+        
+        .meta-row { display: flex; gap: 8px; margin: 8px 0; flex-wrap: wrap; align-items: center; font-size: 0.75rem; }
+        
+        .badge { padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+        .badge-free { background: #E8F5E9; color: #2E7D32; border: 1px solid #C8E6C9; }
+        .badge-freemium { background: #E3F2FD; color: #1565C0; border: 1px solid #BBDEFB; }
+        .badge-paid { background: #FCE4EC; color: #C2185B; border: 1px solid #F8BBD0; }
+        .badge-lang { background: #eee; color: #555; }
+
+        .tag-pill { display: inline-block; padding: 3px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; margin-right: 5px; margin-bottom: 5px; }
+        .tag-dev { background: var(--tag-dev-bg); color: var(--tag-dev-text); }
+        .tag-design { background: var(--tag-design-bg); color: var(--tag-design-text); }
+        .tag-prod { background: var(--tag-prod-bg); color: var(--tag-prod-text); }
+        .tag-learn { background: var(--tag-learn-bg); color: var(--tag-learn-text); }
+        .tag-google { background: var(--tag-google-bg); color: var(--tag-google-text); }
+
+        .ai-desc { font-size: 0.9rem; color: #555; line-height: 1.45; margin-bottom: 15px; flex-grow: 1; }
+
+        .usage-container { margin-top: auto; margin-bottom: 15px; }
+        .usage-label { font-size: 0.75rem; color: #888; display: flex; justify-content: space-between; margin-bottom: 3px; font-weight: 600; }
+        .usage-track { height: 6px; background: #f0f0f0; border-radius: 3px; overflow: hidden; }
+        .usage-fill { height: 100%; background: linear-gradient(90deg, var(--cta), #B4792A); border-radius: 3px; }
+
+        .visit-btn { display: block; width: 100%; text-align: center; background: rgba(15, 44, 72, 0.05); color: var(--brand-blue); padding: 8px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.2s; font-size: 0.9rem; }
+        .visit-btn:hover { background: var(--brand-blue); color: var(--cta); }
+
+
+        /* --- FOOTER --- */
+        .main-footer {
+            background-color: var(--brand-blue); color: #F6F2E8;
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            width: 100%; margin-top: auto; 
+        }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        .footer-logo-placeholder {
+            width: 60px; height: 60px; border-radius: 8px; 
+            border: 2px solid var(--cta); background: #fff; color: var(--brand-blue);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            overflow: hidden;
+        }
+        .footer-logo-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--cta); }
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
+        .icon-dock { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
+        .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar-container { flex-direction: column; gap: 15px; }
+            .top-bar-left { width: 100%; justify-content: center; text-align: center; }
+            .top-bar-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; -webkit-overflow-scrolling: touch; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+            .dock-separator { display: none; }
+            .tabs-container { gap: 8px; }
+            .tab-btn { padding: 10px 16px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER -->
+    <!-- ============================================ -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-bar-left">
+                <div class="logo-placeholder">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="identity-stack">
+                    <span class="club-title-main">💫 The Dev Elite Club ✨</span>
+                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
+                </div>
+            </div>
+            
+            <div class="top-bar-center">
+                <!-- 1. Accueil -->
+                <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="header-icon-btn" data-tooltip="Accueil">
+                    <span class="brand-nav">🏠</span> 
+                </a>
+                
+                <!-- 2. Mon Espace -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="header-icon-btn" data-tooltip="Mon Espace">
+                    <span class="brand-nav">📊</span>
+                </a>
+                
+                <!-- 3. Planning & Cours -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="header-icon-btn" data-tooltip="Planning & Cours">
+                    <span class="brand-nav">📅</span>
+                </a>
+
+                <!-- 4. Atelier de Compétence -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" class="header-icon-btn" data-tooltip="Atelier">
+                    <span class="brand-nav">🛠️</span>
+                </a>
+
+                <!-- 5. Observatoire & IA -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" class="header-icon-btn" data-tooltip="Observatoire & IA">
+                    <span class="brand-nav">🚀</span>
+                </a>
+
+                <!-- 6. Fiche RNCP -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" class="header-icon-btn" data-tooltip="Fiche RNCP">
+                    <span class="brand-nav">🏅</span>
+                </a>
+
+                <!-- 7. Lexique -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" class="header-icon-btn" data-tooltip="Lexique">
+                    <span class="brand-nav">📜</span>
+                </a>
+
+                <!-- 8. Acronymes -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" class="header-icon-btn" data-tooltip="Acronymes">
+                    <span class="brand-nav">🔠</span>
+                </a>
+                
+                <!-- 9. Profil -->
+                <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="header-icon-btn" data-tooltip="Profil">
+                    <span class="brand-nav">👤</span>
+                </a>
+            </div>
+
+            <a href="#" class="btn-portfolio-cosmic"><span>🐍</span> Portfolio Dev</a>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================ -->
+    <main class="main-content">
+        
+        <!-- Introduction -->
+        <div class="intro-section">
+            <h1 class="page-title">🚀 Observatoire Tech 2025 <span class="live-badge">🔴 LIVE</span></h1>
+            <p style="margin-top:15px; color:#555; max-width:800px; margin-left:auto; margin-right:auto;">
+                Navigue facilement dans la jungle des outils grâce aux onglets ci-dessous.
+                <br>Ne manque pas le nouvel onglet spécial <strong>"Google Zone"</strong> où j'ai (enfin !) ajouté les indispensables de la firme de Mountain View, dont moi-même ! 😉
+            </p>
+
+            <div class="tech-radar">
+                <div class="radar-badge">🔥 <strong>Hype :</strong> DeepSeek & Mistral</div>
+                <div class="radar-badge">🎓 <strong>Formation :</strong> Dyma & Grafikart</div>
+                <div class="radar-badge">🔵 <strong>Focus :</strong> Ecosystème Google</div>
+            </div>
+        </div>
+        
+        <!-- ONGLETS DE NAVIGATION -->
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="filterTools('all', this)">
+                <i class="fas fa-layer-group"></i> Tout
+            </button>
+            <button class="tab-btn" onclick="filterTools('prod', this)">
+                <i class="fas fa-robot"></i> IA & Productivité
+            </button>
+            <button class="tab-btn" onclick="filterTools('dev', this)">
+                <i class="fas fa-code"></i> Dev Elite
+            </button>
+            <button class="tab-btn" onclick="filterTools('creative', this)">
+                <i class="fas fa-graduation-cap"></i> Design & Learn
+            </button>
+            <!-- ONGLET SPÉCIAL GOOGLE -->
+            <button class="tab-btn" data-tab="google" onclick="filterTools('google', this)" style="border: 2px solid #4285F4; color:#4285F4;">
+                <i class="fab fa-google"></i> Google Zone
+            </button>
+        </div>
+    
+        <!-- Search -->
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher dans l'onglet actif...">
+            <i class="fa-solid fa-search search-icon"></i>
+        </div>
+    
+        <!-- GRILLE DYNAMIQUE -->
+        <div class="ai-grid" id="dynamicGrid">
+            <!-- Rempli par JS -->
+        </div>
+    
+    </main>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-identity">
+                    <div class="footer-logo-placeholder"><img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"></div>
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-dock-col">
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation</div>
+                        <div class="icon-dock">
+                            <!-- 1. Accueil -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
+                            <!-- 2. Mon Espace -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
+                            <!-- 3. Planning & Cours -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="icon-btn" data-tooltip="Planning & Cours"><span class="brand-nav">📅</span></a>
+                            <!-- 4. Atelier -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" class="icon-btn" data-tooltip="Atelier"><span class="brand-nav">🛠️</span></a>
+                            <!-- 5. Observatoire & IA -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" class="icon-btn" data-tooltip="Observatoire & IA"><span class="brand-nav">🚀</span></a>
+                            <!-- 6. Fiche RNCP -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" class="icon-btn" data-tooltip="Fiche RNCP"><span class="brand-nav">🏅</span></a>
+                            <!-- 7. Lexique -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
+                            <!-- 8. Acronymes -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" class="icon-btn" data-tooltip="Acronymes"><span class="brand-nav">🔠</span></a>
+                            <!-- 9. Profil -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="icon-btn" data-tooltip="Profil"><span class="brand-nav">👤</span></a>
+                        </div>
+                    </div>
+                    <div class="dock-group" style="margin-top: 15px;">
+                        <div class="dock-label">Réseaux</div>
+                        <div class="icon-dock">
+                            <!-- WhatsApp -->
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+                            <!-- Discord -->
+                            <a href="https://discord.gg/redT9wEE6T" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/enervyx/" target="_blank" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
+                            <!-- TikTok -->
+                            <a href="https://www.tiktok.com/@enervyx" target="_blank" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
+                <p>© 2025 Tous droits réservés – Création : Mathilde Martine PAISLEY</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- DATA: THE FULL TOP LIST with GOOGLE SECTION ---
+        // sections: 'prod', 'dev', 'creative', 'google'
+        const toolsData = [
+            // --- GOOGLE ZONE (NEW) ---
+            { rank: 1, name: "Gemini", url: "https://gemini.google.com", section: "google", tagType: "google", usage: 100, pricing: "Freemium", lang: "Multi", bonPlan: true, desc: "L'IA multimodale de Google. Code, analyse, rédaction, image... je fais tout ! 😉" },
+            { rank: 2, name: "YouTube", url: "https://www.youtube.com", section: "google", tagType: "google", usage: 100, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "La plus grande école du monde. Indispensable pour les tutos dev." },
+            { rank: 3, name: "Google Colab", url: "https://colab.research.google.com", section: "google", tagType: "google", usage: 80, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "Jupyter Notebooks dans le cloud avec GPU gratuit. Le top pour Python & Data." },
+            { rank: 4, name: "Chrome DevTools", url: "https://developer.chrome.com/docs/devtools", section: "google", tagType: "google", usage: 99, pricing: "Gratuit", lang: "Multi", bonPlan: false, desc: "L'outil de debug intégré à Chrome. F12 est ton meilleur ami." },
+            { rank: 5, name: "Google Fonts", url: "https://fonts.google.com", section: "google", tagType: "google", usage: 95, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "Bibliothèque de polices et d'icônes gratuites pour le web." },
+            { rank: 6, name: "Google Cloud", url: "https://cloud.google.com", section: "google", tagType: "google", usage: 70, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "L'infrastructure cloud de Google (Compute, Storage, AI)." },
+            { rank: 7, name: "Android Studio", url: "https://developer.android.com/studio", section: "google", tagType: "google", usage: 60, pricing: "Gratuit", lang: "EN", bonPlan: false, desc: "L'IDE officiel pour développer des apps Android." },
+            { rank: 8, name: "Google Trends", url: "https://trends.google.com", section: "google", tagType: "google", usage: 50, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "Analyser les tendances de recherche. Utile pour la veille techno." },
+            { rank: 9, name: "Firebase", url: "https://firebase.google.com", section: "google", tagType: "google", usage: 75, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Backend complet (Auth, DB, Hosting) facile à intégrer." },
+             { rank: 10, name: "Google Workspace", url: "https://workspace.google.com", section: "google", tagType: "google", usage: 99, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "Drive, Docs, Sheets, Meet. La productivité selon Google." },
+
+            // --- IA & PRODUCTIVITÉ ---
+            { rank: 11, name: "ChatGPT", url: "https://chatgpt.com", section: "prod", tagType: "prod", usage: 98, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "L'assistant IA d'OpenAI." },
+            { rank: 12, name: "Perplexity", url: "https://www.perplexity.ai", section: "prod", tagType: "prod", usage: 85, pricing: "Freemium", lang: "Multi", bonPlan: true, desc: "Moteur de recherche IA avec sources." },
+            { rank: 13, name: "Notion", url: "https://www.notion.so", section: "prod", tagType: "prod", usage: 90, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "Gestion de connaissances et projets." },
+            { rank: 14, name: "DeepSeek", url: "https://www.deepseek.com", section: "prod", tagType: "dev", usage: 82, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Le challenger open-source ultra performant." },
+            { rank: 15, name: "Claude 3.5", url: "https://claude.ai", section: "prod", tagType: "prod", usage: 75, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "IA littéraire et analytique." },
+            { rank: 16, name: "Mistral", url: "https://mistral.ai", section: "prod", tagType: "prod", usage: 60, pricing: "Freemium", lang: "FR", bonPlan: true, desc: "L'IA française souveraine." },
+            { rank: 17, name: "Trello", url: "https://trello.com", section: "prod", tagType: "prod", usage: 88, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "Gestion de tâches Kanban simple." },
+            { rank: 18, name: "Slack", url: "https://slack.com", section: "prod", tagType: "prod", usage: 92, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "Communication d'équipe standard." },
+            { rank: 19, name: "Discord", url: "https://discord.com", section: "prod", tagType: "prod", usage: 95, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "Communautés Tech & Dev." },
+            { rank: 20, name: "Zapier", url: "https://zapier.com", section: "prod", tagType: "prod", usage: 70, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Automatisation sans code." },
+
+            // --- DEV ELITE ---
+            { rank: 21, name: "GitHub", url: "https://github.com", section: "dev", tagType: "dev", usage: 98, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Hébergement de code & Portfolio." },
+            { rank: 22, name: "VS Code", url: "https://code.visualstudio.com", section: "dev", tagType: "dev", usage: 95, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "L'éditeur de code n°1 mondial." },
+            { rank: 23, name: "PyCharm", url: "https://www.jetbrains.com/pycharm/", section: "dev", tagType: "dev", usage: 80, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "L'IDE Python le plus puissant du marché." },
+            { rank: 24, name: "Jupyter", url: "https://jupyter.org", section: "dev", tagType: "dev", usage: 75, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Notebooks interactifs. Le standard Data Science." },
+            { rank: 25, name: "Anaconda", url: "https://www.anaconda.com", section: "dev", tagType: "dev", usage: 70, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "La distribution Python tout-en-un." },
+            { rank: 26, name: "Stack Overflow", url: "https://stackoverflow.com", section: "dev", tagType: "dev", usage: 90, pricing: "Gratuit", lang: "EN", bonPlan: false, desc: "Questions & Réponses techniques." },
+            { rank: 27, name: "Docker", url: "https://www.docker.com", section: "dev", tagType: "dev", usage: 85, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Conteneurisation d'applications." },
+            { rank: 28, name: "Postman", url: "https://www.postman.com", section: "dev", tagType: "dev", usage: 80, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Test et développement d'API." },
+            { rank: 29, name: "GitKraken", url: "https://www.gitkraken.com", section: "dev", tagType: "dev", usage: 45, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Client Git visuel très puissant." },
+            { rank: 30, name: "MDN Docs", url: "https://developer.mozilla.org", section: "dev", tagType: "dev", usage: 88, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "La bible du Web (HTML/CSS/JS)." },
+            { rank: 31, name: "Python.org", url: "https://www.python.org", section: "dev", tagType: "dev", usage: 99, pricing: "Gratuit", lang: "EN", bonPlan: false, desc: "Documentation officielle Python." },
+            { rank: 32, name: "Django", url: "https://www.djangoproject.com", section: "dev", tagType: "dev", usage: 65, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Framework Web Python robuste." },
+            { rank: 33, name: "FastAPI", url: "https://fastapi.tiangolo.com", section: "dev", tagType: "dev", usage: 60, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Framework API Python moderne et rapide." },
+            { rank: 34, name: "Vercel", url: "https://vercel.com", section: "dev", tagType: "dev", usage: 70, pricing: "Freemium", lang: "EN", bonPlan: true, desc: "Déploiement Frontend instantané." },
+            { rank: 35, name: "Render", url: "https://render.com", section: "dev", tagType: "dev", usage: 50, pricing: "Freemium", lang: "EN", bonPlan: true, desc: "Hébergement Cloud simple." },
+            { rank: 36, name: "Supabase", url: "https://supabase.com", section: "dev", tagType: "dev", usage: 55, pricing: "Freemium", lang: "EN", bonPlan: true, desc: "Alternative Firebase Open Source." },
+            { rank: 37, name: "MongoDB", url: "https://www.mongodb.com", section: "dev", tagType: "dev", usage: 60, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Base de données NoSQL flexible." },
+            { rank: 38, name: "PostgreSQL", url: "https://www.postgresql.org", section: "dev", tagType: "dev", usage: 70, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Base de données SQL relationnelle solide." },
+            { rank: 39, name: "Blackbox AI", url: "https://www.blackbox.ai", section: "dev", tagType: "dev", usage: 45, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "IA spécialisée Code & VS Code." },
+            { rank: 40, name: "Replit", url: "https://replit.com", section: "dev", tagType: "dev", usage: 50, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "IDE complet dans le navigateur." },
+            { rank: 41, name: "PyPI", url: "https://pypi.org", section: "dev", tagType: "dev", usage: 90, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Repository des paquets Python." },
+            { rank: 42, name: "Hugging Face", url: "https://huggingface.co", section: "dev", tagType: "dev", usage: 65, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Le Hub des modèles IA & Datasets." },
+            { rank: 43, name: "Phind", url: "https://www.phind.com", section: "dev", tagType: "dev", usage: 30, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Moteur de recherche pour Développeurs." },
+
+            // --- DESIGN & LEARN ---
+            { rank: 44, name: "Dyma", url: "https://dyma.fr", section: "creative", tagType: "learn", usage: 45, pricing: "Payant", lang: "FR", bonPlan: true, desc: "Formation développeur haut de gamme en FR." },
+            { rank: 45, name: "Grafikart", url: "https://grafikart.fr", section: "creative", tagType: "learn", usage: 60, pricing: "Gratuit", lang: "FR", bonPlan: true, desc: "Le meilleur site de tutos Web/Dev en France." },
+            { rank: 46, name: "OpenClassrooms", url: "https://openclassrooms.com", section: "creative", tagType: "learn", usage: 85, pricing: "Freemium", lang: "FR", bonPlan: false, desc: "Formations diplômantes et cours gratuits." },
+            { rank: 47, name: "Codecademy", url: "https://www.codecademy.com", section: "creative", tagType: "learn", usage: 75, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Apprendre à coder interactivement." },
+            { rank: 48, name: "Codewars", url: "https://www.codewars.com", section: "creative", tagType: "learn", usage: 50, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Défis de code (Katas) pour progresser." },
+            { rank: 49, name: "Coursera", url: "https://www.coursera.org", section: "creative", tagType: "learn", usage: 70, pricing: "Payant", lang: "Multi", bonPlan: false, desc: "Cours universitaires certifiants." },
+            { rank: 50, name: "Udemy", url: "https://www.udemy.com", section: "creative", tagType: "learn", usage: 70, pricing: "Payant", lang: "Multi", bonPlan: false, desc: "Cours vidéo à la demande sur tout." },
+            { rank: 51, name: "freeCodeCamp", url: "https://www.freecodecamp.org", section: "creative", tagType: "learn", usage: 65, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Apprentissage code gratuit certifiant." },
+            { rank: 52, name: "LeetCode", url: "https://leetcode.com", section: "creative", tagType: "learn", usage: 55, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Entraînement algorithmique pour entretiens." },
+            { rank: 53, name: "Real Python", url: "https://realpython.com", section: "creative", tagType: "learn", usage: 50, pricing: "Freemium", lang: "EN", bonPlan: true, desc: "Les meilleurs tutos Python écrits." },
+            { rank: 54, name: "Figma", url: "https://www.figma.com", section: "creative", tagType: "design", usage: 85, pricing: "Freemium", lang: "EN", bonPlan: false, desc: "Maquettage UI/UX collaboratif." },
+            { rank: 55, name: "Canva", url: "https://www.canva.com", section: "creative", tagType: "design", usage: 90, pricing: "Freemium", lang: "Multi", bonPlan: false, desc: "Design graphique facile." },
+            { rank: 56, name: "Gamma", url: "https://gamma.app", section: "creative", tagType: "design", usage: 50, pricing: "Freemium", lang: "Multi", bonPlan: true, desc: "Présentations générées par IA." },
+            { rank: 57, name: "Midjourney", url: "https://www.midjourney.com", section: "creative", tagType: "design", usage: 60, pricing: "Payant", lang: "EN", bonPlan: false, desc: "Génération d'images artistiques." },
+            { rank: 58, name: "Excalidraw", url: "https://excalidraw.com", section: "creative", tagType: "design", usage: 45, pricing: "Gratuit", lang: "Multi", bonPlan: true, desc: "Schémas style 'main levée'." },
+            { rank: 59, name: "Carbon", url: "https://carbon.now.sh", section: "creative", tagType: "design", usage: 35, pricing: "Gratuit", lang: "EN", bonPlan: true, desc: "Belles captures d'écran de code." },
+            { rank: 60, name: "W3Schools", url: "https://www.w3schools.com", section: "creative", tagType: "learn", usage: 80, pricing: "Gratuit", lang: "EN", bonPlan: false, desc: "Référence syntaxe rapide." }
+        ];
+
+        const grid = document.getElementById('dynamicGrid');
+        const searchInput = document.getElementById('searchInput');
+        let currentFilter = 'all';
+
+        // Filter Logic
+        function filterTools(filter, btnElement) {
+            currentFilter = filter;
+            
+            // Update Active Button
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(btnElement) btnElement.classList.add('active');
+
+            // Render
+            renderGrid();
+        }
+
+        // Main Render Function
+        function renderGrid() {
+            grid.innerHTML = '';
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            let filteredData = toolsData.filter(tool => {
+                // Tab Filter
+                const matchesTab = (currentFilter === 'all') || (tool.section === currentFilter);
+                
+                // Search Filter
+                const matchesSearch = tool.name.toLowerCase().includes(searchTerm) || 
+                                      tool.desc.toLowerCase().includes(searchTerm) ||
+                                      tool.tagType.toLowerCase().includes(searchTerm);
+                
+                return matchesTab && matchesSearch;
+            });
+
+            if(filteredData.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:#888;padding:40px;">Aucun outil trouvé... 🕵️‍♀️</div>';
+                return;
+            }
+
+            filteredData.forEach(tool => {
+                // Determine Tag Visuals
+                let tagClass = 'tag-dev';
+                let tagName = 'Développeur';
+                if(tool.tagType === 'design') { tagClass = 'tag-design'; tagName = 'Créa'; }
+                if(tool.tagType === 'prod') { tagClass = 'tag-prod'; tagName = 'Prod'; }
+                if(tool.tagType === 'learn') { tagClass = 'tag-learn'; tagName = 'Formation'; }
+                if(tool.tagType === 'google') { tagClass = 'tag-google'; tagName = 'Google'; }
+
+                let priceClass = 'badge-paid';
+                if(tool.pricing === 'Gratuit') priceClass = 'badge-free';
+                if(tool.pricing === 'Freemium') priceClass = 'badge-freemium';
+
+                let bonPlanHTML = tool.bonPlan ? `<div class="bon-plan-sticker"><i class="fas fa-star"></i> Top</div>` : '';
+
+                const card = document.createElement('div');
+                card.className = 'ai-card';
+                card.innerHTML = `
+                    ${bonPlanHTML}
+                    <div class="rank-badge">#${tool.rank}</div>
+                    
+                    <div class="card-header">
+                        <h3 class="ai-name">${tool.name}</h3>
+                        <div style="margin-top:5px;">
+                            <span class="tag-pill ${tagClass}">${tagName}</span>
+                        </div>
+                    </div>
+
+                    <div class="meta-row">
+                        <span class="badge ${priceClass}">${tool.pricing}</span>
+                        <span class="badge badge-lang"><i class="fas fa-language"></i> ${tool.lang}</span>
+                    </div>
+
+                    <div class="ai-desc">${tool.desc}</div>
+
+                    <div class="usage-container">
+                        <div class="usage-label">
+                            <span>Popularité</span>
+                            <span>${tool.usage}%</span>
+                        </div>
+                        <div class="usage-track">
+                            <div class="usage-fill" style="width: ${tool.usage}%"></div>
+                        </div>
+                    </div>
+
+                    <a href="${tool.url}" target="_blank" rel="noopener noreferrer" class="visit-btn">
+                        Visiter <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Event Listener for Search
+        searchInput.addEventListener('input', renderGrid);
+
+        // Initial Render
+        renderGrid();
+
+    </script>
+
+</body>
+</html>

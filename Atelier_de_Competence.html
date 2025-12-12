@@ -7,123 +7,140 @@
     
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
     
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FONTS DU DESIGN SYSTEM -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        /* === CHARTE GRAPHIQUE GLOBALE (PALETTE MATHILDE) === */
+        /* ================================================================= */
+        /* 🎨 DESIGN SYSTEM - THE DEV ELITE CLUB */
+        /* ================================================================= */
         :root {
-            /* Palette Dev Elite Club */
-            --brand-blue: #0F2C48;   /* Fond sombre / Textes */
-            --brand-cta: #D9A526;    /* Jaune/Or (Actions) */
-            --brand-ivory: #F6F2E8;  /* Fond clair */
-            --brand-bronze: #B4792A; /* Accents */
+            /* Palette Officielle */
+            --cta: #D9A526;        /* Or - Boutons CTA */
+            --brand-blue: #0F2C48; /* Bleu Nuit - Titres & Séparations */
+            --ivory: #F6F2E8;      /* Ivoire - Surfaces */
+            --bronze: #B4792A;     /* Bronze - Alertes */
             
-            --header-height: 96px;
+            /* Alias pour la compatibilité avec le code de l'application */
+            --brand-cta: var(--cta);
+            --brand-ivory: var(--ivory);
+            --brand-bronze: var(--bronze);
 
-            /* Couleurs spécifiques (Cas Pratiques Code) */
-            --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e; /* Warning/Syntaxe */
-            --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af; /* Info/Log */
-            --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534; /* Success/Fix */
+            /* Couleurs spécifiques (App Debugging) */
+            --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e; 
+            --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af;
+            --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534;
         }
 
         body { 
-            margin: 0; background-color: var(--brand-ivory); color: var(--brand-blue); 
+            margin: 0; background-color: var(--ivory); color: var(--brand-blue); 
             font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
         }
 
         /* Font pour le code */
         .font-code { font-family: 'Fira Code', monospace; }
 
-        /* --- HEADER GLOBAL --- */
-        .top-bar { 
-            background: var(--brand-blue); 
-            padding: 12px 20px; 
-            position: sticky; 
-            top: 0; 
-            z-index: 9999; 
-            border-bottom: 4px solid var(--brand-cta); 
-            box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        /* --- STYLES DU HEADER --- */
+        .top-bar {
+            background-color: var(--brand-blue);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: sticky; top: 0; z-index: 10000;
+            border-bottom: 4px solid var(--cta);
+        }
+        
+        .top-bar-container {
+            width: 95%; margin: 0 auto; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
         }
 
-        .top-bar-container { 
-            width: 95%; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; 
+        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
+        
+        .logo-placeholder {
+            width: 60px; height: 60px; border-radius: 50%; 
+            border: 2px solid var(--cta); background: white; color: var(--brand-blue);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            overflow: hidden; flex-shrink: 0;
+        }
+        .logo-img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+
+        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
+        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
+        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+
+        .top-bar-center { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+        
+        /* BOUTONS RONDS (Header & Footer) */
+        .header-icon-btn, .icon-btn {
+            position: relative; width: 45px; height: 45px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; 
+            cursor: pointer;
         }
 
-        .top-left { display: flex; align-items: center; gap: 14px; }
-
-        .logo-top { 
-            width: 64px; height: 64px; border-radius: 12px; object-fit: contain; 
-            background: var(--brand-ivory); padding: 5px; border: 2px solid var(--brand-cta);
-            transition: transform 0.3s ease;
-        }
-        .logo-top:hover { transform: rotate(10deg) scale(1.1); }
-
-        .identity-stack { display: flex; flex-direction: column; }
-        .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--brand-ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
-        .club-subtitle { color: var(--brand-cta); font-weight: 600; font-size: 0.8rem; }
-
-        .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
-
-        .header-icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0; border-radius: 8px; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            text-decoration: none; background: rgba(246, 242, 232, 0.1); 
-            color: var(--brand-ivory); border: 1px solid rgba(217, 165, 38, 0.3); 
-            transition: all 0.2s ease; font-size: 1.2rem; position: relative;
+        /* Style Header (Dégradé) */
+        .header-icon-btn {
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
+            border: 1px solid rgba(255,255,255,0.2); color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         .header-icon-btn:hover { 
-            transform: translateY(-3px); background: var(--brand-cta); color: var(--brand-blue);
-            border-color: var(--brand-ivory); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5);
+            transform: translateY(-3px) scale(1.1); 
+            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
+            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
         }
-        
-        /* Tooltip simple pour le header */
-        .header-icon-btn::after {
-            content: attr(title);
-            position: absolute; bottom: -30px; left: 50%; transform: translateX(-50%);
-            background: var(--brand-blue); color: white; padding: 4px 8px; border-radius: 4px;
-            font-size: 0.7rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: 0.2s;
-            font-family: 'Outfit', sans-serif; z-index: 100;
-        }
-        .header-icon-btn:hover::after { opacity: 1; bottom: -35px; }
-        
-        /* --- FOOTER GLOBAL --- */
-        .main-footer { background: var(--brand-blue); color: var(--brand-ivory); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brand-cta); font-family: 'Fira Code', monospace; font-size: 0.85rem; }
-        .footer-container { width: 95%; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .footer-links-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-        .icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0; border-radius: 8px; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            background: rgba(255, 255, 255, 0.06); color: var(--brand-ivory); 
-            text-decoration: none; border: 1px solid rgba(217, 165, 38, 0.15); transition: all 0.2s; font-size: 1.3rem;
-        }
-        .icon-btn:hover { background: var(--brand-cta); color: var(--brand-blue); transform: scale(1.1); }
-        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-        @media (max-width: 1100px) {
-            .top-bar-container { flex-direction: column; text-align: center; gap: 10px; }
-            .top-left { margin-right: 0; flex-direction: column; }
-            .top-center { overflow-x: auto; width: 100%; padding-bottom: 10px; justify-content: center; }
-            .footer-container { flex-direction: column; text-align: center; }
-            .footer-links-row { justify-content: center; margin-top: 15px; }
+        /* Style Footer (Transparent) */
+        .icon-btn {
+            background: rgba(255, 255, 255, 0.1); 
+            border: 1px solid rgba(217, 165, 38, 0.3); color: #fff;
+        }
+        .icon-btn:hover { 
+            transform: translateY(-5px) scale(1.1); 
+            background: #fff; border-color: #fff; color: var(--brand-blue); 
         }
         
-        /* --- NAVIGATION INTERNE (ONGLÉTS EMOJI) --- */
+        /* Tooltip (Info-bulle) */
+        .header-icon-btn::after, .icon-btn::after {
+            content: attr(data-tooltip); position: absolute; 
+            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
+            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
+        }
+        
+        /* Position Tooltip Header (En dessous) */
+        .header-icon-btn::after { top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px); }
+        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        /* Position Tooltip Footer (Au dessus) */
+        .icon-btn::after { bottom: 130%; left: 50%; transform: translateX(-50%) translateY(10px); }
+        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+        /* Animation bouton Portfolio */
+        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
+        .btn-portfolio-cosmic {
+            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
+            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
+            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
+        }
+        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+
+        /* --- STYLES SPÉCIFIQUES APP ATELIER --- */
         .nav-tabs-container {
             background: white; box-shadow: 0 4px 15px rgba(15, 44, 72, 0.05); z-index: 40; 
-            position: sticky; top: 120px; /* Ajusté sous le header */
+            position: sticky; top: 100px; /* Ajusté pour le nouveau header */
             border-bottom: 1px solid rgba(15, 44, 72, 0.1);
             padding: 10px 0;
         }
-        /* Ajustement sur mobile pour coller le header */
         @media (max-width: 1100px) { .nav-tabs-container { top: 180px; } }
 
         .container { width: 95%; margin-left: auto; margin-right: auto; padding: 0 15px; max-width: none; }
 
-        /* Conteneur des onglets : Flex-wrap pour éviter l'ascenseur */
+        /* Conteneur des onglets : Aligné à droite */
         .tabs-wrapper {
-            display: flex; justify-content: flex-end; gap: 15px; flex-wrap: wrap; /* WRAP ACTIVÉ */
+            display: flex; justify-content: flex-end; gap: 15px; flex-wrap: wrap; 
         }
 
         /* Style des boutons d'onglets EMOJI ONLY */
@@ -131,36 +148,24 @@
             font-family: 'Montserrat', sans-serif; color: var(--brand-blue); border-bottom: 4px solid transparent;
             opacity: 0.7; transition: all 0.3s; 
             padding: 10px 20px; 
-            font-size: 1.8rem; /* Emoji plus gros */
+            font-size: 1.8rem;
             display: flex; align-items: center; justify-content: center; 
             flex-shrink: 0; cursor: pointer; position: relative;
         }
-        .tab-btn:hover { opacity: 1; background-color: #f8fafc; color: var(--brand-cta); transform: translateY(-2px); }
-        .tab-btn.active { opacity: 1; border-bottom: 4px solid var(--brand-cta); background-color: white; transform: scale(1.1); }
+        .tab-btn:hover { opacity: 1; background-color: #f8fafc; color: var(--cta); transform: translateY(-2px); }
+        .tab-btn.active { opacity: 1; border-bottom: 4px solid var(--cta); background-color: white; transform: scale(1.1); }
 
         /* Tooltip custom (AU-DESSUS) */
         .tab-btn::after {
             content: attr(data-title);
             position: absolute; 
-            /* MODIFICATION : Positionné au-dessus (bottom 100% + marge) */
-            bottom: 100%; left: 50%; transform: translateX(-50%);
-            margin-bottom: 10px; /* Petit espace */
-            
+            bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 10px;
             background: var(--brand-blue); color: white; padding: 5px 10px; border-radius: 6px;
             font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; 
             pointer-events: none; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
             z-index: 100;
         }
-        /* Petite flèche vers le bas pour le tooltip du haut */
-        .tab-btn::before {
-            content: ''; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
-            margin-bottom: 5px; border-width: 5px; border-style: solid;
-            border-color: var(--brand-blue) transparent transparent transparent;
-            opacity: 0; transition: 0.2s; pointer-events: none;
-        }
-
-        .tab-btn:hover::after, .tab-btn:hover::before { opacity: 1; }
-        .tab-btn:hover::after { margin-bottom: 15px; /* Petite animation vers le haut */ }
+        .tab-btn:hover::after { opacity: 1; margin-bottom: 15px; }
 
         /* --- CONTENU --- */
         .tab-content { display: none; animation: fadeIn 0.4s ease-out; padding: 40px 0; }
@@ -169,7 +174,7 @@
 
         .intro-box {
             background: white; padding: 30px; border-radius: 12px; margin-bottom: 40px;
-            border-left: 6px solid var(--brand-cta); box-shadow: 0 4px 20px rgba(15, 44, 72, 0.05);
+            border-left: 6px solid var(--cta); box-shadow: 0 4px 20px rgba(15, 44, 72, 0.05);
         }
         .intro-title { font-family: 'Fira Code', monospace; font-size: 1.6rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; }
 
@@ -179,8 +184,8 @@
         
         .qq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
         .qq-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
-        .qq-card:hover { transform: translateY(-5px); border-color: var(--brand-cta); background: white; box-shadow: 0 10px 20px rgba(217, 165, 38, 0.15); }
-        .qq-icon { font-size: 1.5rem; color: var(--brand-cta); margin-bottom: 10px; }
+        .qq-card:hover { transform: translateY(-5px); border-color: var(--cta); background: white; box-shadow: 0 10px 20px rgba(217, 165, 38, 0.15); }
+        .qq-icon { font-size: 1.5rem; color: var(--cta); margin-bottom: 10px; }
         .qq-question { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.9rem; color: var(--brand-blue); text-transform: uppercase; display: block; margin-bottom: 5px; }
         .qq-answer { color: #64748b; font-size: 0.9rem; }
 
@@ -191,7 +196,7 @@
             box-shadow: 0 4px 6px rgba(15, 44, 72, 0.05); border: 1px solid rgba(15, 44, 72, 0.1); 
             display: flex; flex-direction: column; transition: transform 0.3s; 
         }
-        .case-card:hover { transform: translateY(-5px); border-color: var(--brand-cta); }
+        .case-card:hover { transform: translateY(-5px); border-color: var(--cta); }
         
         .case-header { padding: 15px 20px; background: rgba(15, 44, 72, 0.03); border-bottom: 1px solid rgba(15, 44, 72, 0.1); display: flex; justify-content: space-between; align-items: center; }
         .badge-circle { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-family: 'Fira Code', monospace; }
@@ -205,7 +210,7 @@
         .case-context { background: #f1f5f9; padding: 12px; border-radius: 6px; border-left: 4px solid #64748b; font-family: 'Fira Code', monospace; color: #475569; font-size: 0.85rem; margin-bottom: 20px; }
         
         .reveal-btn { width: 100%; padding: 10px; background: var(--brand-blue); color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: auto; font-family: 'Fira Code', monospace; }
-        .reveal-btn:hover { background-color: var(--brand-cta); color: var(--brand-blue); }
+        .reveal-btn:hover { background-color: var(--cta); color: var(--brand-blue); }
         .reveal-btn.active { background-color: #e2e8f0; color: var(--brand-blue); }
         
         .case-solution { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; opacity: 0; }
@@ -214,28 +219,17 @@
         .syllogism-step { margin-bottom: 15px; padding: 12px; border-radius: 6px; font-size: 0.9rem; text-align: left; line-height: 1.5; }
         .step-label { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 4px; }
         
-        .step-majeure { background: var(--bg-rule); border: 1px solid var(--border-rule); color: var(--text-rule); } /* Règle/Erreur */
-        .step-mineure { background: var(--bg-fact); border: 1px solid var(--border-fact); color: var(--text-fact); } /* Analyse */
-        .step-conclusion { background: var(--bg-solution); border: 1px solid var(--border-solution); color: var(--text-solution); font-weight: 700; } /* Fix */
+        .step-majeure { background: var(--bg-rule); border: 1px solid var(--border-rule); color: var(--text-rule); } 
+        .step-mineure { background: var(--bg-fact); border: 1px solid var(--border-fact); color: var(--text-fact); }
+        .step-conclusion { background: var(--bg-solution); border: 1px solid var(--border-solution); color: var(--text-solution); font-weight: 700; }
 
-        /* --- 3. LEXIQUE --- */
-        .lexique-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
-        .lexique-card { background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s; }
-        .lexique-card:hover { border-color: var(--brand-cta); box-shadow: 0 4px 12px rgba(217, 165, 38, 0.15); }
-        .lexique-header { padding: 12px 15px; background: #f8fafc; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; }
-        .lexique-term { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--brand-blue); font-size: 0.95rem; }
-        .lexique-body { padding: 0 15px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .lexique-card.open .lexique-body { max-height: 300px; padding-bottom: 15px; padding-top: 10px; }
-        .lexique-def { font-size: 0.9rem; color: #334155; margin-bottom: 10px; line-height: 1.4; }
-        .lexique-trap { font-size: 0.8rem; color: #b45309; background: #fffbeb; padding: 8px; border-radius: 4px; border-left: 3px solid #f59e0b; }
-
-        /* --- 4. FICHES RÉFLEXES --- */
+        /* --- 3. LEXIQUE / 4. REFLEXES --- */
         .reflexe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
         .reflexe-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
         .reflexe-header { padding: 15px; color: white; font-weight: 700; font-family: 'Fira Code', monospace; display: flex; justify-content: space-between; align-items: center; }
-        .bg-secu { background: linear-gradient(135deg, #ef4444, #b91c1c); } /* Rouge Secu */
-        .bg-deploy { background: linear-gradient(135deg, #3b82f6, #1d4ed8); } /* Bleu Deploy */
-        .bg-gitflow { background: linear-gradient(135deg, #10b981, #047857); } /* Vert Git */
+        .bg-secu { background: linear-gradient(135deg, #ef4444, #b91c1c); } 
+        .bg-deploy { background: linear-gradient(135deg, #3b82f6, #1d4ed8); } 
+        .bg-gitflow { background: linear-gradient(135deg, #10b981, #047857); } 
         .reflexe-body { padding: 20px; }
         .reflexe-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
         .step-num { background: #f1f5f9; color: var(--brand-blue); font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-family: 'Fira Code', monospace; }
@@ -243,7 +237,7 @@
         /* --- 5. ACRONYMES --- */
         .dalloz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
         .dalloz-card { background: white; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; transition: 0.2s; display: flex; flex-direction: column; }
-        .dalloz-card:hover { border-color: var(--brand-cta); transform: translateY(-2px); }
+        .dalloz-card:hover { border-color: var(--cta); transform: translateY(-2px); }
         .dalloz-abbr { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--brand-blue); font-size: 1rem; margin-bottom: 4px; }
         .dalloz-full { font-size: 0.85rem; color: #64748b; }
 
@@ -254,21 +248,20 @@
         .matiere-card { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
         .matiere-name { font-weight: 700; color: var(--brand-blue); margin-bottom: 5px; display: block; }
         .matiere-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 10px; }
-        .resource-link { display: inline-block; font-size: 0.8rem; color: var(--brand-bronze); font-weight: 600; text-decoration: none; border-bottom: 1px dotted; }
 
         /* --- 7. FLASHCARDS & JEU DU MOIS --- */
         .charade-box {
             background: linear-gradient(135deg, #1e293b, #0f172a); color: white;
             padding: 30px; border-radius: 12px; margin-bottom: 40px; text-align: center;
-            border: 2px solid var(--brand-cta); position: relative; overflow: hidden;
+            border: 2px solid var(--cta); position: relative; overflow: hidden;
         }
         .charade-box::before { content: '🏆'; position: absolute; top: 10px; left: 10px; font-size: 2rem; opacity: 0.5; }
         .charade-btn {
-            background: var(--brand-cta); color: var(--brand-blue); font-weight: 800;
+            background: var(--cta); color: var(--brand-blue); font-weight: 800;
             padding: 10px 20px; border-radius: 50px; border: none; cursor: pointer;
             margin-top: 15px; transition: 0.3s;
         }
-        .charade-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--brand-cta); }
+        .charade-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--cta); }
         .answer-reveal {
             font-family: 'Fira Code', monospace; color: #4ade80; font-size: 1.2rem; margin-top: 15px;
             font-weight: 700; display: none;
@@ -280,67 +273,152 @@
         
         .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         .card-face-front { background: white; border: 2px solid var(--brand-blue); }
-        .card-face-back { background: var(--brand-blue); color: var(--brand-ivory); transform: rotateY(180deg); border: 2px solid var(--brand-blue); }
+        .card-face-back { background: var(--brand-blue); color: var(--ivory); transform: rotateY(180deg); border: 2px solid var(--brand-blue); }
         
         .btn-game { padding: 10px 24px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; font-family: 'Fira Code', monospace; font-size: 0.9rem; }
-        .btn-next { background: var(--brand-cta); color: var(--brand-blue); }
+        .btn-next { background: var(--cta); color: var(--brand-blue); }
         .btn-prev { background: #e2e8f0; color: #64748b; }
 
         /* Boutons Audio */
         .btn-audio-small { width: 24px; height: 24px; border-radius: 50%; background: rgba(0,0,0,0.1); display: inline-flex; align-items: center; justify-content: center; color: var(--brand-blue); cursor: pointer; margin-left: auto; font-size: 0.8rem; }
-        .btn-audio-small:hover { background: var(--brand-cta); color: white; }
+        .btn-audio-small:hover { background: var(--cta); color: white; }
 
-        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--brand-cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; font-size: 1.2rem; }
+        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; font-size: 1.2rem; }
         #backToTop.visible { opacity: 1; }
+
+        /* --- STYLES DU FOOTER --- */
+        .main-footer {
+            background-color: var(--brand-blue); color: #F6F2E8;
+            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
+            width: 100%; margin-top: auto; 
+        }
+        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
+        
+        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
+        
+        .footer-logo-placeholder {
+            width: 60px; height: 60px; border-radius: 8px; 
+            border: 2px solid var(--cta); background: #fff; color: var(--brand-blue);
+            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+        }
+
+        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
+        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
+        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
+        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
+        .footer-link:hover { color: var(--cta); }
+
+        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
+        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
+        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
+        
+        .icon-dock { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+
+        .footer-bottom { 
+            text-align: center; padding: 15px 0; font-size: 0.8rem; 
+            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
+            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .footer-identity { flex-direction: column; text-align: center; }
+            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
+            .icon-dock { justify-content: center; flex-wrap: wrap; }
+            .dock-group { align-items: center; }
+        }
 
     </style>
 </head>
 <body onload="initAll()">
 
-    <!-- HEADER (URLS MISES A JOUR) -->
+    <!-- ============================================ -->
+    <!-- HEADER (Design System) -->
+    <!-- ============================================ -->
     <div class="top-bar">
         <div class="top-bar-container">
-            <div class="top-left">
-                <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Retour Accueil">
-                    <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo Python">
-                </a>
+            <div class="top-bar-left">
+                <div class="logo-placeholder">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo" class="logo-img">
+                </div>
                 <div class="identity-stack">
-                    <div class="club-title-main">💫 The Dev Elite Club ✨</div>
-                    <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
+                    <span class="club-title-main">💫 The Dev Elite Club ✨</span>
+                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
                 </div>
             </div>
-            <nav class="top-center">
-                <!-- Liens Navigation mis à jour selon ta demande -->
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
-                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
-            </nav>
-            <div>
-                <a class="btn-portfolio-cosmic" href="#" target="_blank"><i class="fa-solid fa-code"></i> Portfolio</a>
+            
+            <!-- NAVIGATION PRINCIPALE (9 Liens) -->
+            <div class="top-bar-center">
+                
+                <!-- 1. Accueil -->
+                <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="header-icon-btn" data-tooltip="Accueil" aria-label="Accueil">
+                    <span class="brand-nav">🏠</span> 
+                </a>
+                
+                <!-- 2. Mon Espace -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="header-icon-btn" data-tooltip="Mon Espace" aria-label="Mon Espace">
+                    <span class="brand-nav">📊</span>
+                </a>
+                
+                <!-- 3. Planning & Cours -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="header-icon-btn" data-tooltip="Planning & Cours" aria-label="Planning">
+                    <span class="brand-nav">📅</span>
+                </a>
+
+                <!-- 4. Atelier -->
+                <!-- CORRECTION : Lien modifié pour pointer vers le fichier lui-même -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Atelier_Dev_Elite_Club.html" class="header-icon-btn" data-tooltip="Atelier" aria-label="Atelier">
+                    <span class="brand-nav">🛠️</span>
+                </a>
+
+                <!-- 5. Observatoire (NOUVEAU) -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" class="header-icon-btn" data-tooltip="Observatoire & IA" aria-label="Observatoire">
+                    <span class="brand-nav">🚀</span>
+                </a>
+
+                <!-- 6. Fiche RNCP -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" class="header-icon-btn" data-tooltip="Fiche RNCP" aria-label="Fiche RNCP">
+                    <span class="brand-nav">🏅</span>
+                </a>
+
+                <!-- 7. Lexique -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" class="header-icon-btn" data-tooltip="Lexique" aria-label="Lexique">
+                    <span class="brand-nav">📜</span>
+                </a>
+
+                <!-- 8. Acronymes -->
+                <a href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" class="header-icon-btn" data-tooltip="Acronymes" aria-label="Acronymes">
+                    <span class="brand-nav">🔠</span>
+                </a>
+                
+                <!-- 9. Profil -->
+                <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="header-icon-btn" data-tooltip="Profil" aria-label="Profil">
+                    <span class="brand-nav">👤</span>
+                </a>
             </div>
+
+            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" class="btn-portfolio-cosmic" target="_blank">
+                <span>📄</span> Mon portfolio
+            </a>
         </div>
     </div>
 
-    <!-- TABS NAVIGATION (EMOJI ONLY POUR GAGNER DE LA PLACE) -->
+    <!-- TABS NAVIGATION INTERNE (App Debugging) -->
     <div class="nav-tabs-container">
         <div class="container tabs-wrapper">
-            <button onclick="switchTab('accueil')" class="tab-btn active" data-title="Accueil">🏠</button>
-            <button onclick="switchTab('syllogismes')" class="tab-btn" data-title="Debugging">🐛</button>
-            <button onclick="switchTab('reflexes')" class="tab-btn" data-title="Checklists">✅</button>
-            <button onclick="switchTab('abbrev')" class="tab-btn" data-title="Acronymes (Liste)">🔠</button>
-            <button onclick="switchTab('competences')" class="tab-btn" data-title="Stacks Tech">📚</button>
-            <button onclick="switchTab('flashcards')" class="tab-btn" data-title="Jeu & Cartes">🃏</button>
+            <button onclick="switchTab('accueil')" class="tab-btn active" data-title="Accueil App" aria-label="Onglet Accueil">🏠</button>
+            <button onclick="switchTab('syllogismes')" class="tab-btn" data-title="Debugging" aria-label="Onglet Debugging">🐛</button>
+            <button onclick="switchTab('reflexes')" class="tab-btn" data-title="Checklists" aria-label="Onglet Checklists">✅</button>
+            <button onclick="switchTab('abbrev')" class="tab-btn" data-title="Acronymes (Liste)" aria-label="Onglet Liste Acronymes">🔠</button>
+            <button onclick="switchTab('competences')" class="tab-btn" data-title="Stacks Tech" aria-label="Onglet Compétences">📚</button>
+            <button onclick="switchTab('flashcards')" class="tab-btn" data-title="Jeu & Cartes" aria-label="Onglet Jeux">🃏</button>
         </div>
     </div>
 
     <main class="container">
 
-        <!-- 1. ACCUEIL -->
+        <!-- 1. ACCUEIL APP -->
         <div id="accueil" class="tab-content active">
             <div class="intro-box">
                 <div class="text-center mb-8">
@@ -393,7 +471,7 @@
             <div id="cases-container" class="cases-grid"></div>
         </div>
 
-        <!-- 3. LEXIQUE (Vide car lien externe, mais gardé pour structure onglets) -->
+        <!-- 3. LEXIQUE (Vide car lien externe) -->
         <div id="lexique" class="tab-content">
            <div class="intro-box flex justify-between items-center flex-wrap gap-4 text-center">
                 <div class="w-full">
@@ -443,18 +521,15 @@
 
         <!-- 7. FLASHCARDS & JEU DU MOIS -->
         <div id="flashcards" class="tab-content">
-            <!-- NOUVEAU : JEU DU MOIS -->
             <div class="charade-box">
                 <h2 class="text-2xl font-bold mb-2 font-code">🕵️‍♀️ L'Énigme du Codeur (Jeu du Mois)</h2>
                 <p class="text-gray-300 italic mb-4">Une petite charade pour s'échauffer...</p>
-                
                 <p class="text-lg">
                     "Je suis une méthode spéciale, souvent entourée de mystère (et de underscores).<br>
                     Je m'exécute dès la naissance d'un objet.<br>
                     C'est moi qui donne ses premières valeurs à `self`.<br>
                     Qui suis-je ?"
                 </p>
-
                 <button onclick="revealCharade()" class="charade-btn">Voir la Réponse</button>
                 <div id="charade-answer" class="answer-reveal">
                     🐍 La méthode `__init__` (Le Constructeur) !
@@ -494,28 +569,96 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <!-- FOOTER (Design System) -->
+    <!-- ============================================ -->
     <footer class="main-footer">
         <div class="footer-container">
-            <div class="flex flex-col md:flex-row gap-4 items-center">
-                <div class="bg-white p-2 rounded-lg"><i class="fa-brands fa-python text-3xl text-brand-blue"></i></div>
-                <div class="text-center md:text-left">
-                    <div class="font-bold text-brand-ivory text-lg">Mathilde Martine PAISLEY</div>
-                    <a href="mailto:mathilde.martine.paisley@gmail.com" class="text-brand-cta hover:text-white transition">mathilde.martine.paisley@gmail.com</a>
+            <div class="footer-content">
+                
+                <!-- Identité -->
+                <div class="footer-identity">
+                    <div class="footer-logo-placeholder">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="footer-info-compact">
+                        <div class="footer-name">Mathilde Martine PAISLEY</div>
+                        <div class="footer-contact-stack">
+                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
+                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="footer-dock-col">
+                    <!-- Liens de Navigation (Copie exacte du Header) -->
+                    <div class="dock-group">
+                        <div class="dock-label">Navigation</div>
+                        <div class="icon-dock">
+                            <!-- 1. Accueil -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="icon-btn" data-tooltip="Accueil" aria-label="Accueil"><span class="brand-nav">🏠</span></a>
+                            
+                            <!-- 2. Mon Espace -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="icon-btn" data-tooltip="Mon Espace" aria-label="Mon Espace"><span class="brand-nav">📊</span></a>
+                            
+                            <!-- 3. Planning & Cours -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="icon-btn" data-tooltip="Planning & Cours" aria-label="Planning"><span class="brand-nav">📅</span></a>
+                            
+                            <!-- 4. Atelier -->
+                            <!-- CORRECTION : Lien modifié ici aussi pour le footer -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Atelier_Dev_Elite_Club.html" class="icon-btn" data-tooltip="Atelier" aria-label="Atelier"><span class="brand-nav">🛠️</span></a>
+
+                            <!-- 5. Observatoire (NOUVEAU) -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" class="icon-btn" data-tooltip="Observatoire & IA" aria-label="Observatoire"><span class="brand-nav">🚀</span></a>
+
+                            <!-- 6. Fiche RNCP -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" class="icon-btn" data-tooltip="Fiche RNCP" aria-label="Fiche RNCP"><span class="brand-nav">🏅</span></a>
+                            
+                            <!-- 7. Lexique -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" class="icon-btn" data-tooltip="Lexique" aria-label="Lexique"><span class="brand-nav">📜</span></a>
+                            
+                            <!-- 8. Acronymes -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" class="icon-btn" data-tooltip="Acronymes" aria-label="Acronymes"><span class="brand-nav">🔠</span></a>
+                            
+                            <!-- 9. Profil -->
+                            <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="icon-btn" data-tooltip="Profil" aria-label="Profil"><span class="brand-nav">👤</span></a>
+                        </div>
+                    </div>
+
+                    <div class="dock-group" style="margin-top: 15px;">
+                        <div class="dock-label">Réseaux</div>
+                        <div class="icon-dock">
+                            <!-- WhatsApp -->
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" class="icon-btn" data-tooltip="WhatsApp" target="_blank" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
+                            </a>
+                            <!-- Discord -->
+                            <a href="https://discord.gg/redT9wEE6T" class="icon-btn" data-tooltip="Discord" target="_blank" aria-label="Discord">
+                                <i class="fab fa-discord" style="color:#5865F2;"></i>
+                            </a>
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" class="icon-btn" data-tooltip="LinkedIn" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin" style="color:#0077b5;"></i>
+                            </a>
+                            <!-- TikTok -->
+                            <a href="https://www.tiktok.com/@enervyx" class="icon-btn" data-tooltip="TikTok" target="_blank" aria-label="TikTok">
+                                <i class="fab fa-tiktok" style="color:#ffffff;"></i>
+                            </a>
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/enervyx/" class="icon-btn" data-tooltip="Instagram" target="_blank" aria-label="Instagram">
+                                <i class="fab fa-instagram" style="color:#E1306C;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="footer-links-row">
-                <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
-                <!-- Lien Discord corrigé -->
-                <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
-                <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
-                <!-- Nouveaux réseaux (liens vides pour l'instant) -->
-                <a class="icon-btn" href="#" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
-                <a class="icon-btn" href="#" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
-            </div>
-            <div class="copyright">
-                💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
-                By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-container">
+                <p>💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
+                <p>© 2025 Tous droits réservés – Création : Mathilde Martine PAISLEY</p>
             </div>
         </div>
     </footer>
@@ -626,16 +769,16 @@
             if(id === 'flashcards') buttons[5].classList.add('active');
         }
 
-        // --- RENDER FUNCTIONS ---
+        // --- RENDER FUNCTIONS (OPTIMISÉES) ---
         function filterCases(filter) {
             const container = document.getElementById('cases-container');
-            container.innerHTML = '';
             const filtered = dbCases.filter(i => filter === 'all' || i.cat === filter);
             
-            filtered.forEach((item, idx) => {
+            // Optimisation : On construit une seule chaîne HTML au lieu d'appeler innerHTML += en boucle
+            const htmlContent = filtered.map((item, idx) => {
                 let badgeClass = item.cat === 'Python' ? 'bg-python' : (item.cat === 'Web' ? 'bg-web' : 'bg-git');
                 
-                const html = `
+                return `
                 <div class="case-card">
                     <div class="case-header">
                         <div class="flex items-center gap-3">
@@ -661,9 +804,11 @@
                         </div>
                     </div>
                 </div>`;
-                container.innerHTML += html;
-            });
+            }).join('');
+            
+            container.innerHTML = htmlContent;
         }
+
         function toggleSolution(btn) {
             const content = btn.nextElementSibling;
             content.classList.toggle('open');
@@ -673,11 +818,10 @@
 
         function renderReflexes(data) {
             const container = document.getElementById('reflexes-container');
-            container.innerHTML = '';
-            data.forEach((item, idx) => {
+            const htmlContent = data.map((item, idx) => {
                 let bgClass = item.c === 'Secu' ? 'bg-secu' : (item.c === 'Deploy' ? 'bg-deploy' : 'bg-gitflow');
                 let steps = item.s.map((s, i) => `<div class="reflexe-step"><div class="step-num">${i+1}</div><div class="text-sm text-gray-700 font-code">${s}</div></div>`).join('');
-                container.innerHTML += `
+                return `
                 <div class="reflexe-card">
                     <div class="reflexe-header ${bgClass}">
                         <span>${item.t}</span>
@@ -691,21 +835,21 @@
                         </div>
                     </div>
                 </div>`;
-            });
+            }).join('');
+            container.innerHTML = htmlContent;
         }
 
         function renderAbbrev(data) {
             const container = document.getElementById('abbrev-container');
-            container.innerHTML = '';
             data.sort((a,b) => a.a.localeCompare(b.a));
-            data.forEach(item => {
-                container.innerHTML += `
+            const htmlContent = data.map(item => `
                 <div class="dalloz-card">
                     <div class="dalloz-abbr">${item.a}</div>
                     <div class="dalloz-full">${item.f}</div>
-                </div>`;
-            });
+                </div>`).join('');
+            container.innerHTML = htmlContent;
         }
+        
         document.getElementById('abbrevSearch').addEventListener('keyup', (e) => {
             const val = e.target.value.toLowerCase();
             renderAbbrev(dbAbrev.filter(i => i.a.toLowerCase().includes(val) || i.f.toLowerCase().includes(val)));
@@ -713,16 +857,16 @@
 
         function renderCompetences(data) {
             const container = document.getElementById('competences-container');
-            container.innerHTML = '';
-            data.forEach(cat => {
+            const htmlContent = data.map(cat => {
                 const itemsHtml = cat.items.map(i => `<div class="matiere-card text-center"><span class="matiere-name text-sm">${i}</span></div>`).join('');
-                container.innerHTML += `
+                return `
                 <div class="matiere-section">
                     <div class="matiere-title-main"><i class="fas fa-laptop-code"></i> ${cat.category}</div>
                     <p class="text-gray-600 mb-4 text-sm">${cat.desc}</p>
                     <div class="matiere-list">${itemsHtml}</div>
                 </div>`;
-            });
+            }).join('');
+            container.innerHTML = htmlContent;
         }
 
         // --- FLASHCARDS LOGIC ---
@@ -770,7 +914,7 @@
             renderFlashcard();
         }
 
-        // MODIFICATION : VOIX FRANÇAISE FEMININE FORCEE
+        // VOIX FRANÇAISE FEMININE FORCEE
         function speakText(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
