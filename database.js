@@ -53,7 +53,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "le benchmark des solutions existantes"
+        pdf: "https://drive.google.com/file/d/1EI6qDWEjGgCOLpUZEv0iasOw5ykxV61g/view?usp=drivesdk"
     },
     "B1_M01_S008_Definir_la_cible_de_la_solution_digitale": {
         video: "",
@@ -83,7 +83,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "définir les rôles et les responsabilités"
+        pdf: "https://drive.google.com/file/d/1m3zewoW_38SkDehJekQjvqKvYQwEqK2L/view?usp=drivesdk"
     },
     "B1_M01_S013_Comprendre_les_enjeux_et_les_retombees_dun_projet": {
         video: "",
@@ -263,19 +263,19 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "utilisation de modèles"
+        pdf: "https://drive.google.com/file/d/1GmRxtyz4hoZj5KD_tKTMpkLWe-TDbBQh/view?usp=drivesdk"
     },
     "B1_M04_S004_Conception_avancee_:_menu_deroulant,_incrustation_decran,_personnaliser_le_design": {
         video: "",
         info: "",
         pres: "",
-        pdf: "incrustation d'écran"
+        pdf: "https://drive.google.com/file/d/1-ToRK3cDGU6l9ZLE1DemTnP7itbeaGfj/view?usp=drivesdk"
     },
     "B1_M04_S005_Creer_un_prototype,_partager_et_exporter": {
         video: "",
         info: "",
         pres: "",
-        pdf: "partager et exporter"
+        pdf: "https://drive.google.com/file/d/1yZGlMN8E0jWqgndQqWCfxgQRc18NcHZx/view?usp=drivesdk"
     },
 
     // --- Module 05 : Méthodologie et Roadmap ---
@@ -1097,7 +1097,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "la compréhension du besoin"
+        pdf: "https://drive.google.com/file/d/1m5xTmUQcIN5ez6iuMFtqd_V2mc7wK5Th/view?usp=drivesdk"
     },
     "B2_M09_S005_Design_Thinking_Definir_la_problematique": {
         video: "",
@@ -1403,7 +1403,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "les variables et les constantes"
+        pdf: "https://drive.google.com/file/d/1A3eb5tABXkUkIe0dWKaZxzboOnUCuVG-/view?usp=drivesdk"
     },
     "B3_M04_S003_Les_operateurs_de_comparaison_et_les_expressions_booleennes": {
         video: "",
@@ -1451,13 +1451,13 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "Post et Files"
+        pdf: "https://drive.google.com/file/d/14JhcnRwAWG-L6b7yUnfZoVAPOewoXbEu/view?usp=drivesdk"
     },
     "B3_M04_S011_Les_superglobales_Server,_Env_et_Session": {
         video: "",
         info: "",
         pres: "",
-        pdf: "Env et Session"
+        pdf: "https://drive.google.com/file/d/1kYsB69W3rFKWEIlE8VVSj4bxhUDLJS98/view?usp=drivesdk"
     },
     "B3_M04_S012_La_securite": {
         video: "",
@@ -1537,7 +1537,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "notion de SGBDR"
+        pdf: "https://drive.google.com/file/d/14VtMXYWB-d6qgT3UwlWktVdDvuCb6Jc3/view?usp=drivesdk"
     },
     "B3_M05_S002_Modele_conceptuel_de_donnees_et_modele_logique_de_donnees": {
         video: "",
@@ -2057,7 +2057,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "..)"
+        pdf: "https://drive.google.com/file/d/1qVoUiybETRugTh3ywxYVAaWkiTbUhrSM/view?usp=drivesdk"
     },
     "B3_M10_S002_Les_API_Google_/_AWS": {
         video: "",
