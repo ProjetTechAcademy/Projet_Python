@@ -1186,7 +1186,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1QyXdTqDPgrXvUzU1n4iwKZVAO83lDlBD/view?usp=drivesdk" // UPDATED (Matches B2_M08_S002-Les tests unitaires avec PHPUnit)
+        pdf: "https://drive.google.com/file/d/1QyXdTqDPgrXvUzU1n4iwKZVAO83lClBD/view?usp=drivesdk" // Lien Corrigé (ClBD au lieu de DlBD)
     },
     
     "B2_M08_S003_Les_tests_fonctionnels_avec_WebTestCase_et_Panther": { // Clé simplifiée
@@ -1942,294 +1942,294 @@ window.dbRessources = {
     },
 
     // --- Module 07 : Python / Django / Flask ---
-    "B3_M07_S001_L_interpreteur_de_commande_Python": { // Clé simplifiée
+    "B3M07S001LinterpreteurdecommandePython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1JAzRRWbACb7wpeY51BFNTHQtogKtSBvh/view?usp=drivesdk"
     },
 
-    "B3_M07_S002_Environnements_de_travail": { // Clé simplifiée
+    "B3M07S002Environnementsdetravail": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/14h768HO4LUE6efBoM8YODHm9Jx2v9pdg/view?usp=drivesdk"
     },
 
-    "B3_M07_S003_Variables_et_types_de_donnees": { // Clé simplifiée
+    "B3M07S003Variablesettypesdedonnees": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1prVJDr5ZBxMAieh76bMtdDGotGdd7Z50/view?usp=drivesdk"
     },
 
-    "B3_M07_S004_Portee_des_variables_et_notion_de_reference": { // Clé simplifiée
+    "B3M07S004Porteedesvariablesetnotiondereference": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1k9tItdjhBaIuBMUmv6TXreWZH6jJRT62/view?usp=drivesdk"
     },
 
-    "B3_M07_S005_Conditions_en_Python": { // Clé simplifiée
+    "B3M07S005ConditionsenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/14eSzOJ-teZuNQ2PkfaCbx79Y3ccpeioW/view?usp=drivesdk"
     },
 
-    "B3_M07_S006_Boucles_en_Python": { // Clé simplifiée
+    "B3M07S006BouclesenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1KMIX65JACVPQffq1LgTpjSc5PZFoZsyx/view?usp=drivesdk"
     },
 
-    "B3_M07_S007_Les_structures_de_donnees_en_Python": { // Clé simplifiée
+    "B3M07S007LesstructuresdedonneesenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/12HMAo44MNMY6LSB_fXRJKnS-TY7dRDml/view?usp=drivesdk"
     },
 
-    "B3_M07_S008_Structure_d_un_programme_fonctions": { // Clé simplifiée
+    "B3M07S008Structuredunprogrammefonctions": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1rYMP4MuIx1w1m59JzFdynGRTNxYiiAmH/view?usp=drivesdk"
     },
 
-    "B3_M07_S009_Ameliorer_la_qualite_du_code": { // Clé simplifiée
+    "B3M07S009Ameliorerlaqualiteducode": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1pdM6OD89ZwC9KCcA2rYL8B_r3tYKycBY/view?usp=drivesdk"
     },
 
-    "B3_M07_S010_Structure_d_un_programme_modules": { // Clé simplifiée
+    "B3M07S010Structuredunprogrammemodules": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1G1sH8e7DmnEyCj2QhN5zpUHzyIW8ZkTy/view?usp=drivesdk"
     },
 
-    "B3_M07_S011_Ameliorer_la_qualite_du_code_les_tests_unitaires": { // Clé simplifiée
+    "B3M07S011Ameliorerlaqualiteducodelestestsunitaires": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "" // No Link Provided
     },
 
-    "B3_M07_S012_Notions_theoriques_de_classe": { // Clé simplifiée
+    "B3M07S012Notionstheoriquesdeclasse": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1L13PpPBysMHdmibS7BmGjNXntLsLNl79/view?usp=drivesdk"
     },
 
-    "B3_M07_S013_Constructeur_et_mot_cle_self": { // Clé simplifiée
+    "B3M07S013Constructeuretmotcleself": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1Ik1fxpKaI1okN49fTV3neUud7TIjhWPy/view?usp=drivesdk"
     },
 
-    "B3_M07_S014_Les_methodes_speciales": { // Clé simplifiée
+    "B3M07S014Lesmethodesspeciales": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1sRu0qThx1FapRIG1SJ0gzxqQkdTqmvgW/view?usp=drivesdk"
     },
 
-    "B3_M07_S015_L_heritage": { // Clé simplifiée
+    "B3M07S015Lheritage": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1xLFc35_58U433DCH69JTJIHxGgjmE2kI/view?usp=drivesdk"
     },
 
-    "B3_M07_S016_La_notion_de_decorateur_en_Python": { // Clé simplifiée
+    "B3M07S016LanotiondedecorateurenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1PHGe54x0-BYCFayJCApvP-M25utPo75P/view?usp=drivesdk"
     },
 
-    "B3_M07_S017_Chaine_de_caracteres_en_Python": { // Clé simplifiée
+    "B3M07S017ChainedecaracteresenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1SzSr4mdELXyOARv5AeVkIw-HOMefagPA/view?usp=drivesdk"
     },
 
-    "B3_M07_S018_La_gestion_du_temps_en_Python": { // Clé simplifiée
+    "B3M07S018LagestiondutemepsenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1JA-5DuwAd5p9BQAQmSwUdFIJUG1wjKWV/view?usp=drivesdk"
     },
 
-    "B3_M07_S019_Mathematiques_en_Python": { // Clé simplifiée
+    "B3M07S019MathematiquesenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1AACblLFIA683EPuEeoAGkQhAHC9uknni/view?usp=drivesdk"
     },
 
-    "B3_M07_S020_Plus_loin_en_mathematiques": { // Clé simplifiée
+    "B3M07S020Plusloinenmathematiques": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1LLjQSdNR1p_HEKS5bnAvHwsiQlOnYupP/view?usp=drivesdk"
     },
 
-    "B3_M07_S021_Visualiser_des_donnees_sous_formes_de_graphiques": { // Clé simplifiée
+    "B3M07S021Visualiserdesdonneessousformesdegraphes": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1WYhZeyekxOZc-XC1ZGa9bQ8vszcHKujm/view?usp=drivesdk"
     },
 
-    "B3_M07_S022_Gestion_des_fichiers_en_Python": { // Clé simplifiée
+    "B3M07S022GestiondesfichiersenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1KR_dInbwrTUtcOqd4lTsqLn5qh2lna0M/view?usp=drivesdk"
     },
 
-    "B3_M07_S023_Requetes_HTTP": { // Clé simplifiée
+    "B3M07S023RequetesHTTP": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1dlJU2WsqIZfnMlZzT8J5Tc0a_bBLpWYH/view?usp=drivesdk"
     },
 
-    "B3_M07_S024_Les_bases_de_donnees_relationnelles_et_Python": { // Clé simplifiée
+    "B3M07S024LesbasesdedonneesrelationnellesetPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "" // No Link Provided
     },
 
-    "B3_M07_S025_Notion_d_ORM_object_relational_mapping": { // Clé simplifiée
+    "B3M07S025NotiondORMobjectrelationalmapping": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1BxVVXWi6mqOAjij3ZTLGRyc4eVFtubz8/view?usp=drivesdk"
     },
 
-    "B3_M07_S026_Cadre_theorique_de_Flask": { // Clé simplifiée
+    "B3M07S026CadretheoriquedeFlask": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1L6hoIHa6TLpL0GH5y-E58WUMBcq8a5vo/view?usp=drivesdk"
     },
 
-    "B3_M07_S027_Le_moteur_de_template_Jinja": { // Clé simplifiée
+    "B3M07S027LemoteurdetemplateJinja": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1FBIr3uSfgNg-r6fwHFKe9J-bGWwtLs3g/view?usp=drivesdk"
     },
 
-    "B3_M07_S028_Deploiement_en_ligne_du_site_Flask": { // Clé simplifiée
+    "B3M07S028DeploiementenlignedusiteFlask": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/120J1WmT1y__Z9SwILtf1Dh9WBIeN8-Q4/view?usp=drivesdk"
     },
 
-    "B3_M07_S029_Cadre_theorique_de_Django": { // Clé simplifiée
+    "B3M07S029CadretheoriquedeDjango": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1PETDVu3JJHhbDyfOLVZHFaRHFegwCOJS/view?usp=drivesdk"
     },
 
-    "B3_M07_S030_Les_modeles_en_Django": { // Clé simplifiée
+    "B3M07S030LesmodelesenDjango": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/19vKNaGX630RVKsVAy80EHi1r45ELeuIG/view?usp=drivesdk"
     },
 
-    "B3_M07_S031_Les_vues_en_Django": { // Clé simplifiée
+    "B3M07S031LesvuesenDjango": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1MvE-jhZlXDiOFSeoZ-8rGBz9XVbjX8Je/view?usp=drivesdk"
     },
 
-    "B3_M07_S032_API_REST_en_Python": { // Clé simplifiée
+    "B3M07S032APIRESTenPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1OH9YS5-qmU-M6deGxasVCWfS6uENQvid/view?usp=drivesdk"
     },
 
-    "B3_M07_S033_La_data_visualisation_avec_Python": { // Clé simplifiée
+    "B3M07S033LadatavisualisationavecPython": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1vZy4c93EclY_chD6r7plQIu_ptFSuu5R/view?usp=drivesdk"
     },
 
-    "B3_M07_S034_La_presentation_des_donnees_et_des_librairies": { // Clé simplifiée
+    "B3M07S034Lapresentationdesdonneesetdeslibrairies": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1TpabpicE5jnvafJrgp0rgGHFoORT1DRV/view?usp=drivesdk"
     },
 
-    "B3_M07_S035_La_librairie_numpy": { // Clé simplifiée
+    "B3M07S035Lalibrairienumpy": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1krgiRjhzp0LBG_8uguanrxb1JA2hYRfK/view?usp=drivesdk"
     },
 
-    "B3_M07_S036_La_librairie_pandas_premiere_approche": { // Clé simplifiée
+    "B3M07S036Lalibrairiepandaspremiereapproche": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1hSbITO631VUQttuI_otM7haIhDLvXkWj/view?usp=drivesdk"
     },
 
-    "B3_M07_S037_Aller_plus_loin_avec_la_librairie_pandas": { // Clé simplifiée
+    "B3M07S037Allerplusloinaveclalibrairiepandas": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1PYwBZ-qW_DuGzYeK1gtHvq5bFoAltr7K/view?usp=drivesdk"
     },
 
-    "B3_M07_S038_La_librairie_matplotlib": { // Clé simplifiée
+    "B3M07S038Lalibrairiematplotlib": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/11t4_-dms0qtMcDGaWhy_pMc3bUy6LWkk/view?usp=drivesdk"
     },
 
-    "B3_M07_S039_La_librairie_Seaborn": { // Clé simplifiée
+    "B3M07S039LalibrairieSeaborn": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1S7btWvzh6W4wVhcPvWapmKYaYjJfceIl/view?usp=drivesdk"
     },
 
-    "B3_M07_S040_La_librairie_Bokeh": { // Clé simplifiée
+    "B3M07S040LalibrairieBokeh": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/1qlfJit9NcVHUBldNljTLIFimjS1tQp7g/view?usp=drivesdk"
     },
 
-    "B3_M07_S041_La_data_visualisation_avancee_avec_Streamlit": { // Clé simplifiée
+    "B3M07S041LadatavisualisationavanceeavecStreamlit": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
         pdf: "https://drive.google.com/file/d/12B9F8j1e6MSv5UPiBlwCNafotRJ-qmOf/view?usp=drivesdk"
     },
 
-    "B3_M07_S042_Des_presentations_de_resultats_impactantes": { // Clé simplifiée
+    "B3M07S042Despresentationsderesultatsimpactantes": { // CLÉ NETTOYÉE
         video: "",
         info: "",
         pres: "",
