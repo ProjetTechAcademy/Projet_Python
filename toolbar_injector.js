@@ -1,5 +1,6 @@
 // ======================================================================
 // 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - STYLE 2025 PREMIUM
+// Correction du bug responsive de positionnement 'top'
 // ======================================================================
 (function() {
     
@@ -14,15 +15,17 @@
     const titleReadable = fileName ? fileName.replace(/_/g, ' ') : "Cours sans titre";
     
     // 2. CONNEXION BASE DE DONNÉES
+    // Assurez-vous que window.dbRessources est disponible (chargé par database.js)
     const globalDB = window.dbRessources || {};
     const resources = globalDB[fileName] || {};
 
     // 3. Fonction de Création de Bouton
     const getBtn = (key, icon, label, color) => {
         const link = resources[key]; 
-        const isActive = link && link.length > 0;
+        const isActive = link && link.length > 0 && link !== fileName; // Vérifie que le lien est présent ET n'est pas le nom du fichier par erreur
         const opacity = isActive ? "1" : "0.3";
         const cursor = isActive ? "pointer" : "default";
+        // Correction: Utiliser une fonction onClick pour gérer l'ouverture du lien
         const onclick = isActive ? `window.open('${link}', '_blank')` : "return false;";
         const boxShadow = isActive ? `0 4px 12px ${color}40` : "none";
 
@@ -34,7 +37,7 @@
                 opacity:${opacity}; cursor:${cursor}; 
                 display:flex; align-items:center; justify-content:center; 
                 font-size:16px; margin:0 5px; transition:all 0.2s ease;
-                box-shadow: ${boxShadow}; flex-shrink: 0; /* Empêche l'écrasement */
+                box-shadow: ${boxShadow}; flex-shrink: 0;
             " 
             onmouseover="if(${isActive}){ this.style.transform='translateY(-2px) scale(1.1)'; this.style.background='${color}'; this.style.color='white'; }" 
             onmouseout="if(${isActive}){ this.style.transform='translateY(0) scale(1)'; this.style.background='white'; this.style.color='${color}'; }"
@@ -47,11 +50,10 @@
     const toolbar = document.createElement('div');
     toolbar.id = "course-toolbar-injector";
     
-    // --- CORRECTION RESPONSIVE ICI ---
-    // On fixe le top à 95px (hauteur du header bleu + bordure or)
+    // NOTE IMPORTANTE: Nous allons laisser la position TOP être calculée en JS
+    // pour s'adapter à la hauteur variable du header sur mobile.
     toolbar.style.cssText = `
         position: fixed; 
-        top: 95px; 
         left: 0; 
         right: 0; 
         background: rgba(255,255,255,0.98); 
@@ -59,13 +61,14 @@
         border-bottom: 1px solid #D9A526; 
         padding: 10px 20px; 
         display: flex; 
-        flex-wrap: wrap; /* Permet le passage à la ligne sur mobile */
+        flex-wrap: wrap; 
         justify-content: space-between; 
         align-items: center; 
         gap: 10px;
-        z-index: 8000; /* Juste en dessous du header */
+        z-index: 9998; /* Un peu moins que le header (9999) */
         box-shadow: 0 4px 10px rgba(15, 44, 72, 0.05); 
         font-family: 'Outfit', sans-serif;
+        transition: top 0.3s ease-out; /* Ajout d'une transition pour le style */
     `;
 
     toolbar.innerHTML = `
@@ -96,7 +99,43 @@
         </div>
     `;
 
-    // 5. Injection
+    // 5. Injection et Ajustement de la position TOP
     document.body.appendChild(toolbar);
+
+    function updateToolbarPosition() {
+        const header = document.getElementById('mainHeader'); // ID de votre header dans lecteur.html
+        if (header) {
+            // Calcule la hauteur totale du header (y compris la bordure)
+            const headerHeight = header.offsetHeight;
+            // Applique cette hauteur comme position 'top' pour la toolbar
+            toolbar.style.top = `${headerHeight}px`;
+            
+            // Mise à jour de la marge supérieure du contenu principal pour éviter que la toolbar ne le recouvre
+            const mainContent = document.querySelector('.main-content');
+            if(mainContent) {
+                // Hauteur de la toolbar + une petite marge (ex: 15px)
+                const toolbarHeight = toolbar.offsetHeight;
+                const totalOffset = headerHeight + toolbarHeight + 15; // 15px de marge pour l'esthétique
+                
+                // Mettre à jour la marge supérieure du contenu (si elle n'est pas déjà assez grande)
+                // Le CSS initial de lecteur.html est déjà très large (210px / 280px), donc nous allons nous assurer qu'il est au moins égal au total calculé
+                mainContent.style.paddingTop = `${totalOffset}px`;
+            }
+        } else {
+            // Repli si l'ID n'est pas trouvé (pour les pages sans lecteur.html, bien que ce script ne doive y être que là)
+            toolbar.style.top = '95px'; 
+        }
+    }
+    
+    // Exécuter au chargement et lors du redimensionnement de la fenêtre
+    window.addEventListener('load', updateToolbarPosition);
+    window.addEventListener('resize', updateToolbarPosition);
+
+    // Observer si le header change de taille (utile sur les mobiles qui peuvent le faire)
+    const resizeObserver = new ResizeObserver(updateToolbarPosition);
+    const headerElement = document.getElementById('mainHeader');
+    if (headerElement) {
+        resizeObserver.observe(headerElement);
+    }
 
 })();
