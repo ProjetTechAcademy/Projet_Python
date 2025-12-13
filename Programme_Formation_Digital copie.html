@@ -7,8 +7,11 @@
 
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -338,11 +341,14 @@
 </head>
 <body>
 
+  <!-- ==================== HEADER (HAUT) ==================== -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
       
+      <!-- Logo & Titre (Aligné à Gauche) -->
       <div class="top-left">
         <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER -->
           <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
         </a>
         <div class="identity-stack">
@@ -351,28 +357,39 @@
         </div>
       </div>
 
+      <!-- Navigation Icônes -->
       <nav class="top-center" aria-label="Navigation principale">
         
+        <!-- 1. Accueil -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
         
+        <!-- 2. Mon Espace -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
         
+        <!-- 3. Planning (PAGE ACTUELLE) -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours" style="background:var(--brandGold); color:var(--brand-blue); border-color:var(--ivory);">📅</a>
         
+        <!-- 4. Atelier -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
 
+        <!-- 5. Observatoire -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
 
+        <!-- 6. RNCP -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
 
+        <!-- 7. Lexique -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
 
+        <!-- 8. Acronymes -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
 
+        <!-- 9. Profil -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">👤</a>
 
       </nav>
 
+      <!-- Bouton EXPERT / Portfolio (Lien 10) -->
       <div>
         <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" title="Mon Portfolio">
           <i class="fa-solid fa-code"></i>
@@ -381,13 +398,19 @@
       </div>
     </div>
   </div>
+  <!-- ==================== FIN HEADER ==================== -->
+
+
+  <!-- ZONE DE CONTENU -->
   <main class="main-content">
     
     <section class="fade-up">
+        <!-- En-tête du Programme -->
         <div class="text-center mb-10 mt-6">
             <h1 class="text-4xl md:text-5xl font-bold mb-3" style="font-family: 'Playfair Display', serif;">Programme de Formation</h1>
             <p class="uppercase tracking-widest font-bold text-sm" style="color:var(--brandGold);">The Dev Elite Club</p>
             
+            <!-- MINI BLOC COMMUNAUTÉ (Demande Mathilde) - DÉPLACÉ ICI -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-3 mt-3 mb-2 text-xs text-gray-500">
                 <span class="italic">Une question ? Besoin de motivation ? Rejoins la team ! 👉</span>
                 <div class="flex gap-2">
@@ -402,7 +425,9 @@
                 </div>
             </div>
 
+            <!-- Barre de Progression Globale -->
             <div class="mt-4 max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-sm border border-orange-100 relative overflow-hidden">
+                <!-- Décoration d'arrière plan subtile -->
                 <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-100 rounded-full opacity-50 blur-xl"></div>
                 <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
 
@@ -418,6 +443,7 @@
             </div>
         </div>
 
+        <!-- NAVIGATION DES ONGLETS -->
         <div class="flex flex-wrap justify-center gap-4 mb-8">
             <button onclick="openTab('b1')" id="btn-b1" class="tab-btn active px-6 py-4 rounded-xl font-bold text-lg shadow-sm flex items-center gap-3">
                 <span class="bg-[#D9A526] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md">1</span>
@@ -433,8 +459,10 @@
             </button>
         </div>
 
+        <!-- CONTENU DES ONGLETS -->
         <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-h-[500px] border border-orange-100/50">
 
+            <!-- BLOC 1 CONTENT (ID: tab-b1) -->
             <div id="tab-b1" class="tab-content active space-y-4">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-[#D9A526] pb-4">
                     <h2 class="text-2xl font-bold text-[#0F2C48]">B1_Conception et spécification</h2>
@@ -446,6 +474,7 @@
                 <div id="modules-container-1"></div>
             </div>
 
+            <!-- BLOC 2 CONTENT (ID: tab-b2) -->
             <div id="tab-b2" class="tab-content space-y-4">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-[#D9A526] pb-4">
                     <h2 class="text-2xl font-bold text-[#0F2C48]">B2_Gestion et Pilotage</h2>
@@ -457,6 +486,7 @@
                 <div id="modules-container-2"></div>
             </div>
 
+            <!-- BLOC 3 CONTENT (ID: tab-b3) -->
             <div id="tab-b3" class="tab-content space-y-4">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-[#D9A526] pb-4">
                     <h2 class="text-2xl font-bold text-[#0F2C48]">B3_Développement Python & Web</h2>
@@ -478,13 +508,16 @@
   </main>
 
 
+  <!-- ==================== FOOTER (BAS) ==================== -->
   <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
       <div class="footer-left">
+        <!-- LOGO FOOTER -->
         <div class="footer-logo-img">
             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
         </div>
         
+        <!-- DÉTAILS DE CONTACT -->
         <div class="footer-details">
           <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
           
@@ -499,6 +532,7 @@
       </div>
 
       <div class="footer-right">
+        <!-- Navigation Footer -->
         <div class="footer-links-row" aria-label="Liens utilitaires" style="margin-bottom: 10px;">
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
@@ -513,6 +547,7 @@
             
         <div class="footer-divider" style="height: 1px; width: 100%; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
 
+        <!-- Réseaux Sociaux -->
         <div class="footer-links-row">
             <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
             <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
@@ -528,6 +563,9 @@
       </div>
     </div>
   </footer>
+  <!-- ==================== FIN FOOTER ==================== -->
+  
+  <!-- MODALE AGENDA -->
   <div id="calendar-modal" class="modal-overlay">
       <div class="modal-card">
           <h3 class="modal-title">📅 Planifier ma révision</h3>
@@ -545,6 +583,7 @@
       </div>
   </div>
 
+  <!-- Script Animation & Logic -->
   <script>
     // Animation d'apparition
     const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
@@ -556,48 +595,50 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
   </script>
 
+  <!-- SCRIPT EXTERNE (BDD) -->
   <script src="database.js"></script>
 
+  <!-- SCRIPT LOGIQUE PROGRAMME -->
   <script>
-        // 1. Données du Programme (MIS À JOUR SELON VOTRE LISTE)
+        // 1. Données du Programme
         const programData = {
             1: [
-                { title: "B1_M01_Analyser les besoins client et identifier les solutions adaptées", topics: ["B1_M01_S000-Comment et pourquoi se former à la conception et spécification d'une solution digitale","B1_M01_S001-La veille et l'innovation","B1_M01_S002-Les modes d'innovation","B1_M01_S003-Les entreprises et l'innovation","B1_M01_S004-La créativité moteur de l'innovation","B1_M01_S005-Panorama des techniques de créativité","B1_M01_S006-L'écosystème d'un projet digital","B1_M01_S007-Étude comparative, le benchmark des solutions existantes","B1_M01_S008-Définir la cible de la solution digitale","B1_M01_S009-Les principaux acteurs d’un projet digital - la maîtrise d’oeuvre","B1_M01_S010-Les principaux acteurs d’un projet digital - la maîtrise d’ouvrage","B1_M01_S011-Identifier les parties prenantes","B1_M01_S012-Etablir la gouvernance du projet, définir les rôles et les responsabilités","B1_M01_S013-Comprendre les enjeux et les retombées d’un projet","B1_M01_S014-Le cahier des charges - l'expression du besoin"] },
-                { title: "B1_M02_Définir les options techniques de la solution digitale", topics: ["B1_M02_S001-Les spécificités du projet digital","B1_M02_S002-Le recueil de l'analyse des besoins","B1_M02_S003-Définir la solution et le projet cibles","B1_M02_S004-Définir les objectifs et faire valider l’opportunité du projet","B1_M02_S005-Le choix technologique de la solution","B1_M02_S006-Le cahier des charges technique : détailler la mise en œuvre","B1_M02_S007-Le cahier des charges technique : du besoin à la solution technique","B1_M02_S008-Le cahier des charges technique : description fonctionnelle et technique","B1_M02_S009-La présentation et la validation de sa solution","B1_M02_S010-L'utilisation en interne du CDC"] },
+                { title: "B1_M01_Analyser les besoins client", topics: ["B1_M01_S001-La veille et l'innovation","B1_M01_S002-Les modes d'innovation","B1_M01_S003-Les entreprises et l'innovation","B1_M01_S004-La créativité moteur de l'innovation","B1_M01_S005-Panorama des techniques de créativité","B1_M01_S006-L'écosystème d'un projet digital","B1_M01_S007-Étude comparative, le benchmark des solutions existantes","B1_M01_S008-Définir la cible de la solution digitale","B1_M01_S009-Les principaux acteurs d’un projet digital : la maîtrise d’oeuvre","B1_M01_S010-Les principaux acteurs d’un projet digital : la maîtrise d’ouvrage","B1_M01_S011-Identifier les parties prenantes","B1_M01_S012-Etablir la gouvernance du projet, définir les rôles et les responsabilités","B1_M01_S013-Comprendre les enjeux et les retombées d’un projet","B1_M01_S014-Le cahier des charges : l'expression du besoin"] },
+                { title: "B1_M02_Définir les options techniques", topics: ["B1_M02_S001-Les spécificités du projet digital","B1_M02_S002-Le recueil de l'analyse des besoins","B1_M02_S003-Définir la solution et le projet cibles","B1_M02_S004-Définir les objectifs et faire valider l’opportunité du projet","B1_M02_S005-Le choix technologique de la solution","B1_M02_S006-Le cahier des charges technique : détailler la mise en œuvre","B1_M02_S007-Le cahier des charges technique : du besoin à la solution technique","B1_M02_S008-Le cahier des charges technique : description fonctionnelle et technique","B1_M02_S009-La présentation et la validation de sa solution","B1_M02_S010-L'utilisation en interne du CDC"] },
                 { title: "B1_M03_Découvrir Adobe XD", topics: ["B1_M03_S001-Présentation générale","B1_M03_S002-Gestion des documents","B1_M03_S003-Les outils de dessin vectoriel","B1_M03_S004-Les textes","B1_M03_S005-Importation de fichiers et d'images","B1_M03_S006-Les différents effets graphiques","B1_M03_S007-Création d'éléments répétés","B1_M03_S008-Redimensionnement réactif","B1_M03_S009-Utilisation des composants","B1_M03_S010-Utilisation et gestion des Actifs","B1_M03_S011-Le mode Prototype","B1_M03_S012-Plug-ins","B1_M03_S013-Partage de designs et de prototypes","B1_M03_S014-Les différents types d'export"] },
-                { title: "B1_M04_Utiliser l'éditeur de graphiques Figma", topics: ["B1_M04_S001-Présentation de l'application","B1_M04_S002-L'application Figma","B1_M04_S003-Importation et exportation de fichiers, utilisation de modèles","B1_M04_S004-Conception avancée : menu déroulant, incrustation d'écran, personnaliser le design","B1_M04_S005-Créer un prototype, partager et exporter"] },
-                { title: "B1_M05_Définir la méthodologie, la roadmap, les ressources et les livrables", topics: ["B1_M05_S001-Introduction à l'organisation d'un projet digital","B1_M05_S002-Méthodologie pour piloter un projet digital : une démarche itérative","B1_M05_S003-Le rôle du chef de projet digital","B1_M05_S004-Les modes de gestion de projet dits \"classiques\"","B1_M05_S005-Les méthodologies agiles","B1_M05_S006-Les processus et les disciplines de la gestion de projet selon le PMBOK","B1_M05_S007-Les acteurs et les ressources du projet","B1_M05_S008-La première découpe du projet","B1_M05_S009-La construction du planning","B1_M05_S010-La gestion du budget du projet","B1_M05_S011-La gestion des risques","B1_M05_S012-La communication autour du projet"] },
+                { title: "B1_M04_Utiliser Figma", topics: ["B1_M04_S001-Présentation de l'application","B1_M04_S002-L'application Figma","B1_M04_S003-Importation et exportation de fichiers","B1_M04_S004-Conception avancée","B1_M04_S005-Créer un prototype, partager et exporter"] },
+                { title: "B1_M05_Définir la méthodologie", topics: ["B1_M05_S001-Introduction à l'organisation d'un projet digital","B1_M05_S002-Méthodologie pour piloter un projet digital","B1_M05_S003-Le rôle du chef de projet digital","B1_M05_S004-Les modes de gestion de projet dits \"classiques\"","B1_M05_S005-Les méthodologies agiles","B1_M05_S006-Les processus et les disciplines selon le PMBOK","B1_M05_S007-Les acteurs et les ressources du projet","B1_M05_S008-La première découpe du projet","B1_M05_S009-La construction du planning","B1_M05_S010-La gestion du budget du projet","B1_M05_S011-La gestion des risques","B1_M05_S012-La communication autour du projet"] },
                 { title: "B1_M06_Concevoir une solution digitale", topics: ["B1_M06_S001-La réalisation d'une étude d'opportunité","B1_M06_S002-Le rôle de la note de cadrage","B1_M06_S003-L'étude de faisabilité","B1_M06_S004-L'analyse des risques","B1_M06_S005-L'analyse fonctionnelle","B1_M06_S006-Proposer une solution optimale en termes de coût","B1_M06_S007-Proposer une solution optimale en termes de délais de production","B1_M06_S008-Proposer une solution optimale en termes de performance attendue","B1_M06_S009-Proposer une solution optimale en termes de pérennité","B1_M06_S010-L'utilité du suivi de la performance","B1_M06_S011-Les indicateurs de suivi selon les objectifs","B1_M06_S012-La construction d'un tableau de bord opérationnel"] },
-                { title: "B1_M07_Découvrir les méthodologies de gestion de projets agiles", topics: ["B1_M07_S001-Les méthodologies agiles","B1_M07_S002-Introduction à la méthode Scrum","B1_M07_S003-Comprendre Kanban","B1_M07_S004-Présentation du diagramme de Gantt"] },
-                { title: "B1_M08_Concevoir l’architecture logicielle de la solution", topics: ["B1_M08_S001-L’architecture en appels et retours","B1_M08_S002-L’architecture en couches","B1_M08_S003-L’architecture centrée sur les données","B1_M08_S004-L’architecture en flot de données","B1_M08_S005-L’architecture orientée objets","B1_M08_S006-L’architecture orientée agents"] },
-                { title: "B1_M09_Comprendre la spécification fonctionnelle", topics: ["B1_M09_S001-Comprendre les objectifs de la spécification fonctionnelle","B1_M09_S002-Comment rédiger une spécification fonctionnelle"] },
-                { title: "B1_M10_Elaborer un cahier des charges fonctionnel", topics: ["B1_M10_S001-Le cahier des charges fonctionnel : le contexte du projet et ses enjeux","B1_M10_S002-Le cahier des charges fonctionnel : la portée de la solution","B1_M10_S003-Le cahier des charges fonctionnel : les contraintes","B1_M10_S004-Le cahier des charges fonctionnel : les parcours utilisateurs","B1_M10_S005-Le cahier des charges fonctionnel : les fonctionnalités clés et les spécifications","B1_M10_S006-Le cahier des charges fonctionnel : l'approche créative","B1_M10_S007-Le cahier des charges fonctionnel : l'organisation du projet"] },
-                { title: "B1_M11_Définir les objectifs SMART de sa solution digitale", topics: ["B1_M11_S001-Le recueil et l'analyse des besoins","B1_M11_S002-La validation de la solution","B1_M11_S003-Le droit du web","B1_M11_S004-Définition du droit numérique","B1_M11_S005-Les responsabilités des intervenants","B1_M11_S006-Le droit pénal de l'informatique","B1_M11_S007-L'informatique sur le lieu de travail","B1_M11_S008-La législation comparée","B1_M11_S009-L'informatique et droit public","B1_M11_S010-Le cadre juridique du e-commerce","B1_M11_S011-Les textes de référence"] }
+                { title: "B1_M07_Méthodologies agiles", topics: ["B1_M07_S001-Les méthodologies agiles","B1_M07_S002-Introduction à la méthode Scrum","B1_M07_S003-Comprendre Kanban","B1_M07_S004-Présentation du diagramme de Gantt"] },
+                { title: "B1_M08_Architecture logicielle", topics: ["B1_M08_S001-L’architecture en appels et retours","B1_M08_S002-L’architecture en couches","B1_M08_S003-L’architecture centrée sur les données","B1_M08_S004-L’architecture en flot de données","B1_M08_S005-L’architecture orientée objets","B1_M08_S006-L’architecture orientée agents"] },
+                { title: "B1_M09_Spécification fonctionnelle", topics: ["B1_M09_S001-Comprendre les objectifs de la spécification fonctionnelle","B1_M09_S002-Comment rédiger une spécification fonctionnelle"] },
+                { title: "B1_M10_Cahier des charges fonctionnel", topics: ["B1_M10_S001-Le contexte du projet et ses enjeux","B1_M10_S002-La portée de la solution","B1_M10_S003-Les contraintes","B1_M10_S004-Les parcours utilisateurs","B1_M10_S005-Les fonctionnalités clés et les spécifications","B1_M10_S006-L'approche créative","B1_M10_S007-L'organisation du projet"] },
+                { title: "B1_M11_Objectifs SMART & Droit", topics: ["B1_M11_S001-Le recueil et l'analyse des besoins","B1_M11_S002-La validation de la solution","B1_M11_S003-Le droit du web","B1_M11_S004-Définition du droit numérique","B1_M11_S005-Les responsabilités des intervenants","B1_M11_S006-Le droit pénal de l'informatique","B1_M11_S007-L'informatique sur le lieu de travail","B1_M11_S008-La législation comparée","B1_M11_S009-L'informatique et droit public","B1_M11_S010-Le cadre juridique du e-commerce","B1_M11_S011-Les textes de référence"] }
             ],
             2: [
-                { title: "B2_M01_Manager et piloter les tâches avec ses équipes projet grâce à TRELLO", topics: ["B2_M01_S001-L'application Trello", "B2_M01_S002-Création du compte", "B2_M01_S003-Découverte de l'interface", "B2_M01_S004-Découvrir le contenu d'un projet", "B2_M01_S005-Le travail collaboratif : les membres", "B2_M01_S006-Le travail collaboratif : les équipes", "B2_M01_S007-Les tableaux", "B2_M01_S008-Les listes", "B2_M01_S009-Les cartes", "B2_M01_S010-Les checklists", "B2_M01_S011-Les utilitaires", "B2_M01_S012-Les Power-ups"] },
-                { title: "B2_M02_Manager et piloter les tâches avec ses équipes projet grâce à JIRA", topics: ["B2_M02_S001-Découvrir JIRA", "B2_M02_S002-Apprendre JIRA", "B2_M02_S003-Les méthodologies agiles avec JIRA", "B2_M02_S004-JIRA pour les équipes", "B2_M02_S005-JIRA pour les administrateurs", "B2_M02_S006-Utiliser JIRA avec Gitlab"] },
-                { title: "B2_M03_Gérer son projet avec GanttProject", topics: ["B2_M03_S001-Apprendre à utiliser Gantt project", "B2_M03_S002-Cadrer le projet", "B2_M03_S003-Construire le plan de projet", "B2_M03_S004-Création des dépendances", "B2_M03_S005-Gérer les affichages", "B2_M03_S006-Le réseau du projet", "B2_M03_S007-Gérer les ressources", "B2_M03_S008-Le suivi de projet", "B2_M03_S009-Les outils d'impression et d'exportation", "B2_M03_S010-Application - Gestion de projet - GanttProject"] },
-                { title: "B2_M04_Comprendre la modélisation UML", topics: ["B2_M04_S001-Introduction à la modélisation conceptuelle de données avec UML", "B2_M04_S002-Les diagrammes de classes", "B2_M04_S003-Les diagrammes d'objets", "B2_M04_S004-Les diagrammes de composants", "B2_M04_S005-Les diagrammes de déploiement", "B2_M04_S006-Les diagrammes des paquets", "B2_M04_S007-Les diagrammes de structure composite", "B2_M04_S008-Les diagrammes de profils", "B2_M04_S009-Diagrammes de cas d'utilisation UML (UML use case diagram)", "B2_M04_S010-Les diagrammes états-transitions", "B2_M04_S011-Les diagrammes d'activité", "B2_M04_S012-Les diagrammes de séquence", "B2_M04_S013-Les diagrammes de communication", "B2_M04_S014-Les diagrammes global d'interaction", "B2_M04_S015-Les diagrammes de temps"] },
-                { title: "B2_M05_Utiliser l'outil Agile : Scrum", topics: ["B2_M05_S001-Comprendre les différents cycles de vie des projets en méthode Agile", "B2_M05_S002-Définir le cadre de la solution digitale", "B2_M05_S003-La préparation du backlog", "B2_M05_S004-La notion de travail en sprint", "B2_M05_S005-Les retours et les feedbacks", "B2_M05_S006-La réitération en fonction des feedbacks", "B2_M05_S007-Le rôle du Scrum Master", "B2_M05_S008-Le rôle du product owner"] },
-                { title: "B2_M06_Utiliser l'outil Agile : Kanban", topics: ["B2_M06_S001-L'application Smartsheet", "B2_M06_S002-La plateforme Monday"] },
+                { title: "B2_M01_TRELLO", topics: ["B2_M01_S001-L'application Trello", "B2_M01_S002-Création du compte", "B2_M01_S003-Découverte de l'interface", "B2_M01_S004-Découvrir le contenu d'un projet", "B2_M01_S005-Le travail collaboratif : les membres", "B2_M01_S006-Le travail collaboratif : les équipes", "B2_M01_S007-Les tableaux", "B2_M01_S008-Les listes", "B2_M01_S009-Les cartes", "B2_M01_S010-Les checklists", "B2_M01_S011-Les utilitaires", "B2_M01_S012-Les Power-ups"] },
+                { title: "B2_M02_JIRA", topics: ["B2_M02_S001-Découvrir JIRA", "B2_M02_S002-Apprendre JIRA", "B2_M02_S003-Les méthodologies agiles avec JIRA", "B2_M02_S004-JIRA pour les équipes", "B2_M02_S005-JIRA pour les administrateurs", "B2_M02_S006-Utiliser JIRA avec Gitlab"] },
+                { title: "B2_M03_GanttProject", topics: ["B2_M03_S001-Apprendre à utiliser Gantt project", "B2_M03_S002-Cadrer le projet", "B2_M03_S003-Construire le plan de projet", "B2_M03_S004-Création des dépendances", "B2_M03_S005-Gérer les affichages", "B2_M03_S006-Le réseau du projet", "B2_M03_S007-Gérer les ressources", "B2_M03_S008-Le suivi de projet", "B2_M03_S009-Les outils d'impression et d'exportation", "B2_M03_S010-Application - Gestion de projet - GanttProject"] },
+                { title: "B2_M04_Modélisation UML", topics: ["B2_M04_S001-Introduction à la modélisation UML", "B2_M04_S002-Les diagrammes de classes", "B2_M04_S003-Les diagrammes d'objets", "B2_M04_S004-Les diagrammes de composants", "B2_M04_S005-Les diagrammes de déploiement", "B2_M04_S006-Les diagrammes des paquets", "B2_M04_S007-Les diagrammes de structure composite", "B2_M04_S008-Les diagrammes de profils", "B2_M04_S009-Diagrammes de cas d'utilisation UML", "B2_M04_S010-Les diagrammes états-transitions", "B2_M04_S011-Les diagrammes d'activité", "B2_M04_S012-Les diagrammes de séquence", "B2_M04_S013-Les diagrammes de communication", "B2_M04_S014-Les diagrammes global d'interaction", "B2_M04_S015-Les diagrammes de temps"] },
+                { title: "B2_M05_Agile : Scrum", topics: ["B2_M05_S001-Comprendre les différents cycles de vie des projets en méthode Agile", "B2_M05_S002-Définir le cadre de la solution digitale", "B2_M05_S003-La préparation du backlog", "B2_M05_S004-La notion de travail en sprint", "B2_M05_S005-Les retours et les feedbacks", "B2_M05_S006-La réitération en fonction des feedbacks", "B2_M05_S007-Le rôle du Scrum Master", "B2_M05_S008-Le rôle du product owner"] },
+                { title: "B2_M06_Agile : Kanban", topics: ["B2_M06_S001-L'application Smartsheet", "B2_M06_S002-La plateforme Monday"] },
                 { title: "B2_M07_Tester son application Web", topics: ["B2_M07_S001L’examen des exigences", "B2_M07_S002-Les tests d’usabilité", "B2_M07_S003-Les tests unitaires", "B2_M07_S004-Les tests d’intégration", "B2_M07_S005-Les tests des composants", "B2_M07_S006-Les tests de bout en bout (End to End)", "B2_M07_S007-Les tests d’acceptation", "B2_M07_S008-Les tests de régression", "B2_M07_S009-Intégration continue", "B2_M07_S010-Le déploiement continu (CD)"] },
-                { title: "B2_M08_Réaliser des tests fonctionnels", topics: ["B2_M08_S001-Les notions de test unitaire et test fonctionnel", "B2_M08_S002-Les tests unitaires avec PHPUnit", "B2_M08_S003-Les tests fonctionnels avec WebTestCase et Panther", "B2_M08_S004-Les tests unitaires avec les mocks", "B2_M08_S005-Le Test Driven Development", "B2_M08_S006-Les services", "B2_M08_S007-L'Ajax avec Axios et Symfony", "B2_M08_S008-Tests d'intégration et recette fonctionnelle", "B2_M08_S009-Mesurer son application", "B2_M08_S010-A/B testing"] },
-                { title: "B2_M09_Proposer des solutions suite à un audit", topics: ["B2_M09_S001-La résolution d'une situation critique pour la survie du projet", "B2_M09_S002-Le suivi des indicateurs qualité et amélioration continue", "B2_M09_S003-La conception de la solution grâce au Design Thinking", "B2_M09_S004-Design Thinking La phase d’empathie, la compréhension du besoin", "B2_M09_S005-Design Thinking Définir la problématique", "B2_M09_S006-Design Thinking La phase d’idéation", "B2_M09_S007-Design Thinking La phase de prototypage de la solution", "B2_M09_S008-Design Thinking La phase de test de la solution"] }
+                { title: "B2_M08_Tests fonctionnels", topics: ["B2_M08_S001-Les notions de test unitaire et test fonctionnel", "B2_M08_S002-Les tests unitaires avec PHPUnit", "B2_M08_S003-Les tests fonctionnels avec WebTestCase et Panther", "B2_M08_S004-Les tests unitaires avec les mocks", "B2_M08_S005-Le Test Driven Development", "B2_M08_S006-Les services", "B2_M08_S007-L'Ajax avec Axios et Symfony", "B2_M08_S008-Tests d'intégration et recette fonctionnelle", "B2_M08_S009-Mesurer son application", "B2_M08_S010-A/B testing"] },
+                { title: "B2_M09_Audit et Solutions", topics: ["B2_M09_S001-La résolution d'une situation critique", "B2_M09_S002-Le suivi des indicateurs qualité", "B2_M09_S003-Conception de solution Design Thinking", "B2_M09_S004-Design Thinking: Empathie", "B2_M09_S005-Design Thinking: Définir la problématique", "B2_M09_S006-Design Thinking: Idéation", "B2_M09_S007-Design Thinking: Prototypage", "B2_M09_S008-Design Thinking: Test"] }
             ],
             3: [
-                { title: "B3_M01_Piloter la production de contenus digitaux", topics: ["B3_M01_S001-Comment et pourquoi se former à la production de contenus digitaux ?", "B3_M01_S002-Introduction à la production de contenus digitaux", "B3_M01_S003-La création de contenu digital en adéquation avec sa cible", "B3_M01_S004-L'orientation artistique et le brief créatif", "B3_M01_S005-La gestion de la production de contenus digitaux", "B3_M01_S006-La mise en place opérationnelle de sa stratégie de production de contenus", "B3_M01_S007-La proposition de production de contenu", "B3_M01_S008-Application - Piloter la production de contenus digitaux"] },
-                { title: "B3_M02_Créer un site web avec HTML, CSS et le Framework Bootstrap", topics: ["B3_M02_S001-Introduction HTML et CSS", "B3_M02_S002-Syntaxe générale de HTML", "B3_M02_S003-L'organisation du texte", "B3_M02_S004-Un langage hypertexte", "B3_M02_S005-Le multimédia en HTML", "B3_M02_S006-Introduction au CSS", "B3_M02_S007-CSS3 : Le stylage du texte", "B3_M02_S008-La structuration logique en HTML5 et le modèle de boîtes en CSS3", "B3_M02_S009-Les sélecteurs CSS", "B3_M02_S010-La mise en page avec CSS", "B3_M02_S011-La création de tableaux", "B3_M02_S012-La création de formulaires", "B3_M02_S013-Layout avec CSS Grid", "B3_M02_S014-Les effets avancés de CSS", "B3_M02_S015-Utiliser des documentations CSS", "B3_M02_S016-Le responsive design", "B3_M02_S017-Valider la qualité de son site", "B3_M02_S018-L'installation et la prise en main du framework Bootstrap - Hello world", "B3_M02_S019-La grille bootstrap", "B3_M02_S020-Les éléments bootstrap", "B3_M02_S021-Les composants bootstrap", "B3_M02_S022-Ouverture vers d'autres framework CSS", "B3_M02_S023-SASS", "B3_M02_S024-Le référencement des sites Web", "B3_M02_S025-Déployer son site sur le Web"] },
-                { title: "B3_M03_Dynamiser vos sites web avec JavaScript", topics: ["B3_M03_S001-La programmation événementielle en JavaScript", "B3_M03_S002-Le formulaire HTML et JavaScript", "B3_M03_S003-Initiation aux objets et aux classes", "B3_M03_S004-L'API DOM", "B3_M03_S005-Présentation de la librairie JQuery", "B3_M03_S006-Les bases de JQuery", "B3_M03_S007-La programmation AJAX", "B3_M03_S008-Les promesses et l'API Fetch", "B3_M03_S009-L'utilisation de JSON", "B3_M03_S010-L'API Canvas en JavaScript"] },
-                { title: "B3_M04_Développer des sites web dynamiques avec PHP", topics: ["B3_M04_S001-PHP et HTML (sorties)", "B3_M04_S002-Les types de données, les variables et les constantes", "B3_M04_S003-Les opérateurs de comparaison et les expressions booléennes", "B3_M04_S004-Les fonctions", "B3_M04_S005-Les tableaux", "B3_M04_S006-Les conditions", "B3_M04_S007-Les boucles", "B3_M04_S008-Créer ses propres fonctions", "B3_M04_S009-L'organisation des fichiers PHP", "B3_M04_S010-Les superglobales Get, Post et Files", "B3_M04_S011-Les superglobales Server, Env et Session", "B3_M04_S012-La sécurité", "B3_M04_S013-La manipulation des dates", "B3_M04_S014-La manipulation des fichiers en PHP", "B3_M04_S015-Les expressions régulières", "B3_M04_S016-Utiliser la documentation PHP et Standard de codage PHP", "B3_M04_S017-La préparation de l'environnement de travail", "B3_M04_S018-La programmation Orientée Objet concepts de base", "B3_M04_S019-La programmation Orientée Objet concepts avancés", "B3_M04_S020-La gestion des erreurs", "B3_M04_S021-La programmation Orientée Objet Design Patterns", "B3_M04_S022-La programmation Orientée Objet L’encapsulation et la visibilité", "B3_M04_S023-Le modèle MVC"] },
-                { title: "B3_M05_Créer et administrer une base de données relationnelle", topics: ["B3_M05_S001-Introduction générale aux bases de données, notion de SGBDR", "B3_M05_S002-Modèle conceptuel de données et modèle logique de données", "B3_M05_S003-Les diagrammes fonctionnels", "B3_M05_S004-Le diagramme de classe", "B3_M05_S005-Introduction au passage UML- Relationnel", "B3_M05_S006-Création et alimentation de bases de données SQL", "B3_M05_S007-L'interrogation de bases de données SQL", "B3_M05_S008-Découvrir un autre SGBDR PostgreSQL", "B3_M05_S009-Connexion à la base de données en PHP", "B3_M05_S010-PHP/PDO : accès en lecture/écriture", "B3_M05_S011-Les requetes SQL", "B3_M05_S012-Les fonctions SQL", "B3_M05_S013-Les jointures SQL", "B3_M05_S014-Gérer les accès des utilisateurs au niveau PHP et BD", "B3_M05_S015-Découverte d'un ORM PHP", "B3_M05_S016-Projet : Créer et administrer une base de données", "B3_M05_S017-Introduction NOSQL", "B3_M05_S018-Introduction à MongoDB"] },
-                { title: "B3_M06_Créer et administrer une base de données non relationnelle", topics: ["B3_M06_S001-Introduction NOSQL", "B3_M06_S002-Introduction à MongoDB"] },
-                { title: "B3_M07_Développer une application web avec Python", topics: ["B3_M07_S001-L'interpréteur de commande Python", "B3_M07_S002-Environnements de travail", "B3_M07_S003-Variables et types de données", "B3_M07_S004-Portée des variables et notion de référence", "B3_M07_S005-Conditions en Python", "B3_M07_S006-Boucles en Python", "B3_M07_S007-Les structures de données en Python", "B3_M07_S008-Structure d'un programme - fonctions", "B3_M07_S009-Améliorer la qualité du code", "B3_M07_S010-Structure d'un programme - modules", "B3_M07_S011-Améliorer la qualité du code - les tests unitaires", "B3_M07_S012-Notions théoriques de classe", "B3_M07_S013-Constructeur et mot-clé self", "B3_M07_S014-Les méthodes spéciales", "B3_M07_S015-L'héritage", "B3_M07_S016-La notion de décorateur en Python", "B3_M07_S017-Chaîne de caractères en Python", "B3_M07_S018-La gestion du temps en Python", "B3_M07_S019-Mathématiques en Python", "B3_M07_S020-Plus loin en mathématiques", "B3_M07_S021-Visualiser des données sous formes de graphiques", "B3_M07_S022-Gestion des fichiers en Python", "B3_M07_S023-Requêtes HTTP", "B3_M07_S024-Les bases de données relationnelles et Python", "B3_M07_S025-Notion d'ORM (object-relational mapping)", "B3_M07_S026-Cadre théorique de Flask", "B3_M07_S027-Le moteur de template Jinja", "B3_M07_S028-Déploiement en ligne du site Flask", "B3_M07_S029-Cadre théorique de Django", "B3_M07_S030-Les modèles en Django", "B3_M07_S031-Les vues en Django", "B3_M07_S032-API REST en Python", "B3_M07_S033-La data visualisation avec Python", "B3_M07_S034-La présentation des données et des librairies", "B3_M07_S035-La librairie numpy", "B3_M07_S036-La librairie pandas première approche", "B3_M07_S037-Aller plus loin avec la librairie pandas", "B3_M07_S038-La librairie matplotlib", "B3_M07_S039-La librairie Seaborn", "B3_M07_S040-La librairie Bokeh", "B3_M07_S041-La data visualisation avancée avec Streamlit", "B3_M07_S042-Des présentations de résultats impactantes"] },
-                { title: "B3_M08_Développer une application mobile avec React Native", topics: ["B3_M08_S001-Le développement Mobile", "B3_M08_S002-Introduction à React Native : l'outil Expo", "B3_M08_S003-Les bases de React Native", "B3_M08_S004-Les composants React Native", "B3_M08_S005-Les props et les states", "B3_M08_S006-Style et mise en page avec Flexbox", "B3_M08_S007-Du code différent en fonction de la plateforme", "B3_M08_S008-L'utilisation de Redux", "B3_M08_S009-Les extensions de Redux", "B3_M08_S010-L'organisation d'une application React Native", "B3_M08_S011-La navigation avec React Native", "B3_M08_S012-Les différents types de navigators", "B3_M08_S013-L'animation avec React Native", "B3_M08_S014-Installer les émulateurs", "B3_M08_S015-Utiliser une base données locale : SQLITE", "B3_M08_S016-Les APIs React Native et modules natifs", "B3_M08_S017-Le debugging", "B3_M08_S018-Le déploiement d'une application sur les stores", "B3_M08_S019-Créer une application React Native sans Expo", "B3_M08_S020-Projet - développer une application mobile avec React Native"] },
+                { title: "B3_M01_Production de contenus digitaux", topics: ["B3_M01_S001-Comment et pourquoi se former à la production de contenus digitaux ?", "B3_M01_S002-Introduction à la production de contenus digitaux", "B3_M01_S003-La création de contenu digital en adéquation avec sa cible", "B3_M01_S004-L'orientation artistique et le brief créatif", "B3_M01_S005-La gestion de la production de contenus digitaux", "B3_M01_S006-La mise en place opérationnelle de sa stratégie", "B3_M01_S007-La proposition de production de contenu", "B3_M01_S008-Application - Piloter la production"] },
+                { title: "B3_M02_HTML, CSS, Bootstrap", topics: ["B3_M02_S001-Introduction HTML et CSS", "B3_M02_S002-Syntaxe générale de HTML", "B3_M02_S003-L'organisation du texte", "B3_M02_S004-Un langage hypertexte", "B3_M02_S005-Le multimédia en HTML", "B3_M02_S006-Introduction au CSS", "B3_M02_S007-CSS3 : Le stylage du texte", "B3_M02_S008-Structuration HTML5 et modèle de boîtes", "B3_M02_S009-Les sélecteurs CSS", "B3_M02_S010-La mise en page avec CSS", "B3_M02_S011-La création de tableaux", "B3_M02_S012-La création de formulaires", "B3_M02_S013-Layout avec CSS Grid", "B3_M02_S014-Les effets avancés de CSS", "B3_M02_S015-Utiliser des documentations CSS", "B3_M02_S016-Le responsive design", "B3_M02_S017-Valider la qualité de son site", "B3_M02_S018-Bootstrap: Hello world", "B3_M02_S019-La grille bootstrap", "B3_M02_S020-Les éléments bootstrap", "B3_M02_S021-Les composants bootstrap", "B3_M02_S022-Ouverture vers d'autres framework CSS", "B3_M02_S023-SASS", "B3_M02_S024-Le référencement des sites Web", "B3_M02_S025-Déployer son site sur le Web"] },
+                { title: "B3_M03_JavaScript", topics: ["B3_M03_S001-La programmation événementielle en JavaScript", "B3_M03_S002-Le formulaire HTML et JavaScript", "B3_M03_S003-Initiation aux objets et aux classes", "B3_M03_S004-L'API DOM", "B3_M03_S005-Présentation de la librairie JQuery", "B3_M03_S006-Les bases de JQuery", "B3_M03_S007-La programmation AJAX", "B3_M03_S008-Les promesses et l'API Fetch", "B3_M03_S009-L'utilisation de JSON", "B3_M03_S010-L'API Canvas en JavaScript"] },
+                { title: "B3_M04_PHP", topics: ["B3_M04_S001-PHP et HTML (sorties)", "B3_M04_S002-Les types de données, les variables et les constantes", "B3_M04_S003-Les opérateurs de comparaison", "B3_M04_S004-Les fonctions", "B3_M04_S005-Les tableaux", "B3_M04_S006-Les conditions", "B3_M04_S007-Les boucles", "B3_M04_S008-Créer ses propres fonctions", "B3_M04_S009-L'organisation des fichiers PHP", "B3_M04_S010-Les superglobales Get, Post et Files", "B3_M04_S011-Les superglobales Server, Env et Session", "B3_M04_S012-La sécurité", "B3_M04_S013-La manipulation des dates", "B3_M04_S014-La manipulation des fichiers en PHP", "B3_M04_S015-Les expressions régulières", "B3_M04_S016-Utiliser la documentation PHP", "B3_M04_S017-La préparation de l'environnement de travail", "B3_M04_S018-POO concepts de base", "B3_M04_S019-POO concepts avancés", "B3_M04_S020-La gestion des erreurs", "B3_M04_S021-POO Design Patterns", "B3_M04_S022-POO L’encapsulation et la visibilité", "B3_M04_S023-Le modèle MVC"] },
+                { title: "B3_M05_Base de données relationnelle", topics: ["B3_M05_S001-Intro SGBDR", "B3_M05_S002-MCD et MLD", "B3_M05_S003-Les diagrammes fonctionnels", "B3_M05_S004-Le diagramme de classe", "B3_M05_S005-Passage UML-Relationnel", "B3_M05_S006-Création et alimentation BD SQL", "B3_M05_S007-L'interrogation BD SQL", "B3_M05_S008-PostgreSQL", "B3_M05_S009-Connexion BD en PHP", "B3_M05_S010-PHP/PDO", "B3_M05_S011-Les requetes SQL", "B3_M05_S012-Les fonctions SQL", "B3_M05_S013-Les jointures SQL", "B3_M05_S014-Gérer les accès utilisateurs", "B3_M05_S015-Découverte d'un ORM PHP", "B3_M05_S016-Projet : Créer et administrer une BD", "B3_M05_S017-Introduction NOSQL", "B3_M05_S018-Introduction à MongoDB"] },
+                { title: "B3_M06_BDD Non relationnelle", topics: ["B3_M06_S001-Introduction NOSQL", "B3_M06_S002-Introduction à MongoDB"] },
+                { title: "B3_M07_Python Web", topics: ["B3_M07_S001-L'interpréteur de commande Python", "B3_M07_S002-Environnements de travail", "B3_M07_S003-Variables et types", "B3_M07_S004-Portée des variables", "B3_M07_S005-Conditions en Python", "B3_M07_S006-Boucles en Python", "B3_M07_S007-Les structures de données", "B3_M07_S008-Structure programme - fonctions", "B3_M07_S009-Qualité du code", "B3_M07_S010-Structure programme - modules", "B3_M07_S011-Tests unitaires", "B3_M07_S012-Notions théoriques de classe", "B3_M07_S013-Constructeur et self", "B3_M07_S014-Les méthodes spéciales", "B3_M07_S015-L'héritage", "B3_M07_S016-Le décorateur", "B3_M07_S017-Chaîne de caractères", "B3_M07_S018-Gestion du temps", "B3_M07_S019-Mathématiques", "B3_M07_S020-Plus loin en mathématiques", "B3_M07_S021-Graphiques", "B3_M07_S022-Gestion des fichiers", "B3_M07_S023-Requêtes HTTP", "B3_M07_S024-BD relationnelles et Python", "B3_M07_S025-Notion d'ORM", "B3_M07_S026-Cadre théorique de Flask", "B3_M07_S027-Template Jinja", "B3_M07_S028-Déploiement Flask", "B3_M07_S029-Cadre théorique de Django", "B3_M07_S030-Les modèles en Django", "B3_M07_S031-Les vues en Django", "B3_M07_S032-API REST en Python", "B3_M07_S033-Data visualisation", "B3_M07_S034-Données et librairies", "B3_M07_S035-Numpy", "B3_M07_S036-Pandas", "B3_M07_S037-Plus loin avec pandas", "B3_M07_S038-Matplotlib", "B3_M07_S039-Seaborn", "B3_M07_S040-Bokeh", "B3_M07_S041-Streamlit", "B3_M07_S042-Présentations impactantes"] },
+                { title: "B3_M08_Mobile React Native", topics: ["B3_M08_S001-Le développement Mobile", "B3_M08_S002-Intro React Native : Expo", "B3_M08_S003-Les bases de React Native", "B3_M08_S004-Les composants", "B3_M08_S005-Props et states", "B3_M08_S006-Flexbox", "B3_M08_S007-Code différent par plateforme", "B3_M08_S008-Redux", "B3_M08_S009-Extensions Redux", "B3_M08_S010-Organisation application", "B3_M08_S011-Navigation", "B3_M08_S012-Navigators", "B3_M08_S013-Animation", "B3_M08_S014-Emulateurs", "B3_M08_S015-SQLITE", "B3_M08_S016-APIs et modules natifs", "B3_M08_S017-Debugging", "B3_M08_S018-Déploiement stores", "B3_M08_S019-React Native sans Expo", "B3_M08_S020-Projet mobile"] },
                 { title: "B3_M09_Concevoir une API", topics: ["B3_M09_S001-Présentation des API", "B3_M09_S002-Concevoir une API", "B3_M09_S003-Gérer les accès à une API"] },
                 { title: "B3_M10_Utiliser des API", topics: ["B3_M10_S001-Les API d'authentification (OAuth, ..)", "B3_M10_S002-Les API Google / AWS", "B3_M10_S003-Les API de paiement"] },
-                { title: "B3_M11_Utiliser un outil de gestion de version de code source", topics: ["B3_M11_S001-Introduction à la ligne de commande", "B3_M11_S002-Introduction à Git et Github", "B3_M11_S003-Les bases", "B3_M11_S004-Les interactions avec le dépôt distant", "B3_M11_S005-Naviguer dans l'historique", "B3_M11_S006-La gestion des branches", "B3_M11_S007-Les branches avec Git - Rebaser", "B3_M11_S008-Les bonnes pratiques", "B3_M11_S009-Projet - Utiliser Git et Github pour gérer son code source", "B3_M11_S010-Introduction à Gitlab"] },
-                { title: "B3_M12_Maintenir et documenter son projet", topics: ["B3_M12_S001-La documentation de l'architecture et du code", "B3_M12_S002-Améliorer sa solution", "B3_M12_S003-La documentation pour l'utilisateur", "B3_M12_S004-Le pentest", "B3_M12_S005-Gestion de la dette technique"] }
+                { title: "B3_M11_Gestion de version", topics: ["B3_M11_S001-Ligne de commande", "B3_M11_S002-Git et Github", "B3_M11_S003-Les bases", "B3_M11_S004-Interactions dépôt distant", "B3_M11_S005-Naviguer dans l'historique", "B3_M11_S006-Gestion des branches", "B3_M11_S007-Rebaser", "B3_M11_S008-Bonnes pratiques", "B3_M11_S009-Projet Git/Github", "B3_M11_S010-Intro Gitlab"] },
+                { title: "B3_M12_Maintenir et documenter", topics: ["B3_M12_S001-Documentation architecture et code", "B3_M12_S002-Améliorer sa solution", "B3_M12_S003-Documentation utilisateur", "B3_M12_S004-Le pentest", "B3_M12_S005-Gestion dette technique"] }
             ]
         };
 
@@ -688,7 +729,6 @@
                 if(data) {
                     data.forEach(module => {
                         module.topics.forEach(topic => {
-                            // Nettoyage de la clé pour correspondre au format du HTML (dbKey)
                             const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
                             totalBloc++;
                             if (userProgress[dbKey]) doneBloc++;
@@ -790,7 +830,6 @@
                 // Calcul progression module local
                 let totalMod = 0, doneMod = 0;
                 module.topics.forEach(t => {
-                   // Nettoyage de la clé pour correspondre au format du HTML (dbKey)
                    const key = t.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
                    totalMod++;
                    if(userProgress[key]) doneMod++;
@@ -821,7 +860,7 @@
                                 // Clé pour localStorage (checkbox)
                                 const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
                                 
-                                // Clé pour database.js (ressources) - NOTE: La clé resKey devrait être identique à dbKey si le database.js est structuré de la même manière.
+                                // Clé pour database.js (ressources)
                                 const resKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '');
                                 
                                 const isChecked = userProgress[dbKey] ? 'checked' : '';
@@ -832,7 +871,6 @@
                                 let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '';
                                 let videoLink = '', infoLink = '', presLink = '', pdfLink = '';
                                 
-                                // IMPORTANT : Si la BDD n'est pas chargée, ces liens seront vides, mais le code fonctionne.
                                 if (typeof window.dbRessources !== 'undefined' && window.dbRessources[resKey]) {
                                     if(window.dbRessources[resKey].video) { hasVideo = 'active'; videoLink = window.dbRessources[resKey].video; }
                                     if(window.dbRessources[resKey].info) { hasInfo = 'active'; infoLink = window.dbRessources[resKey].info; }
@@ -851,12 +889,14 @@
                                         </a>
                                     </div>
                                     
+                                    <!-- ICONS RESSOURCES (Partie Droite) -->
                                     <div class="flex items-center gap-1 md:ml-4 justify-end">
                                         <button class="resource-btn icon-video ${hasVideo}" title="Vidéo" onclick="${videoLink ? `window.open('${videoLink}', '_blank')` : ''}"><i class="fas fa-video"></i></button>
                                         <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
                                         <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
                                         <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
                                         
+                                        <!-- BOUTON VALIDER AJOUTÉ -->
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
                                         <button id="btn-check-${dbKey}" class="resource-btn icon-check ${isBtnActive}" title="Valider module" onclick="toggleTopic('${dbKey}')"><i class="fas fa-check-circle"></i></button>
                                         <button class="resource-btn icon-clock" title="Planifier révision" onclick="openCalendarModal('${topic.replace(/'/g, "\\'")}', '${resKey}')"><i class="far fa-clock"></i></button>
