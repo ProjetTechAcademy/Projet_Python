@@ -292,6 +292,12 @@
     .icon-clock { color: rgba(217, 165, 38, 0.4); }
     .icon-clock:hover { color: rgba(217, 165, 38, 1); }
 
+    /* NOUVEAU : Bouton Valider Vert */
+    .icon-check { color: rgba(34, 197, 94, 0.4); } /* Green-500 opacity 40% */
+    .icon-check:hover { color: rgba(34, 197, 94, 1); transform: scale(1.15); }
+    .icon-check.active { color: rgba(34, 197, 94, 1); opacity: 1; }
+
+
     /* === MODALE AGENDA === */
     .modal-overlay {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -404,8 +410,23 @@
             <h1 class="text-4xl md:text-5xl font-bold mb-3" style="font-family: 'Playfair Display', serif;">Programme de Formation</h1>
             <p class="uppercase tracking-widest font-bold text-sm" style="color:var(--brandGold);">The Dev Elite Club</p>
             
+            <!-- MINI BLOC COMMUNAUTÉ (Demande Mathilde) - DÉPLACÉ ICI -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-3 mt-3 mb-2 text-xs text-gray-500">
+                <span class="italic">Une question ? Besoin de motivation ? Rejoins la team ! 👉</span>
+                <div class="flex gap-2">
+                    <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"
+                       class="w-6 h-6 rounded-full bg-[#25D366] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm">
+                        <i class="fab fa-whatsapp text-[12px]"></i>
+                    </a>
+                    <a href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"
+                       class="w-6 h-6 rounded-full bg-[#5865F2] text-white flex items-center justify-center hover:scale-110 transition-transform shadow-sm">
+                        <i class="fab fa-discord text-[12px]"></i>
+                    </a>
+                </div>
+            </div>
+
             <!-- Barre de Progression Globale -->
-            <div class="mt-8 max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-sm border border-orange-100 relative overflow-hidden">
+            <div class="mt-4 max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-sm border border-orange-100 relative overflow-hidden">
                 <!-- Décoration d'arrière plan subtile -->
                 <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-100 rounded-full opacity-50 blur-xl"></div>
                 <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
@@ -415,30 +436,8 @@
                         <span>🚀 Progression Globale</span>
                         <span id="global-progress-text">0%</span>
                     </div>
-                    <div class="progress-bar-container mb-6">
+                    <div class="progress-bar-container">
                         <div id="global-progress-bar" class="progress-bar-fill"></div>
-                    </div>
-
-                    <!-- NOUVEAU BLOC COMMUNAUTÉ : PLUS GRAND & MIGNON -->
-                    <div class="border-t border-dashed border-gray-200 pt-4">
-                        <p class="text-sm text-gray-500 font-medium text-center mb-4">
-                            Une question ? Besoin de motivation ? <br> Rejoins la team ! 👇✨
-                        </p>
-                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                            <!-- WhatsApp Button -->
-                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" 
-                               class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-green-200 group w-full sm:w-auto">
-                                <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
-                                <span>WhatsApp</span>
-                            </a>
-                            
-                            <!-- Discord Button -->
-                            <a href="https://discord.gg/redT9wEE6T" target="_blank" 
-                               class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#5865F2] text-white font-bold text-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-200 group w-full sm:w-auto">
-                                <i class="fab fa-discord text-xl group-hover:scale-110 transition-transform"></i>
-                                <span>Discord</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -502,7 +501,7 @@
         </div>
         
         <div class="mt-8 text-center text-sm text-gray-500 bg-white/50 p-4 rounded-lg">
-            <i class="fas fa-info-circle text-[#D9A526] mr-2"></i> Cochez les cases pour suivre votre progression. Vos données sont sauvegardées automatiquement.
+            <i class="fas fa-info-circle text-[#D9A526] mr-2"></i> Cochez les cases ou utilisez le bouton valider <i class="fas fa-check-circle text-green-500"></i> pour suivre votre progression.
         </div>
     </section>
 
@@ -680,6 +679,7 @@
 
         // Fonction pour basculer l'état coché/décoché
         function toggleTopic(id) {
+            // 1. Mise à jour de l'état logique
             if (userProgress[id]) {
                 delete userProgress[id];
             } else {
@@ -687,18 +687,35 @@
             }
             localStorage.setItem('devEliteProgress', JSON.stringify(userProgress));
             
-            // Mise à jour visuelle immédiate
-            const checkbox = document.getElementById(id);
-            const link = document.getElementById('link-' + id);
+            // 2. Mise à jour visuelle immédiate
             
-            // Update UI styles (barré/débarré) sans recharger tout
-            if (userProgress[id]) {
-                link.classList.add('line-through', 'text-slate-400', 'opacity-50');
-            } else {
-                link.classList.remove('line-through', 'text-slate-400', 'opacity-50');
+            // A. Checkbox
+            const checkbox = document.getElementById(id);
+            if(checkbox) {
+                checkbox.checked = !!userProgress[id];
+            }
+
+            // B. Lien texte (barré)
+            const link = document.getElementById('link-' + id);
+            if(link) {
+                if (userProgress[id]) {
+                    link.classList.add('line-through', 'text-slate-400', 'opacity-50');
+                } else {
+                    link.classList.remove('line-through', 'text-slate-400', 'opacity-50');
+                }
+            }
+
+            // C. Bouton valider (active state)
+            const btn = document.getElementById('btn-check-' + id);
+            if(btn) {
+                if(userProgress[id]) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
             }
             
-            // Recalcul des barres
+            // 3. Recalcul des barres
             updateAllProgress();
         }
 
@@ -847,6 +864,7 @@
                                 const resKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '');
                                 
                                 const isChecked = userProgress[dbKey] ? 'checked' : '';
+                                const isBtnActive = userProgress[dbKey] ? 'active' : '';
                                 const textStyle = userProgress[dbKey] ? 'line-through text-slate-400 opacity-50' : 'text-gray-700';
 
                                 // Vérification des ressources via database.js si disponible
@@ -877,7 +895,10 @@
                                         <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
                                         <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
                                         <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
+                                        
+                                        <!-- BOUTON VALIDER AJOUTÉ -->
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
+                                        <button id="btn-check-${dbKey}" class="resource-btn icon-check ${isBtnActive}" title="Valider module" onclick="toggleTopic('${dbKey}')"><i class="fas fa-check-circle"></i></button>
                                         <button class="resource-btn icon-clock" title="Planifier révision" onclick="openCalendarModal('${topic.replace(/'/g, "\\'")}', '${resKey}')"><i class="far fa-clock"></i></button>
                                     </div>
                                 </div>`;
