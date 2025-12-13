@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liste des Fichiers PDF du Cours 📄 - The Dev Elite Club</title>
+
+    <!-- Favicon mis à jour avec une icône pour éviter les problèmes d'images externes -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome pour les icônes de fichiers/alertes -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Configuration Tailwind pour intégrer les couleurs de la charte graphique (Mathilde's Brand) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-primary': '#0F2C48', // brand-blue
+                        'brand-accent': '#D9A526', // brandGold
+                        'brand-background': '#F6F2E8', // ivory
+                        'brand-secondary': '#B4792A', // bronze
+                    },
+                    fontFamily: {
+                        // Utilisation des polices définies dans le code original, chargées par Google Fonts
+                        'sans': ['Outfit', 'Montserrat', 'sans-serif'],
+                        'display': ['Playfair Display', 'serif'],
+                        'code': ['Fira Code', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Styles globaux minimalistes -->
+    <style>
+        body {
+            background-color: #F6F2E8; /* brand-background */
+            color: #0F2C48; /* brand-primary */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Outfit', sans-serif;
+        }
+        .main-content { flex-grow: 1; }
+
+        /* Animation simple pour les éléments chargés */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ==================== HEADER (HAUT) - Nettoyé et Stylisé ==================== -->
+    <header class="sticky top-0 z-50 bg-brand-primary border-b-4 border-brand-accent shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Logo & Titre (Aligné à Gauche) - Remplacement de l'image par du texte stylisé -->
+            <div class="flex items-center gap-3">
+                <a href="#" title="Accueil du Club" class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-brand-primary text-xl font-bold border-2 border-brand-background shadow-lg">
+                        <i class="fa-solid fa-feather-pointed"></i> <!-- Remplacement du logo image -->
+                    </div>
+                </a>
+                <div class="flex flex-col text-center md:text-left">
+                    <div class="font-code font-bold text-lg text-brand-background tracking-tight">
+                        💫 The Dev Elite Club ✨
+                    </div>
+                    <div class="text-xs font-semibold text-brand-accent opacity-90">
+                        La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bouton Portfolio (Aligné à Droite) -->
+            <a class="
+                btn-portfolio-cosmic 
+                inline-flex items-center gap-2 px-4 py-2 
+                rounded-lg font-code font-bold text-sm 
+                bg-brand-accent text-brand-primary 
+                shadow-[4px_4px_0_#B4792A] border border-brand-background 
+                transition-all duration-200 
+                hover:translate-x-[2px] hover:translate-y-[2px] 
+                hover:shadow-[2px_2px_0_#B4792A] hover:bg-brand-background
+            " href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" title="Mon Portfolio">
+                <i class="fa-solid fa-code"></i>
+                Mon Portfolio
+            </a>
+            
+        </div>
+
+        <!-- Navigation Icônes (Déplacée sous le titre pour plus de clarté sur mobile) -->
+        <nav class="w-full overflow-x-auto py-2 bg-brand-primary/95 shadow-inner" aria-label="Navigation principale">
+            <div class="flex justify-center md:justify-start gap-3 px-4 sm:px-6 lg:px-8 whitespace-nowrap">
+                
+                <!-- Les icônes sont simplifiées et utilisent les classes Tailwind pour le style -->
+                <!-- 1. Accueil -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+                    <i class="fas fa-home"></i><span class="tooltip">Accueil</span>
+                </a>
+                
+                <!-- 2. Mon Espace -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">
+                    <i class="fas fa-chart-bar"></i><span class="tooltip">Mon Espace</span>
+                </a>
+                
+                <!-- 3. Planning -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">
+                    <i class="fas fa-calendar-alt"></i><span class="tooltip">Planning & Cours</span>
+                </a>
+                
+                <!-- 4. Atelier -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">
+                    <i class="fas fa-wrench"></i><span class="tooltip">Atelier</span>
+                </a>
+
+                <!-- 5. Observatoire -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">
+                    <i class="fas fa-rocket"></i><span class="tooltip">Observatoire</span>
+                </a>
+
+                <!-- 6. RNCP -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">
+                    <i class="fas fa-medal"></i><span class="tooltip">Fiche RNCP</span>
+                </a>
+
+                <!-- 7. Lexique -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">
+                    <i class="fas fa-book"></i><span class="tooltip">Lexique</span>
+                </a>
+
+                <!-- 8. Acronymes -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">
+                    <i class="fas fa-sort-alpha-up"></i><span class="tooltip">Acronymes</span>
+                </a>
+
+                <!-- 9. Profil -->
+                <a class="header-icon-btn group" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">
+                    <i class="fas fa-user-circle"></i><span class="tooltip">Mon Profil</span>
+                </a>
+                
+            </div>
+        </nav>
+    </header>
+    <style>
+        /* Styles CSS pur pour les boutons d'icônes avec un effet de survol moderne */
+        .header-icon-btn {
+            @apply relative inline-flex items-center justify-center p-3 rounded-xl 
+                   text-brand-background text-base bg-brand-primary/20 
+                   border border-brand-accent/30 transition-all duration-300;
+        }
+        .header-icon-btn:hover {
+            @apply transform -translate-y-1 bg-brand-accent text-brand-primary 
+                   shadow-lg shadow-brand-accent/50 border-brand-background;
+        }
+        .tooltip {
+            @apply absolute bottom-full left-1/2 transform -translate-x-1/2 
+                   mb-2 px-3 py-1 bg-white text-brand-primary text-xs font-semibold 
+                   rounded-md whitespace-nowrap opacity-0 pointer-events-none 
+                   transition-opacity duration-300 shadow-lg;
+        }
+        .header-icon-btn:hover .tooltip {
+            @apply opacity-100;
+        }
+    </style>
+    <!-- ==================== FIN HEADER ==================== -->
+
+
+    <!-- ZONE DE CONTENU (LISTE DES COURS) -->
+    <main class="main-content">
+        
+        <section class="fade-in pt-10 pb-20 px-4 sm:px-6 lg:px-8">
+            <header class="mb-12 text-center border-b-4 border-brand-primary pb-4 mx-auto max-w-4xl">
+                <h1 class="text-4xl sm:text-5xl font-extrabold font-display text-brand-accent">
+                    Catalogue des Ressources de Cours 📚
+                </h1>
+                <p class="mt-4 text-gray-700 max-w-2xl mx-auto font-sans text-lg">
+                    Accédez directement aux fichiers PDF des modules. Les liens non disponibles sont clairement signalés.
+                </p>
+            </header>
+
+            <ul class="course-list max-w-4xl mx-auto space-y-8">
+                
+                <!-- Bloc 1 -->
+                <li class="p-6 bg-white rounded-xl shadow-2xl shadow-brand-primary/10 transition duration-300 hover:shadow-brand-accent/20">
+                    <div class="border-b-4 border-brand-accent pb-3 mb-6">
+                        <strong class="text-2xl sm:text-3xl font-bold font-display text-brand-primary">
+                            Bloc 1 : Conception et spécification d'une solution digitale
+                        </strong>
+                    </div>
+                    <ul class="module-list space-y-4 border-l-4 border-brand-secondary/30 pl-4">
+                        
+                        <!-- Module B1_M01 -->
+                        <li class="module-item">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">
+                                    B1_M01_Analyser les besoins client et identifier les solutions adaptées
+                                </strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M01_S000-Comment et pourquoi se former à la conception et spécification d'une solution digitale
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1Ay_HMjmLBJYKwwzeyJIeFnHhyLvG1X-b/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S001-La veille et l'innovation
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1pG-rNTO9zMhuJMjPvPE0_5of04lnrFtK/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S002-Les modes d'innovation
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1vSo-pRzbNThNhAyrddn6CWptn4impdKD/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S003-Les entreprises et l'innovation
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1tODRjTqppJUo0zrtick37bVkRg7TvW2f/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S004-La créativité moteur de l'innovation
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1i5alCymO1ww1Fr-WhP5dMetpuhgSiDQ0/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S005-Panorama des techniques de créativité
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1-IV5ce2tUFueTUhyGGbUKnzZsIL8tgWr/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S006-L'écosystème d'un projet digital
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1EI6qDWEjGgCOLpUZEv0iasOw5ykxV61g/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S007-Étude comparative, le benchmark des solutions existantes
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1WTBQFPd32eCxF_N_kYY14-YUSNx5WluL/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S008-Définir la cible de la solution digitale
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M01_S009-Les principaux acteurs d’un projet digital - la maîtrise d’oeuvre
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1zt3sVe_5-QUDfK-1QDyVp68euC02jQND/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S010-Les principaux acteurs d’un projet digital - la maîtrise d’ouvrage
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1GcN8x_1WKz_KifwL-0a-Xk9XbCDIy5vz/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S011-Identifier les parties prenantes
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1m3zewoW_38SkDehJekQjvqKvYQwEqK2L/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S012-Etablir la gouvernance du projet, définir les rôles et les responsabilités
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1HEewL7lvn4JWQa_-GjgBzZUyFwOtmfxW/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S013-Comprendre les enjeux et les retombées d’un projet
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1oWx5iG5I7QL-dK40Y_fk2UTffIP1FTKe/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M01_S014-Le cahier des charges - l'expression du besoin
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Module B1_M02 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">
+                                    B1_M02_Définir les options techniques de la solution digitale
+                                </strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1F-lZllIrOoKyIcs2K2H7NuQQ0kZ4X2-t/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S001-Les spécificités du projet digital
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M02_S002-Le recueil de l'analyse des besoins
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1XsyFSg0NfRwS3QxDlT7FDiTbWhwY2yyS/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S003-Définir la solution et le projet cibles
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1ok0sXXdsa8eQ4lOkuM3nqNGaTcaFapnq/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S004-Définir les objectifs et faire valider l’opportunité du projet
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1CSzqwGkNzPgXs61Wm2rhun4lCyN1XNIv/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S005-Le choix technologique de la solution
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/11ptBQ0Z5PSdpUWWKjqHPZ7uBmtvmudHO/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S006-Le cahier des charges technique : détailler la mise en œuvre
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1c5V0YK-SLFs7TAyxw-vyxiYUyNgEG_w9/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S007-Le cahier des charges technique : du besoin à la solution technique
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1JvrSP_Gyh3QRDgIy40hMj5FKNc1JJ7fM/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S008-Le cahier des charges technique : description fonctionnelle et technique
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1tNXPDgwLFiYxwUr0lJ1CWLgnsX7i1_Ht/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S009-La présentation et la validation de sa solution
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1IoCa64CVosxeMcLiyEVIPf2UIuKY48XR/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M02_S010-L'utilisation en interne du CDC
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B1_M03 (Beaucoup de liens manquants, bien visible en rouge) -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">
+                                    B1_M03_Découvrir Adobe XD
+                                </strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S001-Présentation générale
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S002-Gestion des documents
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S003-Les outils de dessin vectoriel
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1Jx3Qv6tQJNCuc_Xs_9vl9cyln1_CLkuJ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M03_S004-Les textes
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S005-Importation de fichiers et d'images
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S006-Les différents effets graphiques
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S007-Création d'éléments répétés
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S008-Redimensionnement réactif
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S009-Utilisation des composants
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S010-Utilisation et gestion des Actifs
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S011-Le mode Prototype
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S012-Plug-ins
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S013-Partage de designs et de prototypes
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M03_S014-Les différents types d'export
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Module B1_M04 (Suite des modules...) -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">
+                                    B1_M04_Utiliser l'éditeur de graphiques Figma
+                                </strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1IlDOlKPyR8q8p_0mbLyIWfiKqkBjZj6U/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M04_S001-Présentation de l'application
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1S2QZ3u0j1f4ebqMkPdoXKzSbt5lRVQC2/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M04_S002-L'application Figma
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1GmRxtyz4hoZj5KD_tKTMpkLWe-TDbBQh/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M04_S003-Importation et exportation de fichiers, utilisation de modèles
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1-ToRK3cDGU6l9ZLE1DemTnP7itbeaGfj/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M04_S004-Conception avancée : menu déroulant, incrustation d'écran, personnaliser le design
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1yZGlMN8E0jWqgndQqWCfxgQRc18NcHZx/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M04_S005-Créer un prototype, partager et exporter
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Module B1_M05 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">
+                                    B1_M05_Définir la méthodologie, la roadmap, les ressources et les livrables
+                                </strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1xdKS2lJ-otA35gZna4dBRt9kECNJkBym/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S001-Introduction à l'organisation d'un projet digital
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1uFGwTCh8JTkPEhBIIdA5jPfokSoS-xYy/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S002-Méthodologie pour piloter un projet digital : une démarche itérative
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/167Ko4lFnKaEDNotc5xrcCDIGmHn5Y6On/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S003-Le rôle du chef de projet digital
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M05_S004-Les modes de gestion de projet dits "classiques"
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M05_S005-Les méthodologies agiles
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1jYCLWmoRWzIeXMWVH1NsMQJaDZlG7Svw/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S006-Les processus et les disciplines de la gestion de projet selon le PMBOK
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1WMAMrO1f-szMX4KfBuG2AP8mQDqO9eMo/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S007-Les acteurs et les ressources du projet
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1O4dVFa--lhtpGn47CPtBKPjbyvyUlRBz/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S008-La première découpe du projet
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1fQH5RenmYofo-JQ0G-r37goUo_Ibe0Mo/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S009-La construction du planning
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1pz8xJtUOPmwHESBNX8Vlj7YEkR_fV-nP/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S010-La gestion du budget du projet
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1saQIqcGH9NMx5vokt40wcGODrY7bHSAs/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S011-La gestion des risques
+                                    </a>
+                                </li>
+                                <li class="file-link">
+                                    <a href="https://drive.google.com/file/d/1LLF3XNT8qDKH2W3707wENwDvgawZBA_6/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base">
+                                        <i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M05_S012-La communication autour du projet
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Et ainsi de suite pour les autres modules... (Je n'affiche que les liens car la structure est répétitive) -->
+
+                        <!-- Module B1_M06 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B1_M06_Concevoir une solution digitale</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1JEyvdC9BE8g7GhUOgX8p1BYpNSOSusFG/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S001-La réalisation d'une étude d'opportunité</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Gp_24KtEbAFdB1VdvslmAZyUZDHMsXWq/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S002-Le rôle de la note de cadrage</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1W-vhrBGXNdNv9gapUe5tfFbY9fGZWyD1/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S003-L'étude de faisabilité</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1YEV1QXDqhrFYSX3I6kY3l9nS2JxyVBqX/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S004-L'analyse des risques</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/17E2M3vCNhcV_aj5-5FuUDc1mVlV5JAwU/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S005-L'analyse fonctionnelle</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1awcBbAXh0GTPiJr0qKsIfQOndM4MQ9oz/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S006-Proposer une solution optimale en termes de coût</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M06_S007-Proposer une solution optimale en termes de délais de production
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1JV8Wu36iiA9gb421ULLgBtoPv0iK5wic/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S008-Proposer une solution optimale en termes de performance attendue</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1PvET66NMBEHKvMONRT6B47pMKAh9duvo/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S009-Proposer une solution optimale en termes de pérennité</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1XCq6708hXvrFZfjlSXNSu2C9Za5qPnCv/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S010-L'utilité du suivi de la performance</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1m5wQvrFV1XizHg6n5E7CDXcbKXJEMHgH/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S011-Les indicateurs de suivi selon les objectifs</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1nX21eHp78JiXhnFtk5Nq7r1xbCjL-WQB/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M06_S012-La construction d'un tableau de bord opérationnel</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B1_M07 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B1_M07_Découvrir les méthodologies de gestion de projets agiles</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/18KcvswvC6B8jdEI06oBpYrCpp55SPg9P/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M07_S001-Les méthodologies agiles</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1lyxqaWfljGOVrvIp_obsKJs-FQDWFTpr/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M07_S002-Introduction à la méthode Scrum</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Hi8B-FOW7kvD2MRMuiw1I03vrQVnrrkM/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M07_S003-Comprendre Kanban</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Lbm8o7fYdMrlitf1Rui9ZWuKB6MZlxOk/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M07_S004-Présentation du diagramme de Gantt</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Module B1_M08 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B1_M08_Concevoir l’architecture logicielle de la solution</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1xavRPD901FvTPISiv3CxT7-PC1UCivFg/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M08_S001-L’architecture en appels et retours</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/18ylydO1F_3V_lnTcWH927RVBPo8Vck9A/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M08_S002-L’architecture en couches</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1rZU2zRy7NwRz5-eaus_tovHG1P6P7RWs/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M08_S003-L’architecture centrée sur les données</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1dTyr079mFxQhnrPwI6mAurNsQuNoldj0/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M08_S004-L’architecture en flot de données</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1w6Q7g-z9KRb01w9kfsjqZN4th5WUh-ka/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M08_S005-L’architecture orientée objets</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/15rJYu_dvH5UwrjrsmpMPVgfb5oaJJ_p5/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M08_S006-L’architecture orientée agents</a></li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Module B1_M09 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B1_M09_Comprendre la spécification fonctionnelle</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1lK6coiqM73i7Sc7PhY5TNfa2hbojNnuo/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M09_S001-Comprendre les objectifs de la spécification fonctionnelle</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1WpbEMoowtwhYZ8RXMVTRnui_Jrnva-vz/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M09_S002-Comment rédiger une spécification fonctionnelle</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B1_M10 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B1_M10_Elaborer un cahier des charges fonctionnel</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/19e1TX5o_B6-RFaJZWEs-qNhuixpAgHZN/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S001-Le cahier des charges fonctionnel : le contexte du projet et ses enjeux</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1bCWzQH0m1DY9Eby9YSb9PXZmJ5l17QGF/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S002-Le cahier des charges fonctionnel : la portée de la solution</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1ZU_2jSIO9RhqbxdCVni1HnwwWNIytTC6/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S003-Le cahier des charges fonctionnel : les contraintes</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1j1nB3W60UsD_-8rcUhViBRhP0AL_r-UY/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S004-Le cahier des charges fonctionnel : les parcours utilisateurs</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/14DPSHcW41pMKjX9Dmf0HU8YYtSVtAInv/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S005-Le cahier des charges fonctionnel : les fonctionnalités clés et les spécifications</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Nk5KkhYn4JUzPUdrFfB4gd2IbMvQsIJ8/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S006-Le cahier des charges fonctionnel : l'approche créative</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1D9SbaiYdiG0TQQ2VHs27kXj_Ojp0-g4d/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M10_S007-Le cahier des charges fonctionnel : l'organisation du projet</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B1_M11 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B1_M11_Définir les objectifs SMART de sa solution digitale</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1xcR6wAl_AOV0HR9WV4F1kY6pNfUjp3Ao/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S001-Le recueil et l'analyse des besoins</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1ewnX2Enrz0nnDcCNYGG4FO5yhn63v4vo/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S002-La validation de la solution</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1GAQd9y3qFr3dB_GEj5IPSY_d0dXqdPNz/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S003-Le droit du web</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1VOb_q8aRp53lvbcAxeXYVuVFTSvthFMK/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S004-Définition du droit numérique</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1vxa6mvk5WdBMfsp6WX-vmh-etA3Cdm0T/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S005-Les responsabilités des intervenants</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1L1kGLBlE-S-77sJ1A15MLTuxIX1CkyuB/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S006-Le droit pénal de l'informatique</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1rVKOfUUfqlyk07W1pszNZ_40zZiHZL3A/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S007-L'informatique sur le lieu de travail</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1nIj5ld0RyW6V-vxqviBAq-Wy8XqrxS5h/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S008-La législation comparée</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1CIMqRy-Ofvj3f60BV_6YzMQDb6YfKSFn/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S009-L'informatique et droit public</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1kbfLmVzTYvet3O71EKXChufpzrkH4yy7/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B1_M11_S010-Le cadre juridique du e-commerce</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B1_M11_S011-Les textes de référence
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- Bloc 2 -->
+                <li class="p-6 bg-white rounded-xl shadow-2xl shadow-brand-primary/10 transition duration-300 hover:shadow-brand-accent/20">
+                    <div class="border-b-4 border-brand-accent pb-3 mb-6">
+                        <strong class="text-2xl sm:text-3xl font-bold font-display text-brand-primary">
+                            Bloc 2 : Gestion, pilotage et testing d'une Solution Digitale
+                        </strong>
+                    </div>
+                    <ul class="module-list space-y-4 border-l-4 border-brand-secondary/30 pl-4">
+                        
+                        <!-- Module B2_M01 -->
+                        <li class="module-item">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M01_Manager et piloter les tâches avec ses équipes projet grâce à TRELLO</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S001-L'application Trello
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S002-Création du compte
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S003-Découverte de l'interface
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S004-Découvrir le contenu d'un projet
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S005-Le travail collaboratif : les membres
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S006-Le travail collaboratif : les équipes
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1PR90K2AYEt0cVqkURabsXJSjeg2PfXuJ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M01_S007-Les tableaux</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S008-Les listes
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S009-Les cartes
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S010-Les checklists
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S011-Les utilitaires
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M01_S012-Les Power-ups
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M02 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M02_Manager et piloter les tâches avec ses équipes projet grâce à JIRA</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M02_S001-Découvrir JIRA
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M02_S002-Apprendre JIRA
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M02_S003-Les méthodologies agiles avec JIRA
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M02_S004-JIRA pour les équipes
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M02_S005-JIRA pour les administrateurs
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M02_S006-Utiliser JIRA avec Gitlab
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M03 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M03_Gérer son projet avec GanttProject</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S001-Apprendre à utiliser Gantt project
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S002-Cadrer le projet
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S003-Construire le plan de projet
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S004-Création des dépendances
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S005-Gérer les affichages
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S006-Le réseau du projet
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S007-Gérer les ressources
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S008-Le suivi de projet
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S009-Les outils d'impression et d'exportation
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M03_S010-Application - Gestion de projet - GanttProject
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M04 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M04_Comprendre la modélisation UML</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1U4iVgZD09HSMBsitLp47LDPMcxoRRkui/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S001-Introduction à la modélisation conceptuelle de données avec UML</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M04_S002-Les diagrammes de classes
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1D65pF0qlBCMGXWozUAnYyzx32OcXJYKv/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S003-Les diagrammes d'objets</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1VZ_OiK1A7QZ6nBWJWZ2xnyzpYb1G7G7L/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S004-Les diagrammes de composants</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1FnaT9wgMJFH9Vor6wzI7iPtTGqyIyEzC/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S005-Les diagrammes de déploiement</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Vqzajd8bDkHMWgo69t2xBcuWkRervwOH/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S006-Les diagrammes des paquets</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/13WGvoMPNDVObrcvj8NfcJ67RGdCsSGGH/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S007-Les diagrammes de structure composite</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Q38M9lDgW0ROvEnM0Hru-lYC0L4hAj21/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S008-Les diagrammes de profils</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/16zm-wu5UizF516WXJEKb88VWc-fDW9lB/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S009-Diagrammes de cas d'utilisation UML (UML use case diagram)</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Zebxm4dLr-G3Kkw-CmpUuLh5lVdz-8VC/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S010-Les diagrammes états-transitions</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1gVYYzprOUjGWd_PKGf-NZiWr-3TPboQY/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S011-Les diagrammes d'activité</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1fiyz_YzR-c_0cweQUitEj-7W3jIuDJ1-/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S012-Les diagrammes de séquence</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Yk7BXJ9hKvTv1q9_cc7duZ9cOQyPx-sq/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S013-Les diagrammes de communication</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1pVn1CNRUY9Ap8ShQ3jfPWl2wGm4kX87n/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S014-Les diagrammes global d'interaction</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/19ZM6I5TB_4JE9R-Rxg9hsqPytymL3BiY/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M04_S015-Les diagrammes de temps</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M05 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M05_Utiliser l'outil Agile : Scrum</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M05_S001-Comprendre les différents cycles de vie des projets en méthode Agile
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1_Nuu75GCB82rhbGStEcZc0YjGGI0Vf8M/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M05_S002-Définir le cadre de la solution digitale</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1pFePTrL2l6SU8c7yPG6av4NQutuZ4pbR/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M05_S003-La préparation du backlog</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1kE3ZuyRZjvFyVXauhBuBu_D-E3twya23/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M05_S004-La notion de travail en sprint</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M05_S005-Les retours et les feedbacks
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M05_S006-La réitération en fonction des feedbacks
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M05_S007-Le rôle du Scrum Master
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M05_S008-Le rôle du product owner
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M06 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M06_Utiliser l'outil Agile : Kanban</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M06_S001-L'application Smartsheet
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M06_S002-La plateforme Monday
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M07 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M07_Tester son application Web</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M07_S001L’examen des exigences
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M07_S002-Les tests d’usabilité
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1BSG1MkfTJnqsGWFtl1I3LPTlWpZr80PV/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M07_S003-Les tests unitaires</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1mNHxJFD660xqK2vdWURpzmB88c4IGwJD/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M07_S004-Les tests d’intégration</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1b-89Vjgtfmfw0JbK8P4bMyMrIN4doBdN/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M07_S005-Les tests des composants</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M07_S006-Les tests de bout en bout (End to End)
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M07_S007-Les tests d’acceptation
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M07_S008-Les tests de régression
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1pvRzjiKNTyElBSW-Qa-Zy-kvBn3tVlfj/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M07_S009-Intégration continue</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Al4jib4VCM6TRlWBFFaeZe0tZc3lZse2/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M07_S010-Le déploiement continu (CD)</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M08 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M08_Réaliser des tests fonctionnels</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M08_S001-Les notions de test unitaire et test fonctionnel
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1QyXdTqDPgrXvUzU1n4iwKZVAO83lClBD/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S002-Les tests unitaires avec PHPUnit</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1TBWgkPdTTrFS_EuXh0Mapv4lpDIiQ6y5/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S003-Les tests fonctionnels avec WebTestCase et Panther</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1nbusq4CRrYsGHv8SXzOS8RX6wnBDVPDE/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S004-Les tests unitaires avec les mocks</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1DYsW5Hb73nYXGAZUuShoTTTYS4NMLFHE/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S005-Le Test Driven Development</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1VAITr-KWRWdY7cslCZOBARl5zXn-xEPu/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S006-Les services</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1bXyS9gXF0bbsXCbcTKF4QFg6fUSYU3n1/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S007-L'Ajax avec Axios et Symfony</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1GeL8YZxuZ2Tq0ud2Vav3ell775zuDfiz/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S008-Tests d'intégration et recette fonctionnelle</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/14BrSpdLpdbPgXD_3drC4urqejGb7K8IL/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M08_S009-Mesurer son application</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B2_M08_S010-A/B testing
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B2_M09 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B2_M09_Proposer des solutions suite à un audit</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1x0Vy-J34GiOM7DSRokQgLFp66NS-c370/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S001-La résolution d'une situation critique pour la survie du projet</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1I0uN70Q1u1gTVKWzCVwqKJUlriSoFUBO/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S002-Le suivi des indicateurs qualité et amélioration continue</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1K1KCHq7N8nWYEZyaVN41l_EnwNPXCF7I/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S003-La conception de la solution grâce au Design Thinking</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1m5xTmUQcIN5ez6iuMFtqd_V2mc7wK5Th/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S004-Design Thinking La phase d’empathie, la compréhension du besoin</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Asj422Y9t_HF78WmJwGVSZqT0FdZXSHZ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S005-Design Thinking Définir la problématique</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1-MoayOYhf8KeTuLiJXf2GhNQ0WBpIhaq/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S006-Design Thinking La phase d’idéation</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1nMiX9sb7Nspgrj2lgkdeGeyLbgHyLVAh/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S007-Design Thinking La phase de prototypage de la solution</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1QH1gTSB49JoDSg8B4300YoiXG4OsZfLL/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B2_M09_S008-Design Thinking La phase de test de la solution</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- Bloc 3 -->
+                <li class="p-6 bg-white rounded-xl shadow-2xl shadow-brand-primary/10 transition duration-300 hover:shadow-brand-accent/20">
+                    <div class="border-b-4 border-brand-accent pb-3 mb-6">
+                        <strong class="text-2xl sm:text-3xl font-bold font-display text-brand-primary">
+                            Bloc 3 : Développement d’une solution digitale avec Python
+                        </strong>
+                    </div>
+                    <ul class="module-list space-y-4 border-l-4 border-brand-secondary/30 pl-4">
+
+                        <!-- Module B3_M01 -->
+                        <li class="module-item">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B3_M01_Piloter la production de contenus digitaux</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M01_S001-Comment et pourquoi se former à la production de contenus digitaux ?
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1KwRbunnQHeeDNXjIxMdXusdVMXEL_Qfs/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M01_S002-Introduction à la production de contenus digitaux</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1te0EocV7CFWzRhGUIgyi0-VnkkzMagrZ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M01_S003-La création de contenu digital en adéquation avec sa cible</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1e2tvg1rqoZQtcLP6U0_EZTCX4ntSfWYH/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M01_S004-L'orientation artistique et le brief créatif</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1-5wDuUxx7Nf7kfrMJDJjsNR6ucf2h6xf/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M01_S005-La gestion de la production de contenus digitaux</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1t-oB6MwjKOGUNwZvauMLGM9B9UKh9E8z/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M01_S006-La mise en place opérationnelle de sa stratégie de production de contenus</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/14I94L3pquTnPOp822OjtPwxI66vSrpFZ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M01_S007-La proposition de production de contenu</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M01_S008-Application - Piloter la production de contenus digitaux
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B3_M02 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B3_M02_Créer un site web avec HTML, CSS et le Framework Bootstrap</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/17ITRalaEUVR9ebKMVTSFoDKsx1pFZikd/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S001-Introduction HTML et CSS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/19VUOxt6NIcAiEauggR8v-laLb6CCfF01/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S002-Syntaxe générale de HTML</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1nKm48M73xGXpt41udjCj3eHcCdDflfNq/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S003-L'organisation du texte</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1rydaJsj_ZyL0hGj8cjrXrGispK1OQE9A/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S004-Un langage hypertexte</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1hQiCx_-GZOl_OntdY2iSX6gBhuOQDAvn/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S005-Le multimédia en HTML</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M02_S006-Introduction au CSS
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1-ERh-E-7d20fdU1ga3wBt6BCs8UxpWKQ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S007-CSS3 : Le stylage du texte</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1BJZyC286WN1vbjkF7fX3hnxHlbuQnaVI/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S008-La structuration logique en HTML5 et le modèle de boîtes en CSS3</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1_-Y_MhMZTaB_XeVMeI8Ud-cD7e6espHC/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S009-Les sélecteurs CSS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1n-DplBT80AaPivWWabBGnHDawrNYC0mD/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S010-La mise en page avec CSS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1kkunDQOMN6knlTbUqUZKADyW8KpolZNE/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S011-La création de tableaux</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/13hJ4JAs1Yoib-eGKV3MDfC-VOY2IchWR/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S012-La création de formulaires</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1ERoXaNgtariaL9fcw5wfzB98wqAqYowt/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S013-Layout avec CSS Grid</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1aCfxiP13_fheYo5JP-nvHdijy_gTnufA/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S014-Les effets avancés de CSS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1zxlqDKFODOKtBM680cjOFQQV5ADl4zgP/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S015-Utiliser des documentations CSS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1tfbvlnR0WdJUmvTH_8BIdGDR09k_cSEZ/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S016-Le responsive design</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1rcVm9ABNSp0VKYqbL9wtluTGi-iTh6oi/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S017-Valider la qualité de son site</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1qb8SP_EN4eOdK9po2FFnPDPgil4IwtMb/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S018-L'installation et la prise en main du framework Bootstrap - Hello world</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1wpzbi3vDXsYCQaTYfCeu3dkU1nRPanTn/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S019-La grille bootstrap</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/13AiERGctGVNXwj7Z-Y5HYu1UBvHVExoc/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S020-Les éléments bootstrap</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/16z6MZPMlnKtBKtaQxZaO0Vbk0Rl4gzuh/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S021-Les composants bootstrap</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1wi8tcPE3tCFlIJd1_9uyjI3xKtR6c602/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S022-Ouverture vers d'autres framework CSS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1n-6QybV51Qg60O7Hmn9ECw-thHds-SDD/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S023-SASS</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1sTJXn_YP5Nef0evuRhnlEplseYE1WKQe/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S024-Le référencement des sites Web</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/15fAWKj1c5k-ND9aEkFINI2FoH4IQqaQn/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M02_S025-Déployer son site sur le Web</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B3_M03 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B3_M03_Dynamiser vos sites web avec JavaScript</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S001-La programmation événementielle en JavaScript
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S002-Le formulaire HTML et JavaScript
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S003-Initiation aux objets et aux classes
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S004-L'API DOM
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S005-Présentation de la librairie JQuery
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S006-Les bases de JQuery
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S007-La programmation AJAX
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S008-Les promesses et l'API Fetch
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S009-L'utilisation de JSON
+                                    </span>
+                                </li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M03_S010-L'API Canvas en JavaScript
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Module B3_M04 -->
+                        <li class="module-item pt-4">
+                            <div class="module-header mb-2">
+                                <strong class="text-xl font-semibold text-brand-secondary">B3_M04_Développer des sites web dynamiques avec PHP</strong>
+                            </div>
+                            <ul class="section-list space-y-1">
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1j3lWs4-oT7PK-3SxJKc3t9ALRQszzXwC/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S001-PHP et HTML (sorties)</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1A3eb5tABXkUkIe0dWKaZxzboOnUCuVG-/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S002-Les types de données, les variables et les constantes</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Y5UzV9oljKEVVKveeA92S4edSXdrWcjs/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S003-Les opérateurs de comparaison et les expressions booléennes</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Dx9n0fEjhRsqOLFfI__UqScxrLXgtA-y/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S004-Les fonctions</a></li>
+                                <li class="file-link">
+                                    <span class="no-link flex items-center gap-2 text-red-500 italic opacity-80 text-sm">
+                                        <i class="fas fa-exclamation-triangle"></i> B3_M04_S005-Les tableaux
+                                    </span>
+                                </li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1UwR5Xj4uvzJPCF1U1CniSJZIRqnjG4BY/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S006-Les conditions</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1A--l1TCKBycRdaw42G4brrkJzzJRffGR/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S007-Les boucles</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/15sG6gpDCUjgGP_dR7cltiJ1ai7knB-Du/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S008-Créer ses propres fonctions</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/1Y8OWqzvvH5XR_oUGtk8kid5Wk8nr0ZX6/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S009-L'organisation des fichiers PHP</a></li>
+                                <li class="file-link"><a href="https://drive.google.com/file/d/14JhcnRwAWG-L6b7yUnfZoVAPOewoXbEu/view?usp=drivesdk" target="_blank" class="text-brand-primary hover:text-brand-accent font-medium text-base"><i class="fas fa-file-pdf text-brand-accent mr-2"></i> B3_M04_S010-Les superglobales Get, Post et Files</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+    <!-- ZONE DE CONTENU -->
+
+
+    <!-- ==================== FOOTER (BAS) - Nettoyé et Stylisé ==================== -->
+    <footer class="main-footer bg-brand-primary text-brand-background pt-8 pb-4 mt-auto border-t-4 border-brand-accent font-code text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-6">
+
+                <div class="footer-left flex flex-col items-center md:items-start gap-4">
+                    <div class="text-lg font-bold text-brand-accent">Mathilde Martine PAISLEY</div>
+                    <div class="footer-details text-center md:text-left text-brand-background/90 space-y-1">
+                        <p>Développeuse Web Full Stack & Codeuse Brisée 💔</p>
+                        <a href="mailto:contact@dev-elite-club.com" class="footer-contact-link text-brand-accent hover:text-white">
+                            <i class="fas fa-envelope"></i> contact@dev-elite-club.com
+                        </a>
+                        <a href="tel:0123456789" class="footer-contact-link text-brand-accent hover:text-white">
+                            <i class="fas fa-phone"></i> +33 1 23 45 67 89 (Mock)
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-right flex flex-col items-center md:items-end gap-3">
+                    <div class="footer-links-row flex gap-3">
+                        <a class="icon-btn hover:bg-brand-accent hover:text-brand-primary" href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="icon-btn hover:bg-brand-accent hover:text-brand-primary" href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="icon-btn hover:bg-brand-accent hover:text-brand-primary" href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
+                    <div class="text-sm font-semibold text-brand-accent/80 mt-2">
+                        Retrouvez-moi sur les réseaux 🚀
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright w-full text-center text-brand-background/40 mt-8 pt-4 text-xs border-t border-brand-background/10">
+                &copy; 2024 The Dev Elite Club | Créé avec passion par Mathilde Martine PAISLEY.
+            </div>
+        </div>
+    </footer>
+    <!-- ==================== FIN FOOTER ==================== -->
+
+    <!-- Script pour l'animation d'apparition après le chargement -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.fade-in');
+            sections.forEach(section => {
+                // Déclenche l'animation une fois le DOM chargé
+                section.classList.add('visible');
+            });
+        });
+    </script>
+</body>
+</html>
