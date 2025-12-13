@@ -1,6 +1,6 @@
 // ======================================================================
 // 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - STYLE 2025 PREMIUM
-// Correction du bug responsive de positionnement 'top'
+// CORRECTION V2 : Ajout du bouton de Validation de Cours (Progression)
 // ======================================================================
 (function() {
     
@@ -9,23 +9,58 @@
     let fileName = params.get('id');
 
     if (!fileName) {
+        // Fallback pour les fichiers locaux
         fileName = window.location.pathname.split('/').pop().replace('.html', '');
     }
 
-    const titleReadable = fileName ? fileName.replace(/_/g, ' ') : "Cours sans titre";
+    const courseID = fileName.split('/').pop().replace('.html', ''); // ID du cours (ex: B1_M01_S001_...)
+    const titleReadable = courseID ? courseID.replace(/_/g, ' ') : "Cours sans titre";
     
     // 2. CONNEXION BASE DE DONNÉES
     // Assurez-vous que window.dbRessources est disponible (chargé par database.js)
     const globalDB = window.dbRessources || {};
-    const resources = globalDB[fileName] || {};
+    const resources = globalDB[courseID] || {};
 
-    // 3. Fonction de Création de Bouton
+    // 3. LOGIQUE DE VALIDATION DE COURS DANS LE LOCALSTORAGE
+    function markCourseAsCompleted() {
+        if (!courseID || courseID === "Cours sans titre") {
+            alert("Erreur : Impossible d'identifier le module à valider.");
+            return;
+        }
+
+        // On utilise la clé 'devEliteProgress' mise à jour par Mon_Espace_Dev.html
+        const progressKey = 'devEliteProgress';
+        let progress = JSON.parse(localStorage.getItem(progressKey)) || {};
+        
+        // Marque le cours actuel comme complété
+        if (!progress[courseID]) {
+            progress[courseID] = { status: 'completed', date: new Date().toISOString() };
+            localStorage.setItem(progressKey, JSON.stringify(progress));
+            
+            alert(`✅ Module "${courseID}" Validé ! Redirection vers le Dashboard...`);
+        } else {
+            if (confirm(`Le module "${courseID}" est déjà validé le ${new Date(progress[courseID].date).toLocaleDateString()}. Voulez-vous annuler la validation ?`)) {
+                 delete progress[courseID];
+                 localStorage.setItem(progressKey, JSON.stringify(progress));
+                 alert(`❌ Module "${courseID}" dévalidé. Mise à jour du Dashboard...`);
+            } else {
+                 return; // Annule la redirection
+            }
+        }
+
+        // Redirection vers le dashboard pour voir la mise à jour (simule le comportement utilisateur)
+        window.location.href = "Mon_Espace_Dev.html";
+    }
+    
+    // Rendre la fonction accessible depuis le scope global pour le bouton
+    window.markCourseAsCompleted = markCourseAsCompleted;
+
+    // 4. Fonction de Création de Bouton de Ressources
     const getBtn = (key, icon, label, color) => {
         const link = resources[key]; 
-        const isActive = link && link.length > 0 && link !== fileName; // Vérifie que le lien est présent ET n'est pas le nom du fichier par erreur
+        const isActive = link && link.length > 0 && link !== courseID; 
         const opacity = isActive ? "1" : "0.3";
         const cursor = isActive ? "pointer" : "default";
-        // Correction: Utiliser une fonction onClick pour gérer l'ouverture du lien
         const onclick = isActive ? `window.open('${link}', '_blank')` : "return false;";
         const boxShadow = isActive ? `0 4px 12px ${color}40` : "none";
 
@@ -45,13 +80,29 @@
             <i class="fa-solid ${icon}"></i>
         </button>`;
     };
+    
+    // 5. Création du Bouton de Validation Spécifique
+    const validationBtn = `
+        <button 
+            id="validation-button-course"
+            style="
+                background: #0F2C48; color: #10b981; border: 2px solid #10b981; 
+                padding: 8px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; 
+                margin-left: 20px; cursor: pointer; transition: 0.2s; white-space: nowrap; 
+                display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+            " 
+            onmouseover="this.style.background='#10b981'; this.style.color='#0F2C48';" 
+            onmouseout="this.style.background='#0F2C48'; this.style.color='#10b981';"
+            title="Valider la complétion de ce module" 
+            onclick="markCourseAsCompleted()">
+            <i class="fa-solid fa-check"></i>
+            <span>Valider</span>
+        </button>`;
 
-    // 4. Création de la Toolbar (HTML)
+    // 6. Création de la Toolbar (HTML)
     const toolbar = document.createElement('div');
     toolbar.id = "course-toolbar-injector";
     
-    // NOTE IMPORTANTE: Nous allons laisser la position TOP être calculée en JS
-    // pour s'adapter à la hauteur variable du header sur mobile.
     toolbar.style.cssText = `
         position: fixed; 
         left: 0; 
@@ -65,10 +116,10 @@
         justify-content: space-between; 
         align-items: center; 
         gap: 10px;
-        z-index: 9998; /* Un peu moins que le header (9999) */
+        z-index: 9998; 
         box-shadow: 0 4px 10px rgba(15, 44, 72, 0.05); 
         font-family: 'Outfit', sans-serif;
-        transition: top 0.3s ease-out; /* Ajout d'une transition pour le style */
+        transition: top 0.3s ease-out; 
     `;
 
     toolbar.innerHTML = `
@@ -84,7 +135,9 @@
             ${getBtn('pdf', 'fa-file-pdf', 'Document PDF', '#dc2626')}
             
             <div style="width:1px; height:30px; background:#e2e8f0; margin:0 15px;"></div>
-
+            
+            ${validationBtn}
+            
             <button style="background:#fffbeb; color:#d97706; border:1px solid #fcd34d; width:40px; height:40px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; margin-left:5px; flex-shrink:0;" 
                     title="Ajouter à l'agenda" onclick="alert('Fonction Agenda : À venir !')">
                 <i class="fa-solid fa-bell"></i>
@@ -99,39 +152,53 @@
         </div>
     `;
 
-    // 5. Injection et Ajustement de la position TOP
+    // 7. Injection et Ajustement de la position TOP (Réutilisant la correction précédente)
     document.body.appendChild(toolbar);
 
     function updateToolbarPosition() {
-        const header = document.getElementById('mainHeader'); // ID de votre header dans lecteur.html
+        const header = document.getElementById('mainHeader'); 
         if (header) {
-            // Calcule la hauteur totale du header (y compris la bordure)
             const headerHeight = header.offsetHeight;
-            // Applique cette hauteur comme position 'top' pour la toolbar
             toolbar.style.top = `${headerHeight}px`;
             
-            // Mise à jour de la marge supérieure du contenu principal pour éviter que la toolbar ne le recouvre
             const mainContent = document.querySelector('.main-content');
             if(mainContent) {
-                // Hauteur de la toolbar + une petite marge (ex: 15px)
                 const toolbarHeight = toolbar.offsetHeight;
-                const totalOffset = headerHeight + toolbarHeight + 15; // 15px de marge pour l'esthétique
-                
-                // Mettre à jour la marge supérieure du contenu (si elle n'est pas déjà assez grande)
-                // Le CSS initial de lecteur.html est déjà très large (210px / 280px), donc nous allons nous assurer qu'il est au moins égal au total calculé
+                const totalOffset = headerHeight + toolbarHeight + 15;
                 mainContent.style.paddingTop = `${totalOffset}px`;
             }
         } else {
-            // Repli si l'ID n'est pas trouvé (pour les pages sans lecteur.html, bien que ce script ne doive y être que là)
             toolbar.style.top = '95px'; 
+        }
+        
+        // Mise à jour de l'état du bouton "Valider" si le cours est déjà complété
+        const progress = JSON.parse(localStorage.getItem('devEliteProgress')) || {};
+        const isCompleted = !!progress[courseID];
+        const validationBtnElement = document.getElementById('validation-button-course');
+        
+        if (validationBtnElement) {
+            const span = validationBtnElement.querySelector('span');
+            const icon = validationBtnElement.querySelector('i');
+            
+            if (isCompleted) {
+                span.textContent = 'Dévalider';
+                icon.className = 'fa-solid fa-undo';
+                validationBtnElement.title = `Ce module est Validé ! Cliquez pour Dévalider.`;
+                validationBtnElement.style.borderColor = '#B4792A'; // Bronze pour l'état d'achèvement/révision
+                validationBtnElement.style.color = '#B4792A';
+            } else {
+                span.textContent = 'Valider';
+                icon.className = 'fa-solid fa-check';
+                validationBtnElement.title = `Valider la complétion de ce module`;
+                validationBtnElement.style.borderColor = '#10b981'; // Vert pour la validation
+                validationBtnElement.style.color = '#10b981';
+            }
         }
     }
     
-    // Exécuter au chargement et lors du redimensionnement de la fenêtre
     window.addEventListener('load', updateToolbarPosition);
     window.addEventListener('resize', updateToolbarPosition);
-
-    // Observer si le header change de taille (utile sur les mobiles qui peuvent le faire)
+    
     const resizeObserver = new ResizeObserver(updateToolbarPosition);
     const headerElement = document.getElementById('mainHeader');
     if (headerElement) {
