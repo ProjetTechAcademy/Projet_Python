@@ -285,11 +285,16 @@
 
     .icon-pdf { color: rgba(220, 38, 38, 0.4); }
     .icon-pdf.active, .icon-pdf:hover { color: rgba(220, 38, 38, 1); opacity: 1; }
+    
+    /* NOUVELLE ICÔNE : Lien externe (🔗) */
+    .icon-link { color: rgba(79, 70, 229, 0.4); } /* Indigo-500 opacity 40% */
+    .icon-link.active, .icon-link:hover { color: rgba(79, 70, 229, 1); opacity: 1; }
+
 
     .icon-clock { color: rgba(217, 165, 38, 0.4); }
     .icon-clock:hover { color: rgba(217, 165, 38, 1); }
 
-    /* NOUVEAU : Bouton Valider Vert */
+    /* Bouton Valider Vert */
     .icon-check { color: rgba(34, 197, 94, 0.4); } /* Green-500 opacity 40% */
     .icon-check:hover { color: rgba(34, 197, 94, 1); transform: scale(1.15); }
     .icon-check.active { color: rgba(34, 197, 94, 1); opacity: 1; }
@@ -360,6 +365,8 @@
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours" style="background:var(--brandGold); color:var(--brand-blue); border-color:var(--ivory);">📅</a>
         
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+
+        <!-- L'ancien lien Veille & Ressources (🔖) a été supprimé ici -->
 
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
 
@@ -504,6 +511,9 @@
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            
+            <!-- L'ancien lien Veille & Ressources (🔖) a été supprimé ici -->
+
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
@@ -829,8 +839,8 @@
                                 const textStyle = userProgress[dbKey] ? 'line-through text-slate-400 opacity-50' : 'text-gray-700';
 
                                 // Vérification des ressources via database.js si disponible
-                                let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '';
-                                let videoLink = '', infoLink = '', presLink = '', pdfLink = '';
+                                let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '', hasLink = ''; // Ajout de hasLink
+                                let videoLink = '', infoLink = '', presLink = '', pdfLink = '', linkLink = ''; // Ajout de linkLink
                                 
                                 // IMPORTANT : Si la BDD n'est pas chargée, ces liens seront vides, mais le code fonctionne.
                                 if (typeof window.dbRessources !== 'undefined' && window.dbRessources[resKey]) {
@@ -838,6 +848,7 @@
                                     if(window.dbRessources[resKey].info) { hasInfo = 'active'; infoLink = window.dbRessources[resKey].info; }
                                     if(window.dbRessources[resKey].pres) { hasPres = 'active'; presLink = window.dbRessources[resKey].pres; }
                                     if(window.dbRessources[resKey].pdf) { hasPdf = 'active'; pdfLink = window.dbRessources[resKey].pdf; }
+                                    if(window.dbRessources[resKey].link) { hasLink = 'active'; linkLink = window.dbRessources[resKey].link; } // Récupération du nouveau lien
                                 }
 
                                 return `
@@ -856,6 +867,8 @@
                                         <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
                                         <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
                                         <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
+                                        <!-- NOUVEL ÉMOJI DE RESSOURCE (Lien) -->
+                                        <button class="resource-btn icon-link ${hasLink}" title="Lien externe" onclick="${linkLink ? `window.open('${linkLink}', '_blank')` : ''}">🔗</button>
                                         
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
                                         <button id="btn-check-${dbKey}" class="resource-btn icon-check ${isBtnActive}" title="Valider module" onclick="toggleTopic('${dbKey}')"><i class="fas fa-check-circle"></i></button>
