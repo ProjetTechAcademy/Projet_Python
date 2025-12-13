@@ -65,7 +65,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Ay_HMjmLBJYKwwzeyJIeFnHhyLvG1X-b/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M01_S010_Les_principaux_acteurs_dun_projet_digital_:_la_maitrise_douvrage": {
         video: "",
@@ -109,7 +109,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1pG-rNTO9zMhuJMjPvPE0_5of04lnrFtK/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M02_S003_Definir_la_solution_et_le_projet_cibles": {
         video: "",
@@ -165,19 +165,19 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1vSo-pRzbNThNhAyrddn6CWptn4impdKD/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S002_Gestion_des_documents": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1tODRjTqppJUo0zrtick37bVkRg7TvW2f/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S003_Les_outils_de_dessin_vectoriel": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1i5alCymO1ww1Fr-WhP5dMetpuhgSiDQ0/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S004_Les_textes": {
         video: "",
@@ -189,61 +189,61 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1-IV5ce2tUFueTUhyGGbUKnzZsIL8tgWr/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S006_Les_differents_effets_graphiques": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1EI6qDWEjGgCOLpUZEv0iasOw5ykxV61g/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S007_Creation_delements_repetes": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1WTBQFPd32eCxF_N_kYY14-YUSNx5WluL/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S008_Redimensionnement_reactif": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1zt3sVe_5-QUDfK-1QDyVp68euC02jQND/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S009_Utilisation_des_composants": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1GcN8x_1WKz_KifwL-0a-Xk9XbCDIy5vz/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S010_Utilisation_et_gestion_des_Actifs": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1m3zewoW_38SkDehJekQjvqKvYQwEqK2L/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S011_Le_mode_Prototype": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1HEewL7lvn4JWQa_-GjgBzZUyFwOtmfxW/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S012_Plug_ins": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1oWx5iG5I7QL-dK40Y_fk2UTffIP1FTKe/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S013_Partage_de_designs_et_de_prototypes": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1F-lZllIrOoKyIcs2K2H7NuQQ0kZ4X2-t/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M03_S014_Les_differents_types_dexport": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1XsyFSg0NfRwS3QxDlT7FDiTbWhwY2yyS/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 04 : Utiliser Figma ---
@@ -301,13 +301,13 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1ok0sXXdsa8eQ4lOkuM3nqNGaTcaFapnq/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M05_S005_Les_methodologies_agiles": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1CSzqwGkNzPgXs61Wm2rhun4lCyN1XNIv/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M05_S006_Les_processus_et_les_disciplines_de_la_gestion_de_projet_selon_le_PMBOK": {
         video: "",
@@ -393,7 +393,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/11ptBQ0Z5PSdpUWWKjqHPZ7uBmtvmudHO/view?usp=drivesdk"
+        pdf: ""
     },
     "B1_M06_S008_Proposer_une_solution_optimale_en_termes_de_performance_attendue": {
         video: "",
@@ -613,7 +613,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1c5V0YK-SLFs7TAyxw-vyxiYUyNgEG_w9/view?usp=drivesdk"
+        pdf: ""
     },
 
     // ==================================================================
@@ -625,37 +625,37 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1JvrSP_Gyh3QRDgIy40hMj5FKNc1JJ7fM/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S002_Creation_du_compte": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1tNXPDgwLFiYxwUr0lJ1CWLgnsX7i1_Ht/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S003_Decouverte_de_linterface": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1IoCa64CVosxeMcLiyEVIPf2UIuKY48XR/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S004_Decouvrir_le_contenu_dun_projet": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Jx3Qv6tQJNCuc_Xs_9vl9cyln1_CLkuJ/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S005_Le_travail_collaboratif_:_les_membres": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1IlDOlKPyR8q8p_0mbLyIWfiKqkBjZj6U/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S006_Le_travail_collaboratif_:_les_equipes": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1S2QZ3u0j1f4ebqMkPdoXKzSbt5lRVQC2/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S007_Les_tableaux": {
         video: "",
@@ -667,31 +667,31 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1GmRxtyz4hoZj5KD_tKTMpkLWe-TDbBQh/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S009_Les_cartes": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1-ToRK3cDGU6l9ZLE1DemTnP7itbeaGfj/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S010_Les_checklists": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1yZGlMN8E0jWqgndQqWCfxgQRc18NcHZx/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S011_Les_utilitaires": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1xdKS2lJ-otA35gZna4dBRt9kECNJkBym/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M01_S012_Les_Power_ups": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1uFGwTCh8JTkPEhBIIdA5jPfokSoS-xYy/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 02 : JIRA ---
@@ -699,37 +699,37 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/167Ko4lFnKaEDNotc5xrcCDIGmHn5Y6On/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M02_S002_Apprendre_JIRA": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1jYCLWmoRWzIeXMWVH1NsMQJaDZlG7Svw/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M02_S003_Les_methodologies_agiles_avec_JIRA": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1WMAMrO1f-szMX4KfBuG2AP8mQDqO9eMo/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M02_S004_JIRA_pour_les_equipes": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1O4dVFa--lhtpGn47CPtBKPjbyvyUlRBz/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M02_S005_JIRA_pour_les_administrateurs": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1fQH5RenmYofo-JQ0G-r37goUo_Ibe0Mo/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M02_S006_Utiliser_JIRA_avec_Gitlab": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1pz8xJtUOPmwHESBNX8Vlj7YEkR_fV-nP/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 03 : GanttProject ---
@@ -737,61 +737,61 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1saQIqcGH9NMx5vokt40wcGODrY7bHSAs/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S002_Cadrer_le_projet": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1LLF3XNT8qDKH2W3707wENwDvgawZBA_6/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S003_Construire_le_plan_de_projet": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1JEyvdC9BE8g7GhUOgX8p1BYpNSOSusFG/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S004_Creation_des_dependances": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Gp_24KtEbAFdB1VdvslmAZyUZDHMsXWq/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S005_Gerer_les_affichages": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1W-vhrBGXNdNv9gapUe5tfFbY9fGZWyD1/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S006_Le_reseau_du_projet": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1YEV1QXDqhrFYSX3I6kY3l9nS2JxyVBqX/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S007_Gerer_les_ressources": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/17E2M3vCNhcV_aj5-5FuUDc1mVlV5JAwU/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S008_Le_suivi_de_projet": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1awcBbAXh0GTPiJr0qKsIfQOndM4MQ9oz/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S009_Les_outils_dimpression_et_dexportation": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1JV8Wu36iiA9gb421ULLgBtoPv0iK5wic/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M03_S010_Application_Gestion_de_projet_GanttProject": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1PvET66NMBEHKvMONRT6B47pMKAh9duvo/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 04 : Modélisation UML ---
@@ -805,7 +805,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1XCq6708hXvrFZfjlSXNSu2C9Za5qPnCv/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M04_S003_Les_diagrammes_dobjets": {
         video: "",
@@ -891,7 +891,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1m5wQvrFV1XizHg6n5E7CDXcbKXJEMHgH/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M05_S002_Definir_le_cadre_de_la_solution_digitale": {
         video: "",
@@ -915,25 +915,25 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1nX21eHp78JiXhnFtk5Nq7r1xbCjL-WQB/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M05_S006_La_reiteration_en_fonction_des_feedbacks": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/18KcvswvC6B8jdEI06oBpYrCpp55SPg9P/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M05_S007_Le_role_du_Scrum_Master": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1lyxqaWfljGOVrvIp_obsKJs-FQDWFTpr/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M05_S008_Le_role_du_product_owner": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Hi8B-FOW7kvD2MRMuiw1I03vrQVnrrkM/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 06 : Kanban ---
@@ -941,13 +941,13 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Lbm8o7fYdMrlitf1Rui9ZWuKB6MZlxOk/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M06_S002_La_plateforme_Monday": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1xavRPD901FvTPISiv3CxT7-PC1UCivFg/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 07 : Tester son application Web ---
@@ -955,13 +955,13 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/18ylydO1F_3V_lnTcWH927RVBPo8Vck9A/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M07_S002_Les_tests_dusabilite": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1rZU2zRy7NwRz5-eaus_tovHG1P6P7RWs/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M07_S003_Les_tests_unitaires": {
         video: "",
@@ -985,19 +985,19 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1dTyr079mFxQhnrPwI6mAurNsQuNoldj0/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M07_S007_Les_tests_dacceptation": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1w6Q7g-z9KRb01w9kfsjqZN4th5WUh-ka/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M07_S008_Les_tests_de_regression": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/15rJYu_dvH5UwrjrsmpMPVgfb5oaJJ_p5/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M07_S009_Integration_continue": {
         video: "",
@@ -1017,7 +1017,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1lK6coiqM73i7Sc7PhY5TNfa2hbojNnuo/view?usp=drivesdk"
+        pdf: ""
     },
     "B2_M08_S002_Les_tests_unitaires_avec_PHPUnit": {
         video: "",
@@ -1071,7 +1071,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1WpbEMoowtwhYZ8RXMVTRnui_Jrnva-vz/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 09 : Proposer des solutions suite à un audit ---
@@ -1133,7 +1133,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/19e1TX5o_B6-RFaJZWEs-qNhuixpAgHZN/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M01_S002_Introduction_a_la_production_de_contenus_digitaux": {
         video: "",
@@ -1175,7 +1175,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1bCWzQH0m1DY9Eby9YSb9PXZmJ5l17QGF/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 02 : HTML, CSS et Bootstrap ---
@@ -1213,7 +1213,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1ZU_2jSIO9RhqbxdCVni1HnwwWNIytTC6/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M02_S007_CSS3_:_Le_stylage_du_texte": {
         video: "",
@@ -1335,61 +1335,61 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1j1nB3W60UsD_-8rcUhViBRhP0AL_r-UY/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S002_Le_formulaire_HTML_et_JavaScript": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/14DPSHcW41pMKjX9Dmf0HU8YYtSVtAInv/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S003_Initiation_aux_objets_et_aux_classes": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Nk5KkhYn4JUzPUdrFfB4gd2IbMvQsIJ8/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S004_LAPI_DOM": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1D9SbaiYdiG0TQQ2VHs27kXj_Ojp0-g4d/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S005_Presentation_de_la_librairie_JQuery": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1xcR6wAl_AOV0HR9WV4F1kY6pNfUjp3Ao/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S006_Les_bases_de_JQuery": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1ewnX2Enrz0nnDcCNYGG4FO5yhn63v4vo/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S007_La_programmation_AJAX": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1GAQd9y3qFr3dB_GEj5IPSY_d0dXqdPNz/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S008_Les_promesses_et_lAPI_Fetch": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1VOb_q8aRp53lvbcAxeXYVuVFTSvthFMK/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S009_Lutilisation_de_JSON": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1vxa6mvk5WdBMfsp6WX-vmh-etA3Cdm0T/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M03_S010_LAPI_Canvas_en_JavaScript": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1L1kGLBlE-S-77sJ1A15MLTuxIX1CkyuB/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 04 : PHP ---
@@ -1421,7 +1421,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1rVKOfUUfqlyk07W1pszNZ_40zZiHZL3A/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M04_S006_Les_conditions": {
         video: "",
@@ -1591,7 +1591,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1nIj5ld0RyW6V-vxqviBAq-Wy8XqrxS5h/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M05_S011_Les_requetes_SQL": {
         video: "",
@@ -1603,7 +1603,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1CIMqRy-Ofvj3f60BV_6YzMQDb6YfKSFn/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M05_S013_Les_jointures_SQL": {
         video: "",
@@ -1647,13 +1647,13 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1kbfLmVzTYvet3O71EKXChufpzrkH4yy7/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M06_S002_Introduction_a_MongoDB": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1PR90K2AYEt0cVqkURabsXJSjeg2PfXuJ/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 07 : Python Web ---
@@ -1721,7 +1721,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1U4iVgZD09HSMBsitLp47LDPMcxoRRkui/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M07_S012_Notions_theoriques_de_classe": {
         video: "",
@@ -1799,7 +1799,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1D65pF0qlBCMGXWozUAnYyzx32OcXJYKv/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M07_S025_Notion_dORM_(object_relational_mapping)": {
         video: "",
@@ -1915,121 +1915,121 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1VZ_OiK1A7QZ6nBWJWZ2xnyzpYb1G7G7L/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S002_Introduction_a_React_Native_:_loutil_Expo": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1FnaT9wgMJFH9Vor6wzI7iPtTGqyIyEzC/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S003_Les_bases_de_React_Native": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Vqzajd8bDkHMWgo69t2xBcuWkRervwOH/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S004_Les_composants_React_Native": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/13WGvoMPNDVObrcvj8NfcJ67RGdCsSGGH/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S005_Les_props_et_les_states": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Q38M9lDgW0ROvEnM0Hru-lYC0L4hAj21/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S006_Style_et_mise_en_page_avec_Flexbox": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/16zm-wu5UizF516WXJEKb88VWc-fDW9lB/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S007_Du_code_different_en_fonction_de_la_plateforme": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Zebxm4dLr-G3Kkw-CmpUuLh5lVdz-8VC/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S008_Lutilisation_de_Redux": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1gVYYzprOUjGWd_PKGf-NZiWr-3TPboQY/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S009_Les_extensions_de_Redux": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1fiyz_YzR-c_0cweQUitEj-7W3jIuDJ1-/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S010_Lorganisation_dune_application_React_Native": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Yk7BXJ9hKvTv1q9_cc7duZ9cOQyPx-sq/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S011_La_navigation_avec_React_Native": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1pVn1CNRUY9Ap8ShQ3jfPWl2wGm4kX87n/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S012_Les_differents_types_de_navigators": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/19ZM6I5TB_4JE9R-Rxg9hsqPytymL3BiY/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S013_Lanimation_avec_React_Native": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1_Nuu75GCB82rhbGStEcZc0YjGGI0Vf8M/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S014_Installer_les_emulateurs": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1pFePTrL2l6SU8c7yPG6av4NQutuZ4pbR/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S015_Utiliser_une_base_donnees_locale_:_SQLITE": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1kE3ZuyRZjvFyVXauhBuBu_D-E3twya23/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S016_Les_APIs_React_Native_et_modules_natifs": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1BSG1MkfTJnqsGWFtl1I3LPTlWpZr80PV/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S017_Le_debugging": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1mNHxJFD660xqK2vdWURpzmB88c4IGwJD/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S018_Le_deploiement_dune_application_sur_les_stores": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1b-89Vjgtfmfw0JbK8P4bMyMrIN4doBdN/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S019_Creer_une_application_React_Native_sans_Expo": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1pvRzjiKNTyElBSW-Qa-Zy-kvBn3tVlfj/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M08_S020_Projet_developper_une_application_mobile_avec_React_Native": {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1Al4jib4VCM6TRlWBFFaeZe0tZc3lZse2/view?usp=drivesdk"
+        pdf: ""
     },
 
     // --- Module 09 : Concevoir une API ---
@@ -2063,7 +2063,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1QyXdTqDPgrXvUzU1n4iwKZVAO83lClBD/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M10_S003_Les_API_de_paiement": {
         video: "",
@@ -2139,7 +2139,7 @@ window.dbRessources = {
         video: "",
         info: "",
         pres: "",
-        pdf: "https://drive.google.com/file/d/1TBWgkPdTTrFS_EuXh0Mapv4lpDIiQ6y5/view?usp=drivesdk"
+        pdf: ""
     },
     "B3_M12_S002_Ameliorer_sa_solution": {
         video: "",
