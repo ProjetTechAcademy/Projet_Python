@@ -1,710 +1,964 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lexique Dev - Expert Python/Web</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lexique Dev - The Dev Elite Club</title>
+
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        /* --- VARIABLES CHARTE MATHILDE V2 --- */
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+        
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+
+        /* --- VARIABLES COMPATIBILITÉ LEXIQUE --- */
+        --cta: var(--brandGold);       /* Mapping pour le code existant */
+        --color-bg: var(--ivory);
+        
+        /* Couleurs Spécifiques Lexique (Préservées) */
+        --bg-vulg: #f3e8ff;    --border-vulg: #9333ea;    --text-vulg: #6b21a8;    /* Violet */
+        --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985; /* Bleu */
+        --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;   /* Jaune */
+        --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;   /* Rouge */
+        --bg-code: #f0fdf4;   --border-code: #16a34a;   --text-code: #166534;     /* Vert */
+    }
     
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
-
-    <!-- Tailwind & FontAwesome -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
 
-    <style>
-        /* ================================================================= */
-        /* 🎨 DESIGN SYSTEM - THE DEV ELITE CLUB (Variables) */
-        /* ================================================================= */
-        :root {
-            /* Couleurs Principales */
-            --cta: #D9A526;        /* Or */
-            --brand-blue: #0F2C48; /* Bleu Nuit */
-            --ivory: #F6F2E8;      /* Ivoire */
-            --bronze: #B4792A;     /* Bronze */
-            
-            /* Couleurs Spécifiques Lexique */
-            --bg-vulg: #f3e8ff;    --border-vulg: #9333ea;    --text-vulg: #6b21a8;    /* Violet (Simple) */
-            --bg-context: #e0f2fe; --border-context: #0284c7; --text-context: #075985; /* Bleu (Tech/Contexte) */
-            --bg-advice: #fffbeb; --border-advice: #d97706; --text-advice: #92400e;   /* Jaune (Tips) */
-            --bg-danger: #fef2f2; --border-danger: #dc2626; --text-danger: #991b1b;   /* Rouge (Warning) */
-            --bg-code: #f0fdf4;   --border-code: #16a34a;   --text-code: #166534;     /* Vert (Code) */
-            --bg-lang: #f5f3ff;   --border-lang: #8b5cf6;   --text-lang: #5b21b6;     /* Violet Clair (Lang) */
-        }
+    /* --- HEADER (V2 Optimisé) --- */
+    .top-bar { 
+        background: var(--brand-blue); 
+        padding: 12px 0; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%;
+        padding: 0 40px;
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
-        body { 
-            margin: 0; background-color: var(--ivory); color: var(--brand-blue); 
-            font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh; 
-        }
-        .font-code { font-family: 'Fira Code', monospace; }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
+    
+    /* Style actif pour la page courante */
+    .header-icon-btn.active {
+        background: var(--ivory);
+        color: var(--brand-blue);
+        border-color: var(--brandGold);
+        box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
 
-        /* HEADER STYLES */
-        .top-bar { background-color: var(--brand-blue); padding: 15px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.15); position: sticky; top: 0; z-index: 10000; border-bottom: 4px solid var(--cta); }
-        .top-bar-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        .logo-placeholder { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--cta); background: white; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
-        .top-bar-center { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    /* Tooltip */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
+
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
+        text-decoration: none; 
+        font-family: 'Fira Code', monospace;
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
+    }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
+
+    /* Main Content */
+    .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* --- STYLES SPÉCIFIQUES LEXIQUE (Adaptés) --- */
+    .page-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; margin-top: 20px; }
+    .page-intro { text-align: center; color: var(--bronze); margin-bottom: 40px; font-weight: 600; font-family: 'Outfit', sans-serif; font-size: 1.1rem; }
+    
+    .controls-section { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(15, 44, 72, 0.08); margin-bottom: 40px; border-top: 4px solid var(--brandGold); }
+    .search-input { width: 100%; padding: 15px 25px; border-radius: 8px; border: 2px solid #e5e7eb; font-size: 1.1rem; outline: none; transition: 0.3s; margin-bottom: 20px; font-family: 'Fira Code', monospace; color: var(--brand-blue); }
+    .search-input:focus { border-color: var(--brandGold); box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.1); }
+    
+    .filters-label { font-weight: 700; color: var(--brand-blue); margin-bottom: 10px; display: block; text-align: center; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+    .filters-container { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+    
+    /* BOUTONS DE FILTRE COLORÉS */
+    .filter-btn { 
+        padding: 8px 20px; border-radius: 50px; 
+        border: 2px solid transparent; 
+        background: #f1f5f9; color: #64748b; 
+        font-weight: 700; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        font-size: 0.9rem; font-family: 'Fira Code', monospace; 
+        display: flex; align-items: center; gap: 8px;
+    }
+    .filter-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    
+    /* Styles spécifiques par tag (Couleurs des badges) */
+    .f-all.active, .f-all:hover { background: var(--brand-blue); color: white; border-color: var(--brand-blue); }
+    
+    .f-front { border-color: #E34F26; color: #E34F26; background: white; }
+    .f-front.active, .f-front:hover { background: #E34F26; color: white; }
+    
+    .f-back { border-color: #3776AB; color: #3776AB; background: white; }
+    .f-back.active, .f-back:hover { background: #3776AB; color: white; }
+    
+    .f-devops { border-color: #000000; color: #000000; background: white; }
+    .f-devops.active, .f-devops:hover { background: #000000; color: white; }
+    
+    .f-gestion { border-color: #10b981; color: #10b981; background: white; }
+    .f-gestion.active, .f-gestion:hover { background: #10b981; color: white; }
+    
+    .f-lang { border-color: #8b5cf6; color: #8b5cf6; background: white; }
+    .f-lang.active, .f-lang:hover { background: #8b5cf6; color: white; }
+
+    /* ALPHABET FILTER BAR */
+    .alphabet-container { 
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; 
+        padding-top: 20px; border-top: 1px dashed #cbd5e1; 
+    }
+    .alpha-btn { 
+        width: 32px; height: 32px; border-radius: 50%; 
+        border: 1px solid rgba(15, 44, 72, 0.2); 
+        background: white; color: var(--brand-blue); 
+        display: flex; align-items: center; justify-content: center; 
+        font-family: 'Fira Code', monospace; font-size: 0.85rem; font-weight: 700; 
+        cursor: pointer; transition: all 0.2s; 
+    }
+    .alpha-btn:hover { background: var(--ivory); transform: scale(1.15); border-color: var(--brandGold); }
+    .alpha-btn.active { background: var(--brandGold); color: var(--brand-blue); border-color: var(--brandGold); transform: scale(1.1); box-shadow: 0 2px 8px rgba(217, 165, 38, 0.4); }
+    .alpha-btn.disabled { opacity: 0.3; pointer-events: none; background: #f8fafc; border-color: #e2e8f0; }
+    
+    .alpha-reset { 
+        width: auto; padding: 0 12px; border-radius: 20px; 
+        background: var(--brand-blue); color: white; border: none;
+    }
+    .alpha-reset:hover { background: var(--bronze); }
+
+
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+    .expert-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .expert-card:hover { transform: translateY(-5px); border-color: var(--brandGold); box-shadow: 0 15px 40px rgba(15, 44, 72, 0.15); }
+    
+    .card-top { padding: 25px 20px; border-bottom: 1px solid #f1f5f9; position: relative; background: #fff; z-index: 2; }
+    .badges-group { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; }
+    .badge-circle { 
+        padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; color: white; font-family: 'Fira Code', monospace; 
+        cursor: pointer; transition: transform 0.2s;
+    }
+    .badge-circle:hover { transform: scale(1.1); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    
+    .bg-front { background-color: #E34F26; } 
+    .bg-back { background-color: #3776AB; } 
+    .bg-devops { background-color: #000000; } 
+    .bg-gestion { background-color: #10b981; } 
+    .bg-lang { background-color: #8b5cf6; } 
+    
+    .term-row { margin-top: 10px; display: flex; align-items: center; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .tech-term { font-family: 'Fira Code', monospace; font-size: 1.6rem; font-weight: 700; color: var(--brand-blue); }
+    
+    .audio-group { display: flex; gap: 8px; margin-left: 5px; }
+    .pronounce-btn { background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; cursor: pointer; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; position: relative; overflow: hidden; }
+    .pronounce-btn:hover { background-color: #0284c7; color: white; transform: scale(1.1); border-color: #0284c7; }
+    .flag-icon { font-size: 0.8rem; margin-right: 2px; }
+    
+    .translation { text-align: center; color: var(--bronze); font-weight: 600; font-size: 0.9rem; margin-top: 5px; font-style: italic; }
+    .definition-container { background: #f8fafc; padding: 15px 20px; border-left: 4px solid var(--brandGold); }
+    .definition-text { font-weight: 500; color: var(--brand-blue); font-size: 0.95rem; line-height: 1.6; }
+    
+    .expert-toggle { width: 100%; padding: 15px; background: #f1f5f9; border: none; color: var(--brand-blue); font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+    .expert-toggle:hover { background: var(--brandGold); color: white; }
+    .expert-toggle.active .chevron { transform: rotate(180deg); }
+    .expert-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #fff; padding: 0 20px; }
+    .expert-content.open { max-height: 2000px; padding-bottom: 20px; }
+    
+    .expert-block { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid transparent; }
+    .b-vulg { background: var(--bg-vulg); border-color: var(--border-vulg); color: var(--text-vulg); }
+    .b-context { background: var(--bg-context); border-color: var(--border-context); color: var(--text-context); }
+    .b-advice { background: var(--bg-advice); border-color: var(--border-advice); color: var(--text-advice); }
+    .b-danger { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
+    .b-code { background: var(--bg-code); border-color: var(--border-code); color: var(--text-code); font-family: 'Fira Code', monospace; }
+    .block-title { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 4px; font-family: 'Fira Code', monospace; }
+
+    /* PLAYER ACCESSIBILITÉ */
+    .accessibility-player { margin-top: 20px; padding: 15px; background: #f8fafc; border-top: 1px solid #e2e8f0; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .player-label { font-weight: 700; font-size: 0.8rem; color: var(--brand-blue); display: flex; align-items: center; gap: 6px; }
+    .player-controls { display: flex; gap: 15px; align-items: center; }
+    .player-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--brand-blue); background: white; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+    .player-btn:hover { background: var(--brand-blue); color: white; transform: scale(1.1); }
+    .player-btn.play-btn { width: 50px; height: 50px; border-color: var(--brandGold); background: var(--brandGold); color: var(--brand-blue); font-size: 1.2rem; }
+    .player-btn.play-btn:hover { background: var(--brand-blue); color: var(--brandGold); border-color: var(--brand-blue); }
+
+    /* --- FOOTER (V2) --- */
+    .main-footer { 
+        background: var(--footer-bg); color: var(--footer-text); 
+        padding: 40px 0; 
+        margin-top: auto; border-top: 4px solid var(--brandGold); 
+        font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+        width: 100%;
+    }
+    .footer-container { 
+        width: 100%;
+        max-width: 100%; 
+        padding: 0 40px; 
+        margin: 0 auto; 
+        display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; 
+    }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { 
+        color: var(--brandGold); 
+        text-decoration: none; 
+        transition: color 0.2s; 
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { 
+        width: 40px; height: 40px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.06); 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        border: 1px solid rgba(217, 165, 38, 0.15); 
+        transition: all 0.2s;
+        font-size: 1.1rem;
+        position: relative;
+    }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    /* Animation Fade Up */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--brandGold); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; box-shadow: 4px 4px 0px var(--bronze); border: 2px solid var(--brand-blue); }
+    #backToTop.show { opacity: 1; pointer-events: all; }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; padding-bottom: 5px; }
+        .top-left { margin-right: 0; flex-direction: column; text-align: center; }
+        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+        .top-center::-webkit-scrollbar { height: 4px; }
+        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
         
-        /* BOUTONS RONDS */
-        .header-icon-btn, .icon-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; transition: all 0.3s ease; cursor: pointer; }
-        .header-icon-btn { background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); border: 1px solid rgba(255,255,255,0.2); color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        .header-icon-btn:hover { transform: translateY(-3px) scale(1.1); background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%); box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); }
-        .icon-btn { background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); color: #fff; }
-        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; color: var(--brand-blue); }
-        
-        /* Tooltip */
-        .header-icon-btn::after, .icon-btn::after { content: attr(data-tooltip); position: absolute; background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100; }
-        .header-icon-btn::after { top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px); }
-        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .icon-btn::after { bottom: 130%; left: 50%; transform: translateX(-50%) translateY(10px); }
-        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-
-        .btn-portfolio-cosmic { padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite; }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
-        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-
-        /* MAIN */
-        main { flex-grow: 1; max-width: 1200px; margin: 0 auto; padding: 40px 20px; width: 100%; }
-        .page-title { text-align: center; font-family: 'Fira Code', monospace; font-size: 2.5rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; }
-        .page-intro { text-align: center; color: var(--bronze); margin-bottom: 40px; font-weight: 600; font-family: 'Outfit', sans-serif; }
-        .controls-section { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid var(--cta); }
-        .search-input { width: 100%; padding: 15px 25px; border-radius: 8px; border: 2px solid #e5e7eb; font-size: 1.1rem; outline: none; transition: 0.3s; margin-bottom: 15px; font-family: 'Fira Code', monospace; }
-        .search-input:focus { border-color: var(--cta); box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.1); }
-        .filters-container { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .filter-btn { padding: 8px 20px; border-radius: 8px; border: 2px solid var(--brand-blue); background: transparent; color: var(--brand-blue); font-weight: 700; cursor: pointer; transition: 0.3s; font-size: 0.9rem; font-family: 'Fira Code', monospace; }
-        .filter-btn:hover, .filter-btn.active { background: var(--brand-blue); color: var(--ivory); box-shadow: 4px 4px 0px var(--cta); transform: translate(-2px, -2px); }
-
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
-        .expert-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; }
-        .expert-card:hover { transform: translateY(-5px); border-color: var(--cta); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
-        .card-top { padding: 25px 20px; border-bottom: 1px solid #f1f5f9; position: relative; background: #fff; z-index: 2; }
-        .badges-group { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; }
-        .badge-circle { padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: 800; color: white; font-family: 'Fira Code', monospace; }
-        .bg-front { background-color: #E34F26; } .bg-back { background-color: #3776AB; } .bg-devops { background-color: #000000; } .bg-gestion { background-color: #10b981; } .bg-lang { background-color: #8b5cf6; } 
-        
-        .term-row { margin-top: 10px; display: flex; align-items: center; gap: 10px; justify-content: center; flex-wrap: wrap; }
-        .tech-term { font-family: 'Fira Code', monospace; font-size: 1.6rem; font-weight: 700; color: var(--brand-blue); }
-        
-        .audio-group { display: flex; gap: 8px; margin-left: 5px; }
-        .pronounce-btn { background: #f0f9ff; border: 1px solid #bae6fd; color: #0284c7; cursor: pointer; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; position: relative; overflow: hidden; }
-        .pronounce-btn:hover { background-color: #0284c7; color: white; transform: scale(1.1); border-color: #0284c7; }
-        .flag-icon { font-size: 0.8rem; margin-right: 2px; }
-        
-        .translation { text-align: center; color: var(--bronze); font-weight: 600; font-size: 0.9rem; margin-top: 5px; font-style: italic; }
-        .definition-container { background: #f8fafc; padding: 15px 20px; border-left: 4px solid var(--cta); }
-        .definition-text { font-weight: 500; color: var(--brand-blue); font-size: 0.95rem; line-height: 1.6; }
-        
-        .expert-toggle { width: 100%; padding: 15px; background: #f1f5f9; border: none; color: var(--brand-blue); font-weight: 700; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: 0.3s; font-family: 'Fira Code', monospace; font-size: 0.85rem; }
-        .expert-toggle:hover { background: var(--cta); color: white; }
-        .expert-toggle.active .chevron { transform: rotate(180deg); }
-        .expert-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; background: #fff; padding: 0 20px; }
-        .expert-content.open { max-height: 2000px; padding-bottom: 20px; }
-        .expert-block { margin-top: 15px; padding: 12px; border-radius: 8px; font-size: 0.9rem; line-height: 1.5; border-left: 4px solid transparent; }
-        .b-vulg { background: var(--bg-vulg); border-color: var(--border-vulg); color: var(--text-vulg); }
-        .b-context { background: var(--bg-context); border-color: var(--border-context); color: var(--text-context); }
-        .b-advice { background: var(--bg-advice); border-color: var(--border-advice); color: var(--text-advice); }
-        .b-danger { background: var(--bg-danger); border-color: var(--border-danger); color: var(--text-danger); }
-        .b-code { background: var(--bg-code); border-color: var(--border-code); color: var(--text-code); font-family: 'Fira Code', monospace; }
-        .block-title { font-weight: 800; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 4px; font-family: 'Fira Code', monospace; }
-
-        /* PLAYER ACCESSIBILITÉ */
-        .accessibility-player { margin-top: 20px; padding: 15px; background: #f8fafc; border-top: 1px solid #e2e8f0; border-radius: 8px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .player-label { font-weight: 700; font-size: 0.8rem; color: var(--brand-blue); display: flex; align-items: center; gap: 6px; }
-        .player-controls { display: flex; gap: 15px; align-items: center; }
-        .player-btn { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--brand-blue); background: white; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.2s; font-size: 1rem; }
-        .player-btn:hover { background: var(--brand-blue); color: white; transform: scale(1.1); }
-        .player-btn.play-btn { width: 50px; height: 50px; border-color: var(--cta); background: var(--cta); color: var(--brand-blue); font-size: 1.2rem; }
-        .player-btn.play-btn:hover { background: var(--brand-blue); color: var(--cta); border-color: var(--brand-blue); }
-
-        /* FOOTER */
-        .main-footer { background-color: var(--brand-blue); color: #F6F2E8; padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; width: 100%; margin-top: auto; }
-        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        .footer-logo-placeholder { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
-        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-        .footer-link:hover { color: var(--cta); }
-        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
-        .icon-dock { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
-        .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
-        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; box-shadow: 4px 4px 0px var(--bronze); border: 2px solid var(--brand-blue); }
-        #backToTop.show { opacity: 1; pointer-events: all; }
-        @media (max-width: 768px) { .footer-content { flex-direction: column; align-items: center; text-align: center; } .footer-identity { flex-direction: column; text-align: center; } .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; } .icon-dock { justify-content: center; flex-wrap: wrap; } .dock-separator { display: none; } }
-    </style>
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; }
+        .footer-left { flex-direction: column; }
+        .footer-details { align-items: center; margin-top: 10px; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+        .footer-divider { display: none; } 
+    }
+  </style>
 </head>
-<body onload="renderDictionary()">
+<body onload="initLexique()">
 
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="top-bar-left">
-                <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="text-decoration-none">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo" class="logo-placeholder object-contain p-1">
-                </a>
-                <div class="identity-stack ml-3">
-                    <span class="club-title-main">💫 The Dev Elite Club ✨</span>
-                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
-                </div>
-            </div>
-            
-            <div class="top-bar-center">
-                <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="header-icon-btn" data-tooltip="Accueil"><span>🏠</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="header-icon-btn" data-tooltip="Mon Espace"><span>📊</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="header-icon-btn" data-tooltip="Planning & Cours"><span>📅</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" class="header-icon-btn" data-tooltip="Atelier"><span>🛠️</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" class="header-icon-btn" data-tooltip="Observatoire & IA"><span>🚀</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" class="header-icon-btn" data-tooltip="Fiche RNCP"><span>🏅</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" class="header-icon-btn" data-tooltip="Lexique" style="background: white; color: var(--brand-blue); border-color: var(--brand-blue);"><span>📜</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" class="header-icon-btn" data-tooltip="Acronymes"><span>🔠</span></a>
-                <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="header-icon-btn" data-tooltip="Profil"><span>👤</span></a>
-            </div>
-
-            <a href="#" class="btn-portfolio-cosmic"><span>📄</span> Mon portfolio</a>
+  <!-- ==================== HEADER (HAUT) ==================== -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      
+      <!-- Logo & Titre -->
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
+      </div>
+
+      <!-- Navigation Icônes -->
+      <nav class="top-center" aria-label="Navigation principale">
+        
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+        <!-- Active Link -->
+        <a class="header-icon-btn active" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">👤</a>
+
+      </nav>
+
+      <!-- Bouton EXPERT / Portfolio -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
+          <i class="fa-solid fa-code"></i>
+          Mon Portfolio
+        </a>
+      </div>
     </div>
+  </div>
 
-    <main>
-        <div class="page-title">Encyclopédie du Code 💻</div>
-        <p class="page-intro">Le jargon du développeur traduit en humain (Python, Web, Agile) - 300+ Termes Numérotés</p>
+  <!-- ZONE DE CONTENU -->
+  <main class="main-content fade-up visible">
+    
+    <div class="page-title">Encyclopédie du Code 💻</div>
+    <p class="page-intro">Le jargon du développeur traduit en humain (Python, Web, Agile) - 300+ Termes Numérotés</p>
 
-        <section class="controls-section">
-            <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher (ex: API, Git, Scrum...)">
-            <div class="filters-container">
-                <button class="filter-btn active" onclick="filterTerms('all')">TOUT</button>
-                <button class="filter-btn" onclick="filterTerms('Front')">FRONT-END</button>
-                <button class="filter-btn" onclick="filterTerms('Back')">BACK-END / PYTHON</button>
-                <button class="filter-btn" onclick="filterTerms('DevOps')">DEVOPS / TOOLS</button>
-                <button class="filter-btn" onclick="filterTerms('Gestion')">AGILE / GESTION</button>
-                <button class="filter-btn" onclick="filterTerms('Lang')">LANGAGES</button>
-            </div>
-        </section>
+    <section class="controls-section">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher (ex: API, Git, Scrum...)">
+        
+        <div class="filters-label">🗂️ Filtrer par Domaine :</div>
+        <div class="filters-container">
+            <button class="filter-btn f-all active" onclick="setTag('all')">👁️ TOUT</button>
+            <button class="filter-btn f-front" onclick="setTag('Front')">🎨 FRONT-END</button>
+            <button class="filter-btn f-back" onclick="setTag('Back')">⚙️ BACK / PYTHON</button>
+            <button class="filter-btn f-devops" onclick="setTag('DevOps')">🚀 DEVOPS</button>
+            <button class="filter-btn f-gestion" onclick="setTag('Gestion')">📊 AGILE / GESTION</button>
+            <button class="filter-btn f-lang" onclick="setTag('Lang')">📝 LANGAGES</button>
+        </div>
 
-        <div id="dictionary-grid" class="cards-grid"></div>
-    </main>
+        <div class="filters-label">🔤 Par Ordre Alphabétique :</div>
+        <div class="alphabet-container" id="alphabetContainer">
+            <!-- GÉNÉRÉ PAR JS -->
+        </div>
+    </section>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-identity">
-                    <div class="footer-logo-placeholder"><i class="fas fa-university"></i></div>
-                    <div class="footer-info-compact">
-                        <div class="footer-name">Mathilde Martine PAISLEY</div>
-                        <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
+    <div id="dictionary-grid" class="cards-grid"></div>
+
+  </main>
+
+
+  <!-- ==================== FOOTER (BAS) ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+            <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
+        </div>
+        
+        <!-- DÉTAILS DE CONTACT -->
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          
+          <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-contact-link">
+              📧 Mathilde.martine.paisley@gmail.com
+          </a>
+          
+          <a href="tel:+33685900887" class="footer-contact-link">
+              📲 06 85 90 08 87
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <!-- Navigation Footer -->
+        <div class="footer-links-row" aria-label="Liens utilitaires" style="margin-bottom: 10px;">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
+           
+        <div class="footer-divider" style="height: 1px; width: 100%; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
+
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
+    </div>
+  </footer>
+
+  <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
+  
+  <script>
+    // --- BASE DE DONNÉES TECH (ENGLISH -> FRENCH) - AVEC CHAMP NARRATIF (txt) COMPLET ---
+    const lexiqueDB = [
+        // BACK-END / PYTHON
+        { l: "API", t: "Application Programming Interface", d: "Interface permettant à deux logiciels de communiquer entre eux.", g: ["Back"], vul: "Le serveur au resto : tu commandes, il va en cuisine, il te ramène le plat.", e: "API Météo France.", txt: "Au quotidien, tu utiliseras des API pour ne pas réinventer la roue (récupérer la météo, payer via Stripe)." },
+        { l: "Algorithm", t: "Algorithme", d: "Suite d'instructions précises pour résoudre un problème.", g: ["Back"], vul: "La recette de cuisine étape par étape.", e: "Tri par sélection.", txt: "C'est la logique pure qui permet de transformer des ingrédients (données) en résultat concret." },
+        { l: "Backend", t: "Arrière-boutique", d: "Partie invisible du site (Serveur, Base de données, Logique).", g: ["Back"], vul: "Le moteur sous le capot. C'est moche, y'a de l'huile, mais c'est ça qui fait avancer.", cp: "Python (Django/Flask), PHP, Node.js.", v: "Ne jamais faire confiance aux données du Front.", txt: "C'est la zone de sécurité où l'on gère l'argent, les mots de passe et la logique métier." },
+        { l: "Bug", t: "Insecte (Erreur)", d: "Erreur dans le code provoquant un comportement inattendu.", g: ["Back", "Front"], vul: "Le grain de sable dans l'engrenage.", cp: "Utilise un Debugger.", e: "Crash app.", txt: "Partie inévitable du métier ; les traquer permet souvent de mieux comprendre comment le code fonctionne." },
+        { l: "Class", t: "Classe", d: "Modèle pour créer des objets (POO).", g: ["Back"], vul: "Le moule à gâteaux.", e: "class User:", txt: "Permet de standardiser la création d'éléments similaires (ex: tous les Utilisateurs ont un nom et un email)." },
+        { l: "Database", t: "Base de données", d: "Système stockant les informations de manière structurée.", g: ["Back"], vul: "L'armoire d'archivage.", e: "MySQL, PostgreSQL.", txt: "Sans elle, le site est amnésique ; c'est là qu'on stocke tout ce qui doit survivre au redémarrage." },
+        { l: "Framework", t: "Cadre de travail", d: "Ensemble d'outils et de conventions pour coder plus vite.", g: ["Back"], vul: "La maison en kit.", cp: "Django, React, Symfony.", v: "Apprends les bases avant.", txt: "Il t'impose une structure rigide mais t'évite d'écrire des milliers de lignes de code répétitif." },
+        { l: "Function", t: "Fonction", d: "Bloc de code réutilisable.", g: ["Back"], vul: "Le robot qui fait une tâche précise.", e: "def calcul():", txt: "Dès que tu copies-colles du code, demande-toi si tu ne devrais pas plutôt en faire une fonction." },
+        { l: "Indentation", t: "Décalage", d: "Espaces en début de ligne (vital en Python).", g: ["Back"], vul: "L'alignement visuel.", v: "IndentationError.", txt: "En Python, ce n'est pas juste esthétique, c'est obligatoire pour définir ce qui est 'dans' quoi." },
+        { l: "Interpreter", t: "Interpréteur", d: "Programme qui exécute le code ligne par ligne.", g: ["Back"], vul: "Le traducteur simultané.", e: "python main.py", txt: "Contrairement à la compilation, il lit et exécute en direct, ce qui est super pour tester vite." },
+        { l: "JSON", t: "JS Object Notation", d: "Format de texte léger pour échanger des données.", g: ["Back", "Front"], vul: "Le langage universel (texte).", cp: "Format clé/valeur.", e: "{ \"nom\": \"M\" }", txt: "C'est le standard absolu pour faire parler un serveur Python avec une page Web en JS." },
+        { l: "Library", t: "Bibliothèque", d: "Collection de fonctions prêtes à l'emploi.", g: ["Back"], vul: "La boîte à outils.", cp: "Pandas, Requests.", txt: "Ce sont des bouts de code écrits par d'autres que tu empruntes pour gagner du temps." },
+        { l: "Loop", t: "Boucle", d: "Répétition d'instructions.", g: ["Back"], vul: "Faire le tour du rond-point.", e: "for i in range(10):", txt: "Indispensable pour traiter des listes d'éléments (ex: afficher tous les produits)." },
+        { l: "Middleware", t: "Intergiciel", d: "Logiciel tiers entre l'OS et l'appli.", g: ["Back"], vul: "Le traducteur/douanier.", e: "Express Mid.", txt: "C'est un filtre qui intercepte les requêtes (ex: vérifier si l'utilisateur est connecté) avant qu'elles n'arrivent." },
+        { l: "Module", t: "Module", d: "Fichier contenant du code Python importable.", g: ["Back"], vul: "Un chapitre du livre.", e: "import math", txt: "Permet de découper ton programme géant en petits fichiers gérables et organisés." },
+        { l: "Object", t: "Objet", d: "Instance d'une classe.", g: ["Back"], vul: "Le gâteau sorti du moule.", e: "user1 = User()", txt: "C'est l'élément concret manipulé par le programme, créé à partir du plan (la Classe)." },
+        { l: "ORM", t: "Object Relational Mapping", d: "Interface code/base de données.", g: ["Back"], vul: "Le traducteur Python <-> SQL.", e: "SQLAlchemy.", txt: "Te permet de parler à la base de données en utilisant du Python au lieu d'écrire du SQL brut." },
+        { l: "Package", t: "Paquet", d: "Dossier contenant plusieurs modules.", g: ["Back"], vul: "Le carton de déménagement.", e: "pip install", txt: "C'est comme une super-librairie qu'on installe pour ajouter de grosses fonctionnalités." },
+        { l: "Parameter", t: "Paramètre", d: "Variable passée à une fonction.", g: ["Back"], vul: "L'ingrédient donné au robot.", e: "func(x)", txt: "C'est ce qui rend tes fonctions dynamiques et adaptables à différentes situations." },
+        { l: "Python", t: "Python", d: "Langage polyvalent et lisible.", g: ["Back"], vul: "Le couteau-suisse.", e: "print('Hello')", txt: "Adoré pour sa simplicité et sa puissance, utilisé du Web à l'Intelligence Artificielle." },
+        { l: "Query", t: "Requête", d: "Demande d'info à une BDD.", g: ["Back"], vul: "La question posée à l'archiviste.", e: "SELECT *", txt: "C'est l'ordre précis que tu donnes à la base de données pour récupérer ou modifier des infos." },
+        { l: "Recursion", t: "Récursion", d: "Fonction qui s'appelle elle-même.", g: ["Back"], vul: "Les poupées russes.", v: "Boucle infinie.", txt: "Un concept élégant mais dangereux si mal maîtrisé, souvent utilisé pour parcourir des arbres de données." },
+        { l: "Script", t: "Script", d: "Fichier de code exécutable.", g: ["Back"], vul: "Le scénario.", e: "script.py", txt: "Souvent un petit programme rapide pour automatiser une tâche simple." },
+        { l: "Server", t: "Serveur", d: "Ordi qui fournit des services.", g: ["Back"], vul: "Le majordome du Web.", e: "Apache, Nginx.", txt: "C'est l'ordinateur qui ne s'éteint jamais et qui attend les demandes des utilisateurs." },
+        { l: "SQL", t: "SQL", d: "Langage de BDD relationnelles.", g: ["Back"], vul: "Langue des tableaux.", cp: "CRUD.", txt: "Le langage standard pour parler aux bases de données classiques (tableaux, lignes, colonnes)." },
+        { l: "String", t: "Chaîne", d: "Type de donnée texte.", g: ["Back"], vul: "Le collier de lettres.", e: "'Bonjour'", txt: "Dès que tu manipules du texte (noms, messages), c'est ce type de donnée que tu utilises." },
+        { l: "Syntax", t: "Syntaxe", d: "Règles d'écriture.", g: ["Back"], vul: "La grammaire.", v: "SyntaxError.", txt: "Comme dans une langue parlée, si tu ne respectes pas la grammaire, l'ordinateur ne te comprend pas." },
+        { l: "Variable", t: "Variable", d: "Boîte nommée pour stocker une valeur.", g: ["Back", "Front"], vul: "Carton étiqueté.", e: "nom = 'Mathilde'", txt: "La brique de base de la programmation : retenir une information pour l'utiliser plus tard." },
+        { l: "Virtualenv", t: "Env. Virtuel", d: "Espace isolé pour les dépendances.", g: ["Back"], vul: "La bulle stérile.", e: "venv", txt: "Vital en Python pour éviter que les mises à jour d'un projet ne cassent un autre projet." },
+        { l: "While", t: "Tant que", d: "Boucle conditionnelle.", g: ["Back"], vul: "Tant que c'est vrai...", e: "while True:", txt: "Utile quand tu ne sais pas à l'avance combien de fois tu dois répéter l'action." },
+        { l: "Argument", t: "Argument", d: "Valeur donnée à une fonction lors de l'appel.", g: ["Back"], vul: "La valeur réelle qu'on donne.", e: "add(5, 10)", txt: "La donnée concrète que tu envoies à la fonction au moment de l'utiliser." },
+        { l: "Array", t: "Tableau", d: "Liste ordonnée d'éléments.", g: ["Back"], vul: "Une liste de courses.", e: "[1, 2, 3]", txt: "La structure de base pour stocker une collection d'éléments dans un ordre précis." },
+        { l: "Boolean", t: "Booléen", d: "Type de donnée Vrai ou Faux.", g: ["Back"], vul: "Oui ou Non. 1 ou 0.", e: "True / False", txt: "Fondamental pour la logique : tout se résume finalement à vrai ou faux pour l'ordinateur." },
+        { l: "Cache", t: "Cache", d: "Mémoire temporaire rapide.", g: ["Back"], vul: "La poche du serveur pour garder les trucs fréquents.", e: "Redis.", txt: "C'est la mémoire à court terme ultra-rapide qui évite de refaire des calculs déjà faits." },
+        { l: "Callback", t: "Rappel", d: "Fonction passée en argument pour être exécutée après.", g: ["Back"], vul: "Rappelle-moi quand tu as fini.", e: "onClick(handleClick)", txt: "Une façon de dire à une fonction : 'Fais ton travail, et quand tu as fini, appelle cette autre fonction'." },
+        { l: "Compiler", t: "Compilateur", d: "Traduit le code en langage machine.", g: ["Back"], vul: "Traduit le livre en binaire.", e: "C++ Compiler.", txt: "Il transforme ton code lisible par un humain en code machine illisible mais exécutable par le processeur." },
+        { l: "Concatenation", t: "Concaténation", d: "Assemblage de deux chaînes.", g: ["Back"], vul: "Coller deux mots ensemble.", e: "'A' + 'B' = 'AB'", txt: "L'opération de base pour assembler des morceaux de texte, comme des wagons d'un train." },
+        { l: "Constant", t: "Constante", d: "Variable qui ne change pas.", g: ["Back"], vul: "Gravé dans le marbre.", e: "PI = 3.14", txt: "Une valeur de référence qui ne doit jamais bouger, comme le nombre Pi ou l'URL de ton site." },
+        { l: "Constructor", t: "Constructeur", d: "Méthode pour créer un objet.", g: ["Back"], vul: "L'usine de fabrication.", e: "__init__", txt: "La méthode spéciale qui s'active automatiquement dès que tu crées un nouvel objet." },
+        { l: "Cookie", t: "Cookie", d: "Petit fichier stocké chez le client.", g: ["Back"], vul: "Le post-it sur le frigo du client.", e: "Session ID.", txt: "Un petit traceur laissé sur le navigateur pour se souvenir de qui est l'utilisateur." },
+        { l: "Cron", t: "Cron Job", d: "Tâche planifiée.", g: ["Back"], vul: "Le réveil matin du serveur.", e: "Backup à 3h du mat.", txt: "Le planificateur de tâches qui permet de lancer des scripts automatiquement, même quand tu dors." },
+        { l: "CRUD", t: "Create Read Update Delete", d: "4 opérations de base sur les données.", g: ["Back"], vul: "Créer, Lire, Modifier, Supprimer.", e: "API REST.", txt: "Les 4 piliers de toute application de gestion : tout ce qu'on peut faire avec une donnée." },
+        { l: "Daemon", t: "Démon", d: "Programme tournant en arrière-plan.", g: ["Back"], vul: "Le fantôme qui bosse en secret.", e: "httpd", txt: "Un programme invisible qui tourne en fond pour assurer des services essentiels sans interface." },
+        { l: "Debugging", t: "Débogage", d: "Processus de correction des bugs.", g: ["Back"], vul: "La chasse aux insectes.", e: "print('ici')", txt: "L'art de l'enquête : remonter la piste d'un bug pour comprendre pourquoi le code ne fait pas ce qu'on veut." },
+        { l: "Dependency", t: "Dépendance", d: "Code tiers utilisé par le projet.", g: ["Back"], vul: "Les briques qu'on emprunte aux autres.", e: "npm install", txt: "Un code externe dont ton projet a besoin pour fonctionner ; si elle casse, tout casse." },
+        { l: "Dictionary", t: "Dictionnaire", d: "Collection clé-valeur.", g: ["Back"], vul: "Le carnet d'adresses.", e: "{'nom': 'Paul'}", txt: "Une structure clé/valeur ultra-rapide pour retrouver une info précise sans parcourir toute la liste." },
+        { l: "Exception", t: "Exception", d: "Erreur gérée par le programme.", g: ["Back"], vul: "L'imprévu qu'on avait prévu.", e: "try / except", txt: "Un mécanisme de sécurité pour attraper une erreur au vol avant qu'elle ne fasse planter tout le programme." },
+        { l: "Float", t: "Flottant", d: "Nombre à virgule.", g: ["Back"], vul: "Un chiffre pas rond.", e: "3.14", txt: "Nécessaire dès que tu as besoin de précision (prix, mesures), car les entiers ne suffisent plus." },
+        { l: "Hash", t: "Hachage", d: "Empreinte numérique unique.", g: ["Back"], vul: "L'ADN du fichier.", e: "MD5, SHA256", txt: "Une empreinte numérique unique impossible à inverser, essentielle pour stocker les mots de passe." },
+        
+        // FRONT-END
+        { l: "AJAX", t: "Asynchronous JS and XML", d: "Chargement de données sans recharger la page.", g: ["Front"], vul: "Le serveur apporte l'eau sans débarrasser.", e: "Fetch API.", txt: "C'est ce qui rend les sites modernes fluides : on met à jour juste un morceau de la page." },
+        { l: "Attribute", t: "Attribut", d: "Propriété d'une balise HTML.", g: ["Front"], vul: "L'adjectif de la balise.", e: "class='btn'", txt: "Permet de donner des caractéristiques supplémentaires (lien, image source, style) à une balise." },
+        { l: "Bootstrap", t: "Bootstrap", d: "Framework CSS populaire.", g: ["Front"], vul: "Les Lego du design.", e: "btn-primary", txt: "Idéal pour prototyper très vite un site propre sans être un expert en design." },
+        { l: "Browser", t: "Navigateur", d: "Logiciel pour voir le Web.", g: ["Front"], vul: "La fenêtre sur Internet.", e: "Chrome.", txt: "C'est le logiciel client qui traduit ton code (HTML/CSS/JS) en image visible." },
+        { l: "Canvas", t: "Toile", d: "Zone de dessin HTML5.", g: ["Front"], vul: "La feuille de papier numérique.", e: "<canvas>", txt: "Utilisé pour les jeux vidéo web ou les graphiques complexes générés en direct." },
+        { l: "CSS", t: "Cascading Style Sheets", d: "Langage de style.", g: ["Front"], vul: "Le maquillage.", e: "color: red;", txt: "Sans lui, le web serait moche et en noir et blanc. Il gère toute l'apparence." },
+        { l: "Div", t: "Division", d: "Balise conteneur générique.", g: ["Front"], vul: "La boîte en carton.", e: "<div>", txt: "La brique de construction de base pour grouper des éléments et les mettre en page." },
+        { l: "DOM", t: "Document Object Model", d: "Structure en arbre de la page.", g: ["Front"], vul: "L'arbre généalogique.", e: "getElementById", txt: "C'est la vision que le navigateur a de ta page, et que tu peux manipuler avec JavaScript." },
+        { l: "Flexbox", t: "Boîte flexible", d: "Module de mise en page CSS.", g: ["Front"], vul: "L'élastique pour ranger.", e: "display: flex;", txt: "La méthode moderne pour aligner facilement des éléments sur une ligne ou une colonne." },
+        { l: "Grid", t: "Grille", d: "Système de mise en page 2D.", g: ["Front"], vul: "Papier millimétré.", e: "display: grid;", txt: "Puissant pour créer des mises en page complexes avec des lignes et des colonnes." },
+        { l: "HTML", t: "HyperText Markup Language", d: "Langage de balisage.", g: ["Front"], vul: "Le squelette.", e: "<h1>", txt: "La fondation de toute page web ; il définit le sens et la structure du contenu." },
+        { l: "ID", t: "Identifiant", d: "Nom unique d'un élément.", g: ["Front"], vul: "Le numéro de sécu de la balise.", e: "id='header'", txt: "Un nom unique pour cibler précisément UN seul élément dans ta page." },
+        { l: "JavaScript", t: "JS", d: "Langage de script client.", g: ["Front"], vul: "Les muscles/cerveau.", e: "alert()", txt: "Le seul langage de programmation que les navigateurs comprennent pour rendre les pages vivantes." },
+        { l: "Media Query", t: "Requête Média", d: "Règle CSS conditionnelle.", g: ["Front"], vul: "Si l'écran est petit...", e: "@media", txt: "La clé du design Responsive : appliquer des styles différents selon la taille de l'écran." },
+        { l: "Modal", t: "Modale", d: "Fenêtre superposée.", g: ["Front"], vul: "Le popup qui te bloque tout.", e: "Dialog box.", txt: "Une fenêtre qui force l'utilisateur à interagir avant de retourner à la page principale." },
+        { l: "Navbar", t: "Barre de nav", d: "Menu de navigation.", g: ["Front"], vul: "Le menu.", e: "<nav>", txt: "L'élément central pour que l'utilisateur ne se perde pas dans ton site." },
+        { l: "Node", t: "Nœud", d: "Élément du DOM.", g: ["Front"], vul: "Une feuille de l'arbre DOM.", e: "Element node.", txt: "Chaque petite partie de ta page (texte, balise, attribut) est un nœud dans l'arbre DOM." },
+        { l: "Padding", t: "Rembourrage", d: "Espace intérieur d'un élément.", g: ["Front"], vul: "Le gras autour du contenu.", e: "padding: 10px;", txt: "L'espace à l'intérieur de la boîte, entre le bord et le texte." },
+        { l: "React", t: "React", d: "Bibliothèque JS (Facebook).", g: ["Front"], vul: "Super-JS pour apps.", e: "Components.", txt: "Permet de créer des sites ultra-complexes comme Facebook en assemblant des composants réutilisables." },
+        { l: "Responsive", t: "Réactif", d: "Site qui s'adapte à l'écran.", g: ["Front"], vul: "Site élastique.", e: "Mobile-first.", txt: "Aujourd'hui obligatoire : ton site doit être beau sur un iPhone comme sur un écran géant." },
+        { l: "Selector", t: "Sélecteur", d: "Cible CSS.", g: ["Front"], vul: "Le viseur du sniper CSS.", e: ".class", txt: "Ce qui permet de dire au CSS 'applique cette couleur à CET élément précis'." },
+        { l: "SPA", t: "Single Page App", d: "Site sans rechargement.", g: ["Front"], vul: "Appli fluide.", e: "Gmail.", txt: "Donne l'impression d'une application native (comme sur mobile) en ne rechargeant jamais la page." },
+        { l: "SVG", t: "Scalable Vector Graphics", d: "Image vectorielle.", g: ["Front"], vul: "L'image qui ne pixelise jamais.", e: "<svg>", txt: "Des images faites de mathématiques, parfaites pour les logos et icônes qui restent nets à toute taille." },
+        { l: "Tag", t: "Balise", d: "Élément HTML.", g: ["Front"], vul: "L'étiquette.", e: "<p>", txt: "Les mots-clés entre chevrons qui disent au navigateur 'ceci est un titre', 'ceci est un paragraphe'." },
+        { l: "Tailwind", t: "Tailwind", d: "Framework CSS utilitaire.", g: ["Front"], vul: "CSS en kit.", e: "p-4", txt: "Permet de styliser directement dans le HTML sans écrire de fichiers CSS séparés." },
+        { l: "UI", t: "User Interface", d: "Interface Utilisateur.", g: ["Front"], vul: "Ce qu'on voit.", e: "Boutons.", txt: "C'est la couche visible de l'iceberg avec laquelle l'humain interagit." },
+        { l: "UX", t: "User Experience", d: "Expérience Utilisateur.", g: ["Front"], vul: "Ce qu'on ressent.", e: "Facilité.", txt: "C'est l'art de rendre l'utilisation du site agréable, intuitive et sans frustration." },
+        { l: "Viewport", t: "Fenêtre d'affichage", d: "Zone visible du site.", g: ["Front"], vul: "L'écran du téléphone.", e: "meta viewport", txt: "La partie de la page web qui est réellement visible sur l'écran de l'utilisateur." },
+        { l: "Wireframe", t: "Fil de fer", d: "Maquette basse fidélité.", g: ["Front"], vul: "Le brouillon au crayon.", e: "Mockup.", txt: "Le plan architectural du site fait avant de poser la moindre brique de code." },
+        { l: "Z-index", t: "Index Z", d: "Profondeur CSS.", g: ["Front"], vul: "L'ordre des calques.", e: "z-index: 999;", txt: "C'est ce qui décide quel élément passe dessus ou dessous quand ils se chevauchent." },
+        { l: "Anchor", t: "Ancre", d: "Lien hypertexte.", g: ["Front"], vul: "Le lien bleu cliquable.", e: "<a>", txt: "L'élément fondateur du Web : ce qui permet de sauter d'une page à l'autre." },
+        { l: "Breadcrumb", t: "Fil d'ariane", d: "Chemin de navigation.", g: ["Front"], vul: "Accueil > Produits > Chaussures.", e: "Navigation path.", txt: "Indispensable pour l'UX : permet à l'utilisateur de savoir où il est et de remonter l'arborescence." },
+        { l: "Breakpoint", t: "Point de rupture", d: "Largeur où le design change.", g: ["Front"], vul: "Le moment où le site passe en mode mobile.", e: "768px.", txt: "Les points de bascule où le design doit se réorganiser pour rester lisible sur mobile ou tablette." },
+        { l: "Carousel", t: "Carrousel", d: "Diaporama d'images.", g: ["Front"], vul: "Le truc qui tourne avec des photos.", e: "Slider.", txt: "Un défilé d'images souvent demandé par le marketing, mais attention à l'accessibilité !" },
+        { l: "CDN", t: "Content Delivery Network", d: "Réseau de serveurs pour livrer vite.", g: ["Front"], vul: "Des entrepôts partout pour livrer plus vite.", e: "Cloudflare.", txt: "Des serveurs partout dans le monde pour que ton image charge aussi vite à Tokyo qu'à Paris." },
+        { l: "Class", t: "Classe CSS", d: "Nom pour styliser plusieurs éléments.", g: ["Front"], vul: "Le nom de famille des balises.", e: ".btn", txt: "L'outil principal pour appliquer le même style à plusieurs éléments différents." },
+        { l: "Console", t: "Console", d: "Outil de débogage du navigateur.", g: ["Front"], vul: "Le journal intime du site.", e: "console.log()", txt: "Ton meilleur ami pour voir ce qui se passe vraiment dans le navigateur quand le site réagit." },
+        { l: "DOM Tree", t: "Arbre DOM", d: "Hiérarchie des éléments.", g: ["Front"], vul: "L'arbre généalogique.", e: "html > body > div", txt: "La carte mentale que le navigateur se fait de ta page HTML." },
+        { l: "Event", t: "Événement", d: "Action utilisateur (clic, scroll).", g: ["Front"], vul: "Quand quelque chose se passe.", e: "onClick", txt: "Le déclencheur de toute interactivité : sans événement, le site reste statique." },
+        { l: "Favicon", t: "Favicon", d: "Petite icône dans l'onglet.", g: ["Front"], vul: "Le mini logo en haut.", e: "favicon.ico", txt: "Le petit détail visuel dans l'onglet qui crédibilise instantanément ton site." },
+        { l: "Footer", t: "Pied de page", d: "Bas du site.", g: ["Front"], vul: "Les chaussures du site.", e: "<footer>", txt: "La zone de conclusion de la page, où l'on cherche les mentions légales et les contacts." },
+        { l: "Header", t: "En-tête", d: "Haut du site.", g: ["Front"], vul: "Le chapeau du site.", e: "<header>", txt: "La première impression, contenant l'identité et la navigation principale." },
+        { l: "Hex", t: "Hexadécimal", d: "Code couleur.", g: ["Front"], vul: "Le code du peintre.", e: "#FF0000", txt: "Le code universel pour définir une couleur exacte sur un écran." },
+        { l: "Hover", t: "Survol", d: "État au passage de la souris.", g: ["Front"], vul: "Quand la souris passe dessus.", e: ":hover", txt: "Donne un feedback visuel immédiat pour dire 'Ceci est cliquable'." },
+        { l: "Input", t: "Entrée", d: "Champ de saisie.", g: ["Front"], vul: "La case où on écrit.", e: "<input>", txt: "La porte d'entrée par laquelle l'utilisateur envoie ses données au système." },
+        { l: "Margin", t: "Marge", d: "Espace extérieur.", g: ["Front"], vul: "L'espace entre les voisins.", e: "margin: 20px;", txt: "L'espace vital autour d'un élément pour aérer la mise en page." },
+        { l: "Meta Tag", t: "Balise Meta", d: "Info pour le navigateur/Google.", g: ["Front"], vul: "La carte d'identité invisible.", e: "<meta>", txt: "Des infos invisibles pour l'utilisateur mais vitales pour Google et le partage sur les réseaux." },
+        { l: "Pixel", t: "Pixel", d: "Point de l'écran.", g: ["Front"], vul: "Le grain de l'image.", e: "px", txt: "La plus petite unité de mesure sur un écran, bien que le vectoriel (SVG) soit souvent préférable." },
+        { l: "Pseudo-class", t: "Pseudo-classe", d: "État spécial CSS.", g: ["Front"], vul: "Une variante de l'élément.", e: ":first-child", txt: "Permet de cibler un état spécifique (comme le survol ou le premier élément) sans ajouter de classe." },
+        { l: "Script Tag", t: "Balise Script", d: "Contient le JS.", g: ["Front"], vul: "La boîte à code.", e: "<script>", txt: "La balise qui permet d'injecter de l'intelligence (JS) dans la page." },
+
+        // DEVOPS / TOOLS
+        { l: "Alias", t: "Alias", d: "Raccourci commande.", g: ["DevOps"], vul: "Le surnom court.", e: "g = git", txt: "Un gain de temps énorme pour ne pas retaper des commandes longues cinquante fois par jour." },
+        { l: "Bash", t: "Bash", d: "Shell Unix.", g: ["DevOps"], vul: "La langue du terminal.", e: "ls, cd", txt: "Le langage par défaut pour parler aux serveurs Linux." },
+        { l: "Branch", t: "Branche", d: "Version parallèle du code.", g: ["DevOps"], vul: "L'univers parallèle.", e: "git checkout -b", txt: "Permet de tester une idée folle sans casser le code principal qui marche." },
+        { l: "CI/CD", t: "Intégration/Déploiement Continus", d: "Automatisation des tests et mises en ligne.", g: ["DevOps"], vul: "Le tapis roulant automatique.", e: "Jenkins, GitHub Actions", txt: "Automatise tout le processus de la validation du code jusqu'à sa mise en ligne." },
+        { l: "CLI", t: "Command Line Interface", d: "Interface ligne de commande.", g: ["DevOps"], vul: "L'écran noir.", e: "Terminal.", txt: "L'outil de puissance des pros : moins convivial, mais beaucoup plus rapide et puissant que la souris." },
+        { l: "Clone", t: "Cloner", d: "Copier un dépôt.", g: ["DevOps"], vul: "Télécharger le projet.", e: "git clone", txt: "L'action de télécharger une copie complète du projet sur ton ordinateur pour travailler dessus." },
+        { l: "Commit", t: "Valider/Enregistrer", d: "Sauvegarde d'un état du code dans l'historique Git.", g: ["DevOps"], vul: "Le point de sauvegarde dans un jeu vidéo.", cp: "Fais des commits atomiques.", v: "Message de commit clair !", txt: "C'est figer une version de ton travail avec un message expliquant ce que tu as fait." },
+        { l: "Container", t: "Conteneur", d: "Environnement isolé.", g: ["DevOps"], vul: "La boîte Tupperware du code.", e: "Docker.", txt: "Garantit que ton code marchera pareil sur ton ordi et sur le serveur." },
+        { l: "Deploy", t: "Déployer", d: "Mettre en ligne.", g: ["DevOps"], vul: "Lancer la fusée.", e: "Push to prod.", txt: "Le moment de vérité où ton code devient accessible aux vrais utilisateurs." },
+        { l: "Docker", t: "Docker", d: "Outil de conteneurisation.", g: ["DevOps"], vul: "Le cargo des conteneurs.", e: "Dockerfile.", txt: "Le standard mondial pour emballer les applications et les livrer facilement." },
+        { l: "Fetch", t: "Récupérer", d: "Télécharger les infos git.", g: ["DevOps"], vul: "Aller voir les nouveautés.", e: "git fetch", txt: "Permet de voir ce que les autres ont fait sans encore modifier ton propre travail." },
+        { l: "Fork", t: "Fourche", d: "Copie d'un projet open source.", g: ["DevOps"], vul: "La photocopie pour modifier chez soi.", e: "GitHub Fork.", txt: "Prendre un projet existant pour en faire sa propre version indépendante." },
+        { l: "Git", t: "Abruti (argot UK)", d: "Système de contrôle de version (VCS) pour gérer l'historique du code.", g: ["DevOps"], vul: "La machine à remonter le temps du code.", cp: "Indispensable.", v: "Git n'est pas GitHub.", txt: "L'outil vital pour travailler en équipe sans s'écraser le travail des uns des autres." },
+        { l: "GitHub", t: "GitHub", d: "Hébergeur Git.", g: ["DevOps"], vul: "Le Facebook du code.", e: "Repo distant.", txt: "Là où l'on stocke le code dans le cloud pour le partager et collaborer." },
+        { l: "Host", t: "Hôte", d: "Serveur d'hébergement.", g: ["DevOps"], vul: "Le propriétaire de la maison.", e: "OVH, AWS.", txt: "Le terrain sur lequel ta maison (site web) est construite." },
+        { l: "IDE", t: "Env. de Dév. Intégré", d: "Logiciel complet pour coder (VS Code, PyCharm).", g: ["DevOps"], vul: "L'établi du menuisier.", cp: "Installe des extensions.", v: "Ne code pas dans le Bloc-notes !", txt: "Ton cockpit de pilotage : coloration, autocomplétion, tout pour coder confortablement." },
+        { l: "Image", t: "Image", d: "Modèle de conteneur.", g: ["DevOps"], vul: "Le négatif photo du conteneur.", e: "Docker image.", txt: "Le moule inaltérable à partir duquel on crée des conteneurs." },
+        { l: "Issue", t: "Problème", d: "Ticket de bug.", g: ["DevOps"], vul: "Le post-it 'À réparer'.", e: "GitHub Issue.", txt: "L'unité de travail officielle pour tracer un bug ou une demande d'amélioration." },
+        { l: "Linux", t: "Linux", d: "Système d'exploitation open source.", g: ["DevOps"], vul: "Le moteur robuste des serveurs.", e: "Ubuntu, Debian.", txt: "Le système d'exploitation roi des serveurs, réputé pour sa stabilité et sa sécurité." },
+        { l: "Log", t: "Journal", d: "Historique des événements.", g: ["DevOps"], vul: "Le journal de bord du capitaine.", e: "Access.log", txt: "La boîte noire de l'application : c'est là qu'on regarde quand quelque chose a planté." },
+        { l: "Merge", t: "Fusionner", d: "Action de réunir deux branches de code ensemble.", g: ["DevOps"], vul: "Le confluent de deux rivières.", cp: "Attention aux conflits !", e: "git merge", txt: "L'action de réintégrer ton travail fini dans le projet principal." },
+        { l: "Open Source", t: "Code ouvert", d: "Logiciel dont le code est public et modifiable par tous.", g: ["DevOps"], vul: "La recette de cuisine publiée.", cp: "Python est open source.", v: "Vérifie les licences.", txt: "Un logiciel développé par une communauté mondiale où tout le monde peut contribuer." },
+        { l: "Origin", t: "Origine", d: "Dépôt distant par défaut.", g: ["DevOps"], vul: "La maison mère.", e: "git push origin", txt: "Le nom par défaut donné au serveur distant où ton code est sauvegardé." },
+        { l: "Pipeline", t: "Tuyauterie", d: "Chaîne d'automatisation.", g: ["DevOps"], vul: "La chaîne de montage.", e: "Build -> Test -> Deploy", txt: "L'enchaînement automatique des étapes pour passer du code brut au produit fini." },
+        { l: "Pull", t: "Tirer", d: "Récupérer et fusionner.", g: ["DevOps"], vul: "Prendre les mises à jour.", e: "git pull", txt: "L'action de mettre à jour ton code local avec ce que les autres ont fait." },
+        { l: "Pull Request", t: "Demande de tirage (PR)", d: "Demande pour fusionner son code dans le projet principal.", g: ["DevOps"], vul: "Je lève la main.", cp: "On fait une Code Review.", e: "Créer une PR.", txt: "La façon polie de proposer ton code à l'équipe pour qu'ils le vérifient avant de l'accepter." },
+        { l: "Push", t: "Pousser", d: "Envoyer le code.", g: ["DevOps"], vul: "Envoyer ses devoirs.", e: "git push", txt: "L'envoi de tes modifications validées vers le serveur central." },
+        { l: "Repo", t: "Dépôt", d: "Dossier du projet.", g: ["DevOps"], vul: "Le dossier projet.", e: "Repository.", txt: "L'entrepôt numérique où sont stockés tous les fichiers et l'historique de ton projet." },
+        { l: "Revert", t: "Annuler", d: "Annuler un commit.", g: ["DevOps"], vul: "Ctrl+Z géant.", e: "git revert", txt: "Créer un nouveau changement qui est l'exact inverse du précédent pour annuler une erreur proprement." },
+        { l: "Shell", t: "Coquille", d: "Interpréteur de commandes.", g: ["DevOps"], vul: "L'interface texte.", e: "Bash, Zsh.", txt: "Le programme qui lit tes commandes textuelles et les traduit pour le système d'exploitation." },
+        { l: "SSH", t: "Secure Shell", d: "Connexion sécurisée.", g: ["DevOps"], vul: "Le tunnel sécurisé vers le serveur.", e: "ssh user@host", txt: "La clé sécurisée pour entrer dans un serveur distant sans risque." },
+        { l: "Stack", t: "Pile", d: "Ensemble des technologies utilisées pour un projet.", g: ["DevOps"], vul: "La liste des ingrédients du projet.", e: "Stack MERN.", txt: "La combinaison spécifique d'outils choisis pour construire ton application (ex: React + Python)." },
+        { l: "Staging", t: "Pré-prod", d: "Env. de test.", g: ["DevOps"], vul: "La répétition générale.", e: "Serveur de test.", txt: "Un environnement copie conforme de la production pour tester sans risque avant le vrai lancement." },
+        { l: "Sudo", t: "SuperUser Do", d: "Exécuter en admin.", g: ["DevOps"], vul: "Simon a dit : fais-le.", e: "sudo apt-get", txt: "La commande magique pour obtenir les droits d'administrateur temporairement." },
+        { l: "Terminal", t: "Console", d: "Interface textuelle.", g: ["DevOps"], vul: "L'écran noir des hackers.", cp: "Apprends les commandes de base.", v: "Attention au sudo rm -rf.", txt: "La fenêtre de commande directe sur le système, sans fioritures graphiques." },
+        { l: "AWS", t: "Amazon Web Services", d: "Service Cloud.", g: ["DevOps"], vul: "L'ordi d'Amazon qu'on loue.", e: "EC2, S3.", txt: "Le géant du Cloud qui te permet de louer de la puissance de calcul à la demande." },
+        { l: "Build", t: "Construire", d: "Compiler le projet.", g: ["DevOps"], vul: "Fabriquer le produit fini.", e: "npm run build", txt: "L'étape de préparation du code pour qu'il soit optimisé et prêt à être déployé." },
+        { l: "Cluster", t: "Grappe", d: "Groupe de serveurs.", g: ["DevOps"], vul: "L'équipe de serveurs qui bossent ensemble.", e: "Kubernetes Cluster.", txt: "Plusieurs ordinateurs qui travaillent ensemble comme s'ils n'étaient qu'un seul." },
+        { l: "Config", t: "Configuration", d: "Paramètres.", g: ["DevOps"], vul: "Les réglages.", e: "config.json", txt: "Les paramètres qui permettent de changer le comportement du logiciel sans toucher au code." },
+        { l: "Diff", t: "Différence", d: "Différence entre deux fichiers.", g: ["DevOps"], vul: "Le jeu des 7 erreurs.", e: "git diff", txt: "Indispensable pour comprendre ce qui a changé entre deux versions avant de valider." },
+        { l: "Env Var", t: "Var d'environnement", d: "Variable système.", g: ["DevOps"], vul: "Le secret stocké dans le serveur.", e: "API_KEY", txt: "La bonne pratique pour stocker des secrets (clés API) sans les écrire dans le code." },
+        { l: "FTP", t: "File Transfer Protocol", d: "Protocole de transfert.", g: ["DevOps"], vul: "Le camion de livraison de fichiers.", e: "FileZilla.", txt: "Une vieille méthode de transfert de fichiers, aujourd'hui souvent remplacée par des déploiements Git." },
+        { l: "Head", t: "Tête", d: "Dernier commit.", g: ["DevOps"], vul: "La pointe de la flèche.", e: "HEAD.", txt: "Le pointeur qui dit 'Vous êtes ici' dans l'historique des versions." },
+        { l: "Localhost", t: "Hôte local", d: "Ton ordinateur.", g: ["DevOps"], vul: "La maison.", e: "127.0.0.1", txt: "Ton propre ordinateur vu par lui-même ; là où tout commence." },
+        { l: "Master", t: "Maître", d: "Branche principale (maintenant Main).", g: ["DevOps"], vul: "Le tronc de l'arbre.", e: "main branch.", txt: "La version de référence du code, celle qui doit être toujours propre et fonctionnelle." },
+        { l: "Npm", t: "Node Package Manager", d: "Gestionnaire de paquets JS.", g: ["DevOps"], vul: "Le magasin d'applis pour dev JS.", e: "npm install", txt: "L'immense bibliothèque mondiale où les développeurs JS partagent leurs outils." },
+        { l: "Patch", t: "Correctif", d: "Mise à jour mineure.", g: ["DevOps"], vul: "Le pansement.", e: "Version 1.0.1", txt: "Une petite réparation ciblée pour corriger un bug sans tout réinstaller." },
+        { l: "Port", t: "Port", d: "Point d'entrée réseau.", g: ["DevOps"], vul: "La porte numéro 80.", e: "Port 3000.", txt: "Le numéro de quai virtuel où un service attend les connexions." },
+        { l: "Root", t: "Racine", d: "Super-utilisateur ou dossier racine.", g: ["DevOps"], vul: "Le dieu du système.", e: "/", txt: "Le compte administrateur suprême sur Linux ; à utiliser avec grande précaution." },
+        { l: "Serverless", t: "Sans serveur", d: "Exécution de code sans gérer l'OS.", g: ["DevOps"], vul: "Juste le code, pas la machine.", e: "AWS Lambda.", txt: "Une architecture où tu ne gères plus les machines, tu envoies juste ton code qui s'exécute à la demande." },
+
+        // AGILE / GESTION
+        { l: "Agile", t: "Agile", d: "Méthodologie flexible.", g: ["Gestion"], vul: "On s'adapte, on ne fige rien.", cp: "Manifeste Agile.", txt: "Une philosophie qui accepte que les besoins changent en cours de route plutôt que de suivre un plan rigide." },
+        { l: "Backlog", t: "Arriéré", d: "Liste des tâches à faire.", g: ["Gestion"], vul: "La liste de courses.", e: "Product Backlog.", txt: "Le réservoir de toutes les idées et bugs qu'il faudra traiter un jour, classé par priorité." },
+        { l: "Brainstorm", t: "Tempête de cerveau", d: "Réunion d'idées.", g: ["Gestion"], vul: "On lance tout ce qui passe par la tête.", e: "Idéation.", txt: "Un moment de créativité pure où aucune idée n'est mauvaise pour débloquer des solutions." },
+        { l: "Brief", t: "Instructions", d: "Document de cadrage.", g: ["Gestion"], vul: "La feuille de mission.", e: "Brief créatif.", txt: "Le document initial qui définit ce que le client veut, avant même de commencer à travailler." },
+        { l: "Bug Tracker", t: "Suivi de bugs", d: "Outil de gestion d'incidents.", g: ["Gestion"], vul: "Le carnet de santé des problèmes.", e: "Jira, Trello.", txt: "Le logiciel où l'on note tout ce qui ne marche pas pour ne rien oublier de réparer." },
+        { l: "Daily", t: "Quotidien", d: "Réunion debout 15min.", g: ["Gestion"], vul: "Le point café du matin.", e: "Stand-up meeting.", txt: "Un point ultra-rapide pour se synchroniser et débloquer les problèmes immédiats." },
+        { l: "Deadline", t: "Date limite", d: "Échéance.", g: ["Gestion"], vul: "La ligne de mort (littéralement).", e: "A rendre pour hier.", txt: "La date butoir indépassable qui rythme tout le projet." },
+        { l: "Deliverable", t: "Livrable", d: "Ce qui est rendu au client.", g: ["Gestion"], vul: "Le paquet cadeau final.", e: "Le site web.", txt: "L'élément concret (document, code, design) que tu remets officiellement à la fin d'une étape." },
+        { l: "Epic", t: "Épopée", d: "Grosse fonctionnalité.", g: ["Gestion"], vul: "Le gros chapitre du livre.", e: "Gestion des utilisateurs.", txt: "Une fonctionnalité trop grosse pour être faite en une fois, qu'il faut découper en plusieurs petites histoires." },
+        { l: "Kanban", t: "Étiquette", d: "Tableau de tâches (To Do, Doing, Done).", g: ["Gestion"], vul: "Le tableau de post-its.", e: "Trello.", txt: "Une méthode visuelle pour voir l'avancement du travail et limiter ce qui est en cours." },
+        { l: "Kick-off", t: "Coup d'envoi", d: "Réunion de lancement.", g: ["Gestion"], vul: "Le premier coup de sifflet.", e: "Début du projet.", txt: "La réunion officielle où tout le monde se met d'accord avant de démarrer le projet." },
+        { l: "KPI", t: "Key Perf. Indicator", d: "Indicateur clé.", g: ["Gestion"], vul: "Le score du match.", e: "Vitesse de chargement.", txt: "Un chiffre précis pour mesurer si on est réussi ou raté l'objectif." },
+        { l: "Mockup", t: "Maquette", d: "Visuel statique.", g: ["Gestion"], vul: "L'image de ce à quoi ça ressemblera.", e: "Photoshop.", txt: "Une représentation visuelle fidèle du produit final, mais qui n'est pas encore interactive." },
+        { l: "MVP", t: "Min. Viable Product", d: "Produit minimum fonctionnel.", g: ["Gestion"], vul: "La version 1.0 moche mais qui marche.", e: "Prototype.", txt: "Lancer vite une version basique pour tester le marché au lieu de passer 2 ans à faire un truc parfait." },
+        { l: "Persona", t: "Personnage", d: "Utilisateur type fictif.", g: ["Gestion"], vul: "Le client imaginaire.", e: "Jean-Michel, 50 ans.", txt: "Un profil fictif pour aider l'équipe à se mettre à la place des vrais utilisateurs." },
+        { l: "PO", t: "Product Owner", d: "Responsable du produit.", g: ["Gestion"], vul: "La voix du client.", e: "Définit les tickets.", txt: "La personne qui décide QUOI faire (priorités) pour que l'équipe sache COMMENT le faire." },
+        { l: "Retro", t: "Rétrospective", d: "Bilan de fin de sprint.", g: ["Gestion"], vul: "Qu'est-ce qu'on a raté ? Qu'est-ce qu'on garde ?", e: "Amélioration continue.", txt: "Le moment où l'équipe se parle franchement pour améliorer sa façon de travailler au prochain tour." },
+        { l: "Roadmap", t: "Feuille de route", d: "Plan à long terme.", g: ["Gestion"], vul: "Le plan de bataille.", e: "Q1, Q2, Q3.", txt: "Une vision globale des grandes étapes du projet sur les mois à venir." },
+        { l: "Scope", t: "Périmètre", d: "Limites du projet.", g: ["Gestion"], vul: "Ce qu'on fait (et ce qu'on fait pas).", e: "Hors scope.", txt: "La frontière définie entre ce qui est inclus dans le contrat et ce qui ne l'est pas." },
+        { l: "Scrum", t: "Mêlée (Rugby)", d: "Méthode agile de gestion de projet par itérations (Sprints).", g: ["Gestion"], vul: "On avance par petits pas de 2 semaines.", cp: "Rituel : Daily Meeting.", v: "Le Scrum Master facilite.", txt: "Un cadre de travail très populaire pour organiser le chaos du développement logiciel par cycles courts." },
+        { l: "Sprint", t: "Course rapide", d: "Cycle de travail court (1 à 4 semaines) en Agile.", g: ["Gestion"], vul: "Une manche du jeu.", cp: "À la fin, on doit avoir un produit qui marche.", e: "Sprint 3 : Faire la page Login.", txt: "Une période intense et courte où l'on se concentre sur un but précis à livrer." },
+        { l: "Stakeholder", t: "Partie prenante", d: "Personne intéressée par le projet.", g: ["Gestion"], vul: "Ceux qui payent ou qui utilisent.", e: "Client, Chef.", txt: "Toute personne qui a un intérêt dans la réussite (ou l'échec) du projet." },
+        { l: "Stand-up", t: "Debout", d: "Réunion Daily.", g: ["Gestion"], vul: "Réunion rapide.", e: "10h tous les jours.", txt: "L'autre nom du Daily Meeting, car on reste debout pour que ça ne dure pas longtemps." },
+        { l: "Task", t: "Tâche", d: "Unité de travail.", g: ["Gestion"], vul: "Le petit boulot.", e: "Coder le bouton.", txt: "La plus petite action à réaliser, souvent assignée à une seule personne." },
+        { l: "Ticket", t: "Ticket", d: "Demande suivie.", g: ["Gestion"], vul: "Le bon de commande.", e: "Jira ticket.", txt: "L'élément numérique qui représente une tâche ou un bug dans le logiciel de gestion." },
+        { l: "Timeboxing", t: "Boîte de temps", d: "Limiter le temps alloué.", g: ["Gestion"], vul: "Chronomètre en main.", e: "1h max par tâche.", txt: "Fixer une durée limite stricte pour une tâche afin d'éviter d'y passer l'éternité." },
+        { l: "User Story", t: "Histoire utilisateur", d: "Description d'une fonctionnalité du point de vue de l'utilisateur.", g: ["Gestion"], vul: "Le ticket de tâche humain.", cp: "Base du backlog Agile.", e: "En tant qu'admin, je veux...", txt: "Décrit une fonctionnalité du point de vue de l'humain qui va l'utiliser, pas de la technique." },
+        { l: "Velocity", t: "Vélocité", d: "Vitesse de l'équipe.", g: ["Gestion"], vul: "Combien de tâches on abat par semaine.", e: "Points de story.", txt: "La mesure de la quantité de travail que l'équipe est capable de livrer à chaque sprint." },
+        { l: "Waterfall", t: "Cascade", d: "Méthode classique (non agile).", g: ["Gestion"], vul: "Le plan figé pour 2 ans.", e: "Cycle en V.", txt: "L'ancienne méthode où l'on planifie tout au début et où l'on ne peut plus rien changer ensuite." },
+        { l: "Wireframe", t: "Fil de fer", d: "Maquette basse fidélité, croquis de l'interface.", g: ["Gestion"], vul: "Le brouillon du site.", cp: "Fait sur papier ou Figma.", v: "Pas de design final.", txt: "Un schéma structurel simple pour valider l'emplacement des éléments avant de faire le design." },
+        { l: "Workflow", t: "Flux de travail", d: "Enchaînement des étapes.", g: ["Gestion"], vul: "La procédure à suivre.", e: "Validation par le chef.", txt: "Le chemin précis que doit suivre une tâche de sa création à sa validation finale." },
+        { l: "Acceptance", t: "Acceptation", d: "Critères pour valider une tâche.", g: ["Gestion"], vul: "La check-list 'Fini'.", e: "Tests verts.", txt: "Le contrat de confiance : les conditions exactes pour dire que le travail est fini et validé." },
+        { l: "Agile Manifesto", t: "Manifeste Agile", d: "4 valeurs, 12 principes.", g: ["Gestion"], vul: "La bible agile.", e: "Individus > Processus.", txt: "Le document fondateur qui a changé la façon de gérer les projets informatiques en 2001." },
+        { l: "Burndown", t: "Graphique d'avancement", d: "Reste à faire vs Temps.", g: ["Gestion"], vul: "La courbe de descente vers la fin.", e: "Burndown Chart.", txt: "Le graphique qui montre si on est en avance ou en retard sur le planning du sprint." },
+        { l: "Capacity", t: "Capacité", d: "Temps dispo de l'équipe.", g: ["Gestion"], vul: "Combien d'heures on a.", e: "40h/semaine.", txt: "La quantité réaliste de travail que l'équipe peut absorber sur une période donnée." },
+        { l: "Done", t: "Fini", d: "Définition de fini (DoD).", g: ["Gestion"], vul: "Vraiment fini, pas 'presque'.", e: "Codé + Testé.", txt: "Le tampon final qui certifie que le travail est complet, testé et prêt à être livré." },
+        { l: "Estimation", t: "Estimation", d: "Temps prévu.", g: ["Gestion"], vul: "Le pifomètre éduqué.", e: "Poker planning.", txt: "L'art difficile de prédire combien de temps prendra une tâche technique complexe." },
+        { l: "Feature", t: "Fonctionnalité", d: "Caractéristique du produit.", g: ["Gestion"], vul: "Le truc que ça fait.", e: "Panier d'achat.", txt: "Une fonction distincte du produit qui apporte de la valeur directe à l'utilisateur." },
+        { l: "Feedback", t: "Retour", d: "Avis utilisateur.", g: ["Gestion"], vul: "Ce qu'ils en pensent.", e: "Critique constructive.", txt: "Le carburant de l'amélioration continue : savoir ce qui va et ce qui ne va pas pour corriger." },
+        { l: "Gantt", t: "Gantt", d: "Diagramme de planning.", g: ["Gestion"], vul: "Le calendrier à barres.", e: "MS Project.", txt: "Un planning visuel en cascade, moins utilisé en Agile mais classique en gestion de projet." },
+        { l: "Increment", t: "Incrément", d: "Ajout de valeur au produit.", g: ["Gestion"], vul: "La brique en plus.", e: "Nouvelle version.", txt: "La version améliorée du produit livrée à la fin de chaque étape de travail." },
+        { l: "Iteration", t: "Itération", d: "Cycle de répétition.", g: ["Gestion"], vul: "On recommence en mieux.", e: "Sprint.", txt: "Le cycle répétitif (coder, tester, livrer) qui permet d'améliorer le produit petit à petit." },
+        { l: "Lead Time", t: "Temps de traversée", d: "Début à la fin.", g: ["Gestion"], vul: "Temps total de livraison.", e: "2 semaines.", txt: "Le temps total écoulé entre la demande du client et la livraison finale de la fonctionnalité." },
+        { l: "Milestone", t: "Jalon", d: "Étape clé.", g: ["Gestion"], vul: "La borne kilométrique.", e: "Version Alpha.", txt: "Un repère important dans le calendrier du projet pour célébrer une avancée majeure." },
+        { l: "Planning", t: "Planification", d: "Organisation du travail.", g: ["Gestion"], vul: "Qui fait quoi quand.", e: "Poker.", txt: "La cérémonie où l'équipe décide ce qu'elle va faire dans le prochain cycle de travail." },
+        { l: "Product", t: "Produit", d: "Résultat du projet.", g: ["Gestion"], vul: "Ce qu'on vend.", e: "L'appli.", txt: "Le résultat concret du travail de l'équipe, destiné à être utilisé par des gens." },
+        { l: "Release", t: "Version", d: "Mise à disposition.", g: ["Gestion"], vul: "La sortie officielle.", e: "v1.0", txt: "Le moment où l'on met la nouvelle version du logiciel à disposition des utilisateurs." },
+        { l: "Risk", t: "Risque", d: "Problème potentiel.", g: ["Gestion"], vul: "La tuile possible.", e: "Retard serveur.", txt: "Tout événement potentiel qui pourrait faire dérailler le projet s'il n'est pas anticipé." },
+        { l: "Spike", t: "Pointe", d: "Recherche technique.", g: ["Gestion"], vul: "On creuse pour savoir.", e: "Test techno.", txt: "Une tâche d'exploration technique pour réduire l'incertitude avant de coder pour de vrai." },
+        { l: "Team", t: "Équipe", d: "Groupe de travail.", g: ["Gestion"], vul: "La bande.", e: "Dev Team.", txt: "Le collectif auto-organisé qui s'engage ensemble sur les objectifs du projet." },
+
+        // LANGAGES
+        { l: "Assembly", t: "Assembleur", d: "Langage bas niveau.", g: ["Lang"], vul: "Parler directement au processeur.", e: "MOV AX, 1", txt: "Le langage le plus proche de la machine, très complexe, pour une optimisation maximale." },
+        { l: "C", t: "C", d: "Langage système historique.", g: ["Lang"], vul: "Le grand-père de tous les langages modernes.", e: "printf()", txt: "Un langage légendaire, très rapide mais qui ne pardonne aucune erreur de mémoire." },
+        { l: "C++", t: "C Plus Plus", d: "Extension objet du C.", g: ["Lang"], vul: "Le C avec des super-pouvoirs.", e: "cout << 'Hi'", txt: "La puissance du C avec la gestion des objets, utilisé pour les jeux vidéo et les logiciels lourds." },
+        { l: "C#", t: "C Sharp", d: "Langage Microsoft.", g: ["Lang"], vul: "Le Java de Microsoft.", e: "Console.WriteLine()", txt: "Le langage phare de Microsoft, très utilisé en entreprise et pour créer des jeux avec Unity." },
+        { l: "Cobol", t: "Cobol", d: "Vieux langage business.", g: ["Lang"], vul: "Le dinosaure des banques.", e: "MOVE 1 TO A.", txt: "Un très vieux langage encore vital pour faire tourner les systèmes bancaires et les assurances." },
+        { l: "CSS", t: "Cascading Style Sheets", d: "Langage de style.", g: ["Lang"], vul: "La peinture du site.", e: "color: blue;", txt: "Le langage qui gère toute l'apparence visuelle du Web, des couleurs aux mises en page." },
+        { l: "Dart", t: "Dart", d: "Langage Google (Flutter).", g: ["Lang"], vul: "Pour faire des applis mobiles rapides.", e: "void main()", txt: "Optimisé par Google pour créer des interfaces fluides, notamment avec le framework Flutter." },
+        { l: "Elixir", t: "Elixir", d: "Langage fonctionnel concurrent.", g: ["Lang"], vul: "Pour les chats en temps réel.", e: "IO.puts", txt: "Conçu pour gérer énormément de connexions simultanées, idéal pour les messageries comme WhatsApp." },
+        { l: "Fortran", t: "Formula Translation", d: "Langage scientifique.", g: ["Lang"], vul: "Pour les calculs de fusée.", e: "WRITE(*,*)", txt: "Le doyen des langages, toujours utilisé par les physiciens pour le calcul scientifique ultra-complexe." },
+        { l: "Go", t: "Golang", d: "Langage Google rapide.", g: ["Lang"], vul: "Le remplaçant du C pour le cloud.", e: "fmt.Println", txt: "Créé par Google pour allier la simplicité du Python et la performance du C sur les serveurs." },
+        { l: "Groovy", t: "Groovy", d: "Langage de script Java.", g: ["Lang"], vul: "Java en plus cool.", e: "println 'Hi'", txt: "Une version plus souple et moderne de Java, souvent utilisée pour des scripts d'automatisation." },
+        { l: "Haskell", t: "Haskell", d: "Langage fonctionnel pur.", g: ["Lang"], vul: "Pour les matheux.", e: "putStrLn", txt: "Un langage académique très strict, aimé des mathématiciens pour sa pureté logique." },
+        { l: "HTML", t: "HyperText Markup Language", d: "Langage de balisage.", g: ["Lang"], vul: "Le squelette du web.", e: "<html>", txt: "La fondation de toute page web ; il définit le sens et la structure du contenu." },
+        { l: "Java", t: "Java", d: "Langage objet portable.", g: ["Lang"], vul: "Écris une fois, lance partout.", e: "System.out.println", txt: "Le standard de l'industrie depuis 20 ans, robuste et présent partout (Android, banques)." },
+        { l: "JavaScript", t: "JS", d: "Langage du web.", g: ["Lang"], vul: "Le roi du navigateur.", e: "console.log", txt: "Le seul langage capable de rendre les pages web interactives et vivantes." },
+        { l: "Kotlin", t: "Kotlin", d: "Langage Android moderne.", g: ["Lang"], vul: "Le Java amélioré.", e: "println()", txt: "Le successeur moderne de Java pour Android, plus concis et sûr, recommandé par Google." },
+        { l: "Lua", t: "Lua", d: "Langage de script léger.", g: ["Lang"], vul: "Pour les jeux vidéo (Roblox).", e: "print()", txt: "Léger et rapide, souvent intégré dans d'autres programmes comme les jeux (Roblox, WoW)." },
+        { l: "Markdown", t: "Markdown", d: "Langage de balisage léger.", g: ["Lang"], vul: "Pour écrire de la doc facilement.", e: "# Titre", txt: "Le format d'écriture le plus simple pour formater du texte sans code compliqué (gras, titres)." },
+        { l: "Matlab", t: "Matrix Laboratory", d: "Langage mathématique.", g: ["Lang"], vul: "La super calculette.", e: "disp()", txt: "L'outil de référence des ingénieurs pour le calcul matriciel et la simulation numérique." },
+        { l: "Objective-C", t: "Objective-C", d: "Ancien langage Apple.", g: ["Lang"], vul: "L'ancêtre de Swift.", e: "NSLog", txt: "L'ancien langage utilisé par Apple pour les apps iPhone avant l'arrivée de Swift." },
+        { l: "Perl", t: "Perl", d: "Langage de script texte.", g: ["Lang"], vul: "Le scotch du web des années 90.", e: "print", txt: "Le 'couteau suisse' du traitement de texte, puissant mais parfois illisible." },
+        { l: "PHP", t: "PHP", d: "Langage serveur web.", g: ["Lang"], vul: "Le moteur de WordPress.", e: "echo", txt: "Le moteur historique du Web dynamique, propulsant encore une grande partie des sites (WordPress)." },
+        { l: "PowerShell", t: "PowerShell", d: "Scripting Windows.", g: ["Lang"], vul: "Pour automatiser Windows.", e: "Write-Host", txt: "L'outil d'automatisation puissant pour les administrateurs système Windows." },
+        { l: "Python", t: "Python", d: "Langage polyvalent.", g: ["Lang"], vul: "Le plus populaire et lisible.", e: "print()", txt: "Adoré pour sa simplicité et sa puissance, utilisé du Web à l'Intelligence Artificielle." },
+        { l: "R", t: "R", d: "Langage statistique.", g: ["Lang"], vul: "Pour les data scientists.", e: "print()", txt: "Le langage chouchou des statisticiens pour analyser des données et faire des graphiques." },
+        { l: "Ruby", t: "Ruby", d: "Langage objet élégant.", g: ["Lang"], vul: "Le langage des startups (Rails).", e: "puts", txt: "Connu pour son élégance et sa facilité de lecture, a popularisé le développement web rapide." },
+        { l: "Rust", t: "Rust", d: "Langage système sûr.", g: ["Lang"], vul: "Le C++ sans les bugs.", e: "println!", txt: "Le nouveau favori pour la performance et la sécurité mémoire, remplaçant petit à petit le C++." },
+        { l: "Scala", t: "Scala", d: "Langage JVM fonctionnel.", g: ["Lang"], vul: "Java pour les experts.", e: "println", txt: "Un mélange puissant de Java et de programmation fonctionnelle pour les systèmes complexes." },
+        { l: "Shell", t: "Shell", d: "Langage de commande.", g: ["Lang"], vul: "Parler à Linux.", e: "echo", txt: "Le langage de commande pour piloter les systèmes Unix/Linux." },
+        { l: "SQL", t: "SQL", d: "Langage de base de données.", g: ["Lang"], vul: "Parler aux données.", e: "SELECT", txt: "Le langage universel pour interroger et manipuler les bases de données relationnelles." },
+        { l: "Swift", t: "Swift", d: "Langage Apple moderne.", g: ["Lang"], vul: "Pour faire des applis iPhone.", e: "print()", txt: "Le langage moderne et rapide d'Apple pour créer des apps iOS et Mac." },
+        { l: "TypeScript", t: "TS", d: "Superset de JS typé.", g: ["Lang"], vul: "JS avec des garde-fous.", e: "console.log", txt: "JavaScript avec des règles strictes (types) pour éviter les bugs dans les gros projets." },
+        { l: "VBA", t: "Visual Basic for Apps", d: "Macro Excel.", g: ["Lang"], vul: "Pour automatiser Excel.", e: "MsgBox", txt: "Le langage intégré à Office pour automatiser des tâches répétitives dans Excel." },
+        { l: "XML", t: "Extensible Markup Language", d: "Format de données balisé.", g: ["Lang"], vul: "L'ancêtre du JSON.", e: "<tag>", txt: "Un format de données strict et verbeux, utilisé avant l'arrivée du JSON." },
+        { l: "YAML", t: "YAML Ain't Markup Language", d: "Format de config lisible.", g: ["Lang"], vul: "Pour configurer les serveurs.", e: "key: value", txt: "Un format de configuration très lisible par les humains, utilisé par beaucoup d'outils modernes." },
+        { l: "Visual Basic", t: "VB", d: "Langage Microsoft facile.", g: ["Lang"], vul: "Pour les débutants Windows.", e: "Console.Write", txt: "Un langage d'introduction historique de Microsoft, très facile d'accès." },
+        { l: "CoffeeScript", t: "Coffee", d: "Transpile vers JS.", g: ["Lang"], vul: "Du JS plus court.", e: "console.log", txt: "Une tentative de rendre JavaScript plus joli, aujourd'hui largement remplacée par le JS moderne." },
+        { l: "Julia", t: "Julia", d: "Calcul scientifique rapide.", g: ["Lang"], vul: "Le futur de la data science ?", e: "println", txt: "Un langage récent très performant pour le calcul scientifique et la data science." },
+        { l: "F#", t: "F Sharp", d: "Fonctionnel .NET.", g: ["Lang"], vul: "Le cousin matheux de C#.", e: "printfn", txt: "Un langage fonctionnel de l'écosystème Microsoft, très expressif." },
+        { l: "Erlang", t: "Erlang", d: "Concurrent temps réel.", g: ["Lang"], vul: "Pour les télécoms.", e: "io:format", txt: "Conçu pour les télécoms, il ne s'arrête jamais et gère les pannes parfaitement." },
+        { l: "Clojure", t: "Clojure", d: "Lisp sur JVM.", g: ["Lang"], vul: "Plein de parenthèses.", e: "(println)", txt: "Un langage moderne basé sur Lisp, tournant sur la machine virtuelle Java." },
+        { l: "Ada", t: "Ada", d: "Langage critique.", g: ["Lang"], vul: "Pour les avions et les fusées.", e: "Put_Line", txt: "Le langage de la sécurité absolue, utilisé dans l'aéronautique et le militaire." },
+        { l: "Pascal", t: "Pascal", d: "Langage éducatif.", g: ["Lang"], vul: "Pour apprendre l'algo.", e: "WriteLn", txt: "A longtemps servi à enseigner la programmation structurée dans les écoles." },
+        { l: "Lisp", t: "List Processing", d: "IA historique.", g: ["Lang"], vul: "Le grand-père de l'IA.", e: "(print)", txt: "Pionnier de l'IA, connu pour son usage intensif des parenthèses." },
+        { l: "Scheme", t: "Scheme", d: "Dialecte Lisp.", g: ["Lang"], vul: "Minimaliste.", e: "(display)", txt: "Un dialecte minimaliste de Lisp, souvent utilisé pour l'enseignement." },
+        { l: "Prolog", t: "Programmation Logique", d: "Logique pure.", g: ["Lang"], vul: "L'ordi réfléchit.", e: "write", txt: "Un langage très différent basé sur la logique pure et les faits." },
+        { l: "Scratch", t: "Scratch", d: "Visuel par blocs.", g: ["Lang"], vul: "Pour les enfants.", e: "Bloc dire", txt: "La programmation par blocs visuels pour apprendre la logique aux enfants." },
+        { l: "Solidity", t: "Solidity", d: "Smart Contracts.", g: ["Lang"], vul: "Pour la Blockchain Ethereum.", e: "contract", txt: "Le langage pour écrire des contrats intelligents (Smart Contracts) sur la Blockchain." },
+        { l: "WebAssembly", t: "Wasm", d: "Binaire web.", g: ["Lang"], vul: "Le turbo du navigateur.", e: "(module)", txt: "Permet de faire tourner du code très performant (C++, Rust) directement dans le navigateur." }
+    ];
+
+    // --- VARIABLES D'ÉTAT (State Management) ---
+    let currentState = {
+        tag: 'all',
+        letter: 'all',
+        search: ''
+    };
+
+    // --- INITIALISATION ---
+    function initLexique() {
+        generateAlphabet();
+        renderDictionary();
+    }
+
+    // --- GÉNÉRATION ALPHABET ---
+    function generateAlphabet() {
+        const container = document.getElementById('alphabetContainer');
+        container.innerHTML = '';
+
+        // Bouton ALL
+        const allBtn = document.createElement('button');
+        allBtn.className = 'alpha-btn alpha-reset active';
+        allBtn.innerText = 'ALL';
+        allBtn.onclick = () => setLetter('all');
+        container.appendChild(allBtn);
+
+        // A-Z
+        for (let i = 65; i <= 90; i++) {
+            const letter = String.fromCharCode(i);
+            const btn = document.createElement('button');
+            btn.className = 'alpha-btn';
+            btn.innerText = letter;
+            btn.onclick = () => setLetter(letter);
+            
+            // Vérifier s'il y a des termes pour cette lettre (pour griser sinon)
+            const hasTerms = lexiqueDB.some(item => item.l.toUpperCase().startsWith(letter));
+            if (!hasTerms) {
+                btn.classList.add('disabled');
+            }
+
+            container.appendChild(btn);
+        }
+    }
+
+    // --- GESTION DES FILTRES ---
+    function setTag(tag) {
+        currentState.tag = tag;
+        
+        // Update UI
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        const activeBtn = document.querySelector(`.filter-btn[onclick*="'${tag}'"]`);
+        if(activeBtn) activeBtn.classList.add('active');
+
+        renderDictionary();
+    }
+
+    function setLetter(letter) {
+        currentState.letter = letter;
+
+        // Update UI Alphabet
+        document.querySelectorAll('.alpha-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (letter === 'all' && btn.innerText === 'ALL') btn.classList.add('active');
+            else if (btn.innerText === letter) btn.classList.add('active');
+        });
+
+        renderDictionary();
+    }
+
+    // --- MOTEUR DE RECHERCHE & RENDU ---
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        currentState.search = e.target.value;
+        renderDictionary();
+    });
+
+    function renderDictionary() {
+        const grid = document.getElementById('dictionary-grid');
+        grid.innerHTML = '';
+        
+        // Trier A-Z
+        const sortedData = lexiqueDB.sort((a, b) => a.l.localeCompare(b.l));
+
+        // Filtrer selon les 3 critères combinés
+        const filteredData = sortedData.filter(item => {
+            // 1. Filtre par Tag
+            const tags = item.g || [];
+            const matchTag = currentState.tag === 'all' || tags.includes(currentState.tag);
+
+            // 2. Filtre par Recherche
+            const query = currentState.search.toLowerCase();
+            const matchSearch = (item.l || "").toLowerCase().includes(query) || (item.t || "").toLowerCase().includes(query);
+
+            // 3. Filtre par Lettre
+            const matchLetter = currentState.letter === 'all' || item.l.toUpperCase().startsWith(currentState.letter);
+
+            return matchTag && matchSearch && matchLetter;
+        });
+
+        if (filteredData.length === 0) {
+            grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#888;">Aucun terme trouvé avec ces critères. 🕵️‍♀️</div>';
+            return;
+        }
+
+        filteredData.forEach((item, index) => {
+            const num = (index + 1).toString().padStart(3, '0');
+            
+            let badgesHtml = '';
+            if(item.g) {
+                item.g.forEach(tag => {
+                    let bgClass = 'bg-devops';
+                    if (tag === 'Front') bgClass = 'bg-front';
+                    if (tag === 'Back') bgClass = 'bg-back';
+                    if (tag === 'Gestion') bgClass = 'bg-gestion';
+                    if (tag === 'Lang') bgClass = 'bg-lang';
+                    
+                    // BADGE CLIQUABLE (Appelle setTag)
+                    badgesHtml += `<div class="badge-circle ${bgClass}" onclick="setTag('${tag}')" title="Filtrer par ${tag}">${tag}</div>`;
+                });
+            }
+
+            const narrative = item.txt ? item.txt : "Concept clé indispensable à maîtriser.";
+
+            // Texte pour l'accessibilité
+            let fullTextToRead = `Définition de ${item.l}. Traduction : ${item.t}. ${item.d}. Pour faire simple : ${item.vul}. ${narrative}`;
+            fullTextToRead = fullTextToRead.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+            const card = `
+                <div class="expert-card">
+                    <div class="card-top">
+                        <span class="absolute top-2 left-2 text-xs text-gray-300 font-code font-bold">#${num}</span>
+                        <div class="badges-group">${badgesHtml}</div>
+                        <div class="term-row">
+                            <div class="tech-term">${item.l}</div>
+                            <div class="audio-group">
+                                <button class="pronounce-btn" onclick="speakText('${item.l.replace(/'/g, "\\'")}', 'en')" title="Écouter en Anglais">
+                                    <span class="flag-icon">🇬🇧</span> <i class="fas fa-volume-up" style="font-size:0.7rem;"></i>
+                                </button>
+                                <button class="pronounce-btn" onclick="speakText('${item.t.replace(/'/g, "\\'")}', 'fr')" title="Écouter en Français">
+                                    <span class="flag-icon">🇫🇷</span> <i class="fas fa-volume-up" style="font-size:0.7rem;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="translation">${item.t}</div>
+                    </div>
+
+                    <div class="definition-container">
+                        <div class="definition-text">${item.d}</div>
+                    </div>
+
+                    <div class="p-4 pt-2">
+                        <div class="expert-block b-vulg">
+                            <span class="block-title">💜 Pour faire simple</span>
+                            <span>${item.vul}</span>
+                        </div>
+                        
+                        <button class="expert-toggle" onclick="toggleExpert(this, 'content-${index}')">
+                            <span>Déployer la Doc</span>
+                            <i class="fas fa-chevron-down chevron"></i>
+                        </button>
+
+                        <div class="expert-content" id="content-${index}">
+                            <div class="expert-block b-context">
+                                <span class="block-title">📘 En Contexte</span>
+                                <span>${narrative}</span>
+                            </div>
+
+                            ${item.cp ? `<div class="expert-block b-advice"><span class="block-title">🟨 Pro Tip</span>${item.cp}</div>` : ''}
+                            ${item.v ? `<div class="expert-block b-danger"><span class="block-title">🟥 Warning</span>${item.v}</div>` : ''}
+                            ${item.e ? `<div class="expert-block b-code"><span class="block-title">🟩 Code / Exemple</span><code>${item.e}</code></div>` : ''}
+
+                            <!-- LECTEUR ACCESSIBILITÉ -->
+                            <div class="accessibility-player">
+                                <div class="player-label"><i class="fas fa-universal-access"></i> Lecture Complète</div>
+                                <div class="player-controls">
+                                    <button class="player-btn" onclick="accessibilityStop()"><i class="fas fa-stop"></i></button>
+                                    <button class="player-btn play-btn" onclick="accessibilityPlay('${fullTextToRead}')"><i class="fas fa-play"></i></button>
+                                    <button class="player-btn" onclick="accessibilityPause()"><i class="fas fa-pause"></i></button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="footer-dock-col">
-                    <div class="dock-group">
-                        <div class="dock-label">Navigation</div>
-                        <div class="icon-dock">
-                             <a href="https://projettechacademy.github.io/Projet_Python/index.html" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="icon-btn" data-tooltip="Planning & Cours"><span class="brand-nav">📅</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" class="icon-btn" data-tooltip="Atelier"><span class="brand-nav">🛠️</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" class="icon-btn" data-tooltip="Observatoire & IA"><span class="brand-nav">🚀</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" class="icon-btn" data-tooltip="Fiche RNCP"><span class="brand-nav">🏅</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" class="icon-btn" data-tooltip="Acronymes"><span class="brand-nav">🔠</span></a>
-                             <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="icon-btn" data-tooltip="Profil"><span class="brand-nav">👤</span></a>
-                        </div>
-                    </div>
-                    <div class="dock-group" style="margin-top: 15px;">
-                        <div class="dock-label">Réseaux</div>
-                        <div class="icon-dock">
-                            <a href="#" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                            <a href="https://discord.gg/redT9wEE6T" target="_blank" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                            <a href="https://www.linkedin.com/in/mathilde-paisley/" target="_blank" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="footer-container">
-                <p>💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
-                <p>© 2025 Tous droits réservés – Création : Mathilde Martine PAISLEY</p>
-            </div>
-        </div>
-    </footer>
-
-    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
-
-    <script>
-        // --- BASE DE DONNÉES TECH (ENGLISH -> FRENCH) - AVEC CHAMP NARRATIF (txt) COMPLET ---
-        const lexiqueDB = [
-            // BACK-END / PYTHON
-            { l: "API", t: "Application Programming Interface", d: "Interface permettant à deux logiciels de communiquer entre eux.", g: ["Back"], vul: "Le serveur au resto : tu commandes, il va en cuisine, il te ramène le plat.", e: "API Météo France.", txt: "Au quotidien, tu utiliseras des API pour ne pas réinventer la roue (récupérer la météo, payer via Stripe)." },
-            { l: "Algorithm", t: "Algorithme", d: "Suite d'instructions précises pour résoudre un problème.", g: ["Back"], vul: "La recette de cuisine étape par étape.", e: "Tri par sélection.", txt: "C'est la logique pure qui permet de transformer des ingrédients (données) en résultat concret." },
-            { l: "Backend", t: "Arrière-boutique", d: "Partie invisible du site (Serveur, Base de données, Logique).", g: ["Back"], vul: "Le moteur sous le capot. C'est moche, y'a de l'huile, mais c'est ça qui fait avancer.", cp: "Python (Django/Flask), PHP, Node.js.", v: "Ne jamais faire confiance aux données du Front.", txt: "C'est la zone de sécurité où l'on gère l'argent, les mots de passe et la logique métier." },
-            { l: "Bug", t: "Insecte (Erreur)", d: "Erreur dans le code provoquant un comportement inattendu.", g: ["Back", "Front"], vul: "Le grain de sable dans l'engrenage.", cp: "Utilise un Debugger.", e: "Crash app.", txt: "Partie inévitable du métier ; les traquer permet souvent de mieux comprendre comment le code fonctionne." },
-            { l: "Class", t: "Classe", d: "Modèle pour créer des objets (POO).", g: ["Back"], vul: "Le moule à gâteaux.", e: "class User:", txt: "Permet de standardiser la création d'éléments similaires (ex: tous les Utilisateurs ont un nom et un email)." },
-            { l: "Database", t: "Base de données", d: "Système stockant les informations de manière structurée.", g: ["Back"], vul: "L'armoire d'archivage.", e: "MySQL, PostgreSQL.", txt: "Sans elle, le site est amnésique ; c'est là qu'on stocke tout ce qui doit survivre au redémarrage." },
-            { l: "Framework", t: "Cadre de travail", d: "Ensemble d'outils et de conventions pour coder plus vite.", g: ["Back"], vul: "La maison en kit.", cp: "Django, React, Symfony.", v: "Apprends les bases avant.", txt: "Il t'impose une structure rigide mais t'évite d'écrire des milliers de lignes de code répétitif." },
-            { l: "Function", t: "Fonction", d: "Bloc de code réutilisable.", g: ["Back"], vul: "Le robot qui fait une tâche précise.", e: "def calcul():", txt: "Dès que tu copies-colles du code, demande-toi si tu ne devrais pas plutôt en faire une fonction." },
-            { l: "Indentation", t: "Décalage", d: "Espaces en début de ligne (vital en Python).", g: ["Back"], vul: "L'alignement visuel.", v: "IndentationError.", txt: "En Python, ce n'est pas juste esthétique, c'est obligatoire pour définir ce qui est 'dans' quoi." },
-            { l: "Interpreter", t: "Interpréteur", d: "Programme qui exécute le code ligne par ligne.", g: ["Back"], vul: "Le traducteur simultané.", e: "python main.py", txt: "Contrairement à la compilation, il lit et exécute en direct, ce qui est super pour tester vite." },
-            { l: "JSON", t: "JS Object Notation", d: "Format de texte léger pour échanger des données.", g: ["Back", "Front"], vul: "Le langage universel (texte).", cp: "Format clé/valeur.", e: "{ \"nom\": \"M\" }", txt: "C'est le standard absolu pour faire parler un serveur Python avec une page Web en JS." },
-            { l: "Library", t: "Bibliothèque", d: "Collection de fonctions prêtes à l'emploi.", g: ["Back"], vul: "La boîte à outils.", cp: "Pandas, Requests.", txt: "Ce sont des bouts de code écrits par d'autres que tu empruntes pour gagner du temps." },
-            { l: "Loop", t: "Boucle", d: "Répétition d'instructions.", g: ["Back"], vul: "Faire le tour du rond-point.", e: "for i in range(10):", txt: "Indispensable pour traiter des listes d'éléments (ex: afficher tous les produits)." },
-            { l: "Middleware", t: "Intergiciel", d: "Logiciel tiers entre l'OS et l'appli.", g: ["Back"], vul: "Le traducteur/douanier.", e: "Express Mid.", txt: "C'est un filtre qui intercepte les requêtes (ex: vérifier si l'utilisateur est connecté) avant qu'elles n'arrivent." },
-            { l: "Module", t: "Module", d: "Fichier contenant du code Python importable.", g: ["Back"], vul: "Un chapitre du livre.", e: "import math", txt: "Permet de découper ton programme géant en petits fichiers gérables et organisés." },
-            { l: "Object", t: "Objet", d: "Instance d'une classe.", g: ["Back"], vul: "Le gâteau sorti du moule.", e: "user1 = User()", txt: "C'est l'élément concret manipulé par le programme, créé à partir du plan (la Classe)." },
-            { l: "ORM", t: "Object Relational Mapping", d: "Interface code/base de données.", g: ["Back"], vul: "Le traducteur Python <-> SQL.", e: "SQLAlchemy.", txt: "Te permet de parler à la base de données en utilisant du Python au lieu d'écrire du SQL brut." },
-            { l: "Package", t: "Paquet", d: "Dossier contenant plusieurs modules.", g: ["Back"], vul: "Le carton de déménagement.", e: "pip install", txt: "C'est comme une super-librairie qu'on installe pour ajouter de grosses fonctionnalités." },
-            { l: "Parameter", t: "Paramètre", d: "Variable passée à une fonction.", g: ["Back"], vul: "L'ingrédient donné au robot.", e: "func(x)", txt: "C'est ce qui rend tes fonctions dynamiques et adaptables à différentes situations." },
-            { l: "Python", t: "Python", d: "Langage polyvalent et lisible.", g: ["Back"], vul: "Le couteau-suisse.", e: "print('Hello')", txt: "Adoré pour sa simplicité et sa puissance, utilisé du Web à l'Intelligence Artificielle." },
-            { l: "Query", t: "Requête", d: "Demande d'info à une BDD.", g: ["Back"], vul: "La question posée à l'archiviste.", e: "SELECT *", txt: "C'est l'ordre précis que tu donnes à la base de données pour récupérer ou modifier des infos." },
-            { l: "Recursion", t: "Récursion", d: "Fonction qui s'appelle elle-même.", g: ["Back"], vul: "Les poupées russes.", v: "Boucle infinie.", txt: "Un concept élégant mais dangereux si mal maîtrisé, souvent utilisé pour parcourir des arbres de données." },
-            { l: "Script", t: "Script", d: "Fichier de code exécutable.", g: ["Back"], vul: "Le scénario.", e: "script.py", txt: "Souvent un petit programme rapide pour automatiser une tâche simple." },
-            { l: "Server", t: "Serveur", d: "Ordi qui fournit des services.", g: ["Back"], vul: "Le majordome du Web.", e: "Apache, Nginx.", txt: "C'est l'ordinateur qui ne s'éteint jamais et qui attend les demandes des utilisateurs." },
-            { l: "SQL", t: "SQL", d: "Langage de BDD relationnelles.", g: ["Back"], vul: "Langue des tableaux.", cp: "CRUD.", txt: "Le langage standard pour parler aux bases de données classiques (tableaux, lignes, colonnes)." },
-            { l: "String", t: "Chaîne", d: "Type de donnée texte.", g: ["Back"], vul: "Le collier de lettres.", e: "'Bonjour'", txt: "Dès que tu manipules du texte (noms, messages), c'est ce type de donnée que tu utilises." },
-            { l: "Syntax", t: "Syntaxe", d: "Règles d'écriture.", g: ["Back"], vul: "La grammaire.", v: "SyntaxError.", txt: "Comme dans une langue parlée, si tu ne respectes pas la grammaire, l'ordinateur ne te comprend pas." },
-            { l: "Variable", t: "Variable", d: "Boîte nommée pour stocker une valeur.", g: ["Back", "Front"], vul: "Carton étiqueté.", e: "nom = 'Mathilde'", txt: "La brique de base de la programmation : retenir une information pour l'utiliser plus tard." },
-            { l: "Virtualenv", t: "Env. Virtuel", d: "Espace isolé pour les dépendances.", g: ["Back"], vul: "La bulle stérile.", e: "venv", txt: "Vital en Python pour éviter que les mises à jour d'un projet ne cassent un autre projet." },
-            { l: "While", t: "Tant que", d: "Boucle conditionnelle.", g: ["Back"], vul: "Tant que c'est vrai...", e: "while True:", txt: "Utile quand tu ne sais pas à l'avance combien de fois tu dois répéter l'action." },
-            { l: "Argument", t: "Argument", d: "Valeur donnée à une fonction lors de l'appel.", g: ["Back"], vul: "La valeur réelle qu'on donne.", e: "add(5, 10)", txt: "La donnée concrète que tu envoies à la fonction au moment de l'utiliser." },
-            { l: "Array", t: "Tableau", d: "Liste ordonnée d'éléments.", g: ["Back"], vul: "Une liste de courses.", e: "[1, 2, 3]", txt: "La structure de base pour stocker une collection d'éléments dans un ordre précis." },
-            { l: "Boolean", t: "Booléen", d: "Type de donnée Vrai ou Faux.", g: ["Back"], vul: "Oui ou Non. 1 ou 0.", e: "True / False", txt: "Fondamental pour la logique : tout se résume finalement à vrai ou faux pour l'ordinateur." },
-            { l: "Cache", t: "Cache", d: "Mémoire temporaire rapide.", g: ["Back"], vul: "La poche du serveur pour garder les trucs fréquents.", e: "Redis.", txt: "C'est la mémoire à court terme ultra-rapide qui évite de refaire des calculs déjà faits." },
-            { l: "Callback", t: "Rappel", d: "Fonction passée en argument pour être exécutée après.", g: ["Back"], vul: "Rappelle-moi quand tu as fini.", e: "onClick(handleClick)", txt: "Une façon de dire à une fonction : 'Fais ton travail, et quand tu as fini, appelle cette autre fonction'." },
-            { l: "Compiler", t: "Compilateur", d: "Traduit le code en langage machine.", g: ["Back"], vul: "Traduit le livre en binaire.", e: "C++ Compiler.", txt: "Il transforme ton code lisible par un humain en code machine illisible mais exécutable par le processeur." },
-            { l: "Concatenation", t: "Concaténation", d: "Assemblage de deux chaînes.", g: ["Back"], vul: "Coller deux mots ensemble.", e: "'A' + 'B' = 'AB'", txt: "L'opération de base pour assembler des morceaux de texte, comme des wagons d'un train." },
-            { l: "Constant", t: "Constante", d: "Variable qui ne change pas.", g: ["Back"], vul: "Gravé dans le marbre.", e: "PI = 3.14", txt: "Une valeur de référence qui ne doit jamais bouger, comme le nombre Pi ou l'URL de ton site." },
-            { l: "Constructor", t: "Constructeur", d: "Méthode pour créer un objet.", g: ["Back"], vul: "L'usine de fabrication.", e: "__init__", txt: "La méthode spéciale qui s'active automatiquement dès que tu crées un nouvel objet." },
-            { l: "Cookie", t: "Cookie", d: "Petit fichier stocké chez le client.", g: ["Back"], vul: "Le post-it sur le frigo du client.", e: "Session ID.", txt: "Un petit traceur laissé sur le navigateur pour se souvenir de qui est l'utilisateur." },
-            { l: "Cron", t: "Cron Job", d: "Tâche planifiée.", g: ["Back"], vul: "Le réveil matin du serveur.", e: "Backup à 3h du mat.", txt: "Le planificateur de tâches qui permet de lancer des scripts automatiquement, même quand tu dors." },
-            { l: "CRUD", t: "Create Read Update Delete", d: "4 opérations de base sur les données.", g: ["Back"], vul: "Créer, Lire, Modifier, Supprimer.", e: "API REST.", txt: "Les 4 piliers de toute application de gestion : tout ce qu'on peut faire avec une donnée." },
-            { l: "Daemon", t: "Démon", d: "Programme tournant en arrière-plan.", g: ["Back"], vul: "Le fantôme qui bosse en secret.", e: "httpd", txt: "Un programme invisible qui tourne en fond pour assurer des services essentiels sans interface." },
-            { l: "Debugging", t: "Débogage", d: "Processus de correction des bugs.", g: ["Back"], vul: "La chasse aux insectes.", e: "print('ici')", txt: "L'art de l'enquête : remonter la piste d'un bug pour comprendre pourquoi le code ne fait pas ce qu'on veut." },
-            { l: "Dependency", t: "Dépendance", d: "Code tiers utilisé par le projet.", g: ["Back"], vul: "Les briques qu'on emprunte aux autres.", e: "npm install", txt: "Un code externe dont ton projet a besoin pour fonctionner ; si elle casse, tout casse." },
-            { l: "Dictionary", t: "Dictionnaire", d: "Collection clé-valeur.", g: ["Back"], vul: "Le carnet d'adresses.", e: "{'nom': 'Paul'}", txt: "Une structure clé/valeur ultra-rapide pour retrouver une info précise sans parcourir toute la liste." },
-            { l: "Exception", t: "Exception", d: "Erreur gérée par le programme.", g: ["Back"], vul: "L'imprévu qu'on avait prévu.", e: "try / except", txt: "Un mécanisme de sécurité pour attraper une erreur au vol avant qu'elle ne fasse planter tout le programme." },
-            { l: "Float", t: "Flottant", d: "Nombre à virgule.", g: ["Back"], vul: "Un chiffre pas rond.", e: "3.14", txt: "Nécessaire dès que tu as besoin de précision (prix, mesures), car les entiers ne suffisent plus." },
-            { l: "Hash", t: "Hachage", d: "Empreinte numérique unique.", g: ["Back"], vul: "L'ADN du fichier.", e: "MD5, SHA256", txt: "Une empreinte numérique unique impossible à inverser, essentielle pour stocker les mots de passe." },
-            
-            // FRONT-END
-            { l: "AJAX", t: "Asynchronous JS and XML", d: "Chargement de données sans recharger la page.", g: ["Front"], vul: "Le serveur apporte l'eau sans débarrasser.", e: "Fetch API.", txt: "C'est ce qui rend les sites modernes fluides : on met à jour juste un morceau de la page." },
-            { l: "Attribute", t: "Attribut", d: "Propriété d'une balise HTML.", g: ["Front"], vul: "L'adjectif de la balise.", e: "class='btn'", txt: "Permet de donner des caractéristiques supplémentaires (lien, image source, style) à une balise." },
-            { l: "Bootstrap", t: "Bootstrap", d: "Framework CSS populaire.", g: ["Front"], vul: "Les Lego du design.", e: "btn-primary", txt: "Idéal pour prototyper très vite un site propre sans être un expert en design." },
-            { l: "Browser", t: "Navigateur", d: "Logiciel pour voir le Web.", g: ["Front"], vul: "La fenêtre sur Internet.", e: "Chrome.", txt: "C'est le logiciel client qui traduit ton code (HTML/CSS/JS) en image visible." },
-            { l: "Canvas", t: "Toile", d: "Zone de dessin HTML5.", g: ["Front"], vul: "La feuille de papier numérique.", e: "<canvas>", txt: "Utilisé pour les jeux vidéo web ou les graphiques complexes générés en direct." },
-            { l: "CSS", t: "Cascading Style Sheets", d: "Langage de style.", g: ["Front"], vul: "Le maquillage.", e: "color: red;", txt: "Sans lui, le web serait moche et en noir et blanc. Il gère toute l'apparence." },
-            { l: "Div", t: "Division", d: "Balise conteneur générique.", g: ["Front"], vul: "La boîte en carton.", e: "<div>", txt: "La brique de construction de base pour grouper des éléments et les mettre en page." },
-            { l: "DOM", t: "Document Object Model", d: "Structure en arbre de la page.", g: ["Front"], vul: "L'arbre généalogique.", e: "getElementById", txt: "C'est la vision que le navigateur a de ta page, et que tu peux manipuler avec JavaScript." },
-            { l: "Flexbox", t: "Boîte flexible", d: "Module de mise en page CSS.", g: ["Front"], vul: "L'élastique pour ranger.", e: "display: flex;", txt: "La méthode moderne pour aligner facilement des éléments sur une ligne ou une colonne." },
-            { l: "Grid", t: "Grille", d: "Système de mise en page 2D.", g: ["Front"], vul: "Papier millimétré.", e: "display: grid;", txt: "Puissant pour créer des mises en page complexes avec des lignes et des colonnes." },
-            { l: "HTML", t: "HyperText Markup Language", d: "Langage de balisage.", g: ["Front"], vul: "Le squelette.", e: "<h1>", txt: "La fondation de toute page web ; il définit le sens et la structure du contenu." },
-            { l: "ID", t: "Identifiant", d: "Nom unique d'un élément.", g: ["Front"], vul: "Le numéro de sécu de la balise.", e: "id='header'", txt: "Un nom unique pour cibler précisément UN seul élément dans ta page." },
-            { l: "JavaScript", t: "JS", d: "Langage de script client.", g: ["Front"], vul: "Les muscles/cerveau.", e: "alert()", txt: "Le seul langage de programmation que les navigateurs comprennent pour rendre les pages vivantes." },
-            { l: "Media Query", t: "Requête Média", d: "Règle CSS conditionnelle.", g: ["Front"], vul: "Si l'écran est petit...", e: "@media", txt: "La clé du design Responsive : appliquer des styles différents selon la taille de l'écran." },
-            { l: "Modal", t: "Modale", d: "Fenêtre superposée.", g: ["Front"], vul: "Le popup qui te bloque tout.", e: "Dialog box.", txt: "Une fenêtre qui force l'utilisateur à interagir avant de retourner à la page principale." },
-            { l: "Navbar", t: "Barre de nav", d: "Menu de navigation.", g: ["Front"], vul: "Le menu.", e: "<nav>", txt: "L'élément central pour que l'utilisateur ne se perde pas dans ton site." },
-            { l: "Node", t: "Nœud", d: "Élément du DOM.", g: ["Front"], vul: "Une feuille de l'arbre DOM.", e: "Element node.", txt: "Chaque petite partie de ta page (texte, balise, attribut) est un nœud dans l'arbre DOM." },
-            { l: "Padding", t: "Rembourrage", d: "Espace intérieur d'un élément.", g: ["Front"], vul: "Le gras autour du contenu.", e: "padding: 10px;", txt: "L'espace à l'intérieur de la boîte, entre le bord et le texte." },
-            { l: "React", t: "React", d: "Bibliothèque JS (Facebook).", g: ["Front"], vul: "Super-JS pour apps.", e: "Components.", txt: "Permet de créer des sites ultra-complexes comme Facebook en assemblant des composants réutilisables." },
-            { l: "Responsive", t: "Réactif", d: "Site qui s'adapte à l'écran.", g: ["Front"], vul: "Site élastique.", e: "Mobile-first.", txt: "Aujourd'hui obligatoire : ton site doit être beau sur un iPhone comme sur un écran géant." },
-            { l: "Selector", t: "Sélecteur", d: "Cible CSS.", g: ["Front"], vul: "Le viseur du sniper CSS.", e: ".class", txt: "Ce qui permet de dire au CSS 'applique cette couleur à CET élément précis'." },
-            { l: "SPA", t: "Single Page App", d: "Site sans rechargement.", g: ["Front"], vul: "Appli fluide.", e: "Gmail.", txt: "Donne l'impression d'une application native (comme sur mobile) en ne rechargeant jamais la page." },
-            { l: "SVG", t: "Scalable Vector Graphics", d: "Image vectorielle.", g: ["Front"], vul: "L'image qui ne pixelise jamais.", e: "<svg>", txt: "Des images faites de mathématiques, parfaites pour les logos et icônes qui restent nets à toute taille." },
-            { l: "Tag", t: "Balise", d: "Élément HTML.", g: ["Front"], vul: "L'étiquette.", e: "<p>", txt: "Les mots-clés entre chevrons qui disent au navigateur 'ceci est un titre', 'ceci est un paragraphe'." },
-            { l: "Tailwind", t: "Tailwind", d: "Framework CSS utilitaire.", g: ["Front"], vul: "CSS en kit.", e: "p-4", txt: "Permet de styliser directement dans le HTML sans écrire de fichiers CSS séparés." },
-            { l: "UI", t: "User Interface", d: "Interface Utilisateur.", g: ["Front"], vul: "Ce qu'on voit.", e: "Boutons.", txt: "C'est la couche visible de l'iceberg avec laquelle l'humain interagit." },
-            { l: "UX", t: "User Experience", d: "Expérience Utilisateur.", g: ["Front"], vul: "Ce qu'on ressent.", e: "Facilité.", txt: "C'est l'art de rendre l'utilisation du site agréable, intuitive et sans frustration." },
-            { l: "Viewport", t: "Fenêtre d'affichage", d: "Zone visible du site.", g: ["Front"], vul: "L'écran du téléphone.", e: "meta viewport", txt: "La partie de la page web qui est réellement visible sur l'écran de l'utilisateur." },
-            { l: "Wireframe", t: "Fil de fer", d: "Maquette basse fidélité.", g: ["Front"], vul: "Le brouillon au crayon.", e: "Mockup.", txt: "Le plan architectural du site fait avant de poser la moindre brique de code." },
-            { l: "Z-index", t: "Index Z", d: "Profondeur CSS.", g: ["Front"], vul: "L'ordre des calques.", e: "z-index: 999;", txt: "C'est ce qui décide quel élément passe dessus ou dessous quand ils se chevauchent." },
-            { l: "Anchor", t: "Ancre", d: "Lien hypertexte.", g: ["Front"], vul: "Le lien bleu cliquable.", e: "<a>", txt: "L'élément fondateur du Web : ce qui permet de sauter d'une page à l'autre." },
-            { l: "Breadcrumb", t: "Fil d'ariane", d: "Chemin de navigation.", g: ["Front"], vul: "Accueil > Produits > Chaussures.", e: "Navigation path.", txt: "Indispensable pour l'UX : permet à l'utilisateur de savoir où il est et de remonter l'arborescence." },
-            { l: "Breakpoint", t: "Point de rupture", d: "Largeur où le design change.", g: ["Front"], vul: "Le moment où le site passe en mode mobile.", e: "768px.", txt: "Les points de bascule où le design doit se réorganiser pour rester lisible sur mobile ou tablette." },
-            { l: "Carousel", t: "Carrousel", d: "Diaporama d'images.", g: ["Front"], vul: "Le truc qui tourne avec des photos.", e: "Slider.", txt: "Un défilé d'images souvent demandé par le marketing, mais attention à l'accessibilité !" },
-            { l: "CDN", t: "Content Delivery Network", d: "Réseau de serveurs pour livrer vite.", g: ["Front"], vul: "Des entrepôts partout pour livrer plus vite.", e: "Cloudflare.", txt: "Des serveurs partout dans le monde pour que ton image charge aussi vite à Tokyo qu'à Paris." },
-            { l: "Class", t: "Classe CSS", d: "Nom pour styliser plusieurs éléments.", g: ["Front"], vul: "Le nom de famille des balises.", e: ".btn", txt: "L'outil principal pour appliquer le même style à plusieurs éléments différents." },
-            { l: "Console", t: "Console", d: "Outil de débogage du navigateur.", g: ["Front"], vul: "Le journal intime du site.", e: "console.log()", txt: "Ton meilleur ami pour voir ce qui se passe vraiment dans le navigateur quand le site réagit." },
-            { l: "DOM Tree", t: "Arbre DOM", d: "Hiérarchie des éléments.", g: ["Front"], vul: "L'arbre généalogique.", e: "html > body > div", txt: "La carte mentale que le navigateur se fait de ta page HTML." },
-            { l: "Event", t: "Événement", d: "Action utilisateur (clic, scroll).", g: ["Front"], vul: "Quand quelque chose se passe.", e: "onClick", txt: "Le déclencheur de toute interactivité : sans événement, le site reste statique." },
-            { l: "Favicon", t: "Favicon", d: "Petite icône dans l'onglet.", g: ["Front"], vul: "Le mini logo en haut.", e: "favicon.ico", txt: "Le petit détail visuel dans l'onglet qui crédibilise instantanément ton site." },
-            { l: "Footer", t: "Pied de page", d: "Bas du site.", g: ["Front"], vul: "Les chaussures du site.", e: "<footer>", txt: "La zone de conclusion de la page, où l'on cherche les mentions légales et les contacts." },
-            { l: "Header", t: "En-tête", d: "Haut du site.", g: ["Front"], vul: "Le chapeau du site.", e: "<header>", txt: "La première impression, contenant l'identité et la navigation principale." },
-            { l: "Hex", t: "Hexadécimal", d: "Code couleur.", g: ["Front"], vul: "Le code du peintre.", e: "#FF0000", txt: "Le code universel pour définir une couleur exacte sur un écran." },
-            { l: "Hover", t: "Survol", d: "État au passage de la souris.", g: ["Front"], vul: "Quand la souris passe dessus.", e: ":hover", txt: "Donne un feedback visuel immédiat pour dire 'Ceci est cliquable'." },
-            { l: "Input", t: "Entrée", d: "Champ de saisie.", g: ["Front"], vul: "La case où on écrit.", e: "<input>", txt: "La porte d'entrée par laquelle l'utilisateur envoie ses données au système." },
-            { l: "Margin", t: "Marge", d: "Espace extérieur.", g: ["Front"], vul: "L'espace entre les voisins.", e: "margin: 20px;", txt: "L'espace vital autour d'un élément pour aérer la mise en page." },
-            { l: "Meta Tag", t: "Balise Meta", d: "Info pour le navigateur/Google.", g: ["Front"], vul: "La carte d'identité invisible.", e: "<meta>", txt: "Des infos invisibles pour l'utilisateur mais vitales pour Google et le partage sur les réseaux." },
-            { l: "Pixel", t: "Pixel", d: "Point de l'écran.", g: ["Front"], vul: "Le grain de l'image.", e: "px", txt: "La plus petite unité de mesure sur un écran, bien que le vectoriel (SVG) soit souvent préférable." },
-            { l: "Pseudo-class", t: "Pseudo-classe", d: "État spécial CSS.", g: ["Front"], vul: "Une variante de l'élément.", e: ":first-child", txt: "Permet de cibler un état spécifique (comme le survol ou le premier élément) sans ajouter de classe." },
-            { l: "Script Tag", t: "Balise Script", d: "Contient le JS.", g: ["Front"], vul: "La boîte à code.", e: "<script>", txt: "La balise qui permet d'injecter de l'intelligence (JS) dans la page." },
-
-            // DEVOPS / TOOLS
-            { l: "Alias", t: "Alias", d: "Raccourci commande.", g: ["DevOps"], vul: "Le surnom court.", e: "g = git", txt: "Un gain de temps énorme pour ne pas retaper des commandes longues cinquante fois par jour." },
-            { l: "Bash", t: "Bash", d: "Shell Unix.", g: ["DevOps"], vul: "La langue du terminal.", e: "ls, cd", txt: "Le langage par défaut pour parler aux serveurs Linux." },
-            { l: "Branch", t: "Branche", d: "Version parallèle du code.", g: ["DevOps"], vul: "L'univers parallèle.", e: "git checkout -b", txt: "Permet de tester une idée folle sans casser le code principal qui marche." },
-            { l: "CI/CD", t: "Intégration/Déploiement Continus", d: "Automatisation des tests et mises en ligne.", g: ["DevOps"], vul: "Le tapis roulant automatique.", e: "Jenkins, GitHub Actions", txt: "Automatise tout le processus de la validation du code jusqu'à sa mise en ligne." },
-            { l: "CLI", t: "Command Line Interface", d: "Interface ligne de commande.", g: ["DevOps"], vul: "L'écran noir.", e: "Terminal.", txt: "L'outil de puissance des pros : moins convivial, mais beaucoup plus rapide et puissant que la souris." },
-            { l: "Clone", t: "Cloner", d: "Copier un dépôt.", g: ["DevOps"], vul: "Télécharger le projet.", e: "git clone", txt: "L'action de télécharger une copie complète du projet sur ton ordinateur pour travailler dessus." },
-            { l: "Commit", t: "Valider/Enregistrer", d: "Sauvegarde d'un état du code dans l'historique Git.", g: ["DevOps"], vul: "Le point de sauvegarde dans un jeu vidéo.", cp: "Fais des commits atomiques.", v: "Message de commit clair !", txt: "C'est figer une version de ton travail avec un message expliquant ce que tu as fait." },
-            { l: "Container", t: "Conteneur", d: "Environnement isolé.", g: ["DevOps"], vul: "La boîte Tupperware du code.", e: "Docker.", txt: "Garantit que ton code marchera pareil sur ton ordi et sur le serveur." },
-            { l: "Deploy", t: "Déployer", d: "Mettre en ligne.", g: ["DevOps"], vul: "Lancer la fusée.", e: "Push to prod.", txt: "Le moment de vérité où ton code devient accessible aux vrais utilisateurs." },
-            { l: "Docker", t: "Docker", d: "Outil de conteneurisation.", g: ["DevOps"], vul: "Le cargo des conteneurs.", e: "Dockerfile.", txt: "Le standard mondial pour emballer les applications et les livrer facilement." },
-            { l: "Fetch", t: "Récupérer", d: "Télécharger les infos git.", g: ["DevOps"], vul: "Aller voir les nouveautés.", e: "git fetch", txt: "Permet de voir ce que les autres ont fait sans encore modifier ton propre travail." },
-            { l: "Fork", t: "Fourche", d: "Copie d'un projet open source.", g: ["DevOps"], vul: "La photocopie pour modifier chez soi.", e: "GitHub Fork.", txt: "Prendre un projet existant pour en faire sa propre version indépendante." },
-            { l: "Git", t: "Abruti (argot UK)", d: "Système de contrôle de version (VCS) pour gérer l'historique du code.", g: ["DevOps"], vul: "La machine à remonter le temps du code.", cp: "Indispensable.", v: "Git n'est pas GitHub.", txt: "L'outil vital pour travailler en équipe sans s'écraser le travail des uns des autres." },
-            { l: "GitHub", t: "GitHub", d: "Hébergeur Git.", g: ["DevOps"], vul: "Le Facebook du code.", e: "Repo distant.", txt: "Là où l'on stocke le code dans le cloud pour le partager et collaborer." },
-            { l: "Host", t: "Hôte", d: "Serveur d'hébergement.", g: ["DevOps"], vul: "Le propriétaire de la maison.", e: "OVH, AWS.", txt: "Le terrain sur lequel ta maison (site web) est construite." },
-            { l: "IDE", t: "Env. de Dév. Intégré", d: "Logiciel complet pour coder (VS Code, PyCharm).", g: ["DevOps"], vul: "L'établi du menuisier.", cp: "Installe des extensions.", v: "Ne code pas dans le Bloc-notes !", txt: "Ton cockpit de pilotage : coloration, autocomplétion, tout pour coder confortablement." },
-            { l: "Image", t: "Image", d: "Modèle de conteneur.", g: ["DevOps"], vul: "Le négatif photo du conteneur.", e: "Docker image.", txt: "Le moule inaltérable à partir duquel on crée des conteneurs." },
-            { l: "Issue", t: "Problème", d: "Ticket de bug.", g: ["DevOps"], vul: "Le post-it 'À réparer'.", e: "GitHub Issue.", txt: "L'unité de travail officielle pour tracer un bug ou une demande d'amélioration." },
-            { l: "Linux", t: "Linux", d: "Système d'exploitation open source.", g: ["DevOps"], vul: "Le moteur robuste des serveurs.", e: "Ubuntu, Debian.", txt: "Le système d'exploitation roi des serveurs, réputé pour sa stabilité et sa sécurité." },
-            { l: "Log", t: "Journal", d: "Historique des événements.", g: ["DevOps"], vul: "Le journal de bord du capitaine.", e: "Access.log", txt: "La boîte noire de l'application : c'est là qu'on regarde quand quelque chose a planté." },
-            { l: "Merge", t: "Fusionner", d: "Action de réunir deux branches de code ensemble.", g: ["DevOps"], vul: "Le confluent de deux rivières.", cp: "Attention aux conflits !", e: "git merge", txt: "L'action de réintégrer ton travail fini dans le projet principal." },
-            { l: "Open Source", t: "Code ouvert", d: "Logiciel dont le code est public et modifiable par tous.", g: ["DevOps"], vul: "La recette de cuisine publiée.", cp: "Python est open source.", v: "Vérifie les licences.", txt: "Un logiciel développé par une communauté mondiale où tout le monde peut contribuer." },
-            { l: "Origin", t: "Origine", d: "Dépôt distant par défaut.", g: ["DevOps"], vul: "La maison mère.", e: "git push origin", txt: "Le nom par défaut donné au serveur distant où ton code est sauvegardé." },
-            { l: "Pipeline", t: "Tuyauterie", d: "Chaîne d'automatisation.", g: ["DevOps"], vul: "La chaîne de montage.", e: "Build -> Test -> Deploy", txt: "L'enchaînement automatique des étapes pour passer du code brut au produit fini." },
-            { l: "Pull", t: "Tirer", d: "Récupérer et fusionner.", g: ["DevOps"], vul: "Prendre les mises à jour.", e: "git pull", txt: "L'action de mettre à jour ton code local avec ce que les autres ont fait." },
-            { l: "Pull Request", t: "Demande de tirage (PR)", d: "Demande pour fusionner son code dans le projet principal.", g: ["DevOps"], vul: "Je lève la main.", cp: "On fait une Code Review.", e: "Créer une PR.", txt: "La façon polie de proposer ton code à l'équipe pour qu'ils le vérifient avant de l'accepter." },
-            { l: "Push", t: "Pousser", d: "Envoyer le code.", g: ["DevOps"], vul: "Envoyer ses devoirs.", e: "git push", txt: "L'envoi de tes modifications validées vers le serveur central." },
-            { l: "Repo", t: "Dépôt", d: "Dossier du projet.", g: ["DevOps"], vul: "Le dossier projet.", e: "Repository.", txt: "L'entrepôt numérique où sont stockés tous les fichiers et l'historique de ton projet." },
-            { l: "Revert", t: "Annuler", d: "Annuler un commit.", g: ["DevOps"], vul: "Ctrl+Z géant.", e: "git revert", txt: "Créer un nouveau changement qui est l'exact inverse du précédent pour annuler une erreur proprement." },
-            { l: "Shell", t: "Coquille", d: "Interpréteur de commandes.", g: ["DevOps"], vul: "L'interface texte.", e: "Bash, Zsh.", txt: "Le programme qui lit tes commandes textuelles et les traduit pour le système d'exploitation." },
-            { l: "SSH", t: "Secure Shell", d: "Connexion sécurisée.", g: ["DevOps"], vul: "Le tunnel sécurisé vers le serveur.", e: "ssh user@host", txt: "La clé sécurisée pour entrer dans un serveur distant sans risque." },
-            { l: "Stack", t: "Pile", d: "Ensemble des technologies utilisées pour un projet.", g: ["DevOps"], vul: "La liste des ingrédients du projet.", e: "Stack MERN.", txt: "La combinaison spécifique d'outils choisis pour construire ton application (ex: React + Python)." },
-            { l: "Staging", t: "Pré-prod", d: "Env. de test.", g: ["DevOps"], vul: "La répétition générale.", e: "Serveur de test.", txt: "Un environnement copie conforme de la production pour tester sans risque avant le vrai lancement." },
-            { l: "Sudo", t: "SuperUser Do", d: "Exécuter en admin.", g: ["DevOps"], vul: "Simon a dit : fais-le.", e: "sudo apt-get", txt: "La commande magique pour obtenir les droits d'administrateur temporairement." },
-            { l: "Terminal", t: "Console", d: "Interface textuelle.", g: ["DevOps"], vul: "L'écran noir des hackers.", cp: "Apprends les commandes de base.", v: "Attention au sudo rm -rf.", txt: "La fenêtre de commande directe sur le système, sans fioritures graphiques." },
-            { l: "AWS", t: "Amazon Web Services", d: "Service Cloud.", g: ["DevOps"], vul: "L'ordi d'Amazon qu'on loue.", e: "EC2, S3.", txt: "Le géant du Cloud qui te permet de louer de la puissance de calcul à la demande." },
-            { l: "Build", t: "Construire", d: "Compiler le projet.", g: ["DevOps"], vul: "Fabriquer le produit fini.", e: "npm run build", txt: "L'étape de préparation du code pour qu'il soit optimisé et prêt à être déployé." },
-            { l: "Cluster", t: "Grappe", d: "Groupe de serveurs.", g: ["DevOps"], vul: "L'équipe de serveurs qui bossent ensemble.", e: "Kubernetes Cluster.", txt: "Plusieurs ordinateurs qui travaillent ensemble comme s'ils n'étaient qu'un seul." },
-            { l: "Config", t: "Configuration", d: "Paramètres.", g: ["DevOps"], vul: "Les réglages.", e: "config.json", txt: "Les paramètres qui permettent de changer le comportement du logiciel sans toucher au code." },
-            { l: "Diff", t: "Différence", d: "Différence entre deux fichiers.", g: ["DevOps"], vul: "Le jeu des 7 erreurs.", e: "git diff", txt: "Indispensable pour comprendre ce qui a changé entre deux versions avant de valider." },
-            { l: "Env Var", t: "Var d'environnement", d: "Variable système.", g: ["DevOps"], vul: "Le secret stocké dans le serveur.", e: "API_KEY", txt: "La bonne pratique pour stocker des secrets (clés API) sans les écrire dans le code." },
-            { l: "FTP", t: "File Transfer Protocol", d: "Protocole de transfert.", g: ["DevOps"], vul: "Le camion de livraison de fichiers.", e: "FileZilla.", txt: "Une vieille méthode de transfert de fichiers, aujourd'hui souvent remplacée par des déploiements Git." },
-            { l: "Head", t: "Tête", d: "Dernier commit.", g: ["DevOps"], vul: "La pointe de la flèche.", e: "HEAD.", txt: "Le pointeur qui dit 'Vous êtes ici' dans l'historique des versions." },
-            { l: "Localhost", t: "Hôte local", d: "Ton ordinateur.", g: ["DevOps"], vul: "La maison.", e: "127.0.0.1", txt: "Ton propre ordinateur vu par lui-même ; là où tout commence." },
-            { l: "Master", t: "Maître", d: "Branche principale (maintenant Main).", g: ["DevOps"], vul: "Le tronc de l'arbre.", e: "main branch.", txt: "La version de référence du code, celle qui doit être toujours propre et fonctionnelle." },
-            { l: "Npm", t: "Node Package Manager", d: "Gestionnaire de paquets JS.", g: ["DevOps"], vul: "Le magasin d'applis pour dev JS.", e: "npm install", txt: "L'immense bibliothèque mondiale où les développeurs JS partagent leurs outils." },
-            { l: "Patch", t: "Correctif", d: "Mise à jour mineure.", g: ["DevOps"], vul: "Le pansement.", e: "Version 1.0.1", txt: "Une petite réparation ciblée pour corriger un bug sans tout réinstaller." },
-            { l: "Port", t: "Port", d: "Point d'entrée réseau.", g: ["DevOps"], vul: "La porte numéro 80.", e: "Port 3000.", txt: "Le numéro de quai virtuel où un service attend les connexions." },
-            { l: "Root", t: "Racine", d: "Super-utilisateur ou dossier racine.", g: ["DevOps"], vul: "Le dieu du système.", e: "/", txt: "Le compte administrateur suprême sur Linux ; à utiliser avec grande précaution." },
-            { l: "Serverless", t: "Sans serveur", d: "Exécution de code sans gérer l'OS.", g: ["DevOps"], vul: "Juste le code, pas la machine.", e: "AWS Lambda.", txt: "Une architecture où tu ne gères plus les machines, tu envoies juste ton code qui s'exécute à la demande." },
-
-            // AGILE / GESTION
-            { l: "Agile", t: "Agile", d: "Méthodologie flexible.", g: ["Gestion"], vul: "On s'adapte, on ne fige rien.", cp: "Manifeste Agile.", txt: "Une philosophie qui accepte que les besoins changent en cours de route plutôt que de suivre un plan rigide." },
-            { l: "Backlog", t: "Arriéré", d: "Liste des tâches à faire.", g: ["Gestion"], vul: "La liste de courses.", e: "Product Backlog.", txt: "Le réservoir de toutes les idées et bugs qu'il faudra traiter un jour, classé par priorité." },
-            { l: "Brainstorm", t: "Tempête de cerveau", d: "Réunion d'idées.", g: ["Gestion"], vul: "On lance tout ce qui passe par la tête.", e: "Idéation.", txt: "Un moment de créativité pure où aucune idée n'est mauvaise pour débloquer des solutions." },
-            { l: "Brief", t: "Instructions", d: "Document de cadrage.", g: ["Gestion"], vul: "La feuille de mission.", e: "Brief créatif.", txt: "Le document initial qui définit ce que le client veut, avant même de commencer à travailler." },
-            { l: "Bug Tracker", t: "Suivi de bugs", d: "Outil de gestion d'incidents.", g: ["Gestion"], vul: "Le carnet de santé des problèmes.", e: "Jira, Trello.", txt: "Le logiciel où l'on note tout ce qui ne marche pas pour ne rien oublier de réparer." },
-            { l: "Daily", t: "Quotidien", d: "Réunion debout 15min.", g: ["Gestion"], vul: "Le point café du matin.", e: "Stand-up meeting.", txt: "Un point ultra-rapide pour se synchroniser et débloquer les problèmes immédiats." },
-            { l: "Deadline", t: "Date limite", d: "Échéance.", g: ["Gestion"], vul: "La ligne de mort (littéralement).", e: "A rendre pour hier.", txt: "La date butoir indépassable qui rythme tout le projet." },
-            { l: "Deliverable", t: "Livrable", d: "Ce qui est rendu au client.", g: ["Gestion"], vul: "Le paquet cadeau final.", e: "Le site web.", txt: "L'élément concret (document, code, design) que tu remets officiellement à la fin d'une étape." },
-            { l: "Epic", t: "Épopée", d: "Grosse fonctionnalité.", g: ["Gestion"], vul: "Le gros chapitre du livre.", e: "Gestion des utilisateurs.", txt: "Une fonctionnalité trop grosse pour être faite en une fois, qu'il faut découper en plusieurs petites histoires." },
-            { l: "Kanban", t: "Étiquette", d: "Tableau de tâches (To Do, Doing, Done).", g: ["Gestion"], vul: "Le tableau de post-its.", e: "Trello.", txt: "Une méthode visuelle pour voir l'avancement du travail et limiter ce qui est en cours." },
-            { l: "Kick-off", t: "Coup d'envoi", d: "Réunion de lancement.", g: ["Gestion"], vul: "Le premier coup de sifflet.", e: "Début du projet.", txt: "La réunion officielle où tout le monde se met d'accord avant de démarrer le projet." },
-            { l: "KPI", t: "Key Perf. Indicator", d: "Indicateur clé.", g: ["Gestion"], vul: "Le score du match.", e: "Vitesse de chargement.", txt: "Un chiffre précis pour mesurer si on a réussi ou raté l'objectif." },
-            { l: "Mockup", t: "Maquette", d: "Visuel statique.", g: ["Gestion"], vul: "L'image de ce à quoi ça ressemblera.", e: "Photoshop.", txt: "Une représentation visuelle fidèle du produit final, mais qui n'est pas encore interactive." },
-            { l: "MVP", t: "Min. Viable Product", d: "Produit minimum fonctionnel.", g: ["Gestion"], vul: "La version 1.0 moche mais qui marche.", e: "Prototype.", txt: "Lancer vite une version basique pour tester le marché au lieu de passer 2 ans à faire un truc parfait." },
-            { l: "Persona", t: "Personnage", d: "Utilisateur type fictif.", g: ["Gestion"], vul: "Le client imaginaire.", e: "Jean-Michel, 50 ans.", txt: "Un profil fictif pour aider l'équipe à se mettre à la place des vrais utilisateurs." },
-            { l: "PO", t: "Product Owner", d: "Responsable du produit.", g: ["Gestion"], vul: "La voix du client.", e: "Définit les tickets.", txt: "La personne qui décide QUOI faire (priorités) pour que l'équipe sache COMMENT le faire." },
-            { l: "Retro", t: "Rétrospective", d: "Bilan de fin de sprint.", g: ["Gestion"], vul: "Qu'est-ce qu'on a raté ? Qu'est-ce qu'on garde ?", e: "Amélioration continue.", txt: "Le moment où l'équipe se parle franchement pour améliorer sa façon de travailler au prochain tour." },
-            { l: "Roadmap", t: "Feuille de route", d: "Plan à long terme.", g: ["Gestion"], vul: "Le plan de bataille.", e: "Q1, Q2, Q3.", txt: "Une vision globale des grandes étapes du projet sur les mois à venir." },
-            { l: "Scope", t: "Périmètre", d: "Limites du projet.", g: ["Gestion"], vul: "Ce qu'on fait (et ce qu'on fait pas).", e: "Hors scope.", txt: "La frontière définie entre ce qui est inclus dans le contrat et ce qui ne l'est pas." },
-            { l: "Scrum", t: "Mêlée (Rugby)", d: "Méthode agile de gestion de projet par itérations (Sprints).", g: ["Gestion"], vul: "On avance par petits pas de 2 semaines.", cp: "Rituel : Daily Meeting.", v: "Le Scrum Master facilite.", txt: "Un cadre de travail très populaire pour organiser le chaos du développement logiciel par cycles courts." },
-            { l: "Sprint", t: "Course rapide", d: "Cycle de travail court (1 à 4 semaines) en Agile.", g: ["Gestion"], vul: "Une manche du jeu.", cp: "À la fin, on doit avoir un produit qui marche.", e: "Sprint 3 : Faire la page Login.", txt: "Une période intense et courte où l'on se concentre sur un but précis à livrer." },
-            { l: "Stakeholder", t: "Partie prenante", d: "Personne intéressée par le projet.", g: ["Gestion"], vul: "Ceux qui payent ou qui utilisent.", e: "Client, Chef.", txt: "Toute personne qui a un intérêt dans la réussite (ou l'échec) du projet." },
-            { l: "Stand-up", t: "Debout", d: "Réunion Daily.", g: ["Gestion"], vul: "Réunion rapide.", e: "10h tous les jours.", txt: "L'autre nom du Daily Meeting, car on reste debout pour que ça ne dure pas longtemps." },
-            { l: "Task", t: "Tâche", d: "Unité de travail.", g: ["Gestion"], vul: "Le petit boulot.", e: "Coder le bouton.", txt: "La plus petite action à réaliser, souvent assignée à une seule personne." },
-            { l: "Ticket", t: "Ticket", d: "Demande suivie.", g: ["Gestion"], vul: "Le bon de commande.", e: "Jira ticket.", txt: "L'élément numérique qui représente une tâche ou un bug dans le logiciel de gestion." },
-            { l: "Timeboxing", t: "Boîte de temps", d: "Limiter le temps alloué.", g: ["Gestion"], vul: "Chronomètre en main.", e: "1h max par tâche.", txt: "Fixer une durée limite stricte pour une tâche afin d'éviter d'y passer l'éternité." },
-            { l: "User Story", t: "Histoire utilisateur", d: "Description d'une fonctionnalité du point de vue de l'utilisateur.", g: ["Gestion"], vul: "Le ticket de tâche humain.", cp: "Base du backlog Agile.", e: "En tant qu'admin, je veux...", txt: "Décrit une fonctionnalité du point de vue de l'humain qui va l'utiliser, pas de la technique." },
-            { l: "Velocity", t: "Vélocité", d: "Vitesse de l'équipe.", g: ["Gestion"], vul: "Combien de tâches on abat par semaine.", e: "Points de story.", txt: "La mesure de la quantité de travail que l'équipe est capable de livrer à chaque sprint." },
-            { l: "Waterfall", t: "Cascade", d: "Méthode classique (non agile).", g: ["Gestion"], vul: "Le plan figé pour 2 ans.", e: "Cycle en V.", txt: "L'ancienne méthode où l'on planifie tout au début et où l'on ne peut plus rien changer ensuite." },
-            { l: "Wireframe", t: "Fil de fer", d: "Maquette basse fidélité, croquis de l'interface.", g: ["Gestion"], vul: "Le brouillon du site.", cp: "Fait sur papier ou Figma.", v: "Pas de design final.", txt: "Un schéma structurel simple pour valider l'emplacement des éléments avant de faire le design." },
-            { l: "Workflow", t: "Flux de travail", d: "Enchaînement des étapes.", g: ["Gestion"], vul: "La procédure à suivre.", e: "Validation par le chef.", txt: "Le chemin précis que doit suivre une tâche de sa création à sa validation finale." },
-            { l: "Acceptance", t: "Acceptation", d: "Critères pour valider une tâche.", g: ["Gestion"], vul: "La check-list 'Fini'.", e: "Tests verts.", txt: "Le contrat de confiance : les conditions exactes pour dire que le travail est fini et validé." },
-            { l: "Agile Manifesto", t: "Manifeste Agile", d: "4 valeurs, 12 principes.", g: ["Gestion"], vul: "La bible agile.", e: "Individus > Processus.", txt: "Le document fondateur qui a changé la façon de gérer les projets informatiques en 2001." },
-            { l: "Burndown", t: "Graphique d'avancement", d: "Reste à faire vs Temps.", g: ["Gestion"], vul: "La courbe de descente vers la fin.", e: "Burndown Chart.", txt: "Le graphique qui montre si on est en avance ou en retard sur le planning du sprint." },
-            { l: "Capacity", t: "Capacité", d: "Temps dispo de l'équipe.", g: ["Gestion"], vul: "Combien d'heures on a.", e: "40h/semaine.", txt: "La quantité réaliste de travail que l'équipe peut absorber sur une période donnée." },
-            { l: "Done", t: "Fini", d: "Définition de fini (DoD).", g: ["Gestion"], vul: "Vraiment fini, pas 'presque'.", e: "Codé + Testé.", txt: "Le tampon final qui certifie que le travail est complet, testé et prêt à être livré." },
-            { l: "Estimation", t: "Estimation", d: "Temps prévu.", g: ["Gestion"], vul: "Le pifomètre éduqué.", e: "Poker planning.", txt: "L'art difficile de prédire combien de temps prendra une tâche technique complexe." },
-            { l: "Feature", t: "Fonctionnalité", d: "Caractéristique du produit.", g: ["Gestion"], vul: "Le truc que ça fait.", e: "Panier d'achat.", txt: "Une fonction distincte du produit qui apporte de la valeur directe à l'utilisateur." },
-            { l: "Feedback", t: "Retour", d: "Avis utilisateur.", g: ["Gestion"], vul: "Ce qu'ils en pensent.", e: "Critique constructive.", txt: "Le carburant de l'amélioration continue : savoir ce qui va et ce qui ne va pas pour corriger." },
-            { l: "Gantt", t: "Gantt", d: "Diagramme de planning.", g: ["Gestion"], vul: "Le calendrier à barres.", e: "MS Project.", txt: "Un planning visuel en cascade, moins utilisé en Agile mais classique en gestion de projet." },
-            { l: "Increment", t: "Incrément", d: "Ajout de valeur au produit.", g: ["Gestion"], vul: "La brique en plus.", e: "Nouvelle version.", txt: "La version améliorée du produit livrée à la fin de chaque étape de travail." },
-            { l: "Iteration", t: "Itération", d: "Cycle de répétition.", g: ["Gestion"], vul: "On recommence en mieux.", e: "Sprint.", txt: "Le cycle répétitif (coder, tester, livrer) qui permet d'améliorer le produit petit à petit." },
-            { l: "Lead Time", t: "Temps de traversée", d: "Début à la fin.", g: ["Gestion"], vul: "Temps total de livraison.", e: "2 semaines.", txt: "Le temps total écoulé entre la demande du client et la livraison finale de la fonctionnalité." },
-            { l: "Milestone", t: "Jalon", d: "Étape clé.", g: ["Gestion"], vul: "La borne kilométrique.", e: "Version Alpha.", txt: "Un repère important dans le calendrier du projet pour célébrer une avancée majeure." },
-            { l: "Planning", t: "Planification", d: "Organisation du travail.", g: ["Gestion"], vul: "Qui fait quoi quand.", e: "Poker.", txt: "La cérémonie où l'équipe décide ce qu'elle va faire dans le prochain cycle de travail." },
-            { l: "Product", t: "Produit", d: "Résultat du projet.", g: ["Gestion"], vul: "Ce qu'on vend.", e: "L'appli.", txt: "Le résultat concret du travail de l'équipe, destiné à être utilisé par des gens." },
-            { l: "Release", t: "Version", d: "Mise à disposition.", g: ["Gestion"], vul: "La sortie officielle.", e: "v1.0", txt: "Le moment où l'on met la nouvelle version du logiciel à disposition des utilisateurs." },
-            { l: "Risk", t: "Risque", d: "Problème potentiel.", g: ["Gestion"], vul: "La tuile possible.", e: "Retard serveur.", txt: "Tout événement potentiel qui pourrait faire dérailler le projet s'il n'est pas anticipé." },
-            { l: "Spike", t: "Pointe", d: "Recherche technique.", g: ["Gestion"], vul: "On creuse pour savoir.", e: "Test techno.", txt: "Une tâche d'exploration technique pour réduire l'incertitude avant de coder pour de vrai." },
-            { l: "Team", t: "Équipe", d: "Groupe de travail.", g: ["Gestion"], vul: "La bande.", e: "Dev Team.", txt: "Le collectif auto-organisé qui s'engage ensemble sur les objectifs du projet." },
-
-            // LANGAGES
-            { l: "Assembly", t: "Assembleur", d: "Langage bas niveau.", g: ["Lang"], vul: "Parler directement au processeur.", e: "MOV AX, 1", txt: "Le langage le plus proche de la machine, très complexe, pour une optimisation maximale." },
-            { l: "C", t: "C", d: "Langage système historique.", g: ["Lang"], vul: "Le grand-père de tous les langages modernes.", e: "printf()", txt: "Un langage légendaire, très rapide mais qui ne pardonne aucune erreur de mémoire." },
-            { l: "C++", t: "C Plus Plus", d: "Extension objet du C.", g: ["Lang"], vul: "Le C avec des super-pouvoirs.", e: "cout << 'Hi'", txt: "La puissance du C avec la gestion des objets, utilisé pour les jeux vidéo et les logiciels lourds." },
-            { l: "C#", t: "C Sharp", d: "Langage Microsoft.", g: ["Lang"], vul: "Le Java de Microsoft.", e: "Console.WriteLine()", txt: "Le langage phare de Microsoft, très utilisé en entreprise et pour créer des jeux avec Unity." },
-            { l: "Cobol", t: "Cobol", d: "Vieux langage business.", g: ["Lang"], vul: "Le dinosaure des banques.", e: "MOVE 1 TO A.", txt: "Un très vieux langage encore vital pour faire tourner les systèmes bancaires et les assurances." },
-            { l: "CSS", t: "Cascading Style Sheets", d: "Langage de style.", g: ["Lang"], vul: "La peinture du site.", e: "color: blue;", txt: "Le langage qui gère toute l'apparence visuelle du Web, des couleurs aux mises en page." },
-            { l: "Dart", t: "Dart", d: "Langage Google (Flutter).", g: ["Lang"], vul: "Pour faire des applis mobiles rapides.", e: "void main()", txt: "Optimisé par Google pour créer des interfaces fluides, notamment avec le framework Flutter." },
-            { l: "Elixir", t: "Elixir", d: "Langage fonctionnel concurrent.", g: ["Lang"], vul: "Pour les chats en temps réel.", e: "IO.puts", txt: "Conçu pour gérer énormément de connexions simultanées, idéal pour les messageries comme WhatsApp." },
-            { l: "Fortran", t: "Formula Translation", d: "Langage scientifique.", g: ["Lang"], vul: "Pour les calculs de fusée.", e: "WRITE(*,*)", txt: "Le doyen des langages, toujours utilisé par les physiciens pour le calcul scientifique ultra-complexe." },
-            { l: "Go", t: "Golang", d: "Langage Google rapide.", g: ["Lang"], vul: "Le remplaçant du C pour le cloud.", e: "fmt.Println", txt: "Créé par Google pour allier la simplicité du Python et la performance du C sur les serveurs." },
-            { l: "Groovy", t: "Groovy", d: "Langage de script Java.", g: ["Lang"], vul: "Java en plus cool.", e: "println 'Hi'", txt: "Une version plus souple et moderne de Java, souvent utilisée pour des scripts d'automatisation." },
-            { l: "Haskell", t: "Haskell", d: "Langage fonctionnel pur.", g: ["Lang"], vul: "Pour les matheux.", e: "putStrLn", txt: "Un langage académique très strict, aimé des mathématiciens pour sa pureté logique." },
-            { l: "HTML", t: "HyperText Markup Language", d: "Langage de balisage.", g: ["Lang"], vul: "Le squelette du web.", e: "<html>", txt: "La fondation de toute page web ; il définit le sens et la structure du contenu." },
-            { l: "Java", t: "Java", d: "Langage objet portable.", g: ["Lang"], vul: "Écris une fois, lance partout.", e: "System.out.println", txt: "Le standard de l'industrie depuis 20 ans, robuste et présent partout (Android, banques)." },
-            { l: "JavaScript", t: "JS", d: "Langage du web.", g: ["Lang"], vul: "Le roi du navigateur.", e: "console.log", txt: "Le seul langage capable de rendre les pages web interactives et vivantes." },
-            { l: "Kotlin", t: "Kotlin", d: "Langage Android moderne.", g: ["Lang"], vul: "Le Java amélioré.", e: "println()", txt: "Le successeur moderne de Java pour Android, plus concis et sûr, recommandé par Google." },
-            { l: "Lua", t: "Lua", d: "Langage de script léger.", g: ["Lang"], vul: "Pour les jeux vidéo (Roblox).", e: "print()", txt: "Léger et rapide, souvent intégré dans d'autres programmes comme les jeux (Roblox, WoW)." },
-            { l: "Markdown", t: "Markdown", d: "Langage de balisage léger.", g: ["Lang"], vul: "Pour écrire de la doc facilement.", e: "# Titre", txt: "Le format d'écriture le plus simple pour formater du texte sans code compliqué (gras, titres)." },
-            { l: "Matlab", t: "Matrix Laboratory", d: "Langage mathématique.", g: ["Lang"], vul: "La super calculette.", e: "disp()", txt: "L'outil de référence des ingénieurs pour le calcul matriciel et la simulation numérique." },
-            { l: "Objective-C", t: "Objective-C", d: "Ancien langage Apple.", g: ["Lang"], vul: "L'ancêtre de Swift.", e: "NSLog", txt: "L'ancien langage utilisé par Apple pour les apps iPhone avant l'arrivée de Swift." },
-            { l: "Perl", t: "Perl", d: "Langage de script texte.", g: ["Lang"], vul: "Le scotch du web des années 90.", e: "print", txt: "Le 'couteau suisse' du traitement de texte, puissant mais parfois illisible." },
-            { l: "PHP", t: "PHP", d: "Langage serveur web.", g: ["Lang"], vul: "Le moteur de WordPress.", e: "echo", txt: "Le moteur historique du Web dynamique, propulsant encore une grande partie des sites (WordPress)." },
-            { l: "PowerShell", t: "PowerShell", d: "Scripting Windows.", g: ["Lang"], vul: "Pour automatiser Windows.", e: "Write-Host", txt: "L'outil d'automatisation puissant pour les administrateurs système Windows." },
-            { l: "Python", t: "Python", d: "Langage polyvalent.", g: ["Lang"], vul: "Le plus populaire et lisible.", e: "print()", txt: "Adoré pour sa simplicité et sa puissance, utilisé du Web à l'Intelligence Artificielle." },
-            { l: "R", t: "R", d: "Langage statistique.", g: ["Lang"], vul: "Pour les data scientists.", e: "print()", txt: "Le langage chouchou des statisticiens pour analyser des données et faire des graphiques." },
-            { l: "Ruby", t: "Ruby", d: "Langage objet élégant.", g: ["Lang"], vul: "Le langage des startups (Rails).", e: "puts", txt: "Connu pour son élégance et sa facilité de lecture, a popularisé le développement web rapide." },
-            { l: "Rust", t: "Rust", d: "Langage système sûr.", g: ["Lang"], vul: "Le C++ sans les bugs.", e: "println!", txt: "Le nouveau favori pour la performance et la sécurité mémoire, remplaçant petit à petit le C++." },
-            { l: "Scala", t: "Scala", d: "Langage JVM fonctionnel.", g: ["Lang"], vul: "Java pour les experts.", e: "println", txt: "Un mélange puissant de Java et de programmation fonctionnelle pour les systèmes complexes." },
-            { l: "Shell", t: "Shell", d: "Langage de commande.", g: ["Lang"], vul: "Parler à Linux.", e: "echo", txt: "Le langage de commande pour piloter les systèmes Unix/Linux." },
-            { l: "SQL", t: "SQL", d: "Langage de base de données.", g: ["Lang"], vul: "Parler aux données.", e: "SELECT", txt: "Le langage universel pour interroger et manipuler les bases de données relationnelles." },
-            { l: "Swift", t: "Swift", d: "Langage Apple moderne.", g: ["Lang"], vul: "Pour faire des applis iPhone.", e: "print()", txt: "Le langage moderne et rapide d'Apple pour créer des apps iOS et Mac." },
-            { l: "TypeScript", t: "TS", d: "Superset de JS typé.", g: ["Lang"], vul: "JS avec des garde-fous.", e: "console.log", txt: "JavaScript avec des règles strictes (types) pour éviter les bugs dans les gros projets." },
-            { l: "VBA", t: "Visual Basic for Apps", d: "Macro Excel.", g: ["Lang"], vul: "Pour automatiser Excel.", e: "MsgBox", txt: "Le langage intégré à Office pour automatiser des tâches répétitives dans Excel." },
-            { l: "XML", t: "Extensible Markup Language", d: "Format de données balisé.", g: ["Lang"], vul: "L'ancêtre du JSON.", e: "<tag>", txt: "Un format de données strict et verbeux, utilisé avant l'arrivée du JSON." },
-            { l: "YAML", t: "YAML Ain't Markup Language", d: "Format de config lisible.", g: ["Lang"], vul: "Pour configurer les serveurs.", e: "key: value", txt: "Un format de configuration très lisible par les humains, utilisé par beaucoup d'outils modernes." },
-            { l: "Visual Basic", t: "VB", d: "Langage Microsoft facile.", g: ["Lang"], vul: "Pour les débutants Windows.", e: "Console.Write", txt: "Un langage d'introduction historique de Microsoft, très facile d'accès." },
-            { l: "CoffeeScript", t: "Coffee", d: "Transpile vers JS.", g: ["Lang"], vul: "Du JS plus court.", e: "console.log", txt: "Une tentative de rendre JavaScript plus joli, aujourd'hui largement remplacée par le JS moderne." },
-            { l: "Julia", t: "Julia", d: "Calcul scientifique rapide.", g: ["Lang"], vul: "Le futur de la data science ?", e: "println", txt: "Un langage récent très performant pour le calcul scientifique et la data science." },
-            { l: "F#", t: "F Sharp", d: "Fonctionnel .NET.", g: ["Lang"], vul: "Le cousin matheux de C#.", e: "printfn", txt: "Un langage fonctionnel de l'écosystème Microsoft, très expressif." },
-            { l: "Erlang", t: "Erlang", d: "Concurrent temps réel.", g: ["Lang"], vul: "Pour les télécoms.", e: "io:format", txt: "Conçu pour les télécoms, il ne s'arrête jamais et gère les pannes parfaitement." },
-            { l: "Clojure", t: "Clojure", d: "Lisp sur JVM.", g: ["Lang"], vul: "Plein de parenthèses.", e: "(println)", txt: "Un langage moderne basé sur Lisp, tournant sur la machine virtuelle Java." },
-            { l: "Ada", t: "Ada", d: "Langage critique.", g: ["Lang"], vul: "Pour les avions et les fusées.", e: "Put_Line", txt: "Le langage de la sécurité absolue, utilisé dans l'aéronautique et le militaire." },
-            { l: "Pascal", t: "Pascal", d: "Langage éducatif.", g: ["Lang"], vul: "Pour apprendre l'algo.", e: "WriteLn", txt: "A longtemps servi à enseigner la programmation structurée dans les écoles." },
-            { l: "Lisp", t: "List Processing", d: "IA historique.", g: ["Lang"], vul: "Le grand-père de l'IA.", e: "(print)", txt: "Pionnier de l'IA, connu pour son usage intensif des parenthèses." },
-            { l: "Scheme", t: "Scheme", d: "Dialecte Lisp.", g: ["Lang"], vul: "Minimaliste.", e: "(display)", txt: "Un dialecte minimaliste de Lisp, souvent utilisé pour l'enseignement." },
-            { l: "Prolog", t: "Programmation Logique", d: "Logique pure.", g: ["Lang"], vul: "L'ordi réfléchit.", e: "write", txt: "Un langage très différent basé sur la logique pure et les faits." },
-            { l: "Scratch", t: "Scratch", d: "Visuel par blocs.", g: ["Lang"], vul: "Pour les enfants.", e: "Bloc dire", txt: "La programmation par blocs visuels pour apprendre la logique aux enfants." },
-            { l: "Solidity", t: "Solidity", d: "Smart Contracts.", g: ["Lang"], vul: "Pour la Blockchain Ethereum.", e: "contract", txt: "Le langage pour écrire des contrats intelligents (Smart Contracts) sur la Blockchain." },
-            { l: "WebAssembly", t: "Wasm", d: "Binaire web.", g: ["Lang"], vul: "Le turbo du navigateur.", e: "(module)", txt: "Permet de faire tourner du code très performant (C++, Rust) directement dans le navigateur." }
-        ];
-
-        function renderDictionary(filter = 'all', searchQuery = '') {
-            const grid = document.getElementById('dictionary-grid');
-            grid.innerHTML = '';
-            
-            const sortedData = lexiqueDB.sort((a, b) => a.l.localeCompare(b.l));
-
-            const filteredData = sortedData.filter(item => {
-                const tags = item.g || []; 
-                const matchTag = filter === 'all' || tags.includes(filter);
-                const query = searchQuery.toLowerCase();
-                const matchSearch = (item.l || "").toLowerCase().includes(query) || (item.t || "").toLowerCase().includes(query);
-                return matchTag && matchSearch;
-            });
-
-            if (filteredData.length === 0) {
-                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:#888;">Aucun terme trouvé.</div>';
-                return;
-            }
-
-            filteredData.forEach((item, index) => {
-                const num = (index + 1).toString().padStart(3, '0');
-                
-                let badgesHtml = '';
-                if(item.g) {
-                    item.g.forEach(tag => {
-                        let bgClass = 'bg-devops';
-                        if (tag === 'Front') bgClass = 'bg-front';
-                        if (tag === 'Back') bgClass = 'bg-back';
-                        if (tag === 'Gestion') bgClass = 'bg-gestion';
-                        if (tag === 'Lang') bgClass = 'bg-lang';
-                        badgesHtml += `<div class="badge-circle ${bgClass}">${tag}</div>`;
-                    });
-                }
-
-                const narrative = item.txt ? item.txt : "Concept clé indispensable à maîtriser dans son domaine.";
-
-                // Construction du texte complet pour l'accessibilité
-                let fullTextToRead = `Définition de ${item.l}. Traduction : ${item.t}. ${item.d}. Pour faire simple : ${item.vul}. En contexte : ${narrative}.`;
-                if(item.cp) fullTextToRead += ` Conseil Pro : ${item.cp}.`;
-                if(item.v) fullTextToRead += ` Attention : ${item.v}.`;
-                if(item.e) fullTextToRead += ` Exemple de code : ${item.e}.`;
-
-                // Nettoyage des caractères spéciaux pour la lecture
-                fullTextToRead = fullTextToRead.replace(/'/g, "\\'").replace(/"/g, '\\"');
-
-                const card = `
-                    <div class="expert-card">
-                        <div class="card-top">
-                            <span class="absolute top-2 left-2 text-xs text-gray-300 font-code font-bold">#${num}</span>
-                            <div class="badges-group">${badgesHtml}</div>
-                            <div class="term-row">
-                                <div class="tech-term">${item.l}</div>
-                                <div class="audio-group">
-                                    <button class="pronounce-btn" onclick="speakText('${item.l.replace(/'/g, "\\'")}', 'en')" title="Écouter en Anglais (Terme)">
-                                        <span class="flag-icon">🇬🇧</span> <i class="fas fa-volume-up" style="font-size:0.7rem;"></i>
-                                    </button>
-                                    <button class="pronounce-btn" onclick="speakText('${item.t.replace(/'/g, "\\'")}', 'fr')" title="Écouter en Français (Traduction)">
-                                        <span class="flag-icon">🇫🇷</span> <i class="fas fa-volume-up" style="font-size:0.7rem;"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="translation">${item.t}</div>
-                        </div>
-
-                        <div class="definition-container">
-                            <div class="definition-text">${item.d}</div>
-                        </div>
-
-                        <div class="p-4 pt-2">
-                            <div class="expert-block b-vulg">
-                                <span class="block-title">💜 Pour faire simple</span>
-                                <span>${item.vul}</span>
-                            </div>
-                            
-                            <button class="expert-toggle" onclick="toggleExpert(this, 'content-${index}')">
-                                <span>Déployer la Doc</span>
-                                <i class="fas fa-chevron-down chevron"></i>
-                            </button>
-
-                            <div class="expert-content" id="content-${index}">
-                                <!-- NOUVEAU BLOC NARRATIF -->
-                                <div class="expert-block b-context">
-                                    <span class="block-title">📘 En Contexte</span>
-                                    <span>${narrative}</span>
-                                </div>
-
-                                ${item.cp ? `<div class="expert-block b-advice"><span class="block-title">🟨 Pro Tip</span>${item.cp}</div>` : ''}
-                                ${item.v ? `<div class="expert-block b-danger"><span class="block-title">🟥 Warning</span>${item.v}</div>` : ''}
-                                ${item.e ? `<div class="expert-block b-code"><span class="block-title">🟩 Code / Exemple</span><code>${item.e}</code></div>` : ''}
-
-                                <!-- LECTEUR ACCESSIBILITÉ -->
-                                <div class="accessibility-player">
-                                    <div class="player-label"><i class="fas fa-universal-access"></i> Lecture Complète (Accessibilité)</div>
-                                    <div class="player-controls">
-                                        <button class="player-btn" onclick="accessibilityStop()" title="Arrêter / Rembobiner"><i class="fas fa-stop"></i></button>
-                                        <button class="player-btn play-btn" onclick="accessibilityPlay('${fullTextToRead}')" title="Lecture"><i class="fas fa-play"></i></button>
-                                        <button class="player-btn" onclick="accessibilityPause()" title="Pause"><i class="fas fa-pause"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML += card;
-            });
-        }
-
-        function toggleExpert(btn, contentId) {
-            btn.classList.toggle('active');
-            const content = document.getElementById(contentId);
-            content.classList.toggle('open');
-            const span = btn.querySelector('span');
-            span.textContent = content.classList.contains('open') ? "Masquer la Doc" : "Déployer la Doc";
-        }
-
-        // FONCTION VOCALE SIMPLE (Titres)
-        function speakText(text, lang) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const utterance = new SpeechSynthesisUtterance(text);
-                utterance.rate = 0.9;
-                utterance.lang = lang === 'en' ? 'en-US' : 'fr-FR';
-                const voices = window.speechSynthesis.getVoices();
-                let voice = null;
-                if (lang === 'en') { voice = voices.find(v => (v.lang.startsWith('en')) && (v.name.includes('Google') || v.name.includes('Samantha'))); } 
-                else { voice = voices.find(v => (v.lang.startsWith('fr')) && (v.name.includes('Google') || v.name.includes('Thomas') || v.name.includes('Audrey'))); }
-                if (voice) { utterance.voice = voice; }
-                window.speechSynthesis.speak(utterance);
-            }
-        }
-
-        // FONCTIONS VOCALES ACCESSIBILITÉ (Lecteur complet)
-        let currentUtterance = null;
-
-        function accessibilityPlay(text) {
-            if ('speechSynthesis' in window) {
-                // Si en pause, on reprend
-                if (window.speechSynthesis.paused) {
-                    window.speechSynthesis.resume();
-                    return;
-                }
-                
-                // Sinon on lance une nouvelle lecture
-                window.speechSynthesis.cancel();
-                currentUtterance = new SpeechSynthesisUtterance(text);
-                currentUtterance.rate = 0.9; 
-                currentUtterance.lang = 'fr-FR'; // Contenu majoritairement en français
-
-                const voices = window.speechSynthesis.getVoices();
-                // Préférer une voix française naturelle
-                const voice = voices.find(v => v.lang.startsWith('fr') && (v.name.includes('Google') || v.name.includes('Thomas')));
-                if (voice) currentUtterance.voice = voice;
-
-                window.speechSynthesis.speak(currentUtterance);
-            } else {
-                alert("Votre navigateur ne supporte pas la synthèse vocale.");
-            }
-        }
-
-        function accessibilityPause() {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.pause();
-            }
-        }
-
-        function accessibilityStop() {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-            }
-        }
-
-        window.speechSynthesis.onvoiceschanged = () => {};
-
-        window.filterTerms = function(tag) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                if(btn.getAttribute('onclick').includes(`'${tag}'`)) btn.classList.add('active');
-            });
-            renderDictionary(tag, document.getElementById('searchInput').value);
-        };
-
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            let activeTag = 'all';
-            const activeBtn = document.querySelector('.filter-btn.active');
-            if (activeBtn) {
-                const text = activeBtn.innerText;
-                if (text.includes('FRONT')) activeTag = 'Front';
-                else if (text.includes('BACK')) activeTag = 'Back';
-                else if (text.includes('DEVOPS')) activeTag = 'DevOps';
-                else if (text.includes('AGILE')) activeTag = 'Gestion';
-                else if (text.includes('LANGAGES')) activeTag = 'Lang';
-            }
-            renderDictionary(activeTag, e.target.value);
+            `;
+            grid.innerHTML += card;
         });
+    }
 
-        const backToTop = document.getElementById('backToTop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) backToTop.classList.add('show');
-            else backToTop.classList.remove('show');
+    function toggleExpert(btn, contentId) {
+        btn.classList.toggle('active');
+        const content = document.getElementById(contentId);
+        content.classList.toggle('open');
+        const span = btn.querySelector('span');
+        span.textContent = content.classList.contains('open') ? "Masquer la Doc" : "Déployer la Doc";
+    }
+
+    // --- AUDIO ---
+    function speakText(text, lang) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = 0.9;
+            utterance.lang = lang === 'en' ? 'en-US' : 'fr-FR';
+            window.speechSynthesis.speak(utterance);
+        }
+    }
+
+    let currentUtterance = null;
+    function accessibilityPlay(text) {
+        if ('speechSynthesis' in window) {
+            if (window.speechSynthesis.paused) { window.speechSynthesis.resume(); return; }
+            window.speechSynthesis.cancel();
+            currentUtterance = new SpeechSynthesisUtterance(text);
+            currentUtterance.rate = 0.9; 
+            currentUtterance.lang = 'fr-FR';
+            window.speechSynthesis.speak(currentUtterance);
+        } else { alert("Synthèse vocale non supportée."); }
+    }
+    function accessibilityPause() { if ('speechSynthesis' in window) window.speechSynthesis.pause(); }
+    function accessibilityStop() { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); }
+
+    // Fade Up Animation
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    </script>
+    }, observerOptions);
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) backToTop.classList.add('show');
+        else backToTop.classList.remove('show');
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 </body>
 </html>

@@ -1,964 +1,1065 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atelier de Compétence Dev - The Dev Elite Club</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Atelier de Compétence - The Dev Elite Club</title>
+
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        /* --- VARIABLES (Charte Mathilde) --- */
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+        
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+
+        /* --- VARIABLES (Contenu) --- */
+        --color-bg: var(--ivory);
+        --color-primary: var(--brand-blue);
+        --color-accent: var(--brandGold);
+        --color-alert: var(--bronze);
+        --color-text: #2c3e50;
+        --color-white: #ffffff;
+
+        /* Couleurs spécifiques Atelier */
+        --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e; 
+        --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af;
+        --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534;
+    }
     
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
     
-    <!-- FONTS DU DESIGN SYSTEM -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&family=Fira+Code:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
 
-    <style>
-        /* ================================================================= */
-        /* 🎨 DESIGN SYSTEM - THE DEV ELITE CLUB */
-        /* ================================================================= */
-        :root {
-            /* Palette Officielle */
-            --cta: #D9A526;        /* Or - Boutons CTA */
-            --brand-blue: #0F2C48; /* Bleu Nuit - Titres & Séparations */
-            --ivory: #F6F2E8;      /* Ivoire - Surfaces */
-            --bronze: #B4792A;     /* Bronze - Alertes */
-            
-            /* Alias pour la compatibilité avec le code de l'application */
-            --brand-cta: var(--cta);
-            --brand-ivory: var(--ivory);
-            --brand-bronze: var(--bronze);
+    /* --- HEADER (V2 Optimisé) --- */
+    .top-bar { 
+        background: var(--brand-blue); 
+        padding: 12px 0; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%; 
+        padding: 0 40px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
-            /* Couleurs spécifiques (App Debugging) */
-            --bg-rule: #fffbeb; --border-rule: #d97706; --text-rule: #92400e; 
-            --bg-fact: #eff6ff; --border-fact: #2563eb; --text-fact: #1e40af;
-            --bg-solution: #f0fdf4; --border-solution: #16a34a; --text-solution: #166534;
-        }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
+    
+    /* Tooltip */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
 
-        body { 
-            margin: 0; background-color: var(--ivory); color: var(--brand-blue); 
-            font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
-        }
+    /* Bouton Portfolio */
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
+        text-decoration: none; 
+        font-family: 'Fira Code', monospace;
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
+    }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
 
-        /* Font pour le code */
-        .font-code { font-family: 'Fira Code', monospace; }
+    /* --- STYLES SPECIFIQUES ATELIER --- */
+    .main-content { flex: 1; padding: 40px 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-        /* --- STYLES DU HEADER --- */
-        .top-bar {
-            background-color: var(--brand-blue);
-            padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: sticky; top: 0; z-index: 10000;
-            border-bottom: 4px solid var(--cta);
-        }
-        
-        .top-bar-container {
-            width: 95%; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-        }
+    /* Onglets de navigation interne */
+    .nav-tabs-container {
+        background: white; border-radius: 50px; padding: 5px; display: flex; justify-content: space-between;
+        margin: 0 auto 40px auto; max-width: 900px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; overflow-x: auto;
+    }
+    .tab-btn {
+        padding: 12px 25px; border-radius: 40px; border: none; background: transparent; color: #64748b;
+        font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer;
+        transition: all 0.3s ease; white-space: nowrap; display: flex; align-items: center; gap: 8px;
+    }
+    .tab-btn:hover { color: var(--brand-blue); background: #f1f5f9; }
+    .tab-btn.active { background: var(--brand-blue); color: white; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.3); }
+    
+    .tab-content { display: none; animation: fadeIn 0.5s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        
-        .logo-placeholder {
-            width: 60px; height: 60px; border-radius: 50%; 
-            border: 2px solid var(--cta); background: white; color: var(--brand-blue);
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-            overflow: hidden; flex-shrink: 0;
-        }
-        .logo-img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+    /* Intro Box */
+    .intro-box {
+        background: white; padding: 30px; border-radius: 12px; margin-bottom: 40px;
+        border-left: 6px solid var(--brandGold); box-shadow: 0 4px 20px rgba(15, 44, 72, 0.05);
+        position: relative;
+    }
+    .intro-title { font-family: 'Fira Code', monospace; font-size: 1.6rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; }
+    .welcome-emoji { font-size: 3rem; margin-bottom: 10px; display: block; animation: bounce 2s infinite; text-align: center; }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
 
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+    /* CONTROLEURS AUDIO GLOBAUX */
+    .audio-controls-global {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+    .global-audio-btn {
+        background: var(--brand-blue);
+        color: white;
+        border: 2px solid var(--brandGold);
+        padding: 8px 12px;
+        border-radius: 20px;
+        font-family: 'Fira Code', monospace;
+        font-size: 0.8rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.3s ease;
+    }
+    .global-audio-btn:hover { background: var(--brandGold); color: var(--brand-blue); }
+    .global-audio-btn.active { background: #ef4444; border-color: #ef4444; animation: pulse 1s infinite; }
+    @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
 
-        .top-bar-center { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
-        
-        /* BOUTONS RONDS (Header & Footer) */
-        .header-icon-btn, .icon-btn {
-            position: relative; width: 45px; height: 45px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.2rem; text-decoration: none; transition: all 0.3s ease; 
-            cursor: pointer;
-        }
+    /* CTA Community Box */
+    .community-cta {
+        background: linear-gradient(135deg, #1e293b, #0f172a); 
+        color: white; 
+        padding: 40px; 
+        border-radius: 20px; 
+        text-align: center; 
+        margin-bottom: 50px;
+        border: 2px solid var(--brandGold);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+    .btn-community {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        margin: 10px;
+    }
+    .btn-whatsapp { background: #25D366; color: var(--brand-blue); box-shadow: 4px 4px 0px #128C7E; border: 2px solid #fff; }
+    .btn-discord { background: #5865F2; color: white; box-shadow: 4px 4px 0px #404EED; border: 2px solid #fff; }
+    .btn-community:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.5); }
 
-        /* Style Header (Dégradé) */
-        .header-icon-btn {
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 1px solid rgba(255,255,255,0.2); color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .header-icon-btn:hover { 
-            transform: translateY(-3px) scale(1.1); 
-            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
-        }
+    /* Grid Debugging */
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 30px; }
+    .case-card { 
+        background: white; border-radius: 12px; overflow: hidden; 
+        box-shadow: 0 4px 6px rgba(15, 44, 72, 0.05); border: 1px solid rgba(15, 44, 72, 0.1); 
+        display: flex; flex-direction: column; transition: transform 0.3s; 
+        position: relative;
+    }
+    .case-card:hover { transform: translateY(-5px); border-color: var(--brandGold); }
+    
+    .case-header { padding: 15px 20px; background: rgba(15, 44, 72, 0.03); border-bottom: 1px solid rgba(15, 44, 72, 0.1); display: flex; justify-content: space-between; align-items: center; }
+    .badge-circle { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-family: 'Fira Code', monospace; }
+    .bg-python { background-color: #3776AB; } 
+    .bg-web { background-color: #E34F26; } 
+    .bg-git { background-color: #F05032; }
 
-        /* Style Footer (Transparent) */
-        .icon-btn {
-            background: rgba(255, 255, 255, 0.1); 
-            border: 1px solid rgba(217, 165, 38, 0.3); color: #fff;
-        }
-        .icon-btn:hover { 
-            transform: translateY(-5px) scale(1.1); 
-            background: #fff; border-color: #fff; color: var(--brand-blue); 
-        }
-        
-        /* Tooltip (Info-bulle) */
-        .header-icon-btn::after, .icon-btn::after {
-            content: attr(data-tooltip); position: absolute; 
-            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
-            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-        }
-        
-        /* Position Tooltip Header (En dessous) */
-        .header-icon-btn::after { top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px); }
-        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .case-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+    .case-title { font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 700; color: var(--brand-blue); margin-bottom: 10px; }
+    .case-context { background: #f1f5f9; padding: 12px; border-radius: 6px; border-left: 4px solid #64748b; font-family: 'Fira Code', monospace; color: #475569; font-size: 0.85rem; margin-bottom: 20px; }
+    
+    .reveal-btn { width: 100%; padding: 10px; background: var(--brand-blue); color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: auto; font-family: 'Fira Code', monospace; }
+    .reveal-btn:hover { background-color: var(--brandGold); color: var(--brand-blue); }
+    
+    .case-solution { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; opacity: 0; margin-top: 10px; }
+    .case-solution.open { max-height: 1000px; opacity: 1; }
+    
+    .syllogism-step { margin-bottom: 15px; padding: 12px; border-radius: 6px; font-size: 0.9rem; text-align: left; line-height: 1.5; }
+    .step-label { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 4px; }
+    .step-majeure { background: var(--bg-rule); border: 1px solid var(--border-rule); color: var(--text-rule); } 
+    .step-mineure { background: var(--bg-fact); border: 1px solid var(--border-fact); color: var(--text-fact); }
+    .step-conclusion { background: var(--bg-solution); border: 1px solid var(--border-solution); color: var(--text-solution); font-weight: 700; }
 
-        /* Position Tooltip Footer (Au dessus) */
-        .icon-btn::after { bottom: 130%; left: 50%; transform: translateX(-50%) translateY(10px); }
-        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    /* Checklists */
+    .reflexe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+    .reflexe-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; position: relative; }
+    .reflexe-header { padding: 15px; color: white; font-weight: 700; font-family: 'Fira Code', monospace; display: flex; justify-content: space-between; align-items: center; }
+    
+    /* COULEURS CATÉGORIES (Diversifiées) */
+    .bg-secu { background: linear-gradient(135deg, #ef4444, #b91c1c); } /* Rouge */
+    .bg-deploy { background: linear-gradient(135deg, #3b82f6, #1d4ed8); } /* Bleu */
+    .bg-gitflow { background: linear-gradient(135deg, #10b981, #047857); } /* Vert */
+    .bg-data { background: linear-gradient(135deg, #8b5cf6, #6d28d9); } /* Violet */
+    .bg-python { background: linear-gradient(135deg, #f59e0b, #d97706); } /* Jaune/Orange */
+    .bg-web { background: linear-gradient(135deg, #ec4899, #be185d); } /* Rose */
 
-        /* Animation bouton Portfolio */
-        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-        .btn-portfolio-cosmic {
-            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
-            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
-        }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+    .reflexe-body { padding: 20px; }
+    .reflexe-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
+    .step-num { background: #f1f5f9; color: var(--brand-blue); font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-family: 'Fira Code', monospace; }
 
-        /* --- STYLES SPÉCIFIQUES APP ATELIER --- */
-        .nav-tabs-container {
-            background: white; box-shadow: 0 4px 15px rgba(15, 44, 72, 0.05); z-index: 40; 
-            position: sticky; top: 100px; /* Ajusté pour le nouveau header */
-            border-bottom: 1px solid rgba(15, 44, 72, 0.1);
-            padding: 10px 0;
-        }
-        @media (max-width: 1100px) { .nav-tabs-container { top: 180px; } }
+    /* Flashcards */
+    .flashcard-scene { width: 100%; max-width: 600px; height: 350px; margin: 0 auto 30px; perspective: 1000px; }
+    .flashcard-obj { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .flashcard-obj.is-flipped { transform: rotateY(180deg); }
+    .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    .card-face-front { background: white; border: 2px solid var(--brand-blue); }
+    .card-face-back { background: var(--brand-blue); color: var(--ivory); transform: rotateY(180deg); border: 2px solid var(--brand-blue); }
+    
+    .btn-game { padding: 10px 24px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; font-family: 'Fira Code', monospace; font-size: 0.9rem; }
+    .btn-next { background: var(--brandGold); color: var(--brand-blue); }
+    .btn-prev { background: #e2e8f0; color: #64748b; }
+    
+    /* BOUTONS AUDIO INDIVIDUELS */
+    .btn-audio-small { width: 30px; height: 30px; border-radius: 50%; background: rgba(0,0,0,0.1); display: inline-flex; align-items: center; justify-content: center; color: var(--brand-blue); cursor: pointer; font-size: 1rem; transition: all 0.2s; }
+    .btn-audio-small:hover { background: var(--brandGold); color: white; transform: scale(1.1); }
+    
+    /* --- FOOTER (V2) --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 0; margin-top: auto; border-top: 4px solid var(--brandGold); font-family: 'Fira Code', monospace; font-size: 0.85rem; width: 100%; }
+    .footer-container { width: 100%; max-width: 100%; padding: 0 40px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { color: var(--brandGold); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); color: var(--footer-text); text-decoration: none; border: 1px solid rgba(217, 165, 38, 0.15); transition: all 0.2s; font-size: 1.1rem; }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-        .container { width: 95%; margin-left: auto; margin-right: auto; padding: 0 15px; max-width: none; }
-
-        /* Conteneur des onglets : Aligné à droite */
-        .tabs-wrapper {
-            display: flex; justify-content: flex-end; gap: 15px; flex-wrap: wrap; 
-        }
-
-        /* Style des boutons d'onglets EMOJI ONLY */
-        .tab-btn {
-            font-family: 'Montserrat', sans-serif; color: var(--brand-blue); border-bottom: 4px solid transparent;
-            opacity: 0.7; transition: all 0.3s; 
-            padding: 10px 20px; 
-            font-size: 1.8rem;
-            display: flex; align-items: center; justify-content: center; 
-            flex-shrink: 0; cursor: pointer; position: relative;
-        }
-        .tab-btn:hover { opacity: 1; background-color: #f8fafc; color: var(--cta); transform: translateY(-2px); }
-        .tab-btn.active { opacity: 1; border-bottom: 4px solid var(--cta); background-color: white; transform: scale(1.1); }
-
-        /* Tooltip custom (AU-DESSUS) */
-        .tab-btn::after {
-            content: attr(data-title);
-            position: absolute; 
-            bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 10px;
-            background: var(--brand-blue); color: white; padding: 5px 10px; border-radius: 6px;
-            font-size: 0.8rem; font-weight: 600; white-space: nowrap; opacity: 0; 
-            pointer-events: none; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 100;
-        }
-        .tab-btn:hover::after { opacity: 1; margin-bottom: 15px; }
-
-        /* --- CONTENU --- */
-        .tab-content { display: none; animation: fadeIn 0.4s ease-out; padding: 40px 0; }
-        .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .intro-box {
-            background: white; padding: 30px; border-radius: 12px; margin-bottom: 40px;
-            border-left: 6px solid var(--cta); box-shadow: 0 4px 20px rgba(15, 44, 72, 0.05);
-        }
-        .intro-title { font-family: 'Fira Code', monospace; font-size: 1.6rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; }
-
-        /* --- 1. ACCUEIL --- */
-        .welcome-emoji { font-size: 3rem; margin-bottom: 10px; display: block; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
-        
-        .qq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .qq-card { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; transition: 0.3s; }
-        .qq-card:hover { transform: translateY(-5px); border-color: var(--cta); background: white; box-shadow: 0 10px 20px rgba(217, 165, 38, 0.15); }
-        .qq-icon { font-size: 1.5rem; color: var(--cta); margin-bottom: 10px; }
-        .qq-question { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.9rem; color: var(--brand-blue); text-transform: uppercase; display: block; margin-bottom: 5px; }
-        .qq-answer { color: #64748b; font-size: 0.9rem; }
-
-        /* --- 2. DEBUGGING (SYLLOGISMES) --- */
-        .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 30px; }
-        .case-card { 
-            background: white; border-radius: 12px; overflow: hidden; 
-            box-shadow: 0 4px 6px rgba(15, 44, 72, 0.05); border: 1px solid rgba(15, 44, 72, 0.1); 
-            display: flex; flex-direction: column; transition: transform 0.3s; 
-        }
-        .case-card:hover { transform: translateY(-5px); border-color: var(--cta); }
-        
-        .case-header { padding: 15px 20px; background: rgba(15, 44, 72, 0.03); border-bottom: 1px solid rgba(15, 44, 72, 0.1); display: flex; justify-content: space-between; align-items: center; }
-        .badge-circle { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); font-family: 'Fira Code', monospace; }
-        
-        .bg-python { background-color: #3776AB; } 
-        .bg-web { background-color: #E34F26; } 
-        .bg-git { background-color: #F05032; }
-
-        .case-body { padding: 20px; flex-grow: 1; display: flex; flex-col; flex-direction: column; }
-        .case-title { font-family: 'Fira Code', monospace; font-size: 1.1rem; font-weight: 700; color: var(--brand-blue); margin-bottom: 10px; }
-        .case-context { background: #f1f5f9; padding: 12px; border-radius: 6px; border-left: 4px solid #64748b; font-family: 'Fira Code', monospace; color: #475569; font-size: 0.85rem; margin-bottom: 20px; }
-        
-        .reveal-btn { width: 100%; padding: 10px; background: var(--brand-blue); color: white; border: none; border-radius: 6px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; margin-top: auto; font-family: 'Fira Code', monospace; }
-        .reveal-btn:hover { background-color: var(--cta); color: var(--brand-blue); }
-        .reveal-btn.active { background-color: #e2e8f0; color: var(--brand-blue); }
-        
-        .case-solution { max-height: 0; overflow: hidden; transition: max-height 0.6s ease-out; opacity: 0; }
-        .case-solution.open { max-height: 1000px; opacity: 1; margin-top: 20px; }
-        
-        .syllogism-step { margin-bottom: 15px; padding: 12px; border-radius: 6px; font-size: 0.9rem; text-align: left; line-height: 1.5; }
-        .step-label { font-family: 'Fira Code', monospace; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; display: block; margin-bottom: 4px; }
-        
-        .step-majeure { background: var(--bg-rule); border: 1px solid var(--border-rule); color: var(--text-rule); } 
-        .step-mineure { background: var(--bg-fact); border: 1px solid var(--border-fact); color: var(--text-fact); }
-        .step-conclusion { background: var(--bg-solution); border: 1px solid var(--border-solution); color: var(--text-solution); font-weight: 700; }
-
-        /* --- 3. LEXIQUE / 4. REFLEXES --- */
-        .reflexe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
-        .reflexe-card { background: white; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
-        .reflexe-header { padding: 15px; color: white; font-weight: 700; font-family: 'Fira Code', monospace; display: flex; justify-content: space-between; align-items: center; }
-        .bg-secu { background: linear-gradient(135deg, #ef4444, #b91c1c); } 
-        .bg-deploy { background: linear-gradient(135deg, #3b82f6, #1d4ed8); } 
-        .bg-gitflow { background: linear-gradient(135deg, #10b981, #047857); } 
-        .reflexe-body { padding: 20px; }
-        .reflexe-step { display: flex; gap: 10px; margin-bottom: 10px; align-items: flex-start; }
-        .step-num { background: #f1f5f9; color: var(--brand-blue); font-weight: 700; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 0.75rem; font-family: 'Fira Code', monospace; }
-
-        /* --- 5. ACRONYMES --- */
-        .dalloz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
-        .dalloz-card { background: white; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; transition: 0.2s; display: flex; flex-direction: column; }
-        .dalloz-card:hover { border-color: var(--cta); transform: translateY(-2px); }
-        .dalloz-abbr { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--brand-blue); font-size: 1rem; margin-bottom: 4px; }
-        .dalloz-full { font-size: 0.85rem; color: #64748b; }
-
-        /* --- 6. COMPÉTENCES --- */
-        .matiere-section { margin-bottom: 40px; background: #fff; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; border-left: 5px solid var(--brand-blue); }
-        .matiere-title-main { font-family: 'Fira Code', monospace; font-size: 1.4rem; color: var(--brand-blue); font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-        .matiere-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .matiere-card { background: #f8fafc; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
-        .matiere-name { font-weight: 700; color: var(--brand-blue); margin-bottom: 5px; display: block; }
-        .matiere-desc { font-size: 0.9rem; color: #64748b; margin-bottom: 10px; }
-
-        /* --- 7. FLASHCARDS & JEU DU MOIS --- */
-        .charade-box {
-            background: linear-gradient(135deg, #1e293b, #0f172a); color: white;
-            padding: 30px; border-radius: 12px; margin-bottom: 40px; text-align: center;
-            border: 2px solid var(--cta); position: relative; overflow: hidden;
-        }
-        .charade-box::before { content: '🏆'; position: absolute; top: 10px; left: 10px; font-size: 2rem; opacity: 0.5; }
-        .charade-btn {
-            background: var(--cta); color: var(--brand-blue); font-weight: 800;
-            padding: 10px 20px; border-radius: 50px; border: none; cursor: pointer;
-            margin-top: 15px; transition: 0.3s;
-        }
-        .charade-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--cta); }
-        .answer-reveal {
-            font-family: 'Fira Code', monospace; color: #4ade80; font-size: 1.2rem; margin-top: 15px;
-            font-weight: 700; display: none;
-        }
-
-        .flashcard-scene { width: 100%; max-width: 600px; height: 350px; margin: 0 auto 30px; perspective: 1000px; }
-        .flashcard-obj { width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; position: relative; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .flashcard-obj.is-flipped { transform: rotateY(180deg); }
-        
-        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 16px; padding: 30px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .card-face-front { background: white; border: 2px solid var(--brand-blue); }
-        .card-face-back { background: var(--brand-blue); color: var(--ivory); transform: rotateY(180deg); border: 2px solid var(--brand-blue); }
-        
-        .btn-game { padding: 10px 24px; border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.2s; font-family: 'Fira Code', monospace; font-size: 0.9rem; }
-        .btn-next { background: var(--cta); color: var(--brand-blue); }
-        .btn-prev { background: #e2e8f0; color: #64748b; }
-
-        /* Boutons Audio */
-        .btn-audio-small { width: 24px; height: 24px; border-radius: 50%; background: rgba(0,0,0,0.1); display: inline-flex; align-items: center; justify-content: center; color: var(--brand-blue); cursor: pointer; margin-left: auto; font-size: 0.8rem; }
-        .btn-audio-small:hover { background: var(--cta); color: white; }
-
-        #backToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; font-size: 1.2rem; }
-        #backToTop.visible { opacity: 1; }
-
-        /* --- STYLES DU FOOTER --- */
-        .main-footer {
-            background-color: var(--brand-blue); color: #F6F2E8;
-            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
-            width: 100%; margin-top: auto; 
-        }
-        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
-        
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        
-        .footer-logo-placeholder {
-            width: 60px; height: 60px; border-radius: 8px; 
-            border: 2px solid var(--cta); background: #fff; color: var(--brand-blue);
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-        }
-
-        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
-        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-        .footer-link:hover { color: var(--cta); }
-
-        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
-        
-        .icon-dock { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
-
-        .footer-bottom { 
-            text-align: center; padding: 15px 0; font-size: 0.8rem; 
-            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
-            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content { flex-direction: column; align-items: center; text-align: center; }
-            .footer-identity { flex-direction: column; text-align: center; }
-            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
-            .icon-dock { justify-content: center; flex-wrap: wrap; }
-            .dock-group { align-items: center; }
-        }
-
-    </style>
+    /* Responsive */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; text-align: center; }
+        .top-left { margin-right: 0; flex-direction: column; }
+        .top-center { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; }
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; }
+        .footer-left { flex-direction: column; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; }
+        .footer-divider { display: none; }
+        .tabs-container { max-width: 100%; overflow-x: auto; justify-content: flex-start; gap: 10px; }
+        .cases-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body onload="initAll()">
 
-    <!-- ============================================ -->
-    <!-- HEADER (Design System) -->
-    <!-- ============================================ -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="top-bar-left">
-                <div class="logo-placeholder">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Logo" class="logo-img">
-                </div>
-                <div class="identity-stack">
-                    <span class="club-title-main">💫 The Dev Elite Club ✨</span>
-                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
-                </div>
-            </div>
-            
-            <!-- NAVIGATION PRINCIPALE (9 Liens) -->
-            <div class="top-bar-center">
-                
-                <!-- 1. Accueil -->
-                <a href="index.html" class="header-icon-btn" data-tooltip="Accueil" aria-label="Accueil">
-                    <span class="brand-nav">🏠</span> 
-                </a>
-                
-                <!-- 2. Mon Espace -->
-                <a href="Mon_Espace_Dev.html" class="header-icon-btn" data-tooltip="Mon Espace" aria-label="Mon Espace">
-                    <span class="brand-nav">📊</span>
-                </a>
-                
-                <!-- 3. Planning & Cours -->
-                <a href="Programme_Formation_Digital.html" class="header-icon-btn" data-tooltip="Planning & Cours" aria-label="Planning">
-                    <span class="brand-nav">📅</span>
-                </a>
-
-                <!-- 4. Atelier -->
-                <!-- CORRECTION : Lien relatif vers le fichier lui-même -->
-                <a href="Atelier_Dev_Elite_Club.html" class="header-icon-btn" data-tooltip="Atelier" aria-label="Atelier">
-                    <span class="brand-nav">🛠️</span>
-                </a>
-
-                <!-- 5. Observatoire (NOUVEAU) -->
-                <a href="Observatoire_Dev_Elite_Club.html" class="header-icon-btn" data-tooltip="Observatoire & IA" aria-label="Observatoire">
-                    <span class="brand-nav">🚀</span>
-                </a>
-
-                <!-- 6. Fiche RNCP -->
-                <a href="Fiche_RNCP_Dev.html" class="header-icon-btn" data-tooltip="Fiche RNCP" aria-label="Fiche RNCP">
-                    <span class="brand-nav">🏅</span>
-                </a>
-
-                <!-- 7. Lexique -->
-                <a href="Lexique_dev.html" class="header-icon-btn" data-tooltip="Lexique" aria-label="Lexique">
-                    <span class="brand-nav">📜</span>
-                </a>
-
-                <!-- 8. Acronymes -->
-                <a href="Acronymes.html" class="header-icon-btn" data-tooltip="Acronymes" aria-label="Acronymes">
-                    <span class="brand-nav">🔠</span>
-                </a>
-                
-                <!-- 9. Profil -->
-                <a href="A_propos_de_moi.html" class="header-icon-btn" data-tooltip="Profil" aria-label="Profil">
-                    <span class="brand-nav">👤</span>
-                </a>
-            </div>
-
-            <a href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" class="btn-portfolio-cosmic" target="_blank">
-                <span>📄</span> Mon portfolio
-            </a>
+  <!-- ==================== HEADER (HAUT) ==================== -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier" style="background: var(--brandGold); color: var(--brand-blue);">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+      </nav>
+
+      <!-- Bouton Portfolio -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
+           <i class="fa-solid fa-code"></i>
+           Mon Portfolio
+        </a>
+      </div>
     </div>
+  </div>
+  <!-- ==================== FIN HEADER ==================== -->
 
-    <!-- TABS NAVIGATION INTERNE (App Debugging) -->
-    <div class="nav-tabs-container">
-        <div class="container tabs-wrapper">
-            <button onclick="switchTab('accueil')" class="tab-btn active" data-title="Accueil App" aria-label="Onglet Accueil">🏠</button>
-            <button onclick="switchTab('syllogismes')" class="tab-btn" data-title="Debugging" aria-label="Onglet Debugging">🐛</button>
-            <button onclick="switchTab('reflexes')" class="tab-btn" data-title="Checklists" aria-label="Onglet Checklists">✅</button>
-            <button onclick="switchTab('abbrev')" class="tab-btn" data-title="Acronymes (Liste)" aria-label="Onglet Liste Acronymes">🔠</button>
-            <button onclick="switchTab('competences')" class="tab-btn" data-title="Stacks Tech" aria-label="Onglet Compétences">📚</button>
-            <button onclick="switchTab('flashcards')" class="tab-btn" data-title="Jeu & Cartes" aria-label="Onglet Jeux">🃏</button>
+  <!-- ==================== TABS DE NAVIGATION INTERNE ==================== -->
+  <div class="nav-tabs-container">
+      <div class="tabs-wrapper flex gap-4 w-full px-4 justify-center">
+          <button onclick="switchTab('accueil')" class="tab-btn active"><i class="fas fa-home"></i> Accueil</button>
+          <button onclick="switchTab('syllogismes')" class="tab-btn"><i class="fas fa-bug"></i> Debugging</button>
+          <button onclick="switchTab('reflexes')" class="tab-btn"><i class="fas fa-clipboard-check"></i> Checklists</button>
+          <button onclick="switchTab('flashcards')" class="tab-btn"><i class="fas fa-gamepad"></i> Jeu</button>
+      </div>
+  </div>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-content">
+
+      <!-- 1. ACCUEIL APP + REJOINDRE LE CLUB -->
+      <div id="accueil" class="tab-content active">
+          
+          <!-- INTRODUCTION -->
+          <div class="intro-box fade-up">
+              <div class="text-center mb-8">
+                  <span class="welcome-emoji">🐍💻</span>
+                  <h2 class="intro-title">Salut la Team Python !</h2>
+                  <p class="text-gray-600 max-w-2xl mx-auto">
+                      Bienvenue dans ton <strong>Dojo de Code</strong>. Ici, pas de baratin, que du concret pour survivre à tes erreurs 500 et tes merge conflicts.<br>
+                      Je suis Mathilde, et j'ai créé cet espace pour qu'on puisse <strong>monter en skill ensemble</strong> sur Python, le Web et la Data.
+                  </p>
+              </div>
+          </div>
+
+          <!-- BLOC COMMUNAUTÉ -->
+          <div class="community-cta fade-up">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px;">
+                <i class="fa-solid fa-users-line"></i> Rejoignez la Famille !
+            </h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Tu galères sur un bug ? Tu cherches de la motivation ou juste des gens sympas avec qui coder ?<br>
+                Rejoins le <strong>Dev Elite Club</strong> sur Discord et WhatsApp. Entraide, partage de ressources et bonne humeur garantis (avec ou sans cookies 🍪) !
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="btn-community btn-whatsapp">
+                    <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> Rejoindre WhatsApp
+                </a>
+                <a href="https://discord.gg/redT9wEE6T" target="_blank" class="btn-community btn-discord">
+                    <i class="fab fa-discord" style="font-size: 1.2rem;"></i> Rejoindre Discord
+                </a>
+            </div>
+          </div>
+          
+          <!-- ARSENAL -->
+          <div class="intro-box fade-up" style="margin-top: 40px;">
+              <h3 class="font-bold text-[#0F2C48] text-lg mb-4 text-center font-code">👇 Ton Arsenal de Dev 👇</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div class="p-6 bg-[#f8fafc] rounded-xl border border-gray-200 hover:border-[#D9A526] hover:shadow-lg transition cursor-pointer" onclick="switchTab('syllogismes')">
+                      <div class="text-2xl text-[#D9A526] mb-3"><i class="fas fa-bug"></i></div>
+                      <span class="block font-bold text-[#0F2C48] uppercase mb-2 font-code">Cas Pratiques (Debugging)</span>
+                      <span class="text-sm text-gray-500">50+ Scénarios : Analyse des erreurs classiques (SyntaxError, Indentation...) et comment les fixer proprement.</span>
+                  </div>
+                  <div class="p-6 bg-[#f8fafc] rounded-xl border border-gray-200 hover:border-[#D9A526] hover:shadow-lg transition cursor-pointer" onclick="switchTab('reflexes')">
+                      <div class="text-2xl text-[#D9A526] mb-3"><i class="fas fa-tasks"></i></div>
+                      <span class="block font-bold text-[#0F2C48] uppercase mb-2 font-code">Checklists de Prod</span>
+                      <span class="text-sm text-gray-500">50+ Fiches Réflexes pour ne rien oublier avant de déployer, sécuriser ou commiter.</span>
+                  </div>
+                  <div class="p-6 bg-[#f8fafc] rounded-xl border border-gray-200 hover:border-[#D9A526] hover:shadow-lg transition cursor-pointer" onclick="switchTab('flashcards')">
+                      <div class="text-2xl text-[#D9A526] mb-3"><i class="fas fa-gamepad"></i></div>
+                      <span class="block font-bold text-[#0F2C48] uppercase mb-2 font-code">Flashcards Code</span>
+                      <span class="text-sm text-gray-500">50+ Cartes : Mode jeu activé ! Révise tes commandes Git et ta syntaxe Python en aléatoire.</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- 2. DEBUGGING (Cas Pratiques) -->
+      <div id="syllogismes" class="tab-content">
+          <div class="intro-box fade-up relative">
+              <h2 class="intro-title">L'Art du Debugging 🐛</h2>
+              <p class="text-gray-600 mb-4">50 erreurs décortiquées. Lis l'erreur, analyse le contexte, et propose un fix.</p>
+              
+              <!-- BOUTON AUDIO GLOBAL -->
+              <div class="audio-controls-global">
+                  <button onclick="readAllDebugging()" id="btnGlobalDebug" class="global-audio-btn" title="Lire tout l'onglet">
+                      <i class="fas fa-headphones"></i> Tout Écouter
+                  </button>
+                  <button onclick="pauseAudio()" class="global-audio-btn" title="Pause">
+                      <i class="fas fa-pause"></i>
+                  </button>
+                  <button onclick="stopAudio()" class="global-audio-btn" title="Stop">
+                      <i class="fas fa-stop"></i>
+                  </button>
+              </div>
+
+              <div class="flex flex-wrap gap-2 mt-4">
+                  <button onclick="filterCases('all')" class="px-3 py-1 bg-[#0F2C48] text-white rounded text-xs font-bold cursor-pointer">TOUT</button>
+                  <button onclick="filterCases('Python')" class="px-3 py-1 bg-[#3776AB] text-white rounded text-xs font-bold cursor-pointer">PYTHON</button>
+                  <button onclick="filterCases('Web')" class="px-3 py-1 bg-[#E34F26] text-white rounded text-xs font-bold cursor-pointer">WEB/HTML</button>
+                  <button onclick="filterCases('Git')" class="px-3 py-1 bg-[#F05032] text-white rounded text-xs font-bold cursor-pointer">GIT</button>
+              </div>
+          </div>
+          <div id="cases-container" class="cases-grid fade-up"></div>
+      </div>
+
+      <!-- 3. CHECKLISTS (Réflexes) -->
+      <div id="reflexes" class="tab-content">
+          <div class="intro-box fade-up relative">
+              <h2 class="intro-title">Fiches Réflexes (Checklists) ✅</h2>
+              <p class="text-gray-600 mb-4">50 procédures à suivre pour éviter la catastrophe en prod.</p>
+              
+              <!-- BOUTON AUDIO GLOBAL -->
+              <div class="audio-controls-global">
+                  <button onclick="readAllChecklists()" id="btnGlobalCheck" class="global-audio-btn" title="Lire tout l'onglet">
+                      <i class="fas fa-headphones"></i> Tout Écouter
+                  </button>
+                  <button onclick="pauseAudio()" class="global-audio-btn" title="Pause">
+                      <i class="fas fa-pause"></i>
+                  </button>
+                  <button onclick="stopAudio()" class="global-audio-btn" title="Stop">
+                      <i class="fas fa-stop"></i>
+                  </button>
+              </div>
+              
+              <!-- Filtres Couleurs Checklists -->
+              <div class="flex flex-wrap gap-2 mt-4">
+                  <button onclick="filterReflexes('all')" class="px-3 py-1 bg-[#0F2C48] text-white rounded text-xs font-bold cursor-pointer">TOUT</button>
+                  <button onclick="filterReflexes('Secu')" class="px-3 py-1 bg-[#ef4444] text-white rounded text-xs font-bold cursor-pointer">SÉCURITÉ (Rouge)</button>
+                  <button onclick="filterReflexes('Deploy')" class="px-3 py-1 bg-[#3b82f6] text-white rounded text-xs font-bold cursor-pointer">DÉPLOIEMENT (Bleu)</button>
+                  <button onclick="filterReflexes('Git')" class="px-3 py-1 bg-[#10b981] text-white rounded text-xs font-bold cursor-pointer">GIT FLOW (Vert)</button>
+                  <button onclick="filterReflexes('Data')" class="px-3 py-1 bg-[#8b5cf6] text-white rounded text-xs font-bold cursor-pointer">DATA (Violet)</button>
+                  <button onclick="filterReflexes('Python')" class="px-3 py-1 bg-[#f59e0b] text-white rounded text-xs font-bold cursor-pointer">PYTHON (Jaune)</button>
+                  <button onclick="filterReflexes('Web')" class="px-3 py-1 bg-[#ec4899] text-white rounded text-xs font-bold cursor-pointer">WEB (Rose)</button>
+              </div>
+
+          </div>
+          <div id="reflexes-container" class="reflexe-grid fade-up"></div>
+      </div>
+
+      <!-- 4. FLASHCARDS & JEU DU MOIS -->
+      <div id="flashcards" class="tab-content">
+          <div class="intro-box text-center fade-up" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-color: var(--brandGold);">
+              <h2 class="text-2xl font-bold mb-2 font-code text-[#D9A526]">🕵️‍♀️ L'Énigme du Codeur</h2>
+              <p class="text-gray-300 italic mb-4">Une petite charade pour s'échauffer...</p>
+              <p class="text-lg mb-4">
+                  "Je suis une méthode spéciale, souvent entourée de mystère (et de underscores).<br>
+                  Je m'exécute dès la naissance d'un objet.<br>
+                  C'est moi qui donne ses premières valeurs à `self`.<br>
+                  Qui suis-je ?"
+              </p>
+              <button onclick="revealCharade()" class="px-6 py-2 bg-[#D9A526] text-[#0F2C48] font-bold rounded-full hover:scale-105 transition">Voir la Réponse</button>
+              
+              <!-- AUDIO SPECIFIQUE CHARADE -->
+              <button onclick="speakText('La réponse est la méthode init, aussi appelée le constructeur !')" class="ml-2 px-4 py-2 bg-transparent border border-[#D9A526] text-[#D9A526] font-bold rounded-full hover:bg-[#D9A526] hover:text-[#0F2C48] transition" title="Écouter la réponse"><i class="fas fa-volume-up"></i></button>
+
+              <div id="charade-answer" class="hidden mt-4 font-code text-green-400 font-bold text-xl">
+                  🐍 La méthode `__init__` (Le Constructeur) !
+              </div>
+          </div>
+
+          <div class="intro-box text-center fade-up relative">
+              <h2 class="intro-title">Flashcards <i class="fas fa-random text-[#D9A526]"></i></h2>
+              <p class="text-gray-600 mb-6">50 cartes pour tester tes connaissances.</p>
+              
+               <!-- BOUTON AUDIO GLOBAL -->
+               <div class="audio-controls-global" style="top:-10px; right:0; position:relative; justify-content:center; margin-bottom:20px;">
+                  <button onclick="readAllFlashcards()" id="btnGlobalFlash" class="global-audio-btn" title="Lire toutes les cartes">
+                      <i class="fas fa-headphones"></i> Tout Écouter
+                  </button>
+                  <button onclick="pauseAudio()" class="global-audio-btn" title="Pause">
+                      <i class="fas fa-pause"></i>
+                  </button>
+                  <button onclick="stopAudio()" class="global-audio-btn" title="Stop">
+                      <i class="fas fa-stop"></i>
+                  </button>
+              </div>
+
+              <div class="flashcard-scene">
+                  <div class="flashcard-obj" onclick="flipCard()">
+                      <!-- FRONT -->
+                      <div class="card-face card-face-front">
+                          <span class="text-xs font-bold uppercase text-gray-400 tracking-widest mb-2" id="fc-cat">Catégorie</span>
+                          <div class="text-xl font-bold text-[#0F2C48] font-code mb-4" id="fc-question">Question ?</div>
+                          <div class="text-sm text-gray-400 italic mt-auto">Clique pour voir la réponse</div>
+                          <button onclick="event.stopPropagation(); readFrontCard()" class="btn-audio-small" style="position: absolute; bottom: 20px; right: 20px;"><i class="fas fa-volume-up"></i></button>
+                      </div>
+                      <!-- BACK -->
+                      <div class="card-face card-face-back">
+                          <span class="text-xs font-bold uppercase text-[#D9A526] tracking-widest mb-2">Réponse / Solution</span>
+                          <div class="text-lg font-medium" id="fc-answer">Réponse</div>
+                          <div id="fc-trap" class="mt-4 p-2 bg-white/10 rounded text-sm text-yellow-200">Tip : ...</div>
+                          <button onclick="event.stopPropagation(); readBackCard()" class="btn-audio-small" style="background:rgba(255,255,255,0.2); color:white; position: absolute; bottom: 20px; right: 20px;"><i class="fas fa-volume-up"></i></button>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class="flex justify-center gap-4 mt-6">
+                  <button onclick="prevCard()" class="btn-game btn-prev"><i class="fas fa-arrow-left"></i> Précédent</button>
+                  <button onclick="randomCard()" class="btn-game" style="background:var(--brand-blue); color:white;"><i class="fas fa-random"></i> Mélanger</button>
+                  <button onclick="nextCard()" class="btn-game btn-next">Suivant <i class="fas fa-arrow-right"></i></button>
+              </div>
+          </div>
+      </div>
+
+  </main>
+
+  <!-- ==================== FOOTER (BAS) ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
         </div>
+        
+        <!-- DÉTAILS DE CONTACT -->
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">📧 mathilde.martine.paisley@gmail.com</a>
+          <a href="tel:+33685900887" class="footer-contact-link">📲 06 85 90 08 87</a>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <!-- Navigation Footer -->
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
+            
+        <div class="footer-divider"></div>
+
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
     </div>
+  </footer>
 
-    <main class="container">
+  <script>
+    // Animation Fade Up
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-        <!-- 1. ACCUEIL APP -->
-        <div id="accueil" class="tab-content active">
-            <div class="intro-box">
-                <div class="text-center mb-8">
-                    <span class="welcome-emoji">🐍💻</span>
-                    <h2 class="intro-title">Salut la Team Python !</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">
-                        Bienvenue dans ton <strong>Dojo de Code</strong>. Ici, pas de baratin, que du concret pour survivre à tes erreurs 500 et tes merge conflicts.<br>
-                        Je suis Mathilde, et j'ai créé cet espace pour qu'on puisse <strong>monter en skill ensemble</strong> sur Python, le Web et la Data.
-                    </p>
-                </div>
-                
-                <h3 class="font-bold text-[#0F2C48] text-lg mb-4 text-center font-code">👇 Ton Arsenal de Dev 👇</h3>
-                <div class="qq-grid">
-                    <div class="qq-card">
-                        <div class="qq-icon"><i class="fas fa-bug"></i></div>
-                        <span class="qq-question">Cas Pratiques (Debugging)</span>
-                        <span class="qq-answer">Analyse des erreurs classiques (SyntaxError, Indentation...) et comment les fixer proprement.</span>
-                    </div>
-                    <div class="qq-card">
-                        <div class="qq-icon"><i class="fas fa-book-journal-whills"></i></div>
-                        <span class="qq-question">Documentation Officielle</span>
-                        <span class="qq-answer">Le jargon technique traduit en français. C'est quoi une API ? Un ORM ? Le Polymorphisme ?</span>
-                    </div>
-                    <div class="qq-card">
-                        <div class="qq-icon"><i class="fas fa-tasks"></i></div>
-                        <span class="qq-question">Checklists de Prod</span>
-                        <span class="qq-answer">Tes "Fiches Réflexes" pour ne rien oublier avant de déployer ou de git push.</span>
-                    </div>
-                    <div class="qq-card">
-                        <div class="qq-icon"><i class="fas fa-gamepad"></i></div>
-                        <span class="qq-question">Flashcards Code</span>
-                        <span class="qq-answer">Mode jeu activé ! Révise tes commandes Git et ta syntaxe Python en aléatoire.</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+    // --- DONNÉES MASSIVES (50+ Items par catégorie) ---
+    
+    // 1. CAS DE DEBUGGING (50 ITEMS)
+    const dbCases = [
+        { cat: "Python", title: "IndentationError", context: "IndentationError: expected an indented block", majeure: "Python utilise les espaces pour définir les blocs.", mineure: "Code mal aligné après un ':'", conclusion: "Ajouter 4 espaces.", advice: "Utiliser un IDE configuré." },
+        { cat: "Python", title: "KeyError", context: "KeyError: 'email'", majeure: "Accès à une clé inexistante.", mineure: "Le dictionnaire ne contient pas 'email'.", conclusion: "Utiliser .get() ou vérifier avec 'in'.", advice: "Valider les données JSON." },
+        { cat: "Python", title: "SyntaxError", context: "SyntaxError: invalid syntax", majeure: "La grammaire Python n'est pas respectée.", mineure: "Souvent un ':' manquant ou une parenthèse.", conclusion: "Vérifier la ligne indiquée.", advice: "Lire les messages d'erreur !" },
+        { cat: "Python", title: "TypeError", context: "TypeError: can only concatenate str (not 'int') to str", majeure: "Opération impossible entre types différents.", mineure: "Tu essaies d'additionner un texte et un nombre.", conclusion: "Convertir avec str() ou int().", advice: "Vérifier les types avec type()." },
+        { cat: "Python", title: "NameError", context: "NameError: name 'x' is not defined", majeure: "Variable inconnue.", mineure: "Pas déclarée.", conclusion: "Définir la variable.", advice: "Check typos." },
+        { cat: "Python", title: "IndexError", context: "IndexError: list index out of range", majeure: "Accès à un élément hors liste.", mineure: "Liste de 3 éléments, tu demandes le 4ème.", conclusion: "Vérifier len(liste).", advice: "Attention, l'index commence à 0." },
+        { cat: "Python", title: "AttributeError", context: "AttributeError: 'list' object has no attribute 'add'", majeure: "Méthode inexistante pour ce type.", mineure: "Les listes n'ont pas .add(), c'est .append().", conclusion: "Utiliser la bonne méthode.", advice: "Consulter la doc officielle." },
+        { cat: "Python", title: "ImportError", context: "ImportError: No module named 'pandas'", majeure: "Module non trouvé.", mineure: "Bibliothèque non installée.", conclusion: "pip install pandas", advice: "Vérifier l'environnement virtuel." },
+        { cat: "Python", title: "ZeroDivisionError", context: "ZeroDivisionError: division by zero", majeure: "Division par 0 interdite.", mineure: "Le dénominateur est nul.", conclusion: "Ajouter une condition if != 0.", advice: "Gérer les cas limites." },
+        { cat: "Python", title: "ValueError", context: "ValueError: invalid literal for int()", majeure: "Conversion impossible.", mineure: "Tu essaies de convertir 'abc' en entier.", conclusion: "Vérifier l'entrée.", advice: "Utiliser try/except." },
+        { cat: "Python", title: "UnboundLocalError", context: "UnboundLocalError: local variable referenced before assignment", majeure: "Variable locale non initialisée.", mineure: "Conflit scope global/local.", conclusion: "Déclarer 'global' si nécessaire.", advice: "Éviter les variables globales." },
+        { cat: "Python", title: "RecursionError", context: "RecursionError: maximum recursion depth exceeded", majeure: "Boucle infinie de fonctions.", mineure: "Pas de condition d'arrêt.", conclusion: "Ajouter un cas de base.", advice: "Attention aux récursions." },
+        { cat: "Python", title: "MemoryError", context: "MemoryError", majeure: "Plus de RAM disponible.", mineure: "Traitement de données trop lourd.", conclusion: "Optimiser avec des générateurs.", advice: "Utiliser yield." },
+        { cat: "Python", title: "ModuleNotFoundError", context: "ModuleNotFoundError", majeure: "Fichier introuvable.", mineure: "Mauvais chemin ou nom.", conclusion: "Vérifier sys.path.", advice: "Structurer les packages." },
+        { cat: "Python", title: "OSError", context: "OSError: [Errno 2] No such file", majeure: "Fichier inexistant.", mineure: "Chemin incorrect.", conclusion: "Utiliser os.path.join.", advice: "Vérifier les chemins absolus." },
+        { cat: "Python", title: "UnicodeDecodeError", context: "UnicodeDecodeError: 'utf-8' codec can't decode", majeure: "Problème d'encodage.", mineure: "Fichier non UTF-8.", conclusion: "Préciser encoding='utf-8'.", advice: "Attention aux fichiers Windows." },
+        { cat: "Python", title: "StopIteration", context: "StopIteration", majeure: "Itérateur épuisé.", mineure: "Appel de next() sur liste vide.", conclusion: "Attraper l'exception.", advice: "Utiliser des boucles for." },
+        { cat: "Web", title: "404 Not Found", context: "HTTP 404", majeure: "Ressource introuvable.", mineure: "URL incorrecte.", conclusion: "Vérifier la route.", advice: "Regarder les logs serveur." },
+        { cat: "Web", title: "500 Internal Error", context: "HTTP 500", majeure: "Crash côté serveur.", mineure: "Bug dans le code backend.", conclusion: "Lire la stacktrace.", advice: "Toujours gérer les exceptions." },
+        { cat: "Web", title: "403 Forbidden", context: "HTTP 403", majeure: "Accès refusé.", mineure: "Problème de permissions.", conclusion: "Vérifier les droits/tokens.", advice: "Tester avec un admin." },
+        { cat: "Web", title: "401 Unauthorized", context: "HTTP 401", majeure: "Non authentifié.", mineure: "Token manquant ou invalide.", conclusion: "Se reconnecter.", advice: "Vérifier le header Authorization." },
+        { cat: "Web", title: "CORS Error", context: "Blocked by CORS policy", majeure: "Sécurité navigateur.", mineure: "Domaine différent.", conclusion: "Configurer les headers CORS.", advice: "Utiliser un proxy en dev." },
+        { cat: "Web", title: "Mixed Content", context: "Blocked loading mixed active content", majeure: "HTTP dans page HTTPS.", mineure: "Sécurité compromise.", conclusion: "Tout passer en HTTPS.", advice: "Utiliser des liens relatifs." },
+        { cat: "Web", title: "ReferenceError (JS)", context: "Uncaught ReferenceError: x is not defined", majeure: "Variable inconnue.", mineure: "Oubli de déclaration.", conclusion: "Déclarer avec let/const.", advice: "Utiliser le mode strict." },
+        { cat: "Web", title: "TypeError (JS)", context: "Uncaught TypeError: x is not a function", majeure: "Appel invalide.", mineure: "Ce n'est pas une fonction.", conclusion: "Vérifier le type.", advice: "Console.log avant appel." },
+        { cat: "Web", title: "JSON Parse Error", context: "SyntaxError: Unexpected token", majeure: "JSON malformé.", mineure: "Virgule en trop ou guillemets.", conclusion: "Valider le JSON.", advice: "Utiliser un linter." },
+        { cat: "Web", title: "Infinite Loop (JS)", context: "Browser freeze", majeure: "Boucle sans fin.", mineure: "Condition toujours vraie.", conclusion: "Ajouter break ou incrément.", advice: "Attention aux while(true)." },
+        { cat: "Web", title: "CSS z-index", context: "Élément caché.", majeure: "Problème d'empilement.", mineure: "z-index inférieur.", conclusion: "Augmenter z-index.", advice: "Vérifier le positionnement (relative/absolute)." },
+        { cat: "Web", title: "Flexbox Align", context: "Items non centrés.", majeure: "Mauvaise propriété.", mineure: "justify-content vs align-items.", conclusion: "Utiliser les deux.", advice: "Mémoriser l'axe principal." },
+        { cat: "Web", title: "Grid Gap", context: "Pas d'espace.", majeure: "Oubli de gap.", mineure: "Marges manuelles.", conclusion: "Utiliser gap.", advice: "Grid est plus puissant que Flex." },
+        { cat: "Web", title: "Media Query", context: "Pas responsive.", majeure: "Mauvaise syntaxe.", mineure: "Oubli de viewport meta.", conclusion: "Ajouter meta tag.", advice: "Mobile-first." },
+        { cat: "Web", title: "Cache Issue", context: "Changements non visibles.", majeure: "Navigateur met en cache.", mineure: "Vieux CSS chargé.", conclusion: "Ctrl+F5 (Hard Refresh).", advice: "Désactiver cache en dev." },
+        { cat: "Web", title: "Event Propagation", context: "Click déclenche tout.", majeure: "Le bubbling remonte.", mineure: "Pas de stopPropagation.", conclusion: "e.stopPropagation().", advice: "Comprendre la capture." },
+        { cat: "Web", title: "Async/Await", context: "Promise pending.", majeure: "Fonction asynchrone.", mineure: "Oubli de await.", conclusion: "Ajouter await.", advice: "Toujours try/catch." },
+        { cat: "Git", title: "Merge Conflict", context: "CONFLICT (content)", majeure: "Modifs concurrentes.", mineure: "Mêmes lignes touchées.", conclusion: "Résoudre manuellement.", advice: "Pull souvent." },
+        { cat: "Git", title: "Detached HEAD", context: "You are in 'detached HEAD' state", majeure: "Pas sur une branche.", mineure: "Checkout sur un commit.", conclusion: "Git checkout main.", advice: "Créer une branche si modifs." },
+        { cat: "Git", title: "Permission Denied", context: "Permission denied (publickey)", majeure: "Clé SSH invalide.", mineure: "Clé non ajoutée.", conclusion: "Ajouter clé publique.", advice: "Vérifier ssh-agent." },
+        { cat: "Git", title: "Unstaged Changes", context: "Changes not staged for commit", majeure: "Fichiers modifiés non ajoutés.", mineure: "Oubli de git add.", conclusion: "git add .", advice: "Git status est ton ami." },
+        { cat: "Git", title: "Push Rejected", context: "Updates were rejected", majeure: "Historique distant différent.", mineure: "Quelqu'un a pushé.", conclusion: "Git pull --rebase.", advice: "Ne pas force push." },
+        { cat: "Git", title: "Wrong Branch", context: "Commits sur main.", majeure: "Travail direct sur prod.", mineure: "Pas de branche feature.", conclusion: "Git checkout -b feature.", advice: "Protéger la branche main." },
+        { cat: "Git", title: "Git Ignore", context: "Fichiers inutiles suivis.", majeure: "Oubli .gitignore.", mineure: "node_modules ou .env.", conclusion: "Ajouter au .gitignore.", advice: "Ne jamais commiter de secrets." },
+        { cat: "Git", title: "Large File", context: "File exceeds size limit", majeure: "Fichier trop gros.", mineure: "Pas fait pour Git.", conclusion: "Utiliser Git LFS.", advice: "Ne pas commiter de binaires." },
+        { cat: "Git", title: "Rebase Error", context: "Interactive rebase failed", majeure: "Conflits pendant rebase.", mineure: "Historique complexe.", conclusion: "Git rebase --abort.", advice: "Préférer merge si débutant." },
+        { cat: "Git", title: "Stash Pop", context: "Conflict on stash pop", majeure: "Conflit à la récupération.", mineure: "Modifs locales.", conclusion: "Résoudre comme un merge.", advice: "Stash save avec un message." },
+        { cat: "Git", title: "Submodule Error", context: "Fatal: not a git repo", majeure: "Sous-module manquant.", mineure: "Clone sans récursif.", conclusion: "git submodule update --init.", advice: "Utiliser --recursive." },
+        { cat: "Git", title: "Commit Amend", context: "Mauvais message commit.", majeure: "Dernier commit erroné.", mineure: "Besoin de corriger.", conclusion: "git commit --amend.", advice: "Ne pas faire si pushé." },
+        { cat: "Git", title: "Reset Hard", context: "Perte de travail.", majeure: "Reset --hard est destructif.", mineure: "Fichiers non commités perdus.", conclusion: "Pas de retour (sauf IDE history).", advice: "Utiliser soft ou mixed." },
+        { cat: "Git", title: "Remote Origin", context: "Fatal: remote origin already exists", majeure: "Remote déjà configuré.", mineure: "Doublon.", conclusion: "git remote set-url.", advice: "Vérifier git remote -v." }
+    ];
 
-        <!-- 2. DEBUGGING (Cas Pratiques) -->
-        <div id="syllogismes" class="tab-content">
-            <div class="intro-box">
-                <h2 class="intro-title">L'Art du Debugging</h2>
-                <p class="text-gray-600">Ne regarde pas la solution tout de suite. Lis l'erreur, analyse le contexte, et propose un fix.</p>
-                <div class="flex flex-wrap gap-2 mt-4">
-                    <button onclick="filterCases('all')" class="px-3 py-1 bg-[#0F2C48] text-white rounded text-xs font-bold">TOUT</button>
-                    <button onclick="filterCases('Python')" class="px-3 py-1 bg-[#3776AB] text-white rounded text-xs font-bold">PYTHON</button>
-                    <button onclick="filterCases('Web')" class="px-3 py-1 bg-[#E34F26] text-white rounded text-xs font-bold">WEB/HTML</button>
-                    <button onclick="filterCases('Git')" class="px-3 py-1 bg-[#F05032] text-white rounded text-xs font-bold">GIT</button>
-                </div>
-            </div>
-            <div id="cases-container" class="cases-grid"></div>
-        </div>
+    // 2. FICHES RÉFLEXES (50 ITEMS)
+    const dbReflexes = [
+        { t: "Mise en Prod", c: "Deploy", d: "Checklist avant déploiement.", s: ["DEBUG=False", "Secrets en ENV", "Backup BDD", "Tests OK", "Static Files", "Migration BDD", "Logs configurés"], p: "Ne jamais déployer vendredi soir." },
+        { t: "Git Flow", c: "Git", d: "Workflow propre.", s: ["Git pull", "Nouvelle branche", "Commits atomiques", "Push", "Pull Request", "Code Review", "Merge"], p: "Pas de commit direct sur main." },
+        { t: "Sécurité API", c: "Secu", d: "Hardening.", s: ["HTTPS partout", "Rate Limiting", "Validation entrées", "Sanitizer sorties", "Headers sécu", "JWT/OAuth", "Logs accès"], p: "Ne jamais faire confiance au client." },
+        { t: "Debug 500", c: "Secu", d: "Serveur down.", s: ["Lire les logs", "Reproduire local", "Isoler le bug", "Ecrire un test", "Fixer", "Vérifier régression"], p: "Garder son calme." },
+        { t: "Performance DB", c: "Data", d: "Requêtes lentes.", s: ["Explain plan", "Ajouter index", "Éviter N+1 select", "Cacher (Cache)", "Pagination", "Optimiser types"], p: "Pas de SELECT *." },
+        { t: "Code Review", c: "Git", d: "Relire un collègue.", s: ["Compréhension", "Style (PEP8)", "Sécurité", "Tests présents", "Performance", "Feedback positif"], p: "Critiquer le code, pas la personne." },
+        { t: "Projet Init", c: "Deploy", d: "Démarrage propre.", s: ["Repo Git", "Virtualenv", ".gitignore", "README.md", "requirements.txt", "Linter config", "Structure dossiers"], p: "Partir sur de bonnes bases." },
+        { t: "Sécurité Front", c: "Secu", d: "Côté navigateur.", s: ["XSS (échapper)", "CSRF token", "Cookies Secure/HttpOnly", "CSP Header", "Dépendances à jour"], p: "Le front n'est pas sécurisé." },
+        { t: "Migration Données", c: "Data", d: "Changer de schéma.", s: ["Backup avant", "Script migration", "Test sur copie", "Downtime planifié", "Rollback plan", "Vérification post"], p: "Toujours avoir un plan B." },
+        { t: "Accessibilité", c: "Web", d: "Pour tous.", s: ["Alt images", "Contrastes", "Navigation clavier", "Labels formulaires", "Sémantique HTML", "ARIA si besoin"], p: "Le web est pour tout le monde." },
+        { t: "Dockerisation", c: "Deploy", d: "Conteneurs.", s: ["Dockerfile léger", ".dockerignore", "Multi-stage build", "Variables ENV", "Pas de root", "Volume data"], p: "Une image par service." },
+        { t: "API Design", c: "Web", d: "RESTful.", s: ["Noms ressources (pluriel)", "Verbes HTTP", "Codes statuts corrects", "Pagination", "Versionning", "Doc Swagger"], p: "Penser au consommateur de l'API." },
+        { t: "Gestion Erreurs", c: "Python", d: "Try/Except.", s: ["Catch spécifique", "Log l'erreur", "Message utilisateur", "Nettoyage (finally)", "Pas de pass silencieux"], p: "Ne jamais avaler les erreurs." },
+        { t: "Tests Unitaires", c: "Python", d: "Pytest.", s: ["Un test par cas", "Nom explicite", "Setup/Teardown", "Mock des externes", "Couverture code", "CI automatique"], p: "Tester c'est douter (mais c'est bien)." },
+        { t: "SEO Basics", c: "Web", d: "Visibilité.", s: ["Title unique", "Meta description", "H1 unique", "Sitemap.xml", "Robots.txt", "Vitesse (Lighthouse)"], p: "Le contenu est roi." },
+        { t: "Responsive Design", c: "Web", d: "Mobile First.", s: ["Viewport meta", "Media queries", "Unités relatives", "Images flexibles", "Test sur mobile", "Pas de hover"], p: "Le mobile est prioritaire." },
+        { t: "Refactoring", c: "Python", d: "Nettoyage.", s: ["Renommer variables", "Extraire méthodes", "Supprimer code mort", "Simplifier conditions", "DRY", "Commenter le 'pourquoi'"], p: "Ne pas casser les tests." },
+        { t: "Secu Passwords", c: "Secu", d: "Stockage MDP.", s: ["Ne jamais stocker en clair", "Utiliser bcrypt/argon2", "Salt unique", "Politique complexité", "Reset sécurisé"], p: "Le hachage est obligatoire." },
+        { t: "Backup Strategy", c: "Data", d: "Sauvegardes.", s: ["Fréquence adaptée", "Stockage distant", "Test de restauration", "Rétention", "Chiffrement"], p: "Un backup non testé n'existe pas." },
+        { t: "Optimisation img", c: "Web", d: "Vitesse.", s: ["Format WebP/AVIF", "Compression", "Lazy loading", "Dimensions explicites", "CDN"], p: "Les images tuent la perf." },
+        { t: "Monitoring", c: "Deploy", d: "Surveillance.", s: ["Uptime robot", "Logs d'erreur", "CPU/RAM usage", "Alertes email/slack", "Dashboard (Grafana)"], p: "Savoir avant les utilisateurs." },
+        { t: "Documentation", c: "Git", d: "Pour le futur toi.", s: ["README clair", "Docstrings Python", "Wiki architecture", "Changelog", "Installation steps"], p: "Le code est lu plus souvent qu'écrit." },
+        { t: "Typage Python", c: "Python", d: "Type Hints.", s: ["Utiliser `typing`", "mypy pour vérifier", "Signatures fonctions", "Alias de types"], p: "Python est dynamique, mais le typage aide." },
+        { t: "Virtual Env", c: "Python", d: "Isolation.", s: ["python -m venv", "source activate", "pip freeze > requirements.txt", "Pas de pip global"], p: "Ne jamais polluer le système." },
+        { t: "SSH Keys", c: "Secu", d: "Connexion.", s: ["Générer paire clés", "Passphrase forte", "Copier clé publique", "Désactiver login root", "Désactiver mot de passe"], p: "Plus sûr que les mots de passe." },
+        { t: "Naming Conv", c: "Python", d: "PEP8.", s: ["snake_case (vars)", "CamelCase (Class)", "UPPER_CASE (CONST)", "Verbes pour fonctions"], p: "Un nom clair vaut 1000 commentaires." },
+        { t: "Async Python", c: "Python", d: "Concurrency.", s: ["async def", "await", "asyncio.run", "aiohttp", "Pas de bloquant"], p: "Ne pas mélanger sync et async sans savoir." },
+        { t: "Regex", c: "Data", d: "Expressions régulières.", s: ["Tester sur regex101", "Échapper caractères", "Groupes de capture", "Flags (i, g, m)"], p: "Attention à la complexité." },
+        { t: "JWT Auth", c: "Secu", d: "Stateless.", s: ["Header/Payload/Sign", "Expiration courte", "Refresh Token", "HTTPS obligatoire"], p: "Ne pas mettre de données sensibles dans le payload." },
+        { t: "SQL Injection", c: "Secu", d: "Prévention.", s: ["Requêtes préparées", "ORM (Django/SQLAlchemy)", "Valider inputs", "Moindre privilège BDD"], p: "Jamais de concaténation de chaînes." },
+        { t: "Linux Basics", c: "Deploy", d: "Commandes.", s: ["ls -la", "cd", "grep", "chmod/chown", "ps aux", "kill", "tail -f logs"], p: "La souris ne te sauvera pas." },
+        { t: "CI Pipeline", c: "DevOps", d: "GitHub Actions.", s: ["Lint", "Test", "Build", "Deploy Staging", "Deploy Prod (manuel)"], p: "Automatiser tout ce qui est répétitif." },
+        { t: "Code Smells", c: "Python", d: "Détection.", s: ["Fonctions trop longues", "Trop d'arguments", "Duplication", "Classes Dieu", "Nombres magiques"], p: "Refactoriser tôt." },
+        { t: "Logs Python", c: "Python", d: "Logging.", s: ["Module `logging`", "Niveaux (DEBUG, INFO...)", "Rotation logs", "Format structuré (JSON)"], p: "Le print() n'est pas un log." },
+        { t: "HTTP Headers", c: "Web", d: "Méta-data.", s: ["Content-Type", "Authorization", "User-Agent", "Cache-Control", "CORS headers"], p: "Le web parle par headers." },
+        { t: "Cookies", c: "Web", d: "Stockage.", s: ["HttpOnly (pas de JS)", "Secure (HTTPS)", "SameSite (CSRF)", "Expiration"], p: "Attention RGPD." },
+        { t: "Git Rebase", c: "Git", d: "Historique propre.", s: ["git rebase -i", "squash", "fixup", "reword", "Attention si partagé"], p: "Ne jamais rebase une branche publique." },
+        { t: "Web Scraping", c: "Python", d: "Récupération.", s: ["Requests/BeautifulSoup", "Respect robots.txt", "Rate limiting", "User-Agent rotation", "Headless browser"], p: "Attention à la légalité." },
+        { t: "Design Patterns", c: "Python", d: "Solutions.", s: ["Singleton", "Factory", "Observer", "Decorator", "Strategy"], p: "Ne pas sur-ingénier." },
+        { t: "Performance Web", c: "Web", d: "Vitesse.", s: ["Minifier CSS/JS", "Gzip/Brotli", "CDN", "Cache navigateur", "Réduire requêtes"], p: "Chaque milliseconde compte." },
+        { t: "Clean Code", c: "Python", d: "Lisibilité.", s: ["Noms intentionnels", "Fonctions petites", "Pas d'effets de bord", "Tests lisibles"], p: "Coder pour les humains." },
+        { t: "Data Privacy", c: "Data", d: "Confidentialité.", s: ["Anonymisation", "Chiffrement au repos", "Droit à l'oubli", "Minimisation données"], p: "La donnée est une responsabilité." },
+        { t: "Microservices", c: "Architecture", d: "Découpage.", s: ["Un service = une tâche", "API Gateway", "Indépendance déploiement", "Tolérance pannes"], p: "Complexité opérationnelle accrue." },
+        { t: "GraphQL", c: "Web", d: "API moderne.", s: ["Un seul endpoint", "Client demande champs", "Types forts", "Pas d'over-fetching"], p: "Attention aux requêtes N+1." },
+        { t: "Serverless", c: "Cloud", d: "Lambda.", s: ["Fonctions éphémères", "Paiement à l'usage", "Scalabilité auto", "Cold starts"], p: "Bien pour l'événementiel." },
+        { t: "Dependency Hell", c: "Python", d: "Gestion paquets.", s: ["Virtualenv", "Poetry/Pipenv", "Pin versions (==)", "Update régulier"], p: "Garder le contrôle." },
+        { t: "Agile/Scrum", c: "Projet", d: "Organisation.", s: ["Daily standup", "Sprint planning", "Rétrospective", "Backlog refinement"], p: "L'humain avant les outils." },
+        { t: "Licences", c: "Git", d: "Droit.", s: ["MIT (permissif)", "GPL (contaminant)", "Apache", "Propriétaire"], p: "Vérifier avant de copier-coller." },
+        { t: "Unicode", c: "Python", d: "Texte.", s: ["UTF-8 partout", "Encode/Decode", "Caractères spéciaux", "Emoji support"], p: "Le monde n'est pas qu'en ASCII." },
+        { t: "Timezones", c: "Python", d: "Temps.", s: ["UTC en BDD", "Conversion affichage", "Bibliothèque `zoneinfo`", "ISO 8601"], p: "L'heure locale est un piège." }
+    ];
 
-        <!-- 3. LEXIQUE (Vide car lien externe) -->
-        <div id="lexique" class="tab-content">
-           <div class="intro-box flex justify-between items-center flex-wrap gap-4 text-center">
-                <div class="w-full">
-                    <h2 class="intro-title">Encyclopédie du Code</h2>
-                    <p class="text-sm opacity-80 mb-4">Le lexique complet (300+ termes) est disponible dans son module dédié.</p>
-                    <a href="Lexique_dev.html" class="px-6 py-3 bg-[#D9A526] text-[#0F2C48] font-bold rounded-lg hover:bg-[#B4792A] hover:text-white transition">
-                        <i class="fas fa-book-open mr-2"></i> Ouvrir le Grand Lexique
-                    </a>
-                </div>
-            </div>
-        </div>
+    // 3. FLASHCARDS DATA (50 Items)
+    const flashcardsData = [
+        {cat: "Python", q: "Méthode Constructeur ?", a: "__init__", trap: "Pas __new__"},
+        {cat: "Git", q: "Cloner un repo ?", a: "git clone", trap: "Pas git pull"},
+        {cat: "Web", q: "HTTP Non Autorisé ?", a: "401", trap: "403 c'est Interdit"},
+        {cat: "SQL", q: "Supprimer une table ?", a: "DROP TABLE", trap: "DELETE vide la table"},
+        {cat: "Python", q: "Liste vide ?", a: "[]", trap: "Ou list()"},
+        {cat: "Algo", q: "Complexité Dichotomie ?", a: "O(log n)", trap: "Pas O(n)"},
+        {cat: "DevOps", q: "CI signifie ?", a: "Continuous Integration", trap: "Pas Improvement"},
+        {cat: "Linux", q: "Lister processus ?", a: "ps ou top", trap: "ls c'est fichiers"},
+        {cat: "Python", q: "Longueur liste ?", a: "len(liste)", trap: "Pas liste.length"},
+        {cat: "Web", q: "Balise lien ?", a: "<a>", trap: "Avec href"},
+        {cat: "CSS", q: "Couleur texte ?", a: "color", trap: "Pas font-color"},
+        {cat: "Git", q: "Créer branche ?", a: "git checkout -b", trap: "Ou git switch -c"},
+        {cat: "SQL", q: "Tout sélectionner ?", a: "SELECT *", trap: "A éviter en prod"},
+        {cat: "Python", q: "Ajouter à liste ?", a: ".append()", trap: "Pas .add()"},
+        {cat: "Web", q: "HTTP Succès ?", a: "200 OK", trap: "La base"},
+        {cat: "Linux", q: "Changer droits ?", a: "chmod", trap: "chown pour proprio"},
+        {cat: "Algo", q: "FIFO c'est ?", a: "File (Queue)", trap: "Premier arrivé premier servi"},
+        {cat: "Python", q: "Boucle bornée ?", a: "for i in range()", trap: "Pas while"},
+        {cat: "CSS", q: "Marge interne ?", a: "padding", trap: "margin c'est externe"},
+        {cat: "Git", q: "Voir modifs ?", a: "git status", trap: "Ou git diff"},
+        {cat: "Web", q: "Gras en HTML ?", a: "<strong>", trap: "<b> est déprécié"},
+        {cat: "SQL", q: "Filtrer résultats ?", a: "WHERE", trap: "Pas IF"},
+        {cat: "Python", q: "Dico vide ?", a: "{}", trap: "Ou dict()"},
+        {cat: "Linux", q: "Dossier actuel ?", a: "pwd", trap: "Print Working Directory"},
+        {cat: "Algo", q: "LIFO c'est ?", a: "Pile (Stack)", trap: "Dernier arrivé premier servi"},
+        {cat: "Python", q: "Convertir en entier ?", a: "int()", trap: "Gère les erreurs"},
+        {cat: "Web", q: "HTTP Redirection ?", a: "301 ou 302", trap: "Permanent ou tempo"},
+        {cat: "CSS", q: "Flexbox axe ?", a: "flex-direction", trap: "row par défaut"},
+        {cat: "Git", q: "Annuler commit ?", a: "git revert", trap: "reset efface"},
+        {cat: "SQL", q: "Trier ?", a: "ORDER BY", trap: "ASC ou DESC"},
+        {cat: "Python", q: "Module regex ?", a: "import re", trap: "Pas regex"},
+        {cat: "Linux", q: "Super utilisateur ?", a: "sudo", trap: "SuperUser DO"},
+        {cat: "Web", q: "Image HTML ?", a: "<img>", trap: "Besoin de src et alt"},
+        {cat: "CSS", q: "Centrer Flex ?", a: "justify-content & align-items", trap: "Les deux"},
+        {cat: "Git", q: "Envoyer distant ?", a: "git push", trap: "Vers origin"},
+        {cat: "SQL", q: "Compter lignes ?", a: "COUNT(*)", trap: "Fonction d'agrégation"},
+        {cat: "Python", q: "Lire fichier ?", a: "open()", trap: "Avec with c'est mieux"},
+        {cat: "Algo", q: "Tri rapide ?", a: "Quicksort", trap: "O(n log n)"},
+        {cat: "DevOps", q: "Conteneur ?", a: "Docker", trap: "Pas VM"},
+        {cat: "Web", q: "Script JS ?", a: "<script>", trap: "Souvent en bas de body"},
+        {cat: "CSS", q: "Sélecteur ID ?", a: "#monId", trap: ". pour classe"},
+        {cat: "Git", q: "Récupérer distant ?", a: "git pull", trap: "Fetch + Merge"},
+        {cat: "SQL", q: "Joindre tables ?", a: "JOIN", trap: "INNER, LEFT, RIGHT"},
+        {cat: "Python", q: "Type de 'a' ?", a: "str", trap: "String"},
+        {cat: "Linux", q: "Copier fichier ?", a: "cp", trap: "mv pour déplacer"},
+        {cat: "Web", q: "Titre page ?", a: "<title>", trap: "Dans le head"},
+        {cat: "CSS", q: "Police ?", a: "font-family", trap: "Pas font-style"},
+        {cat: "Git", q: "Historique ?", a: "git log", trap: "Q pour quitter"},
+        {cat: "Python", q: "Fonction ?", a: "def", trap: "Pas function"},
+        {cat: "SQL", q: "Insérer ?", a: "INSERT INTO", trap: "VALUES"},
+        {cat: "Python", q: "Booléen ?", a: "True / False", trap: "Avec Majuscule"},
+        {cat: "Web", q: "Input texte ?", a: "<input type='text'>", trap: "Pas <text>"},
+        {cat: "Algo", q: "Table de hachage ?", a: "Dict / HashMap", trap: "O(1) accès"},
+        {cat: "DevOps", q: "Orchestrateur ?", a: "Kubernetes", trap: "K8s"},
+        {cat: "Python", q: "Héritage ?", a: "class A(B):", trap: "Pas extends"},
+        {cat: "Git", q: "Changer message ?", a: "commit --amend", trap: "Si pas pushé"},
+        {cat: "Web", q: "HTTP Création ?", a: "POST", trap: "PUT modifie"},
+        {cat: "CSS", q: "Grille ?", a: "display: grid", trap: "Pas table"}
+    ];
 
-        <!-- 4. CHECKLISTS (Réflexes) -->
-        <div id="reflexes" class="tab-content">
-            <div class="intro-box">
-                <h2 class="intro-title">Fiches Réflexes (Checklists)</h2>
-                <p class="text-gray-600">Procédures à suivre pour éviter la catastrophe en prod.</p>
-                <div class="flex gap-4 mt-4 text-xs font-bold">
-                    <span class="text-red-600"><i class="fas fa-shield-alt"></i> SÉCURITÉ</span>
-                    <span class="text-blue-600"><i class="fas fa-cloud-upload-alt"></i> DÉPLOIEMENT</span>
-                    <span class="text-green-600"><i class="fas fa-code-branch"></i> GIT FLOW</span>
-                </div>
-            </div>
-            <div id="reflexes-container" class="reflexe-grid"></div>
-        </div>
+    let currentCardIndex = 0;
+    let isFlipped = false;
+    let isPlayingGlobal = false;
+    let synth = window.speechSynthesis;
+    let currentUtterance = null;
 
-        <!-- 5. ACRONYMES -->
-        <div id="abbrev" class="tab-content">
-            <div class="intro-box">
-                <h2 class="intro-title">La Jungle des Acronymes</h2>
-                <div class="bg-blue-50 p-3 rounded border border-blue-200 mt-2 flex items-center gap-2">
-                    <i class="fas fa-search text-gray-400"></i>
-                    <input type="text" id="abbrevSearch" placeholder="Ex: HTTP, JSON, DOM..." class="bg-transparent w-full outline-none text-blue-900 font-bold font-code">
-                </div>
-            </div>
-            <div id="abbrev-container" class="dalloz-grid"></div>
-        </div>
+    // --- FONCTIONS ---
 
-        <!-- 6. STACKS (Compétences) -->
-        <div id="competences" class="tab-content">
-            <div class="intro-box">
-                <h2 class="intro-title">Stacks & Technologies</h2>
-                <p class="text-gray-600">Les briques techniques à maîtriser pour le titre RNCP.</p>
-            </div>
-            <div id="competences-container"></div>
-        </div>
-
-        <!-- 7. FLASHCARDS & JEU DU MOIS -->
-        <div id="flashcards" class="tab-content">
-            <div class="charade-box">
-                <h2 class="text-2xl font-bold mb-2 font-code">🕵️‍♀️ L'Énigme du Codeur (Jeu du Mois)</h2>
-                <p class="text-gray-300 italic mb-4">Une petite charade pour s'échauffer...</p>
-                <p class="text-lg">
-                    "Je suis une méthode spéciale, souvent entourée de mystère (et de underscores).<br>
-                    Je m'exécute dès la naissance d'un objet.<br>
-                    C'est moi qui donne ses premières valeurs à `self`.<br>
-                    Qui suis-je ?"
-                </p>
-                <button onclick="revealCharade()" class="charade-btn">Voir la Réponse</button>
-                <div id="charade-answer" class="answer-reveal">
-                    🐍 La méthode `__init__` (Le Constructeur) !
-                </div>
-            </div>
-
-            <div class="intro-box text-center">
-                <h2 class="intro-title">Flashcards <i class="fas fa-random text-brand-cta"></i></h2>
-                <p class="text-gray-600">Teste tes connaissances sur tout le contenu.</p>
-            </div>
-            
-            <div class="flashcard-scene">
-                <div class="flashcard-obj" onclick="flipCard()">
-                    <!-- FRONT -->
-                    <div class="card-face card-face-front">
-                        <span class="text-xs font-bold uppercase text-gray-400 tracking-widest mb-2" id="fc-cat">Catégorie</span>
-                        <div class="text-xl font-bold text-brand-blue font-code mb-4" id="fc-question">Question ?</div>
-                        <div class="text-sm text-gray-400 italic mt-auto">Clique pour voir la réponse</div>
-                        <button onclick="event.stopPropagation(); readFrontCard()" class="btn-audio-small absolute bottom-4 right-4"><i class="fas fa-volume-up"></i></button>
-                    </div>
-                    <!-- BACK -->
-                    <div class="card-face card-face-back">
-                        <span class="text-xs font-bold uppercase text-brand-cta tracking-widest mb-2">Réponse / Solution</span>
-                        <div class="text-lg font-medium" id="fc-answer">Réponse</div>
-                        <div id="fc-trap" class="mt-4 p-2 bg-white/10 rounded text-sm text-yellow-200">Tip : ...</div>
-                        <button onclick="event.stopPropagation(); readBackCard()" class="btn-audio-small absolute bottom-4 right-4" style="background:rgba(255,255,255,0.2); color:white;"><i class="fas fa-volume-up"></i></button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex justify-center gap-4">
-                <button onclick="prevCard()" class="btn-game btn-prev"><i class="fas fa-arrow-left"></i> Précédent</button>
-                <button onclick="randomCard()" class="btn-game" style="background:var(--brand-blue); color:white;"><i class="fas fa-random"></i> Mélanger</button>
-                <button onclick="nextCard()" class="btn-game btn-next">Suivant <i class="fas fa-arrow-right"></i></button>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- ============================================ -->
-    <!-- FOOTER (Design System) -->
-    <!-- ============================================ -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                
-                <!-- Identité -->
-                <div class="footer-identity">
-                    <div class="footer-logo-placeholder">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="footer-info-compact">
-                        <div class="footer-name">Mathilde Martine PAISLEY</div>
-                        <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-dock-col">
-                    <!-- Liens de Navigation (Copie exacte du Header) -->
-                    <div class="dock-group">
-                        <div class="dock-label">Navigation</div>
-                        <div class="icon-dock">
-                            <!-- 1. Accueil -->
-                            <a href="index.html" class="icon-btn" data-tooltip="Accueil" aria-label="Accueil"><span class="brand-nav">🏠</span></a>
-                            
-                            <!-- 2. Mon Espace -->
-                            <a href="Mon_Espace_Dev.html" class="icon-btn" data-tooltip="Mon Espace" aria-label="Mon Espace"><span class="brand-nav">📊</span></a>
-                            
-                            <!-- 3. Planning & Cours -->
-                            <a href="Programme_Formation_Digital.html" class="icon-btn" data-tooltip="Planning & Cours" aria-label="Planning"><span class="brand-nav">📅</span></a>
-                            
-                            <!-- 4. Atelier -->
-                            <!-- CORRECTION : Lien modifié ici aussi pour le footer -->
-                            <a href="Atelier_Dev_Elite_Club.html" class="icon-btn" data-tooltip="Atelier" aria-label="Atelier"><span class="brand-nav">🛠️</span></a>
-
-                            <!-- 5. Observatoire (NOUVEAU) -->
-                            <a href="Observatoire_Dev_Elite_Club.html" class="icon-btn" data-tooltip="Observatoire & IA" aria-label="Observatoire"><span class="brand-nav">🚀</span></a>
-
-                            <!-- 6. Fiche RNCP -->
-                            <a href="Fiche_RNCP_Dev.html" class="icon-btn" data-tooltip="Fiche RNCP" aria-label="Fiche RNCP"><span class="brand-nav">🏅</span></a>
-                            
-                            <!-- 7. Lexique -->
-                            <a href="Lexique_dev.html" class="icon-btn" data-tooltip="Lexique" aria-label="Lexique"><span class="brand-nav">📜</span></a>
-                            
-                            <!-- 8. Acronymes -->
-                            <a href="Acronymes.html" class="icon-btn" data-tooltip="Acronymes" aria-label="Acronymes"><span class="brand-nav">🔠</span></a>
-                            
-                            <!-- 9. Profil -->
-                            <a href="A_propos_de_moi.html" class="icon-btn" data-tooltip="Profil" aria-label="Profil"><span class="brand-nav">👤</span></a>
-                        </div>
-                    </div>
-
-                    <div class="dock-group" style="margin-top: 15px;">
-                        <div class="dock-label">Réseaux</div>
-                        <div class="icon-dock">
-                            <!-- WhatsApp -->
-                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" class="icon-btn" data-tooltip="WhatsApp" target="_blank" aria-label="WhatsApp">
-                                <i class="fab fa-whatsapp" style="color:#25D366;"></i>
-                            </a>
-                            <!-- Discord -->
-                            <a href="https://discord.gg/redT9wEE6T" class="icon-btn" data-tooltip="Discord" target="_blank" aria-label="Discord">
-                                <i class="fab fa-discord" style="color:#5865F2;"></i>
-                            </a>
-                            <!-- LinkedIn -->
-                            <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" class="icon-btn" data-tooltip="LinkedIn" target="_blank" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin" style="color:#0077b5;"></i>
-                            </a>
-                            <!-- TikTok -->
-                            <a href="https://www.tiktok.com/@enervyx" class="icon-btn" data-tooltip="TikTok" target="_blank" aria-label="TikTok">
-                                <i class="fab fa-tiktok" style="color:#ffffff;"></i>
-                            </a>
-                            <!-- Instagram -->
-                            <a href="https://www.instagram.com/enervyx/" class="icon-btn" data-tooltip="Instagram" target="_blank" aria-label="Instagram">
-                                <i class="fab fa-instagram" style="color:#E1306C;"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="footer-container">
-                <p>💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
-                <p>© 2025 Tous droits réservés – Création : Mathilde Martine PAISLEY</p>
-            </div>
-        </div>
-    </footer>
-
-    <div id="backToTop" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></div>
-
-    <script>
-        // --- DATA ADAPTÉE POUR DEV PYTHON ---
-
-        // 1. CAS DE DEBUGGING (EX-SYLLOGISMES)
-        const dbCases = [
-            { cat: "Python", title: "IndentationError", context: "Tu lances ton script et Python crie : 'IndentationError: expected an indented block'.", majeure: "Python utilise l'indentation (espaces) pour définir les blocs de code (boucles, fonctions, if).", mineure: "À la ligne indiquée, le code n'est pas aligné correctement par rapport à la ligne précédente (ex: après un ':').", conclusion: "Ajoute 4 espaces (ou 1 tab) au début de la ligne pour l'inclure dans le bloc.", advice: "Configure ton IDE pour convertir les Tabs en Espaces automatiquement." },
-            { cat: "Python", title: "KeyError Dictionnaire", context: "Tu essaies d'accéder à `user['email']` et le script crash.", majeure: "Un dictionnaire lève une KeyError si on tente d'accéder à une clé qui n'existe pas.", mineure: "La clé 'email' est absente de l'objet `user` à ce moment de l'exécution.", conclusion: "Utilise `user.get('email')` qui renvoie None au lieu de crasher, ou vérifie avec `if 'email' in user`.", advice: "Toujours valider les données externes (API, JSON) avant accès direct." },
-            { cat: "Web", title: "Erreur 404", context: "Ton API renvoie une 404 Not Found sur la route `/api/users`.", majeure: "Le code HTTP 404 signifie que le serveur ne trouve pas la ressource demandée.", mineure: "La route définie dans Flask/Django est peut-être `/api/user` (singulier) ou la méthode (GET/POST) est incorrecte.", conclusion: "Vérifie l'URL exacte dans ton fichier de routes (urls.py ou app.py) et la méthode HTTP.", advice: "Liste toutes tes routes avec `flask routes` ou commande équivalente Django." },
-            { cat: "Git", title: "Merge Conflict", context: "Git refuse le pull : 'CONFLICT (content): Merge conflict in main.py'.", majeure: "Git ne peut pas fusionner automatiquement si deux personnes ont modifié la même ligne différemment.", mineure: "Le fichier contient des marqueurs `<<<<<<< HEAD` montrant les deux versions.", conclusion: "Ouvre le fichier, choisis la bonne version du code, supprime les marqueurs, puis `git add` et `git commit`.", advice: "Fais des commits petits et fréquents pour réduire les risques de conflits." },
-            { cat: "Python", title: "Infinite Loop", context: "Le terminal est bloqué, le CPU ventile à fond, rien ne s'affiche.", majeure: "Une boucle `while` tourne tant que la condition est vraie. Si la condition ne devient jamais fausse, c'est l'infini.", mineure: "Ta variable de condition n'est jamais mise à jour à l'intérieur de la boucle.", conclusion: "Ajoute une incrémentation ou un `break` dans ta boucle.", advice: "CTRL+C dans le terminal pour tuer le processus fou." },
-            { cat: "Web", title: "CORS Error", context: "Le front React n'arrive pas à fetcher l'API Flask : 'Access to fetch has been blocked by CORS policy'.", majeure: "Les navigateurs bloquent par sécurité les requêtes JS entre domaines différents (Cross-Origin Resource Sharing).", mineure: "Ton API (port 5000) et ton Front (port 3000) sont considérés comme des origines différentes.", conclusion: "Installe `flask-cors` ou `django-cors-headers` côté Backend pour autoriser ton Front.", advice: "En dev, autorise '*', mais en prod, restreins aux domaines réels." }
-        ];
-
-        // 3. FICHES RÉFLEXES
-        const dbReflexes = [
-            { t: "Mise en Prod (Deploy)", c: "Deploy", d: "Checklist avant d'envoyer sur le serveur.", s: ["Vérifier `DEBUG = False`", "Lancer les Tests Unitaires", "Faire un Backup BDD", "Git Push Main"], p: "Ne jamais laisser les clés API ou mots de passe dans le code (utiliser .env)." },
-            { t: "Gérer un Conflit Git", c: "Git", d: "Quand le merge ne passe pas.", s: ["git status", "Ouvrir fichiers rouges", "Nettoyer les chevrons <<<", "git add .", "git commit"], p: "Ne jamais commit les fichiers de conflit sans avoir choisi le code final." },
-            { t: "Sécuriser une API", c: "Secu", d: "Protéger les endpoints.", s: ["Utiliser HTTPS", "Valider les entrées (Inputs)", "Authentification (JWT/OAuth)", "Rate Limiting"], p: "Ne jamais faire confiance aux données envoyées par le client (Front)." },
-            { t: "Debugguer 500 Error", c: "Secu", d: "Le serveur a crashé.", s: ["Lire les logs serveur", "Reproduire en local", "Isoler la ligne du crash", "Fixer & Tester"], p: "Une erreur 500 est toujours une faute du développeur Back-end (exception non gérée)." }
-        ];
-
-        // 4. ACRONYMES
-        const dbAbrev = [
-            { a: "AJAX", f: "Asynchronous JavaScript and XML" },
-            { a: "API", f: "Application Programming Interface" },
-            { a: "CRUD", f: "Create, Read, Update, Delete" },
-            { a: "CSS", f: "Cascading Style Sheets" },
-            { a: "DOM", f: "Document Object Model" },
-            { a: "DRY", f: "Don't Repeat Yourself (Principe de code)" },
-            { a: "HTML", f: "HyperText Markup Language" },
-            { a: "HTTP", f: "HyperText Transfer Protocol" },
-            { a: "IDE", f: "Integrated Development Environment (VSCode, PyCharm)" },
-            { a: "JSON", f: "JavaScript Object Notation" },
-            { a: "JWT", f: "JSON Web Token (Auth)" },
-            { a: "MVC", f: "Model View Controller (Architecture)" },
-            { a: "ORM", f: "Object Relational Mapping (ex: Django ORM, Doctrine)" },
-            { a: "POO", f: "Programmation Orientée Objet" },
-            { a: "REST", f: "Representational State Transfer" },
-            { a: "SASS", f: "Syntactically Awesome Style Sheets" },
-            { a: "SEO", f: "Search Engine Optimization" },
-            { a: "SQL", f: "Structured Query Language" },
-            { a: "SSH", f: "Secure Shell" },
-            { a: "UI/UX", f: "User Interface / User Experience" }
-        ];
-
-        // 5. STACKS (Compétences)
-        const dbCompetences = [
-            {
-                category: "Back-End Python",
-                desc: "Le cœur de la logique serveur.",
-                items: ["Python 3.x", "Django (Framework complet)", "Flask (Micro-framework)", "SQLAlchemy (ORM)", "Pytest (Testing)"]
-            },
-            {
-                category: "Front-End Web",
-                desc: "L'interface utilisateur.",
-                items: ["HTML5 / CSS3", "JavaScript (ES6+)", "Bootstrap / Tailwind", "React.js (Basics)", "Responsive Design"]
-            },
-            {
-                category: "DevOps & Outils",
-                desc: "Déploiement et gestion.",
-                items: ["Git / GitHub", "Docker (Basics)", "Linux (Command Line)", "Heroku / Vercel", "Postman (Test API)"]
-            }
-        ];
-
-        // --- MOTEUR JS ---
-        let currentCardIndex = 0;
-        let flashcardsData = [];
-        let isFlipped = false;
-
-        function initAll() {
-            filterCases('all'); 
-            renderReflexes(dbReflexes);
-            renderAbbrev(dbAbrev);
-            renderCompetences(dbCompetences);
-            initFlashcards();
-            
-            // Pré-chargement des voix si possible (utile pour Chrome)
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.getVoices();
-            }
+    function initAll() {
+        filterCases('all'); 
+        renderReflexes(dbReflexes);
+        shuffleArray(flashcardsData);
+        renderFlashcard();
+        
+        // Pré-chargement voix
+        if (synth && synth.onvoiceschanged !== undefined) {
+            synth.onvoiceschanged = () => { console.log("Voix chargées"); };
         }
+    }
 
-        // Logic pour la Charade du Mois
-        function revealCharade() {
-            const answer = document.getElementById('charade-answer');
-            answer.style.display = 'block';
-            speakText("La réponse est la méthode init, aussi appelée le constructeur !");
-        }
+    function switchTab(id) {
+        document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        // Mise à jour visuelle du bouton actif
+        const btns = document.querySelectorAll('.tab-btn');
+        if(id === 'accueil') btns[0].classList.add('active');
+        if(id === 'syllogismes') btns[1].classList.add('active');
+        if(id === 'reflexes') btns[2].classList.add('active');
+        if(id === 'flashcards') btns[3].classList.add('active');
+        
+        stopAudio(); // Stop audio si changement d'onglet
+    }
 
-        function switchTab(id) {
-            document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+    // Gestion Debugging
+    function filterCases(filter) {
+        const container = document.getElementById('cases-container');
+        const filtered = dbCases.filter(i => filter === 'all' || i.cat === filter);
+        
+        const htmlContent = filtered.map((item, idx) => {
+            let badgeClass = item.cat === 'Python' ? 'bg-python' : (item.cat === 'Web' ? 'bg-web' : 'bg-git');
             
-            const buttons = document.querySelectorAll('.tab-btn');
-            // Mapping simple par index car on a changé les labels
-            if(id === 'accueil') buttons[0].classList.add('active');
-            if(id === 'syllogismes') buttons[1].classList.add('active');
-            if(id === 'reflexes') buttons[2].classList.add('active');
-            if(id === 'abbrev') buttons[3].classList.add('active');
-            if(id === 'competences') buttons[4].classList.add('active');
-            if(id === 'flashcards') buttons[5].classList.add('active');
-        }
-
-        // --- RENDER FUNCTIONS (OPTIMISÉES) ---
-        function filterCases(filter) {
-            const container = document.getElementById('cases-container');
-            const filtered = dbCases.filter(i => filter === 'all' || i.cat === filter);
-            
-            // Optimisation : On construit une seule chaîne HTML au lieu d'appeler innerHTML += en boucle
-            const htmlContent = filtered.map((item, idx) => {
-                let badgeClass = item.cat === 'Python' ? 'bg-python' : (item.cat === 'Web' ? 'bg-web' : 'bg-git');
-                
-                return `
-                <div class="case-card">
-                    <div class="case-header">
-                        <div class="flex items-center gap-3">
-                            <div class="badge-circle ${badgeClass}">${item.cat}</div>
-                            <h3 class="case-title mb-0">${item.title}</h3>
-                        </div>
+            return `
+            <div class="case-card fade-up">
+                <div class="case-header">
+                    <div class="flex items-center gap-3">
+                        <div class="badge-circle ${badgeClass}">${item.cat}</div>
+                        <h3 class="case-title mb-0">${item.title}</h3>
+                    </div>
+                    <div class="flex items-center gap-3">
                         <span class="text-xs font-bold text-gray-400">#${idx+1}</span>
+                        <button onclick="speakCase('${item.title}', '${item.context.replace(/'/g, "\\'")}', '${item.conclusion.replace(/'/g, "\\'")}')" class="text-gray-400 hover:text-[#D9A526] transition">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
                     </div>
-                    <div class="case-body">
-                        <div class="case-context"><i class="fas fa-terminal mr-2"></i> ${item.context}</div>
-                        <div class="mt-auto">
-                            <button class="reveal-btn" onclick="toggleSolution(this)">
-                                <span><i class="fas fa-bug"></i> Debug</span>
-                            </button>
-                            <div class="case-solution">
-                                <div class="syllogism-step step-majeure"><span class="step-label">RÈGLE / SYNTAXE :</span>${item.majeure}</div>
-                                <div class="syllogism-step step-mineure"><span class="step-label">ANALYSE DU PROBLEME :</span>${item.mineure}</div>
-                                <div class="syllogism-step step-conclusion"><span class="step-label">FIX / SOLUTION :</span>${item.conclusion}</div>
-                                <div class="mt-3 text-sm text-yellow-700 bg-yellow-50 p-2 rounded border border-yellow-200">
-                                    <i class="fas fa-lightbulb mr-2"></i> <strong>Tip :</strong> ${item.advice}
-                                </div>
+                </div>
+                <div class="case-body">
+                    <div class="case-context"><i class="fas fa-terminal mr-2"></i> ${item.context}</div>
+                    <div class="mt-auto">
+                        <button class="reveal-btn" onclick="toggleSolution(this)">
+                            <span><i class="fas fa-bug"></i> Debug</span>
+                        </button>
+                        <div class="case-solution">
+                            <div class="syllogism-step step-majeure"><span class="step-label">RÈGLE / SYNTAXE :</span>${item.majeure}</div>
+                            <div class="syllogism-step step-mineure"><span class="step-label">ANALYSE DU PROBLEME :</span>${item.mineure}</div>
+                            <div class="syllogism-step step-conclusion"><span class="step-label">FIX / SOLUTION :</span>${item.conclusion}</div>
+                            <div class="mt-3 text-sm text-yellow-700 bg-yellow-50 p-2 rounded border border-yellow-200">
+                                <i class="fas fa-lightbulb mr-2"></i> <strong>Tip :</strong> ${item.advice}
                             </div>
                         </div>
                     </div>
-                </div>`;
-            }).join('');
-            
-            container.innerHTML = htmlContent;
-        }
+                </div>
+            </div>`;
+        }).join('');
+        container.innerHTML = htmlContent;
+    }
 
-        function toggleSolution(btn) {
-            const content = btn.nextElementSibling;
-            content.classList.toggle('open');
-            btn.innerHTML = content.classList.contains('open') ? '<span><i class="fas fa-eye-slash"></i> Masquer</span>' : '<span><i class="fas fa-bug"></i> Debug</span>';
-            btn.classList.toggle('active');
-        }
+    function toggleSolution(btn) {
+        const content = btn.nextElementSibling;
+        content.classList.toggle('open');
+        btn.innerHTML = content.classList.contains('open') ? '<span><i class="fas fa-eye-slash"></i> Masquer</span>' : '<span><i class="fas fa-bug"></i> Debug</span>';
+    }
 
-        function renderReflexes(data) {
-            const container = document.getElementById('reflexes-container');
-            const htmlContent = data.map((item, idx) => {
-                let bgClass = item.c === 'Secu' ? 'bg-secu' : (item.c === 'Deploy' ? 'bg-deploy' : 'bg-gitflow');
-                let steps = item.s.map((s, i) => `<div class="reflexe-step"><div class="step-num">${i+1}</div><div class="text-sm text-gray-700 font-code">${s}</div></div>`).join('');
-                return `
-                <div class="reflexe-card">
-                    <div class="reflexe-header ${bgClass}">
-                        <span>${item.t}</span>
+    // Gestion Checklists
+    function filterReflexes(filter) {
+        const filtered = dbReflexes.filter(i => filter === 'all' || i.c === filter || i.c.includes(filter));
+        renderReflexes(filtered);
+    }
+    
+    function renderReflexes(data) {
+        const container = document.getElementById('reflexes-container');
+        const htmlContent = data.map((item, idx) => {
+            let bgClass = '';
+            if (item.c === 'Secu') bgClass = 'bg-secu';
+            else if (item.c === 'Deploy') bgClass = 'bg-deploy';
+            else if (item.c === 'Git') bgClass = 'bg-gitflow';
+            else if (item.c === 'Data') bgClass = 'bg-data';
+            else if (item.c === 'Python') bgClass = 'bg-python';
+            else if (item.c === 'Web') bgClass = 'bg-web';
+            else bgClass = 'bg-python';
+
+            let steps = item.s.map((s, i) => `<div class="reflexe-step"><div class="step-num">${i+1}</div><div class="text-sm text-gray-700 font-code">${s}</div></div>`).join('');
+            return `
+            <div class="reflexe-card fade-up">
+                <div class="reflexe-header ${bgClass}">
+                    <span>${item.t}</span>
+                    <div class="flex items-center gap-2">
+                        <button onclick="speakChecklist('${item.t}', '${item.d.replace(/'/g, "\\'")}')" class="text-white opacity-80 hover:opacity-100 mr-2">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
                         <i class="fas fa-check-circle opacity-50"></i>
                     </div>
-                    <div class="reflexe-body">
-                        <p class="text-sm text-gray-500 mb-4 italic">${item.d}</p>
-                        ${steps}
-                        <div class="mt-4 p-2 bg-red-50 text-red-700 text-xs border-l-2 border-red-500 rounded-r">
-                            <strong>Warning:</strong> ${item.p}
-                        </div>
+                </div>
+                <div class="reflexe-body">
+                    <p class="text-sm text-gray-500 mb-4 italic">${item.d}</p>
+                    ${steps}
+                    <div class="mt-4 p-2 bg-red-50 text-red-700 text-xs border-l-2 border-red-500 rounded-r">
+                        <strong>Warning:</strong> ${item.p}
                     </div>
-                </div>`;
-            }).join('');
-            container.innerHTML = htmlContent;
-        }
+                </div>
+            </div>`;
+        }).join('');
+        container.innerHTML = htmlContent;
+    }
 
-        function renderAbbrev(data) {
-            const container = document.getElementById('abbrev-container');
-            data.sort((a,b) => a.a.localeCompare(b.a));
-            const htmlContent = data.map(item => `
-                <div class="dalloz-card">
-                    <div class="dalloz-abbr">${item.a}</div>
-                    <div class="dalloz-full">${item.f}</div>
-                </div>`).join('');
-            container.innerHTML = htmlContent;
-        }
-        
-        document.getElementById('abbrevSearch').addEventListener('keyup', (e) => {
-            const val = e.target.value.toLowerCase();
-            renderAbbrev(dbAbrev.filter(i => i.a.toLowerCase().includes(val) || i.f.toLowerCase().includes(val)));
-        });
+    // Gestion Jeu
+    function revealCharade() {
+        const answer = document.getElementById('charade-answer');
+        answer.classList.remove('hidden');
+        speakText("La réponse est la méthode init, aussi appelée le constructeur !");
+    }
 
-        function renderCompetences(data) {
-            const container = document.getElementById('competences-container');
-            const htmlContent = data.map(cat => {
-                const itemsHtml = cat.items.map(i => `<div class="matiere-card text-center"><span class="matiere-name text-sm">${i}</span></div>`).join('');
-                return `
-                <div class="matiere-section">
-                    <div class="matiere-title-main"><i class="fas fa-laptop-code"></i> ${cat.category}</div>
-                    <p class="text-gray-600 mb-4 text-sm">${cat.desc}</p>
-                    <div class="matiere-list">${itemsHtml}</div>
-                </div>`;
-            }).join('');
-            container.innerHTML = htmlContent;
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
         }
+    }
 
-        // --- FLASHCARDS LOGIC ---
-        function initFlashcards() {
-            flashcardsData = [];
-            dbAbrev.forEach(i => flashcardsData.push({cat: "Acronyme", q: i.a, a: i.f, trap: "Retiens la signification !"}));
-            dbReflexes.forEach(i => flashcardsData.push({cat: "Checklist", q: i.t, a: i.d, trap: i.p}));
-            shuffleArray(flashcardsData);
-            renderFlashcard();
-        }
-        function shuffleArray(array) {
-            for (let i = array.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [array[i], array[j]] = [array[j], array[i]];
-            }
-        }
-        function renderFlashcard() {
-            if (flashcardsData.length === 0) return;
-            const card = flashcardsData[currentCardIndex];
-            const cardObj = document.querySelector('.flashcard-obj');
+    function renderFlashcard() {
+        if (flashcardsData.length === 0) return;
+        const card = flashcardsData[currentCardIndex];
+        const cardObj = document.querySelector('.flashcard-obj');
+        if(isFlipped) {
             cardObj.classList.remove('is-flipped');
             isFlipped = false;
-            setTimeout(() => {
-                document.getElementById('fc-cat').textContent = card.cat;
-                document.getElementById('fc-question').textContent = card.q;
-                document.getElementById('fc-answer').textContent = card.a;
-                document.getElementById('fc-trap').textContent = "Tip : " + card.trap;
-            }, 200);
         }
-        function flipCard() {
-            document.querySelector('.flashcard-obj').classList.toggle('is-flipped');
-            isFlipped = !isFlipped;
-        }
-        function nextCard() {
-            currentCardIndex = (currentCardIndex + 1) % flashcardsData.length;
-            renderFlashcard();
-        }
-        function prevCard() {
-            currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length;
-            renderFlashcard();
-        }
-        function randomCard() {
-            shuffleArray(flashcardsData);
-            currentCardIndex = 0;
-            renderFlashcard();
-        }
+        setTimeout(() => {
+            document.getElementById('fc-cat').textContent = card.cat;
+            document.getElementById('fc-question').textContent = card.q;
+            document.getElementById('fc-answer').textContent = card.a;
+            document.getElementById('fc-trap').textContent = "Tip : " + card.trap;
+        }, 200);
+    }
 
-        // VOIX FRANÇAISE FEMININE FORCEE
-        function speakText(text) {
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                const msg = new SpeechSynthesisUtterance(text);
-                msg.lang = 'fr-FR'; // Force la langue française
-                
-                const voices = window.speechSynthesis.getVoices();
-                
-                // Recherche d'une voix française féminine connue
-                // "Google français" (Chrome), "Hortense" (Windows), "Amelie" (Mac), "Audrey" (iOS)
-                const femaleVoice = voices.find(v => 
-                    v.lang.includes('fr') && (
-                        v.name.includes('Google français') || 
-                        v.name.includes('Hortense') || 
-                        v.name.includes('Amelie') || 
-                        v.name.includes('Audrey') ||
-                        v.name.includes('Aurélie') ||
-                        v.name.includes('Female')
-                    )
-                );
-                
-                // Si trouvée, on l'applique
-                if (femaleVoice) {
-                    msg.voice = femaleVoice;
-                }
+    function flipCard() {
+        document.querySelector('.flashcard-obj').classList.toggle('is-flipped');
+        isFlipped = !isFlipped;
+    }
 
-                window.speechSynthesis.speak(msg);
-            }
-        }
-        function readFrontCard() {
-            const c = flashcardsData[currentCardIndex];
-            speakText(`Question sur ${c.cat} : ${c.q}`);
-        }
-        function readBackCard() {
-            const c = flashcardsData[currentCardIndex];
-            speakText(`La réponse est : ${c.a}. Attention : ${c.trap}`);
-        }
+    function nextCard() {
+        currentCardIndex = (currentCardIndex + 1) % flashcardsData.length;
+        renderFlashcard();
+    }
+
+    function prevCard() {
+        currentCardIndex = (currentCardIndex - 1 + flashcardsData.length) % flashcardsData.length;
+        renderFlashcard();
+    }
+    
+    function randomCard() {
+        shuffleArray(flashcardsData);
+        currentCardIndex = 0;
+        renderFlashcard();
+    }
+
+    // --- AUDIO MOTEUR AMÉLIORÉ ---
+    
+    // Fonction de base pour parler
+    function speakText(text) {
+        if (!synth) return;
+        synth.cancel(); // Stop précedent
         
-        // Back to top
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) document.getElementById('backToTop').classList.add('visible');
-            else document.getElementById('backToTop').classList.remove('visible');
-        });
+        currentUtterance = new SpeechSynthesisUtterance(text);
+        currentUtterance.lang = 'fr-FR';
+        
+        const voices = synth.getVoices();
+        const femaleVoice = voices.find(v => v.lang.includes('fr') && (v.name.includes('Google') || v.name.includes('Amelie') || v.name.includes('Audrey')));
+        if(femaleVoice) currentUtterance.voice = femaleVoice;
+        
+        currentUtterance.onend = () => { isPlayingGlobal = false; updateGlobalBtnState(false); };
+        
+        synth.speak(currentUtterance);
+    }
 
-    </script>
+    // Audio Individuel
+    function speakCase(title, context, conclusion) {
+        speakText(`Cas ${title}. Problème : ${context}. Solution : ${conclusion}`);
+    }
+    function speakChecklist(title, desc) {
+        speakText(`Fiche réflexe : ${title}. ${desc}`);
+    }
+    function readFrontCard() {
+        const c = flashcardsData[currentCardIndex];
+        speakText(`Question sur ${c.cat} : ${c.q}`);
+    }
+    function readBackCard() {
+        const c = flashcardsData[currentCardIndex];
+        speakText(`La réponse est : ${c.a}. Attention : ${c.trap}`);
+    }
+
+    // --- AUDIO GLOBAL (LECTURE COMPLÈTE) ---
+    function readAllDebugging() {
+        toggleGlobalRead(dbCases, (item) => `Cas ${item.title}. Contexte : ${item.context}. Solution : ${item.conclusion}.`);
+    }
+    function readAllChecklists() {
+        toggleGlobalRead(dbReflexes, (item) => `Fiche ${item.t}. ${item.d}. Attention : ${item.p}.`);
+    }
+    function readAllFlashcards() {
+        toggleGlobalRead(flashcardsData, (item) => `Question ${item.cat} : ${item.q}. Réponse : ${item.a}.`);
+    }
+
+    // Moteur lecture globale avec Play/Pause/Stop
+    function toggleGlobalRead(dataSource, formatFunc) {
+        if (isPlayingGlobal) {
+             stopAudio();
+        } else {
+            // Construit le texte complet
+            let fullText = "Début de la lecture. ";
+            dataSource.forEach(item => {
+                fullText += formatFunc(item) + " ... "; // Pause naturelle
+            });
+            
+            speakText(fullText);
+            isPlayingGlobal = true;
+            updateGlobalBtnState(true);
+        }
+    }
+    
+    function pauseAudio() {
+        if(synth.speaking && !synth.paused) {
+            synth.pause();
+        } else if(synth.paused) {
+            synth.resume();
+        }
+    }
+
+    function stopAudio() {
+        synth.cancel();
+        isPlayingGlobal = false;
+        updateGlobalBtnState(false);
+    }
+
+    function updateGlobalBtnState(playing) {
+        const btns = document.querySelectorAll('.global-audio-btn');
+        btns.forEach(btn => {
+            // On cible spécifiquement le bouton "Tout Écouter" (le premier du groupe)
+            if (btn.innerHTML.includes('Tout') || btn.innerHTML.includes('Stop')) {
+                if(playing) {
+                    btn.innerHTML = '<i class="fas fa-stop-circle"></i> Stop Lecture';
+                    btn.classList.add('playing');
+                } else {
+                    btn.innerHTML = '<i class="fas fa-headphones"></i> Tout Écouter';
+                    btn.classList.remove('playing');
+                }
+            }
+        });
+    }
+
+  </script>
+
 </body>
 </html>

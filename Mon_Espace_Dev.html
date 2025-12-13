@@ -1,285 +1,332 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mon Espace - The Dev Elite Club</title>
+
+  <!-- Favicon Python (Thème) -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        /* --- VARIABLES (Charte Mathilde) --- */
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+       
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+
+        /* --- VARIABLES (Contenu & Compatibilité Dashboard) --- */
+        --brand-cta: var(--brandGold);    /* Alias pour le code existant */
+        --brand-bronze: var(--bronze);    /* Alias pour le code existant */
+        --brand-ivory: var(--ivory);      /* Alias pour le code existant */
+
+        --color-bg: var(--ivory);
+        --color-primary: var(--brand-blue);
+        --color-accent: var(--brandGold);
+        --color-alert: var(--bronze);
+        --color-text: #2c3e50;
+        --color-white: #ffffff;
+    }
     
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Outfit:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    /* --- HEADER (V2 Optimisé) --- */
+    .top-bar { 
+        background: var(--brand-blue); 
+        padding: 12px 0; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%; 
+        padding: 0 40px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
-    <style>
-        /* ========================================= */
-        /* STYLES ET VARIABLES - PALETTE MATHILDE    */
-        /* ========================================= */
-        :root { 
-            /* --- Nouvelle Palette --- */
-            --brand-blue: #0F2C48;   /* Titres & Séparations */
-            --brand-cta: #D9A526;    /* Boutons CTA (Jaune) */
-            --brand-ivory: #F6F2E8;  /* Surfaces / Cartes */
-            --brand-bronze: #B4792A; /* Alertes / Éditions */
-            
-            /* Alias fonctionnels pour le code existant */
-            --python-blue: var(--brand-blue);
-            --python-yellow: var(--brand-cta);
-            --jungle-green: var(--brand-cta); /* On remplace le vert par le Jaune/Bronze pour rester dans le thème */
-            --alert: var(--brand-bronze);
-            
-            --footer-bg: var(--brand-blue); 
-            --footer-text: var(--brand-ivory); 
-        }
-        
-        body { 
-            margin: 0; 
-            font-family: 'Outfit', sans-serif; 
-            background-color: #ffffff; /* Fond neutre pour faire ressortir l'Ivoire */
-            background-image: radial-gradient(var(--brand-blue) 0.5px, transparent 0.5px);
-            background-size: 24px 24px;
-            color: var(--brand-blue); 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-        }
-        
-        /* Font pour le code */
-        .font-code { font-family: 'Fira Code', monospace; }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
+    
+    /* Tooltip maison */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
 
-        /* --- CSS DU HEADER --- */
-        .top-bar { 
-            background: var(--brand-blue); /* Bleu #0F2C48 */
-            padding: 12px 20px; 
-            position: sticky; 
-            top: 0; 
-            z-index: 9999; 
-            border-bottom: 4px solid var(--brand-cta); /* Jaune #D9A526 */
-            box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
-        }
-        
-        .top-bar-container { 
-            width: 100%; 
-            padding: 0 10px; 
-            display: flex; 
-            align-items: center; 
-            gap: 16px; 
-        }
-        
-        .top-left { 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-            margin-right: auto; 
-        }
-        
-        .logo-top { 
-            width: 64px; height: 64px; 
-            border-radius: 12px; object-fit: contain; 
-            background: var(--brand-ivory); 
-            padding: 5px;
-            border: 2px solid var(--brand-cta);
-            transition: transform 0.3s ease;
-        }
-        .logo-top:hover { transform: rotate(10deg) scale(1.1); }
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
+        text-decoration: none; 
+        font-family: 'Fira Code', monospace;
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
+    }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
 
-        .identity-stack { display: flex; flex-direction: column; }
-        .club-title-main { 
-            font-family: 'Fira Code', monospace; 
-            font-weight: 700; 
-            color: var(--brand-ivory); /* Texte clair sur fond bleu */
-            font-size: 1.0rem; 
-            letter-spacing: -0.5px;
-        }
-        .club-subtitle { 
-            color: var(--brand-cta); /* Jaune sur fond bleu */
-            font-weight: 600; 
-            font-size: 0.8rem; 
-        }
-        
-        .top-center { display: flex; gap: 10px; align-items: center; }
-        
-        .header-icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0;
-            border-radius: 8px; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            text-decoration: none; 
-            background: rgba(246, 242, 232, 0.1); /* Transparence Ivoire */
-            color: var(--brand-ivory); 
-            border: 1px solid rgba(217, 165, 38, 0.3); 
-            transition: all 0.2s ease;
-            font-size: 1.2rem;
-            position: relative;
-        }
-        .header-icon-btn:hover { 
-            transform: translateY(-3px); 
-            background: var(--brand-cta); 
-            color: var(--brand-blue);
-            border-color: var(--brand-ivory); 
-            box-shadow: 0 0 15px rgba(217, 165, 38, 0.5);
-        }
-        
-        .btn-portfolio-cosmic { 
-            padding: 8px 18px; 
-            border-radius: 8px; 
-            background: var(--brand-cta); /* CTA Jaune */
-            color: var(--brand-blue); 
-            text-decoration: none; 
-            font-family: 'Fira Code', monospace;
-            font-weight: 700; 
-            display: inline-flex; gap: 8px; align-items: center; 
-            transition: all 0.3s;
-            white-space: nowrap;
-            box-shadow: 4px 4px 0px var(--brand-bronze); /* Ombre Bronze */
-            border: 1px solid var(--brand-ivory);
-        }
-        .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--brand-bronze); background: var(--brand-ivory); }
+    /* Main Content Placeholder */
+    .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-        /* --- DASHBOARD CARDS --- */
-        .dashboard-card {
-            background: var(--brand-ivory); /* Surface Ivoire #F6F2E8 */
-            border-radius: 12px; padding: 24px;
-            box-shadow: 0 4px 6px -1px rgba(15, 44, 72, 0.1); 
-            border: 1px solid rgba(15, 44, 72, 0.1);
-            transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column;
-            position: relative;
-            overflow: hidden;
-        }
-        .dashboard-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, var(--brand-blue), var(--brand-cta));
-        }
-        .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(15, 44, 72, 0.15); border-color: var(--brand-cta); }
-        
-        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px dashed rgba(15, 44, 72, 0.15); }
-        .card-icon { width: 36px; height: 36px; border-radius: 8px; background-color: var(--brand-blue); color: var(--brand-cta); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
-        
-        .input-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; font-family: 'Fira Code', monospace; color: var(--brand-blue); margin-bottom: 4px; opacity: 0.8; }
-        .styled-input, .styled-select { 
-            width: 100%; padding: 10px 12px; border-radius: 6px; 
-            border: 2px solid rgba(15, 44, 72, 0.2); background-color: #fff; 
-            color: var(--brand-blue); font-family: 'Fira Code', monospace; font-size: 0.9rem; transition: all 0.2s; 
-        }
-        .styled-input:focus, .styled-select:focus { outline: none; border-color: var(--brand-cta); background-color: #fff; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.2); }
-        
-        /* --- CHECKLIST STYLE --- */
-        .competence-card {
-            background: var(--brand-ivory); /* Ivoire */
-            border: 1px solid rgba(15, 44, 72, 0.1); border-radius: 12px; 
-            transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;
-            height: 100%;
-        }
-        .competence-card:hover { border-color: var(--brand-cta); box-shadow: 0 10px 30px rgba(217, 165, 38, 0.15); }
-        
-        .comp-header { padding: 20px; background: rgba(15, 44, 72, 0.05); border-bottom: 1px solid rgba(15, 44, 72, 0.1); }
-        .comp-body { padding: 20px; flex-grow: 1; overflow-y: auto; max-height: 400px; }
-        
-        .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; color: var(--brand-blue); cursor: pointer; transition: all 0.2s; font-family: 'Fira Code', monospace; font-size: 0.8rem; }
-        .checklist-item:hover { color: var(--brand-bronze); transform: translateX(2px); }
-        .checklist-item input[type="checkbox"] { 
-            accent-color: var(--brand-cta); width: 18px; height: 18px; margin-top: 2px; cursor: pointer;
-        }
-        .checklist-item.completed span { text-decoration: line-through; color: rgba(15, 44, 72, 0.4); }
+    /* --- DASHBOARD STYLES (Conservés et Adaptés) --- */
+    .dashboard-card {
+        background: var(--ivory); 
+        border-radius: 12px; padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(15, 44, 72, 0.1); 
+        border: 1px solid rgba(15, 44, 72, 0.1);
+        transition: transform 0.3s ease; height: 100%; display: flex; flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+    .dashboard-card::before {
+        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+        background: linear-gradient(90deg, var(--brand-blue), var(--brandGold));
+    }
+    .dashboard-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(15, 44, 72, 0.15); border-color: var(--brandGold); }
+    
+    .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px dashed rgba(15, 44, 72, 0.15); }
+    .card-icon { width: 36px; height: 36px; border-radius: 8px; background-color: var(--brand-blue); color: var(--brandGold); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    
+    .input-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; font-family: 'Fira Code', monospace; color: var(--brand-blue); margin-bottom: 4px; opacity: 0.8; }
+    .styled-input, .styled-select { 
+        width: 100%; padding: 10px 12px; border-radius: 6px; 
+        border: 2px solid rgba(15, 44, 72, 0.2); background-color: #fff; 
+        color: var(--brand-blue); font-family: 'Fira Code', monospace; font-size: 0.9rem; transition: all 0.2s; 
+    }
+    .styled-input:focus, .styled-select:focus { outline: none; border-color: var(--brandGold); background-color: #fff; box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.2); }
+    
+    /* --- CHECKLIST STYLE --- */
+    .competence-card {
+        background: var(--ivory); 
+        border: 1px solid rgba(15, 44, 72, 0.1); border-radius: 12px; 
+        transition: all 0.3s ease; overflow: hidden; display: flex; flex-direction: column;
+        height: 100%;
+    }
+    .competence-card:hover { border-color: var(--brandGold); box-shadow: 0 10px 30px rgba(217, 165, 38, 0.15); }
+    
+    .comp-header { padding: 20px; background: rgba(15, 44, 72, 0.05); border-bottom: 1px solid rgba(15, 44, 72, 0.1); }
+    .comp-body { padding: 20px; flex-grow: 1; overflow-y: auto; max-height: 400px; }
+    
+    .checklist-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; font-size: 0.9rem; color: var(--brand-blue); cursor: pointer; transition: all 0.2s; font-family: 'Fira Code', monospace; font-size: 0.8rem; }
+    .checklist-item:hover { color: var(--bronze); transform: translateX(2px); }
+    .checklist-item input[type="checkbox"] { 
+        accent-color: var(--brandGold); width: 18px; height: 18px; margin-top: 2px; cursor: pointer;
+    }
+    .checklist-item.completed span { text-decoration: line-through; color: rgba(15, 44, 72, 0.4); }
 
-        .progress-mini-bar { width: 100%; height: 8px; background: rgba(15, 44, 72, 0.1); margin-top: 15px; border-radius: 4px; overflow: hidden; }
-        .progress-mini-fill { height: 100%; background: linear-gradient(90deg, var(--brand-cta), var(--brand-bronze)); width: 0%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .progress-mini-bar { width: 100%; height: 8px; background: rgba(15, 44, 72, 0.1); margin-top: 15px; border-radius: 4px; overflow: hidden; }
+    .progress-mini-fill { height: 100%; background: linear-gradient(90deg, var(--brandGold), var(--bronze)); width: 0%; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        /* --- PROGRAMME BLOCKS --- */
-        .prog-block { 
-            background: #fff; color: var(--brand-blue); 
-            border-radius: 12px; padding: 20px; 
-            border-left: 4px solid var(--brand-cta); 
-            box-shadow: 0 4px 6px rgba(15, 44, 72, 0.05); 
-            font-family: 'Fira Code', monospace;
-            border: 1px solid rgba(15, 44, 72, 0.1);
-        }
-        .prog-block h4 { color: var(--brand-blue); margin-top: 0; }
+    /* --- PROGRAMME BLOCKS --- */
+    .prog-block { 
+        background: #fff; color: var(--brand-blue); 
+        border-radius: 12px; padding: 20px; 
+        border-left: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 6px rgba(15, 44, 72, 0.05); 
+        font-family: 'Fira Code', monospace;
+        border: 1px solid rgba(15, 44, 72, 0.1);
+    }
+    .prog-block h4 { color: var(--brand-blue); margin-top: 0; }
+    
+    /* Animation Timer (Alerte = Bronze) */
+    @keyframes pulse-bronze { 0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); } }
+    .timer-active { border-color: var(--bronze) !important; animation: pulse-bronze 2s infinite; }
+
+    /* Animation Fade Up */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- FOOTER (V2) --- */
+    .main-footer { 
+        background: var(--footer-bg); color: var(--footer-text); 
+        padding: 40px 0; 
+        margin-top: auto; border-top: 4px solid var(--brandGold); 
+        font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+        width: 100%;
+    }
+    .footer-container { 
+        width: 100%;
+        max-width: 100%; 
+        padding: 0 40px; 
+        margin: 0 auto; 
+        display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; 
+    }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { 
+        color: var(--brandGold); 
+        text-decoration: none; 
+        transition: color 0.2s; 
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { 
+        width: 40px; height: 40px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.06); 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        border: 1px solid rgba(217, 165, 38, 0.15); 
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; padding-bottom: 5px; }
+        .top-left { margin-right: 0; flex-direction: column; text-align: center; }
+        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+        .top-center::-webkit-scrollbar { height: 4px; }
+        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
         
-        /* Animation Timer (Alerte = Bronze) */
-        @keyframes pulse-bronze { 0% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(180, 121, 42, 0); } 100% { box-shadow: 0 0 0 0 rgba(180, 121, 42, 0); } }
-        .timer-active { border-color: var(--brand-bronze) !important; animation: pulse-bronze 2s infinite; }
-
-        /* --- FOOTER --- */
-        .main-footer { background: var(--brand-blue); color: var(--brand-ivory); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brand-cta); font-family: 'Fira Code', monospace; font-size: 0.85rem; }
-        .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-        .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--brand-cta); padding: 2px; background: var(--brand-ivory); }
-        .footer-link { color: var(--brand-cta); text-decoration: none; }
-        .footer-link:hover { text-decoration: underline; color: #fff; }
-
-        /* Helpers Text */
-        .text-brand-blue { color: var(--brand-blue); }
-        .text-brand-cta { color: var(--brand-cta); }
-        .text-brand-bronze { color: var(--brand-bronze); }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 1100px) {
-            .top-bar-container { flex-direction: column; text-align: center; }
-            .top-left { margin-right: 0; flex-direction: column; text-align: center; }
-            .top-center { overflow-x: auto; width: 100%; padding-bottom: 10px; justify-content: center; }
-            .footer-container { flex-direction: column; text-align: center; }
-        }
-    </style>
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; } 
+        .footer-left { flex-direction: column; }
+        .footer-details { align-items: center; margin-top: 10px; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+        .footer-divider { display: none; } 
+    }
+  </style>
 </head>
 <body onload="loadDevData()">
 
-  <!-- ============================================ -->
-  <!-- HEADER -->
-  <!-- ============================================ -->
+  <!-- ==================== HEADER (HAUT) ==================== -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
       
       <!-- Logo & Titre -->
       <div class="top-left">
-        <a href="#" title="Root">
-          <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER OFFICIEL -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
         </a>
         <div class="identity-stack">
-          <!-- TITRE IMPOSÉ -->
-          <div class="club-title-main">💫 The Dev Elite Club By Studi ✨</div>
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
           <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
       </div>
 
-      <!-- Navigation Icônes Dev -->
-      <nav class="top-center">
-        <a class="header-icon-btn" href="#" title="Mon Profil"><i class="fa-solid fa-user-astronaut"></i></a>
-        <a class="header-icon-btn" href="#" title="Home / Terminal"><i class="fa-solid fa-terminal"></i></a>
-        <a class="header-icon-btn" href="#" title="Dashboard"><i class="fa-solid fa-chart-line"></i></a>
-        <a class="header-icon-btn" href="#" title="Planning Live"><i class="fa-regular fa-calendar-check"></i></a>
-        <a class="header-icon-btn" href="#" title="Documentation"><i class="fa-solid fa-book-journal-whills"></i></a>
-        <a class="header-icon-btn" href="#" title="Projets / GitHub"><i class="fa-brands fa-github"></i></a>
-        <a class="header-icon-btn" href="#" title="Stack Overflow"><i class="fa-brands fa-stack-overflow"></i></a>
+      <!-- Navigation Icônes (Mise à jour selon ta liste) -->
+      <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">👤</a>
       </nav>
 
-      <!-- Bouton EXPERT -->
+      <!-- Bouton EXPERT / Portfolio -->
       <div>
-        <a class="btn-portfolio-cosmic" href="#" target="_blank" title="Mon Portfolio">
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" title="Mon Portfolio">
            <i class="fa-solid fa-code"></i>
-           Dev Portfolio
+           Mon Portfolio
         </a>
       </div>
     </div>
   </div>
+  <!-- ==================== FIN HEADER ==================== -->
 
-  <!-- CONTENU DU DASHBOARD -->
-  <main class="flex-grow container mx-auto px-4 py-8 space-y-10">
+  <!-- ==================== CONTENU DASHBOARD ==================== -->
+  <main class="main-content flex-grow container mx-auto px-4 py-8 space-y-10">
 
-    <div class="text-center space-y-2">
+    <div class="text-center space-y-2 fade-up">
         <h1 class="text-3xl md:text-4xl font-bold font-code text-brand-blue">
             &lt;Systeme_Central /&gt; 
-            <span class="text-brand-cta">Tableau de bord</span> 
-            <span class="text-brand-bronze">Python</span> 🐍
+            <span style="color: var(--brandGold);">Tableau de bord</span> 
+            <span style="color: var(--bronze);">Python</span> 🐍
         </h1>
         <p class="text-brand-blue font-code text-sm opacity-80">Bachelor Développeur d’Application Python • RNCP 36146</p>
     </div>
 
-    <!-- Message de Bienvenue (Surface Ivoire) -->
-    <div class="text-center bg-[var(--brand-ivory)] p-6 rounded-xl border-l-4 border-[var(--brand-bronze)] shadow-sm mx-auto max-w-4xl border border-gray-200">
+    <!-- Message de Bienvenue -->
+    <div class="text-center bg-[var(--ivory)] p-6 rounded-xl border-l-4 border-[var(--bronze)] shadow-sm mx-auto max-w-4xl border border-gray-200 fade-up">
         <h2 class="text-2xl font-bold font-code text-brand-blue mb-2">
-            print(f"Bienvenue, <span id="displayFullName" class="text-brand-bronze">Dev</span> !")
+            print(f"Bienvenue, <span id="displayFullName" style="color: var(--bronze);">Dev</span> !")
         </h2>
         <p id="welcomeTagline" class="text-brand-blue italic font-code opacity-70">
             "While(alive): code(); eat(); sleep();"
@@ -292,7 +339,7 @@
     </div>
 
     <!-- CARTES SUPERIEURES -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 fade-up">
         
         <!-- CARTE PROFIL -->
         <div class="dashboard-card">
@@ -313,22 +360,15 @@
                 </div>
                 
                 <div>
-                    <label class="input-label text-brand-bronze">Track (Spécialité)</label>
+                    <label class="input-label" style="color: var(--bronze);">Track (Spécialité)</label>
                     <select id="userSpecialization" class="styled-select font-bold" onchange="saveDevData()">
                         <option value="python_web">🐍 Python Web (Django/Flask)</option>
                         <option value="python_data">📊 Python Data (Pandas/IA)</option>
                         <option value="python_mobile">📱 Python & Mobile (React Native)</option>
                     </select>
                 </div>
-
-                <div>
-                    <label class="input-label">Team Pédagogique (Ref)</label>
-                    <div class="text-xs text-brand-blue font-code bg-white border border-gray-200 p-2 rounded">
-                        <strong>Lead:</strong> Grégory RENUY<br>
-                        <strong>Ref Pédago:</strong> Albérick PUSSAT<br>
-                        <strong>Formateur Ref:</strong> Ala ATRASH
-                    </div>
-                </div>
+                
+                <!-- NOTE: Team Pédagogique retirée comme demandé -->
             </div>
         </div>
 
@@ -345,22 +385,32 @@
                         <select id="promoSelect" class="styled-select" onchange="updateDeadlinesFromPromo()">
                             <option value="juin2025">Promo JUIN 2025</option>
                             <option value="dec2025">Promo DECEMBRE 2025</option>
+                            <option value="juin2026">Promo JUIN 2026</option>
+                            <option value="dec2026">Promo DECEMBRE 2026</option>
+                            <option value="juin2027">Promo JUIN 2027</option>
+                            <option value="dec2027">Promo DECEMBRE 2027</option>
+                            <option value="juin2028">Promo JUIN 2028</option>
+                            <option value="dec2028">Promo DECEMBRE 2028</option>
+                            <option value="juin2029">Promo JUIN 2029</option>
+                            <option value="dec2029">Promo DECEMBRE 2029</option>
+                            <option value="juin2030">Promo JUIN 2030</option>
+                            <option value="dec2030">Promo DECEMBRE 2030</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="p-3 rounded-lg text-sm space-y-2 border border-dashed border-gray-300 bg-white mt-2 font-code">
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-500"><i class="fas fa-clock mr-1 text-brand-cta"></i> Durée Continue</span>
+                        <span class="text-gray-500"><i class="fas fa-clock mr-1" style="color: var(--brandGold);"></i> Durée Continue</span>
                         <span class="font-bold text-brand-blue">10 mois (500h)</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-500"><i class="fas fa-business-time mr-1 text-brand-cta"></i> Alternance</span>
+                        <span class="text-gray-500"><i class="fas fa-business-time mr-1" style="color: var(--brandGold);"></i> Alternance</span>
                         <span class="font-bold text-brand-blue">18 mois (609h)</span>
                     </div>
                     <div class="flex justify-between items-center">
-                        <span class="text-gray-500"><i class="fas fa-briefcase mr-1 text-brand-cta"></i> Stage</span>
-                        <span class="font-bold text-brand-bronze">Rec. 3 mois min</span>
+                        <span class="text-gray-500"><i class="fas fa-briefcase mr-1" style="color: var(--brandGold);"></i> Stage</span>
+                        <span class="font-bold" style="color: var(--bronze);">Rec. 3 mois min</span>
                     </div>
                 </div>
             </div>
@@ -369,8 +419,8 @@
         <!-- CARTE DEADLINE -->
         <div id="timerCard" class="dashboard-card">
             <div class="card-header">
-                <div class="card-icon text-brand-bronze bg-[#fdf2e9]"><i class="fa-solid fa-bomb"></i></div>
-                <h3 class="font-bold text-lg text-brand-bronze font-code">Next Deadline</h3>
+                <div class="card-icon bg-[#fdf2e9]" style="color: var(--bronze);"><i class="fa-solid fa-bomb"></i></div>
+                <h3 class="font-bold text-lg font-code" style="color: var(--bronze);">Next Deadline</h3>
             </div>
             <div class="space-y-4 flex flex-col h-full justify-between">
                 <div>
@@ -380,19 +430,19 @@
                 </div>
 
                 <div id="countdownDisplay" class="grid grid-cols-4 gap-2 text-center mt-2 font-code">
-                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg" style="color: var(--brandGold);">
                         <div class="text-xl font-bold" id="cd-days">00</div>
                         <div class="text-[8px] uppercase">Days</div>
                     </div>
-                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg" style="color: var(--brandGold);">
                         <div class="text-xl font-bold" id="cd-hours">00</div>
                         <div class="text-[8px] uppercase">Hrs</div>
                     </div>
-                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg" style="color: var(--brandGold);">
                         <div class="text-xl font-bold" id="cd-min">00</div>
                         <div class="text-[8px] uppercase">Min</div>
                     </div>
-                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg">
+                    <div class="bg-brand-blue text-brand-cta p-2 rounded-lg" style="color: var(--brandGold);">
                         <div class="text-xl font-bold" id="cd-sec">00</div>
                         <div class="text-[8px] uppercase">Sec</div>
                     </div>
@@ -403,10 +453,10 @@
     </div>
 
     <!-- SECTION COMPÉTENCES RNCP 36146 -->
-    <section id="competences-rncp">
-        <div class="flex items-center gap-3 mb-6 border-b-4 border-brand-cta pb-2">
+    <section id="competences-rncp" class="fade-up">
+        <div class="flex items-center gap-3 mb-6 border-b-4 border-brand-cta pb-2" style="border-color: var(--brandGold);">
             <h3 class="text-2xl font-bold text-brand-blue font-code">
-                <i class="fa-brands fa-python text-brand-cta mr-2"></i>Compétences RNCP 36146
+                <i class="fa-brands fa-python mr-2" style="color: var(--brandGold);"></i>Compétences RNCP 36146
             </h3>
         </div>
         
@@ -416,7 +466,7 @@
                 <div class="comp-header">
                     <div class="flex justify-between items-start">
                         <h4 class="font-bold text-brand-blue text-lg font-code">BLOC 1</h4>
-                        <i class="fa-solid fa-pen-ruler text-brand-cta text-xl"></i>
+                        <i class="fa-solid fa-pen-ruler text-xl" style="color: var(--brandGold);"></i>
                     </div>
                     <p class="text-sm text-gray-600 font-medium mt-1">Conception & Spécification</p>
                     <div class="progress-mini-bar"><div class="progress-mini-fill" id="prog-bar-1"></div></div>
@@ -429,7 +479,7 @@
                 <div class="comp-header">
                     <div class="flex justify-between items-start">
                         <h4 class="font-bold text-brand-blue text-lg font-code">BLOC 2</h4>
-                        <i class="fa-solid fa-list-check text-brand-cta text-xl"></i>
+                        <i class="fa-solid fa-list-check text-xl" style="color: var(--brandGold);"></i>
                     </div>
                     <p class="text-sm text-gray-600 font-medium mt-1">Gestion, Pilotage & Testing</p>
                     <div class="progress-mini-bar"><div class="progress-mini-fill" id="prog-bar-2"></div></div>
@@ -442,7 +492,7 @@
                 <div class="comp-header">
                     <div class="flex justify-between items-start">
                         <h4 class="font-bold text-brand-blue text-lg font-code">BLOC 3</h4>
-                        <i class="fa-solid fa-code text-brand-bronze text-xl"></i>
+                        <i class="fa-solid fa-code text-xl" style="color: var(--bronze);"></i>
                     </div>
                     <p class="text-sm text-gray-600 font-medium mt-1">Développement Solution Digitale</p>
                     <div class="progress-mini-bar"><div class="progress-mini-fill" id="prog-bar-3"></div></div>
@@ -453,10 +503,10 @@
     </section>
 
     <!-- PROGRAMME DETAILLE (Roadmap) -->
-    <section>
+    <section class="fade-up">
         <div class="flex items-center gap-3 mb-6 border-b-4 border-brand-blue pb-2">
             <h3 class="text-2xl font-bold text-brand-blue font-code">Programme & Roadmap</h3>
-            <span class="text-sm bg-brand-blue text-brand-ivory px-3 py-1 rounded font-code shadow-sm" id="programLabel">Fullstack Python</span>
+            <span class="text-sm bg-brand-blue text-white px-3 py-1 rounded font-code shadow-sm" id="programLabel">Fullstack Python</span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="programContainer">
@@ -467,7 +517,7 @@
         <div class="mt-8 bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
             <h4 class="font-bold text-lg mb-4 font-code text-brand-blue">ℹ️ Notes sur les Examens (Newsletter)</h4>
             <ul class="list-disc pl-5 space-y-2 text-sm text-gray-600 font-code">
-                <li><strong class="text-brand-cta">Note 11</strong> = Validé ✅ | <strong class="text-brand-bronze">Note 9</strong> = Non Validé ❌</li>
+                <li><strong style="color: var(--brandGold);">Note 11</strong> = Validé ✅ | <strong style="color: var(--bronze);">Note 9</strong> = Non Validé ❌</li>
                 <li>Correction sous 7 à 10 jours ouvrés.</li>
                 <li>Rattrapage possible (2ème dépôt) si non validé.</li>
                 <li>Soutenance orale finale obligatoire après validation des 3 blocs.</li>
@@ -478,42 +528,74 @@
 
   </main>
 
-  <!-- ============================================ -->
-  <!-- FOOTER -->
-  <!-- ============================================ -->
-  <footer class="main-footer">
+  <!-- ==================== FOOTER (BAS) ==================== -->
+  <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
-      <div class="flex flex-col md:flex-row gap-4 items-center">
-        <!-- Logo -->
-        <div class="bg-white p-2 rounded-lg">
-             <i class="fa-brands fa-python text-3xl text-brand-blue"></i>
+      <div class="footer-left">
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
         </div>
         
-        <!-- Contact -->
-        <div class="flex flex-col gap-1 text-center md:text-left">
-          <div class="font-bold text-brand-ivory text-lg">Mathilde Martine PAISLEY</div>
-          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-link">mathilde.martine.paisley@gmail.com</a>
-          <a href="tel:0685900887" class="footer-link">06 85 90 08 87</a>
+        <!-- DÉTAILS DE CONTACT -->
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          
+          <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-contact-link">
+              📧 Mathilde.martine.paisley@gmail.com
+          </a>
+          
+          <a href="tel:+33685900887" class="footer-contact-link">
+              📲 06 85 90 08 87
+          </a>
         </div>
       </div>
 
-      <div class="flex flex-col items-center md:items-end gap-4 mt-6 md:mt-0">
-         <div class="flex gap-4 text-2xl">
-            <a href="#" class="footer-link"><i class="fab fa-github"></i></a>
-            <a href="#" class="footer-link"><i class="fab fa-discord"></i></a>
-            <a href="#" class="footer-link"><i class="fab fa-stack-overflow"></i></a>
-            <a href="#" class="footer-link"><i class="fab fa-linkedin"></i></a>
-         </div>
-         <div class="text-xs text-brand-ivory text-center md:text-right opacity-70">
-            💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br>
-            Code with ❤️ and ☕ by Mathilde
-         </div>
+      <div class="footer-right">
+        <!-- Navigation Footer -->
+        <div class="footer-links-row" aria-label="Liens utilitaires" style="margin-bottom: 10px;">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
+            
+        <div class="footer-divider" style="height: 1px; width: 100%; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
+
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
+        </div>
+      </div>
+
+      <div class="copyright">
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
       </div>
     </div>
   </footer>
+  <!-- ==================== FIN FOOTER ==================== -->
 
 <script>
-    // --- DATA & LOGIC 110% DEV ---
+    // Animation d'apparition (Fade Up)
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // --- LOGIQUE DASHBOARD (Conservée) ---
 
     // Données issues de la Fiche Formation & Newsletter
     const pythonSkills = {
@@ -552,6 +634,76 @@
             depot1: "2025-09-22",
             depotFinal: "2025-10-21",
             video: "2025-11-21",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "juin2026": {
+            depot1: "2026-04-23",
+            depotFinal: "2026-05-23",
+            video: "2026-06-27",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "dec2026": {
+            depot1: "2026-09-22",
+            depotFinal: "2026-10-21",
+            video: "2026-11-21",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "juin2027": {
+            depot1: "2027-04-23",
+            depotFinal: "2027-05-23",
+            video: "2027-06-27",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "dec2027": {
+            depot1: "2027-09-22",
+            depotFinal: "2027-10-21",
+            video: "2027-11-21",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "juin2028": {
+            depot1: "2028-04-23",
+            depotFinal: "2028-05-23",
+            video: "2028-06-27",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "dec2028": {
+            depot1: "2028-09-22",
+            depotFinal: "2028-10-21",
+            video: "2028-11-21",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "juin2029": {
+            depot1: "2029-04-23",
+            depotFinal: "2029-05-23",
+            video: "2029-06-27",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "dec2029": {
+            depot1: "2029-09-22",
+            depotFinal: "2029-10-21",
+            video: "2029-11-21",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "juin2030": {
+            depot1: "2030-04-23",
+            depotFinal: "2030-05-23",
+            video: "2030-06-27",
+            label1: "1er Dépôt (Facultatif)",
+            labelFinal: "Dépôt FINAL (Obligatoire)"
+        },
+        "dec2030": {
+            depot1: "2030-09-22",
+            depotFinal: "2030-10-21",
+            video: "2030-11-21",
             label1: "1er Dépôt (Facultatif)",
             labelFinal: "Dépôt FINAL (Obligatoire)"
         }
@@ -642,8 +794,6 @@
         const promo = document.getElementById('promoSelect').value;
         const dates = deadlinesInfo[promo];
         
-        // On affiche par défaut le prochain gros dépôt (ici dépôt final pour l'exemple, ou le 1er selon la date actuelle)
-        // Pour l'exercice, on fixe au 1er depot
         document.getElementById('deadlineLabel').innerText = dates.label1;
         document.getElementById('evalDeadline').value = dates.depot1;
         
@@ -668,23 +818,23 @@
         if (storedData) {
             data = JSON.parse(storedData);
         } else {
+            // VALEURS PAR DEFAUT NEUTRES
             data = { 
-                name: 'Mathilde Martine',
-                surname: 'PAISLEY',
+                name: '',
+                surname: '',
                 specialization: 'python_web', 
-                promo: 'juin2025'
+                promo: 'juin2026' // Mis à jour pour une année future par défaut
             };
         }
 
         if(document.getElementById('userName')) document.getElementById('userName').value = data.name || "";
         if(document.getElementById('userSurname')) document.getElementById('userSurname').value = data.surname || "";
         if(document.getElementById('userSpecialization')) document.getElementById('userSpecialization').value = data.specialization || "python_web";
-        if(document.getElementById('promoSelect')) document.getElementById('promoSelect').value = data.promo || "juin2025";
+        if(document.getElementById('promoSelect')) document.getElementById('promoSelect').value = data.promo || "juin2026";
         
         updateUI(data);
         initCompetences();
         
-        // Force update deadline based on promo
         updateDeadlinesFromPromo();
     }
 
@@ -709,7 +859,7 @@
                         <span class="bg-brand-blue text-xs px-2 py-1 rounded text-white">${block.hours}</span>
                     </div>
                     <ul class="space-y-2 text-sm text-gray-600">
-                        ${block.items.map(item => `<li><i class="fa-solid fa-terminal text-brand-cta mr-2"></i>${item}</li>`).join('')}
+                        ${block.items.map(item => `<li><i class="fa-solid fa-terminal mr-2" style="color: var(--brandGold);"></i>${item}</li>`).join('')}
                     </ul>
                 </div>`;
                 container.innerHTML += html;

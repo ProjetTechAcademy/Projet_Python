@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mathilde Martine PAISLEY - À propos de moi</title>
+  <title>A propos de moi - Le Prime</title>
 
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
 
@@ -39,22 +39,22 @@
     /* Font pour le code */
     .font-code { font-family: 'Fira Code', monospace; }
 
-    /* --- HEADER (V2 Optimisé) --- */
+    /* --- HEADER (V2 Optimisé - RESPONSIVE LARGE) --- */
     .top-bar { 
         background: var(--brand-blue); 
-        padding: 12px 20px; 
+        padding: 12px 0; 
         position: sticky; 
         top: 0; 
         z-index: 9999; 
         border-bottom: 4px solid var(--brandGold); 
         box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
     }
     
     .top-bar-container { 
         width: 100%; 
-        max-width: 1400px; 
-        margin: 0 auto;
-        padding: 0 10px; 
+        max-width: 100%; 
+        padding: 0 40px; 
         display: flex; 
         align-items: center; 
         justify-content: space-between;
@@ -70,9 +70,9 @@
     
     .logo-top { 
         width: 64px; height: 64px; 
-        border-radius: 12px; object-fit: contain; 
+        border-radius: 50%; object-fit: cover; 
         border: 2px solid var(--brandGold); 
-        background: var(--ivory); padding: 5px;
+        background: var(--ivory); padding: 0;
         transition: transform 0.3s ease;
     }
     .logo-top:hover { transform: rotate(10deg) scale(1.1); }
@@ -81,7 +81,7 @@
     .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
     .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
     
-    .top-center { display: flex; gap: 10px; align-items: center; }
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
     
     .header-icon-btn { 
         width: 44px; height: 44px; flex-shrink: 0;
@@ -96,8 +96,20 @@
         position: relative;
     }
     .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
-    .header-icon-btn img { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; }
     
+    /* Tooltip */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
+
     .btn-portfolio-cosmic { 
         padding: 8px 18px; 
         border-radius: 8px; 
@@ -114,13 +126,55 @@
     }
     .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
 
+    /* Bouton Lecture Audio */
+    .audio-control-container {
+        width: 100%;
+        margin-bottom: 25px; 
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .btn-audio-player {
+        background: transparent;
+        border: 2px solid var(--brandGold);
+        color: var(--brand-blue);
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+        box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+    }
+    .btn-audio-player:hover {
+        background: var(--brandGold);
+        color: var(--ivory);
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 0px rgba(0,0,0,0.15);
+    }
+    .btn-audio-player.playing {
+        background: var(--brand-blue);
+        color: var(--brandGold);
+        border-color: var(--brand-blue);
+        animation: pulse-audio 1.5s infinite;
+    }
+    @keyframes pulse-audio {
+        0% { box-shadow: 0 0 0 0 rgba(15, 44, 72, 0.4); }
+        70% { box-shadow: 0 0 0 10px rgba(15, 44, 72, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(15, 44, 72, 0); }
+    }
+
     /* Main Content Placeholder */
     .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
     /* --- STYLES CONTENU --- */
     section { padding: 40px 0; }
     h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--brand-blue); }
-    p { line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem; text-align: justify; }
+    p { line-height: 1.8; color: #4a5568; margin-bottom: 1.5rem; text-align: justify; font-size: 1.05rem; }
 
     .page-slogan-container { text-align: center; margin-bottom: 50px; }
     .page-slogan {
@@ -144,12 +198,13 @@
     .story-grid { display: grid; grid-template-columns: 3fr 1.5fr; gap: 50px; align-items: start; }
     .bio-narrative { font-size: 1.05rem; color: #4a5568; }
     
-    .discreet-photo-wrapper { float: left; margin: 5px 30px 15px 0; shape-outside: circle(50%); }
+    .discreet-photo-wrapper { float: left; margin: 0 40px 20px 0; shape-outside: circle(50%); }
     .discreet-photo { 
-        width: 160px; height: 160px; border-radius: 50%; object-fit: cover; 
+        width: 200px; height: 200px; border-radius: 50%; object-fit: cover; 
         border: 4px solid white; box-shadow: 0 8px 20px rgba(15, 44, 72, 0.15); 
     }
     .highlight { color: var(--color-alert); font-weight: 700; }
+    .strong-text { color: var(--brand-blue); font-weight: 700; }
 
     /* Carte Identité */
     .identity-card {
@@ -226,11 +281,24 @@
     .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* --- FOOTER (V2) --- */
-    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); font-family: 'Fira Code', monospace; font-size: 0.85rem; }
-    .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    /* --- FOOTER (V2 - RESPONSIVE LARGE) --- */
+    .main-footer { 
+        background: var(--footer-bg); color: var(--footer-text); 
+        padding: 40px 0; 
+        margin-top: auto; border-top: 4px solid var(--brandGold); 
+        font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+        width: 100%;
+    }
+    .footer-container { 
+        width: 100%;
+        max-width: 100%; 
+        padding: 0 40px; 
+        margin: 0 auto; 
+        display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; 
+    }
     .footer-left { display: flex; gap: 12px; align-items: center; }
-    .footer-logo-img { width: 50px; height: 50px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 2px; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
     
     .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
     .footer-contact-link { 
@@ -270,7 +338,8 @@
         .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
         .top-center::-webkit-scrollbar { height: 4px; }
         .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
-        .footer-container { flex-direction: column; text-align: center; }
+        
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; } 
         .footer-left { flex-direction: column; }
         .footer-details { align-items: center; margin-top: 10px; }
         .footer-right { align-items: center; width: 100%; margin-top: 20px; }
@@ -279,7 +348,7 @@
         
         .story-grid { grid-template-columns: 1fr; }
         .identity-card { position: static; margin-top: 30px; }
-        .chapter-container { grid-template-columns: 1fr; } /* Retour à 1 colonne sur mobile */
+        .chapter-container { grid-template-columns: 1fr; } 
         .discreet-photo-wrapper { float: none; display: block; margin: 0 auto 20px; text-align: center; }
     }
   </style>
@@ -292,32 +361,54 @@
       
       <!-- Logo & Titre (Aligné à Gauche) -->
       <div class="top-left">
-        <a href="#" title="Root">
-          <img class="logo-top" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
         </a>
         <div class="identity-stack">
-          <div class="club-title-main">💫 The Dev Elite Club By Studi ✨</div>
+          <!-- SUPPRESSION "By Studi" -->
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
           <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
       </div>
 
       <!-- Navigation Icônes -->
       <nav class="top-center" aria-label="Navigation principale">
-        <a class="header-icon-btn" href="#" title="Mon Profil">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/115px-Python-logo-notext.svg.png" alt="Mathilde" style="width:100%;height:100%;border-radius:8px;object-fit:contain;padding:2px;background:white;">
-        </a>
-        <a class="header-icon-btn" href="index.html" title="Home / Terminal"><i class="fa-solid fa-terminal"></i></a>
-        <a class="header-icon-btn" href="Mon_Espace_Dev.html" title="Dashboard"><i class="fa-solid fa-chart-line"></i></a>
-        <a class="header-icon-btn" href="Programme_Formation_Digital.html" title="Programme / Roadmap"><i class="fa-regular fa-calendar-check"></i></a>
-        <a class="header-icon-btn" href="lecteur.html" title="Documentation"><i class="fa-solid fa-book-journal-whills"></i></a>
-        <a class="header-icon-btn" href="Atelier_Competence_Dev.html" title="Atelier Code"><i class="fa-solid fa-toolbox"></i></a>
+        
+        <!-- 1. Accueil -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        
+        <!-- 2. Mon Espace -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        
+        <!-- 3. Planning -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        
+        <!-- 4. Atelier -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+
+        <!-- 5. Observatoire -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+
+        <!-- 6. RNCP -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+
+        <!-- 7. Lexique -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+
+        <!-- 8. Acronymes -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+
+        <!-- 9. Profil (Lien actif) -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">👤</a>
+
       </nav>
 
-      <!-- Bouton EXPERT -->
+      <!-- Bouton EXPERT / Portfolio (Lien 10) -->
       <div>
-        <a class="btn-portfolio-cosmic" href="#" target="_blank" title="Mon Portfolio">
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" title="Mon Portfolio">
            <i class="fa-solid fa-code"></i>
-           Dev Portfolio
+           Mon Portfolio
         </a>
       </div>
     </div>
@@ -330,36 +421,56 @@
     
     <section id="mon-histoire">
         <div class="page-slogan-container fade-up">
-            <div class="page-slogan">20 ans d'Expertise Paie & SIRH...<br>en route vers le Code & la Data. 🚀</div>
+            <div class="page-slogan">
+                "Je ne me cherche plus, je sais où je vais."<br>
+                51 ans d'Audace, d'Expérience et de Caractère. 🚀
+            </div>
         </div>
 
         <div class="story-grid fade-up">
-            <div class="bio-narrative">
-                <div class="discreet-photo-wrapper">
-                    <!-- Placeholder Photo -->
-                    <div class="discreet-photo bg-gray-200 flex items-center justify-center text-4xl text-gray-400">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
+            <div class="bio-narrative" id="bioText">
+                <!-- BOUTON AUDIO INTEGRE -->
+                <div class="audio-control-container">
+                    <button id="readBioBtn" class="btn-audio-player">
+                        <i class="fas fa-volume-up"></i> Écouter le Confess (Accessibilité)
+                    </button>
                 </div>
 
-                <p>Bonjour ! Je suis <strong>Mathilde Martine</strong>. Je suis née à Paris dans le 13ème arrondissement en 1974, mais aujourd'hui, c'est dans les <span class="highlight">Hauts-de-Seine (92)</span> que j'ai posé mon clavier.</p>
+                <div class="discreet-photo-wrapper">
+                    <!-- PHOTO BIO -->
+                    <img class="discreet-photo" src="https://projettechacademy.github.io/Projet_Python/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg" alt="Mathilde Martine PAISLEY">
+                </div>
 
-                <p>Mes racines, elles, vibrent en <span class="highlight">Guadeloupe</span>. Cette île magnifique coule dans mes veines. Ma famille est une véritable richesse culturelle : un mélange d'influences indiennes, métropolitaines et caribéennes. Nous ne sommes pas simplement "métissés", nous sommes une mosaïque vivante, riche d'une diversité qui fait ma force et mon ouverture d'esprit au quotidien.</p>
+                <p>Ici la Voix. Tout commence par <strong>le Casting</strong>. Au départ, il y avait juste une candidate : moi, <strong>Mathilde Martine PAISLEY</strong>. Je suis née le 26 février, c'était un Mardi Gras 🎉. Et oui, ça explique sûrement ce tempérament explosif, ce côté festif et ce besoin de faire du bruit dès le premier souffle 🌈. 51 ans. Née à Paris 13ᵉ, 92 bien ancré, avec un mélange qui ne passe jamais inaperçu : Inde, Métropole, Caraïbes, et la <strong>Guadeloupe</strong> qui bat sous la peau 🌴. Quand j’entre quelque part, on me remarque. Toujours.</p>
 
-                <p>Mon histoire professionnelle ? Un reboot complet. Après plus de <span class="highlight">20 ans d'expertise</span> en Paie, RH et SIRH, j'ai décidé de passer de l'autre côté du miroir : celui de la technique. J'ai troqué mes conventions collectives contre des lignes de code. Aujourd'hui, je me lance ce défi fou : devenir <strong>Développeuse d'Application Python</strong>.</p>
+                <p>Ma première épreuve, je l’ai passée bien avant les caméras. J’ai grandi dans une <strong>Maison des Secrets</strong> version XXL, une vraie villa avec <strong>sept enfants</strong> sous le même toit 👨‍👩‍👧‍👦. Deux grands frères, moi pile au milieu, deux petites sœurs, deux petits frères. Là-bas, personne ne te donne la parole, tu la prends ! Tu apprends à négocier, à composer, à t’imposer sans disparaître. C’était déjà un jeu social grandeur nature.</p>
 
-                <p>Je ne suis plus une experte RH, je suis une <span class="highlight">Junior Dev</span> passionnée. Ma personnalité ? Un livre ouvert. Franche, directe, avec un humour noir assumé (ça préserve la jeunesse !). Ce que j'aime ? Résoudre des bugs impossibles, l'échange, et surtout faire des cookies – les meilleurs du monde, paraît-il !</p>
+                <p>Très vite, j’ai compris que mon tempérament ferait parler. C'est là que commence mon <strong>Secret Story</strong>. On me répétait souvent que j’étais énervante. Alors j’ai pris le contrôle de l’histoire et je me suis donné un nom : <strong>« l’énervante-énervante »</strong> 🎭. Je ne l’ai pas subi, j’en ai fait ma force. Solaire ☀️, nocturne 🦉, rieuse, entière. Pas de filtre, pas de faux-semblants. Je préfère être une édition limitée que tout le monde ne sait pas utiliser.</p>
+
+                <p>Parfois, comme dans <strong>Les Marseillais</strong>, il y a <strong>les problèmes</strong> ! 🌵 Surprise : je ne suis pas un pot de Nutella. Il y a eu des frictions, des désaccords, c'est la vie. C’est là que j’ai compris que je n’étais pas une plante verte. Plutôt un cactus : solide, résistante, et capable de piquer quand on oublie le respect.</p>
+
+                <p>Après les journées intenses, place à <strong>Un Dîner Presque Parfait</strong>. Mon rituel ? Pas de yoga, pas de mantras. Moi, je fais des cookies 🍪. Les meilleurs, note technique 10/10. Et je me pose devant une bonne télé-réalité 📺. Ça débranche, ça amuse, et parfois, ça inspire plus qu’on ne le croit.</p>
+
+                <p>Puis un jour, j’ai décidé de viser plus haut, façon <strong>Star Academy</strong> ou <strong>The Voice</strong>, mais version pro. Les Ressources Humaines sont devenues mon terrain de jeu. Manager RH en 2023, puis Master en Stratégie Digitale en 2025. Et là, plot twist : j’ai ajouté la Tech au casting. Direction Python, avec un objectif clair en tête pour 2027. Je n’ai pas quitté la Maison des RH. J’ai juste rajouté un étage 🏗️.</p>
+
+                <p>C’est à ce moment-là que je me suis retrouvée mentalement sur <strong>Koh-Lanta</strong>. Le vrai. Celui où tu tiens grâce à ton totem d’immunité. Le mien ? Ma double — voire triple — compétence. RH, Paie, Juridique, et maintenant Tech 🐍. L’idée n’a jamais été de survivre. L’idée, c’est de piloter. De viser le poste de Directeur de Projet Digital et de tenir debout jusqu’aux poteaux.</p>
+
+                <p>Et enfin, il y a <strong>l’Île de la Tentation</strong>. La mienne est simple : l’excellence. Et le chocolat. Je ne veux pas réciter, je veux maîtriser. Sentir le code au bout des doigts comme je sens le rythme quand je danse.</p>
+
+                <p>Aujourd’hui, je suis là. Candidate toujours debout, parcours assumé, stratégie claire. Et tout ça, avec ce petit grain de fête en plus, parce que oui… née à Mardi Gras 🎭✨. Alors si cette histoire t’intrigue, t’amuse ou te donne envie de suivre la suite… c’est le moment de buzzer 🔔. Pour les autres, la sentence est irrévocable 👋.</p>
             </div>
 
             <aside class="identity-card fade-up">
-                <h3>Config Utilisateur</h3>
+                <h3>Mathilde.conf</h3>
                 <ul class="id-list">
-                    <li><span class="emoji-icon">📍</span> Hauts-de-Seine (92)</li>
-                    <li><span class="emoji-icon">🌴</span> Origines Guadeloupe</li>
-                    <li><span class="emoji-icon">💼</span> Ex-Expert Paie (20 ans)</li>
-                    <li><span class="emoji-icon">🐍</span> Apprenante Python</li>
-                    <li><span class="emoji-icon">🍪</span> Cookie Lover</li>
-                    <li><span class="emoji-icon">💻</span> Humour Noir & Code</li>
+                    <li><span class="emoji-icon">🎂</span> Née à Mardi Gras 🎉</li>
+                    <li><span class="emoji-icon">📍</span> Paris (92) / Gwada 971</li>
+                    <li><span class="emoji-icon">💃</span> Ambianceuse & Night Owl</li>
+                    <li><span class="emoji-icon">📺</span> Fan de Télé-Réalité</li>
+                    <li><span class="emoji-icon">🍪</span> Reine des Cookies</li>
+                    <li><span class="emoji-icon">🐍</span> Survivor du Code</li>
+                    <li><span class="emoji-icon">🚫</span> Anti-Langue de Bois</li>
+                    <li><span class="emoji-icon">🚀</span> En mode Créatrice</li>
                 </ul>
             </aside>
         </div>
@@ -388,49 +499,54 @@
         </div>
 
         <div class="chapter-container">
+            <!-- Bachelor (Futur) -->
             <article class="chapter-card fade-up">
                 <div class="chapter-header">
                     <div class="chapter-title-group">
                         <div class="chapter-icon">🐍</div>
                         <h3>Bachelor Développeur d'Application Python</h3>
                     </div>
-                    <div class="chapter-date">2025 - 2026</div>
+                    <div class="chapter-date">Objectif 2027</div>
                 </div>
-                <p><strong>STUDI (RNCP NIVEAU 6).</strong> Développement Back-end, Frameworks Django/Flask, Data Science (Pandas/Numpy) et DevOps. (En cours)</p>
+                <p><strong>HETIC (RNCP NIVEAU 6).</strong> Bloc de compétences "Développer une solution digitale" (RNCP 36146). Développement Back-end, Frameworks Django/Flask, Data Science et DevOps. La validation technique de ma montée en compétence.</p>
             </article>
 
-            <article class="chapter-card fade-up">
-                <div class="chapter-header">
-                    <div class="chapter-title-group">
-                        <div class="chapter-icon">🎓</div>
-                        <h3>Gestion de la Paie et Conformité Sociale</h3>
-                    </div>
-                    <div class="chapter-date">2023 - 2024</div>
-                </div>
-                <p><strong>STUDI (RNCP NIVEAU 5).</strong> Mon background métier : Production de la paie, déclarations sociales et conformité réglementaire.</p>
-            </article>
-
+            <!-- Gestion Paie (Actuel/Récent) -->
             <article class="chapter-card fade-up">
                 <div class="chapter-header">
                     <div class="chapter-title-group">
                         <div class="chapter-icon">💻</div>
-                        <h3>Transformation Digitale et Management</h3>
+                        <h3>Expert Stratégie Digitale</h3>
                     </div>
-                    <div class="chapter-date">2024 - 2025</div>
+                    <div class="chapter-date">Obtenu en Juin 2025</div>
                 </div>
-                <p><strong>DIGITAL CAMPUS (RNCP NIVEAU 7).</strong> Pilotage de projets digitaux et accompagnement du changement. Une brique essentielle pour comprendre l'écosystème Tech.</p>
+                <p><strong>DIGITAL CAMPUS (RNCP NIVEAU 7).</strong> Pilotage de projets digitaux. Le pont parfait entre mon passé RH et mon avenir Tech.</p>
             </article>
 
+            <!-- Manager RH -->
             <article class="chapter-card fade-up">
                 <div class="chapter-header">
                     <div class="chapter-title-group">
                         <div class="chapter-icon">🤝</div>
                         <h3>Manager en Ressources Humaines</h3>
                     </div>
-                    <div class="chapter-date">2022 - 2023</div>
+                    <div class="chapter-date">Obtenu en 2023</div>
                 </div>
-                <p><strong>ESGRH (RNCP NIVEAU 7).</strong> Management stratégique des RH. L'humain au cœur de la tech.</p>
+                <p><strong>ESGRH (RNCP NIVEAU 7).</strong> Management stratégique des RH. L'humain et le droit social, mes premières passions. Équivalent Master 2.</p>
             </article>
+            
+             <!-- Gestion Paie (Actuel/Récent) -->
+            <article class="chapter-card fade-up">
+                <div class="chapter-header">
+                    <div class="chapter-title-group">
+                        <div class="chapter-icon">🎓</div>
+                        <h3>Gestion de la Paie et Conformité Sociale</h3>
+                    </div>
+                    <div class="chapter-date">2025 - 2026</div>
+                </div>
+                <p><strong>STUDI (RNCP NIVEAU 5).</strong> Consolidation de mon expertise métier historique : Production de la paie et conformité réglementaire.</p>
+            </article>
+
         </div>
     </section>
 
@@ -441,44 +557,54 @@
   <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
       <div class="footer-left">
-        <!-- Logo Python Footer -->
-        <div class="footer-logo-img flex items-center justify-center text-2xl text-brand-blue bg-white">
-             <i class="fa-brands fa-python"></i>
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
         </div>
         
         <!-- DÉTAILS DE CONTACT -->
         <div class="footer-details">
           <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
           
-          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">
-              📧 mathilde.martine.paisley@gmail.com
+          <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-contact-link">
+              📧 Mathilde.martine.paisley@gmail.com
           </a>
           
-          <a href="tel:0685900887" class="footer-contact-link">
+          <a href="tel:+33685900887" class="footer-contact-link">
               📲 06 85 90 08 87
           </a>
         </div>
       </div>
 
       <div class="footer-right">
-        <div class="footer-links-row" aria-label="Liens utilitaires">
-            <a class="icon-btn" href="#" title="A propos de moi">👤</a>
-            <a class="icon-btn" href="index.html" title="Accueil">🏠</a>
-            <a class="icon-btn" href="Mon_Espace_Dev.html" title="Mon Espace">📊</a>
-            <a class="icon-btn" href="Programme_Formation_Digital.html" title="Roadmap">📅</a>
-            <a class="icon-btn" href="lecteur.html" title="Doc">📜</a>
-            <a class="icon-btn" href="Atelier_Competence_Dev.html" title="Atelier">🛠️</a>
+        <!-- Navigation Footer -->
+        <div class="footer-links-row" aria-label="Liens utilitaires" style="margin-bottom: 10px;">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
             
-            <div class="footer-divider"></div>
+        <div class="footer-divider" style="height: 1px; width: 100%; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
 
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
             <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
-            <a class="icon-btn" href="#" title="GitHub"><i class="fab fa-github" style="color:#ffffff;"></i></a>
-            <a class="icon-btn" href="#" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
         </div>
       </div>
 
       <div class="copyright">
-        💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        <!-- SUPPRESSION "By Studi" -->
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
         By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
       </div>
     </div>
@@ -495,6 +621,74 @@
     }, observerOptions);
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // SCRIPT AUDIO - LECTURE DE LA BIO
+    const readBtn = document.getElementById('readBioBtn');
+    let isSpeaking = false;
+    let preferredVoice = null;
+
+    // Fonction pour charger et choisir la voix
+    function loadVoices() {
+        const voices = window.speechSynthesis.getVoices();
+        // Essayer de trouver une voix féminine française spécifique ou Google
+        // Ordre de préférence : Amélie, Google français, ou n'importe quelle voix fr
+        preferredVoice = voices.find(v => v.name.includes('Amélie')) || 
+                         voices.find(v => v.name.includes('Google français')) || 
+                         voices.find(v => v.lang === 'fr-FR' && v.name.includes('Female')) ||
+                         voices.find(v => v.lang === 'fr-FR');
+    }
+
+    // Charger les voix au démarrage (compatible Chrome/Firefox)
+    loadVoices();
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+
+    readBtn.addEventListener('click', () => {
+        // SI ça parle déjà, on arrête tout
+        if (isSpeaking) {
+            window.speechSynthesis.cancel();
+            isSpeaking = false;
+            readBtn.classList.remove('playing');
+            readBtn.innerHTML = '<i class="fas fa-volume-up"></i> Écouter le Confess (Accessibilité)';
+        } 
+        // SINON, on lance la lecture
+        else {
+            // On récupère le texte des paragraphes de la bio seulement
+            const bioContainer = document.querySelector('.bio-narrative');
+            
+            // Regex pour supprimer les emojis
+            const emojiRegex = /[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1F018}-\u{1F0F5}\u{1F200}-\u{1F270}]/gu;
+
+            const textToRead = Array.from(bioContainer.querySelectorAll('p'))
+                                    .map(p => p.innerText.replace(emojiRegex, '')) // On nettoie les emojis
+                                    .join('. ');
+
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            utterance.lang = 'fr-FR';
+            
+            // RÉGLAGES RAPIDES & DYNAMIQUES
+            utterance.pitch = 1.0; // Ton normal
+            utterance.rate = 1.1;  // Vitesse ajustée à 1.1 comme demandé
+
+            if (preferredVoice) {
+                utterance.voice = preferredVoice;
+            }
+
+            // Quand c'est fini, on remet le bouton à zéro
+            utterance.onend = () => {
+                isSpeaking = false;
+                readBtn.classList.remove('playing');
+                readBtn.innerHTML = '<i class="fas fa-volume-up"></i> Écouter le Confess (Accessibilité)';
+            };
+
+            // Lancement
+            window.speechSynthesis.speak(utterance);
+            isSpeaking = true;
+            readBtn.classList.add('playing');
+            readBtn.innerHTML = '<i class="fas fa-stop-circle"></i> Arrêter la lecture';
+        }
+    });
   </script>
 
 </body>

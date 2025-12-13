@@ -1,596 +1,457 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Référentiel Compétences RNCP 40844 - V3 (Mise à jour)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fiche RNCP - The Dev Elite Club</title>
+
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        /* --- VARIABLES (Charte Mathilde) --- */
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+        
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+
+        /* --- VARIABLES (Contenu) --- */
+        --color-bg: var(--ivory);
+        --color-primary: var(--brand-blue);
+        --color-accent: var(--brandGold);
+        --color-alert: var(--bronze);
+        --color-text: #2c3e50;
+        --color-white: #ffffff;
+    }
     
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e0/Balance_of_Justice_SVG.svg" type="image/svg+xml">
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
     
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
 
-    <style>
-        /* ========================================
-           VARIABLES GLOBALES & BASE
-           ======================================== */
-        :root {
-            --color-bg: #F6F2E8;
-            --color-primary: #0F2C48;
-            --color-accent: #D9A526; 
-            --color-alert: #B4792A;  
-            --color-text: #2c3e50;
-            --color-white: #ffffff;
-            
-            /* Pour le Header/Footer (Compatibilité) */
-            --cta: #D9A526;
-            --brand-blue: #0F2C48;
-            --ivory: #F6F2E8;
-            --bronze: #B4792A;
-            --footer-bg: #0F2C48; 
-            --footer-text: #F6F2E8; 
-            --header-height: 96px; 
-        }
+    /* --- HEADER (V2 Optimisé) --- */
+    .top-bar { 
+        background: var(--brand-blue); 
+        padding: 12px 0; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%; 
+        padding: 0 40px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
-        /* Animation "Pulse" */
-        @keyframes cosmic-pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0.7); }
-            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(217, 165, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(217, 165, 38, 0); }
-        }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
+    
+    /* Tooltip */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
 
-        body { 
-            margin: 0; background-color: var(--ivory); color: var(--brand-blue); 
-            font-family: 'Outfit', sans-serif; display: flex; flex-direction: column; min-height: 100vh;
-        }
+    /* Bouton Portfolio */
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
+        text-decoration: none; 
+        font-family: 'Fira Code', monospace;
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
+    }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
 
-        /* ========================================
-           HEADER "GRAND ÉCART"
-           ======================================== */
-        .top-bar { 
-            background: linear-gradient(135deg, #B4792A, #F2C94C); 
-            padding: 12px 20px; 
-            position: sticky; 
-            top: 0; 
-            z-index: 9999; 
-            border-bottom: 4px solid var(--brand-blue); 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
+    /* --- STYLES SPÉCIFIQUES RNCP (SANS ONGLETS A SCROLL) --- */
+    .main-content { flex: 1; padding: 40px 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-        .top-bar-container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; /* Clé pour écarter */
-            gap: 16px; 
-        }
-        
-        .top-left { 
-            display: flex; 
-            align-items: center; 
-            gap: 14px; 
-        }
+    .rncp-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
 
-        .top-right-group {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+    /* Cartes & Contenu RNCP */
+    .welcome-card { background: white; border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 4px 4px 0px var(--bronze); border: 1px solid var(--brandGold); }
+    .rncp-big { font-size: 3rem; font-weight: 900; color: #e2e8f0; line-height: 1; margin-bottom: -20px; display: block; letter-spacing: 5px; }
+    .welcome-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); position: relative; z-index: 1; margin-bottom: 10px; }
+    
+    /* Blocs de compétences en grille */
+    .blocs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 30px;
+    }
 
-        .logo-top-bar { 
-            width: 64px; height: 64px; 
-            border-radius: 8px; object-fit: cover; 
-            border: 2px solid var(--brand-blue); 
-            background: #fff; 
-            transition: transform 0.3s ease;
-            flex-shrink: 0; display: block; overflow: hidden;
-        }
-        .logo-top-bar img { width: 100%; height: 100%; object-fit: cover; }
-        .logo-top-bar:hover { transform: scale(1.05); }
+    .bloc-wrapper { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); position: relative; height: 100%; }
+    .bloc-banner { padding: 30px 40px; color: white; display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; }
+    
+    /* Couleurs des Blocs */
+    .banner-bloc1 { background: linear-gradient(135deg, var(--brand-blue) 0%, #1e3a8a 100%); }
+    .banner-bloc2 { background: linear-gradient(135deg, #B4792A 0%, #D9A526 100%); }
+    .banner-bloc3 { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
 
-        .identity-stack { display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
-        .club-title-main { 
-            font-family: 'Playfair Display', serif; font-weight: 800; 
-            color: var(--brand-blue); font-size: 1.1rem; 
-            white-space: nowrap; 
-        }
-        .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .bloc-banner h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 0; font-weight: 700; z-index: 1; color: var(--ivory); }
+    .bloc-bg-icon { position: absolute; right: -20px; bottom: -40px; font-size: 8rem; opacity: 0.15; transform: rotate(-15deg); z-index: 0; }
+    
+    .bloc-content { padding: 30px; display: flex; flex-direction: column; height: 100%; }
+    .comp-list { list-style: none; padding: 0; flex-grow: 1; }
+    .comp-item { position: relative; padding-left: 30px; margin-bottom: 15px; color: var(--color-text); line-height: 1.6; }
+    .comp-item::before { content: '✔️'; position: absolute; left: 0; top: 2px; font-size: 1.1rem; color: var(--brandGold); }
 
-        .top-bar-center { display: flex; gap: 10px; align-items: center; }
+    /* --- FOOTER (V2) --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 0; margin-top: auto; border-top: 4px solid var(--brandGold); font-family: 'Fira Code', monospace; font-size: 0.85rem; width: 100%; }
+    .footer-container { width: 100%; max-width: 100%; padding: 0 40px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { color: var(--brandGold); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); color: var(--footer-text); text-decoration: none; border: 1px solid rgba(217, 165, 38, 0.15); transition: all 0.2s; font-size: 1.1rem; }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-        .header-icon-btn { 
-            width: 44px; height: 44px; flex-shrink: 0;
-            border-radius: 50%; 
-            display: inline-flex; align-items: center; justify-content: center; 
-            text-decoration: none; 
-            background: linear-gradient(135deg, var(--cta), var(--bronze)); 
-            color: #fff; 
-            border: 1px solid rgba(255, 255, 255, 0.4); 
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            font-size: 1.2rem;
-            position: relative;
-        }
-        .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--cta); }
-        .nav-profile-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
-
-        .btn-portfolio-cosmic { 
-            padding: 8px 18px; 
-            border-radius: 999px; 
-            background: var(--brand-blue); 
-            color: var(--cta); 
-            text-decoration: none; 
-            font-weight: 700; 
-            display: inline-flex; gap: 8px; align-items: center; 
-            transition: background 0.3s, color 0.3s;
-            white-space: nowrap;
-            box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
-        }
-        .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
-        .btn-portfolio-cosmic img { display: none; } 
-
-        /* ========================================
-           STYLES SPECIFIQUES RNCP
-           ======================================== */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        .tabs-container {
-            background: white; border-radius: 50px; padding: 5px; display: flex; justify-content: space-between;
-            margin: 30px auto; max-width: 900px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; overflow-x: auto;
-        }
-        .tab-btn {
-            padding: 12px 25px; border-radius: 40px; border: none; background: transparent; color: #64748b;
-            font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; cursor: pointer;
-            transition: all 0.3s ease; white-space: nowrap; display: flex; align-items: center; gap: 8px;
-        }
-        .tab-btn:hover { color: var(--brand-blue); background: #f1f5f9; }
-        .tab-btn.active { background: var(--brand-blue); color: white; box-shadow: 0 4px 10px rgba(15, 44, 72, 0.3); }
-        
-        .tab-btn[onclick="openTab('bloc1')"].active { background: linear-gradient(135deg, #0F2C48 0%, #1e3a8a 100%); }
-        .tab-btn[onclick="openTab('bloc2')"].active { background: linear-gradient(135deg, #B4792A 0%, #D9A526 100%); }
-        .tab-btn[onclick="openTab('bloc3')"].active { background: linear-gradient(135deg, #475569 0%, #0F2C48 100%); }
-        
-        .tab-content { display: none; animation: fadeIn 0.5s ease; }
-        .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .section-title { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-        .justified-text { text-align: justify; line-height: 1.8; color: #334155; }
-        
-        .bloc-wrapper { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.05); }
-        .bloc-banner { padding: 30px 40px; color: white; display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; }
-        .bloc-banner h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 0; font-weight: 700; z-index: 1; }
-        .bloc-bg-icon { position: absolute; right: -20px; bottom: -40px; font-size: 12rem; opacity: 0.1; transform: rotate(-15deg); z-index: 0; }
-        
-        .bloc-cols { display: grid; grid-template-columns: 1.8fr 1.2fr; }
-        @media (max-width: 768px) { .bloc-cols { grid-template-columns: 1fr; } .col-left { border-right: none; border-bottom: 1px solid #f1f5f9; } }
-        
-        .col-left { padding: 40px; border-right: 1px solid #f1f5f9; }
-        .col-right { padding: 40px; background: #f8fafc; }
-        .comp-list { list-style: none; padding: 0; }
-        .comp-item { position: relative; padding-left: 30px; margin-bottom: 15px; }
-        .comp-item::before { content: '✔'; position: absolute; left: 0; top: 0; color: var(--cta); font-weight: bold; }
-        
-        .welcome-card { background: white; border-radius: 16px; padding: 40px; text-align: center; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .rncp-big { font-size: 4rem; font-weight: 900; color: #f1f5f9; line-height: 1; margin-bottom: -20px; display: block; }
-        .welcome-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--brand-blue); position: relative; }
-        
-        #scrollToTop { position: fixed; bottom: 30px; right: 30px; background: var(--cta); color: var(--brand-blue); width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; opacity: 0; transition: 0.3s; z-index: 1000; }
-        #scrollToTop.visible { opacity: 1; }
-
-        /* ========================================
-           FOOTER "SINGLE LINE"
-           ======================================== */
-        .main-footer { 
-            background: var(--footer-bg); color: var(--footer-text); 
-            padding: 25px 0; margin-top: auto; border-top: 4px solid var(--cta); 
-        }
-        .footer-container { 
-            max-width: 1400px; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between;
-            flex-wrap: nowrap; 
-            gap: 30px;
-        }
-        
-        .footer-left { 
-            display: flex; align-items: center; gap: 15px; flex-shrink: 0; 
-        }
-        .footer-logo-img { 
-            width: 55px; height: 55px; border-radius: 8px; object-fit: cover; 
-            border: 2px solid var(--cta); background: #fff; display: block;
-        }
-        .footer-details { display: flex; flex-direction: column; justify-content: center; }
-        .footer-name { font-weight: 700; font-size: 1rem; color: var(--cta); line-height: 1.2; }
-        .footer-contact { font-size: 0.8rem; opacity: 0.9; line-height: 1.3; }
-        .footer-contact a { color: inherit; text-decoration: none; }
-        .footer-contact a:hover { color: #fff; text-decoration: underline; }
-
-        .footer-right { 
-            display: flex; align-items: center; gap: 20px; 
-            flex-grow: 1; justify-content: flex-end; 
-        }
-
-        .social-group { display: flex; gap: 10px; align-items: center; }
-        .nav-group { display: flex; gap: 10px; align-items: center; }
-        
-        .footer-divider { 
-            width: 1px; height: 30px; background: rgba(255,255,255,0.3); margin: 0 5px; 
-        }
-
-        .footer-emoji-btn { 
-            width: 40px; height: 40px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; 
-            background: rgba(255, 255, 255, 0.08); color: #fff; 
-            text-decoration: none; border: 1px solid rgba(255, 255, 255, 0.15); 
-            transition: all 0.2s ease; font-size: 1.2rem;
-            position: relative;
-        }
-        .footer-emoji-btn:hover { 
-            background: var(--brand-blue); border-color: var(--cta); 
-            transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.3); 
-        }
-        .footer-emoji-btn::before {
-            content: attr(title); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%);
-            background: #fff; color: var(--brand-blue); padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: 700;
-            white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .footer-emoji-btn:hover::before { opacity: 1; }
-
-        .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.3); margin-top: 15px; font-size: 0.75rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
-
-        /* Responsive Global */
-        @media (max-width: 990px) {
-            .top-bar-container { flex-direction: column; justify-content: center; gap: 15px; }
-            .top-left { width: 100%; justify-content: center; }
-            .top-right-group { width: 100%; justify-content: center; flex-wrap: wrap; }
-            .top-bar-center { overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; }
-
-            .footer-container { flex-direction: column; text-align: center; gap: 20px; }
-            .footer-left { flex-direction: column; }
-            .footer-right { flex-direction: column; width: 100%; }
-            .footer-divider { width: 80%; height: 1px; margin: 10px auto; } 
-            .nav-group { flex-wrap: wrap; justify-content: center; }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; text-align: center; }
+        .top-left { margin-right: 0; flex-direction: column; }
+        .top-center { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; }
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; }
+        .footer-left { flex-direction: column; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; }
+        .footer-divider { display: none; }
+        .blocs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- HEADER (GRAND ÉCART) -->
-    <div class="top-bar" id="mainHeader">
-        <div class="top-bar-container">
-            <!-- GAUCHE : Logo + Titre -->
-            <div class="top-left">
-                <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
-                    <div class="logo-top-bar">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
-                    </div>
-                </a>
-                <div class="identity-stack">
-                    <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
-                    <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+  <!-- ==================== HEADER (HAUT) ==================== -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      
+      <!-- Logo & Titre (Aligné à Gauche) -->
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
+        </div>
+      </div>
+
+      <!-- Navigation Icônes -->
+      <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP" style="background: var(--brandGold); color: var(--brand-blue);">🏅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+      </nav>
+
+      <!-- Bouton EXPERT / Portfolio (Lien 10) -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
+           <i class="fa-solid fa-code"></i>
+           Mon Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- ==================== FIN HEADER ==================== -->
+
+
+  <!-- ZONE DE CONTENU -->
+  <main class="main-content">
+    
+    <div class="rncp-container">
+
+        <!-- PARTIE 1 : PRÉSENTATION GÉNÉRALE -->
+        <div class="welcome-card fade-up">
+            <span class="rncp-big">RNCP 36146</span>
+            <h1 class="welcome-title">Concepteur Développeur de Solutions Digitales</h1>
+            <p class="text-xl text-[#B4792A] font-bold mt-2 mb-6" style="font-family: 'Fira Code', monospace;">Niveau 6 (Bac+3/4) • Certificateur HETIC</p>
+            
+            <div style="text-align: justify; color: #4a5568; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                <p>
+                    Le concepteur développeur de solutions digitales exerce dans une multitude de secteurs. Ses missions principales consistent à l’identification et l’analyse des besoins permettant de concevoir et de déployer les solutions digitales, tout en effectuant la maintenance et le suivi des opérations afin de développer ou valoriser l’activité d’une organisation.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
+                <div class="p-4 border border-gray-200 rounded-xl bg-gray-50">
+                    <strong class="block text-[#0F2C48] mb-1">Code NSF</strong>
+                    <span class="text-gray-600">326t (Programmation), 326n (Analyse)</span>
+                </div>
+                <div class="p-4 border border-gray-200 rounded-xl bg-gray-50">
+                    <strong class="block text-[#0F2C48] mb-1">Validité</strong>
+                    <span class="text-green-600 font-bold">Active (jusqu'au 26-01-2027)</span>
+                </div>
+                <div class="p-4 border border-gray-200 rounded-xl bg-gray-50">
+                    <strong class="block text-[#0F2C48] mb-1">Métiers Visés</strong>
+                    <span class="text-gray-600">Concepteur Dév, Full-Stack, Back-End, DevOps, Chef de projet, Lead Dev</span>
                 </div>
             </div>
             
-            <!-- DROITE : Navigation + Expert -->
-            <div class="top-right-group">
-                <nav class="top-bar-center" aria-label="Navigation principale">
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">
-                        <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde Martine PAISLEY" class="nav-profile-img" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
-                    </a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
-                    <!-- BOUTON ACTIF -->
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank" style="background: white; color: var(--brand-blue); border: 2px solid var(--cta); transform: scale(1.1);">📚</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-                    <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
-                </nav>
-                
-                <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
-                    💎 Expert
+            <div class="mt-8">
+                <a href="https://www.francecompetences.fr/recherche/rncp/36146/" target="_blank" style="color: var(--bronze); text-decoration: underline; font-weight:bold;">
+                    Voir la fiche officielle France Compétences <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
         </div>
+
+        <!-- PARTIE 2 : GRILLE DES BLOCS DE COMPÉTENCES -->
+        <div class="blocs-grid">
+            
+            <!-- Bloc 1 -->
+            <div class="bloc-wrapper fade-up">
+                <div class="bloc-banner banner-bloc1">
+                    <div>
+                        <h2>Bloc 1 : Conception</h2>
+                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Concevoir et spécifier une solution digitale</span>
+                    </div>
+                    <i class="fa-solid fa-pen-ruler bloc-bg-icon"></i>
+                </div>
+                <div class="bloc-content">
+                    <ul class="comp-list">
+                        <li class="comp-item">Spécifier la demande du client au regard des objectifs.</li>
+                        <li class="comp-item">Réaliser un état de l'art des outils et approches méthodologiques.</li>
+                        <li class="comp-item">Proposer la solution optimale (coût, faisabilité, délais, performance).</li>
+                        <li class="comp-item">Concevoir l’architecture logicielle et les spécifications fonctionnelles.</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-100 text-sm text-blue-800 bg-blue-50 p-3 rounded">
+                        <strong>Évaluation :</strong> Projet pro (Conception & Spécification) - 15h.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc 2 -->
+            <div class="bloc-wrapper fade-up">
+                <div class="bloc-banner banner-bloc2">
+                    <div>
+                        <h2>Bloc 2 : Gestion</h2>
+                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Gérer itérativement le cycle de vie</span>
+                    </div>
+                    <i class="fa-solid fa-list-check bloc-bg-icon"></i>
+                </div>
+                <div class="bloc-content">
+                    <ul class="comp-list">
+                        <li class="comp-item">Choisir les outils et approches de développement adaptés.</li>
+                        <li class="comp-item">Déployer les méthodologies de tests et validation (Qualité, Perf, Sécu).</li>
+                        <li class="comp-item">Résoudre une situation critique (Investigation, Idéation, Retournement).</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-100 text-sm text-yellow-800 bg-yellow-50 p-3 rounded">
+                        <strong>Évaluation :</strong> Projet pro (Gestion/Pilotage) 10h + Résolution problème 8h + Oral 40min.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloc 3 -->
+            <div class="bloc-wrapper fade-up">
+                <div class="bloc-banner banner-bloc3">
+                    <div>
+                        <h2>Bloc 3 : Développement</h2>
+                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Développer une solution digitale</span>
+                    </div>
+                    <i class="fa-solid fa-code bloc-bg-icon"></i>
+                </div>
+                <div class="bloc-content">
+                    <ul class="comp-list">
+                        <li class="comp-item">Programmer la solution (Back-end / Front-end).</li>
+                        <li class="comp-item">Mobiliser les outils technologiques (Framework, API, Cloud, Mobile).</li>
+                        <li class="comp-item">Respecter les standards de qualité et de sécurité logicielle.</li>
+                        <li class="comp-item">Procéder aux corrections et optimisations (Maintenance).</li>
+                    </ul>
+                    <div class="mt-auto pt-4 border-t border-gray-100 text-sm text-green-800 bg-green-50 p-3 rounded">
+                        <strong>Évaluation :</strong> Projet pro (Code base, Solution Tech, Debugging) + Oral 40min.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- PARTIE 3 : CONDITIONS DE CERTIFICATION -->
+        <div class="welcome-card fade-up" style="text-align: left; margin-bottom: 0;">
+            <h2 class="text-2xl font-bold text-[#0F2C48] mb-6 flex items-center gap-3">
+                <i class="fa-solid fa-circle-info text-[#D9A526]"></i> Conditions de Certification
+            </h2>
+            
+            <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl mb-6">
+                <p class="mb-4">La certification est conditionnée à la validation de <strong>l'ensemble des blocs de compétences</strong>.</p>
+                <ul class="list-disc pl-6 space-y-2 text-gray-700">
+                    <li>Un bloc est acquis si et seulement si l'ensemble des évaluations ont été réussies.</li>
+                    <li>Les blocs sont capitalisables (acquis à vie).</li>
+                </ul>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                    <h3 class="text-lg font-bold text-[#0F2C48] mb-2">Examen & Jury</h3>
+                    <p class="text-sm text-gray-700">Mois d'examen : <strong>Juin / Décembre</strong>.<br>Lieu : <strong>En ligne</strong>.<br>Le jury est composé de 4 membres dont deux professionnels externes.</p>
+                </div>
+                <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                    <h3 class="text-lg font-bold text-[#0F2C48] mb-2">Stage & Expérience</h3>
+                    <p class="text-sm text-gray-700">Stage non obligatoire mais recommandé pour développer les compétences. Une convention peut être fournie.</p>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-[#f8fafc] border-l-4 border-[#0F2C48] text-sm text-gray-600">
+                <strong>Poursuite d'études possible :</strong> Mastère CTO & Tech Lead ou Mastère Design & Tech (Titre Expert en transformation digitale et technologique, HETIC).
+            </div>
+        </div>
+
     </div>
 
-    <!-- MAIN CONTENT -->
-    <main class="container mb-12" style="max-width: 1000px; margin: 30px auto; padding: 0 20px;">
+  </main>
+
+  <!-- ==================== FOOTER (BAS) ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
+        </div>
         
-        <div class="tabs-container">
-            <button class="tab-btn active" onclick="openTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button>
-            <button class="tab-btn" onclick="openTab('bloc1')"><i class="fa-solid fa-chess-queen"></i> Bloc 1</button>
-            <button class="tab-btn" onclick="openTab('bloc2')"><i class="fa-solid fa-handshake"></i> Bloc 2</button>
-            <button class="tab-btn" onclick="openTab('bloc3')"><i class="fa-solid fa-gavel"></i> Bloc 3</button>
-            <button class="tab-btn" onclick="openTab('validation')"><i class="fa-solid fa-check-double"></i> Validation</button>
+        <!-- DÉTAILS DE CONTACT -->
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          
+          <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-contact-link">
+              📧 Mathilde.martine.paisley@gmail.com
+          </a>
+          
+          <a href="tel:+33685900887" class="footer-contact-link">
+              📲 06 85 90 08 87
+          </a>
         </div>
+      </div>
 
-        <div id="accueil" class="tab-content active">
-            <div class="welcome-card">
-                <span class="rncp-big">RNCP 40844</span>
-                <h1 class="welcome-title">Juriste d'Entreprise</h1>
-                <p class="text-xl text-[#B4792A] font-bold mt-2 mb-6">Niveau 7 (Bac+5) • Certificateur ESGCV</p>
-                
-                <div class="max-w-2xl mx-auto justified-text">
-                    <p>
-                        Ce titre certifie des experts du droit capables de sécuriser les activités de l'entreprise, 
-                        d'accompagner la direction dans ses décisions stratégiques et de gérer les contentieux. 
-                        Il est structuré en <strong>3 blocs de compétences distincts</strong> qu'il faut valider intégralement pour obtenir le titre.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10 text-left">
-                    <div class="p-4 border border-gray-100 rounded-xl bg-gray-50">
-                        <strong class="block text-[#0F2C48] mb-1">Code NSF</strong>
-                        <span class="text-gray-600">128 (Droit)</span>
-                    </div>
-                    <div class="p-4 border border-gray-100 rounded-xl bg-gray-50">
-                        <strong class="block text-[#0F2C48] mb-1">Validité</strong>
-                        <span class="text-green-600 font-bold">Active jusqu'en 2030</span>
-                    </div>
-                    <div class="p-4 border border-gray-100 rounded-xl bg-gray-50">
-                        <strong class="block text-[#0F2C48] mb-1">Métiers</strong>
-                        <span class="text-gray-600">Juriste, Responsable Juridique, DPO</span>
-                    </div>
-                </div>
-                
-                <div class="mt-8">
-                    <a href="https://www.francecompetences.fr/recherche/rncp/40844/" target="_blank" class="text-sm text-gray-400 hover:text-[#D9A526] underline">
-                        Voir la fiche officielle France Compétences
-                    </a>
-                </div>
-            </div>
+      <div class="footer-right">
+        <!-- Navigation Footer -->
+        <div class="footer-links-row" aria-label="Liens utilitaires" style="margin-bottom: 10px;">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
         </div>
-
-        <div id="bloc1" class="tab-content">
-            <div class="bloc-wrapper">
-                <div class="bloc-banner" style="background: linear-gradient(135deg, #0F2C48 0%, #1e3a8a 100%);">
-                    <div>
-                        <h2>Bloc 1 : Pilotage Stratégique</h2>
-                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Assurer le pilotage stratégique et opérationnel de la fonction juridique</span>
-                    </div>
-                    <i class="fa-solid fa-chess-queen bloc-bg-icon"></i>
-                </div>
-                
-                <div class="bloc-cols">
-                    <div class="col-left">
-                        <h3 class="section-title text-[#0F2C48]"><i class="fa-solid fa-list-check text-[#D9A526]"></i> Compétences à valider</h3>
-                        <ul class="comp-list justified-text">
-                            <li class="comp-item"><strong>Mettre en place une veille juridique</strong> en s’appuyant sur des processus de collecte, d’analyse et de diffusion des informations relatives aux évolutions législatives, réglementaires et jurisprudentielles, afin d’anticiper les changements pouvant affecter l’organisation.</li>
-                            <li class="comp-item"><strong>Participer à la définition de la stratégie juridique</strong> (avec la direction) en tenant compte les priorités stratégiques de l’entreprise, de ses projets de développement, ainsi que des évolutions législatives, fiscales et technologiques.</li>
-                            <li class="comp-item"><strong>Réaliser un audit juridique</strong> en collectant et examinant les documents juridiques, en conduisant des entretiens avec les parties prenantes, et en analysant les processus internes pour renforcer la sécurité.</li>
-                            <li class="comp-item"><strong>Élaborer des politiques internes de conformité</strong> en établissant les règles et directives régissant les comportements et pratiques au sein de l’entreprise pour prévenir les risques.</li>
-                            <li class="comp-item"><strong>Mettre en place un système d’archivage numérique</strong> de la documentation juridique (contrats, pouvoirs, baux, décisions) en définissant les procédures de gestion interne.</li>
-                        </ul>
-                    </div>
-                    <div class="col-right">
-                        <h3 class="section-title text-[#0F2C48]"><i class="fa-solid fa-file-signature text-[#D9A526]"></i> Modalités d'Examen</h3>
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm justified-text">
-                            <span class="inline-block bg-[#0F2C48] text-white px-3 py-1 rounded text-xs font-bold mb-3">Mises en situation professionnelle</span>
-                            <p class="mb-4 text-sm">Vous serez évalué(e) sur des cas concrets couvrant :</p>
-                            <ul class="text-sm space-y-2">
-                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La veille juridique</li>
-                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La stratégie juridique</li>
-                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La gestion de la conformité et des risques</li>
-                                <li><i class="fa-solid fa-angle-right text-[#D9A526] mr-2"></i> La procédure d'archivage</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="bloc2" class="tab-content">
-            <div class="bloc-wrapper">
-                <div class="bloc-banner" style="background: linear-gradient(135deg, #B4792A 0%, #D9A526 100%);">
-                    <div>
-                        <h2>Bloc 2 : Accompagnement Opérationnel</h2>
-                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Accompagner juridiquement les opérations de l’entreprise et ses acteurs</span>
-                    </div>
-                    <i class="fa-solid fa-handshake bloc-bg-icon"></i>
-                </div>
-                
-                <div class="bloc-cols">
-                    <div class="col-left">
-                        <h3 class="section-title text-[#B4792A]"><i class="fa-solid fa-list-check text-[#0F2C48]"></i> Compétences à valider</h3>
-                        <ul class="comp-list justified-text">
-                            <li class="comp-item"><strong>Conseiller juridiquement les départements opérationnels</strong> sur les questions juridiques courantes, en formulant des avis et des recommandations juridiques.</li>
-                            <li class="comp-item"><strong>Accompagner la prise de décisions stratégiques</strong> en évaluant les implications juridiques, fiscales et environnementales (RSE) des projets pour garantir la conformité.</li>
-                            <li class="comp-item"><strong>Rédiger et passer en revue les documents contractuels</strong> en tenant compte des besoins spécifiques, en anticipant les risques et en intégrant des mécanismes de protection (clauses résolutoires, pénalités...).</li>
-                            <li class="comp-item"><strong>Mettre en œuvre des actions de formation et de sensibilisation</strong> auprès des collaborateurs internes, en élaborant des outils pédagogiques adaptés.</li>
-                            <li class="comp-item"><strong>Coordonner une équipe de collaborateurs</strong> (directs ou transverses), en adaptant le style de communication et en veillant à l’inclusion (sociale et handicap).</li>
-                        </ul>
-                    </div>
-                    <div class="col-right">
-                        <h3 class="section-title text-[#B4792A]"><i class="fa-solid fa-file-signature text-[#0F2C48]"></i> Modalités d'Examen</h3>
-                        
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm mb-4 justified-text">
-                            <strong class="block text-[#B4792A] text-sm mb-2 uppercase">1. Mises en situation</strong>
-                            <ul class="text-sm space-y-1 list-disc list-inside">
-                                <li>Recommandations juridiques</li>
-                                <li>Analyse et sécurisation de contrats</li>
-                                <li>Analyse réflexive sur la gestion de projet</li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm justified-text">
-                            <strong class="block text-[#B4792A] text-sm mb-2 uppercase">2. Cas Pratique Spécifique</strong>
-                            <p class="text-sm">Conception d'une action de <strong>sensibilisation/formation</strong> pour des collaborateurs.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="bloc3" class="tab-content">
-            <div class="bloc-wrapper">
-                <div class="bloc-banner" style="background: linear-gradient(135deg, #475569 0%, #0F2C48 100%);">
-                    <div>
-                        <h2>Bloc 3 : Contentieux</h2>
-                        <span class="text-sm opacity-80 uppercase tracking-widest mt-2 block">Gérer les précontentieux et les contentieux</span>
-                    </div>
-                    <i class="fa-solid fa-gavel bloc-bg-icon"></i>
-                </div>
-                
-                <div class="bloc-cols">
-                    <div class="col-left">
-                        <h3 class="section-title text-[#475569]"><i class="fa-solid fa-list-check text-[#D9A526]"></i> Compétences à valider</h3>
-                        <ul class="comp-list justified-text">
-                            <li class="comp-item"><strong>Mettre en œuvre des règlements amiables</strong> : Conduire des négociations, rédiger/valider les accords de règlement, recourir aux modes alternatifs (MARD).</li>
-                            <li class="comp-item"><strong>Élaborer une stratégie de défense juridique</strong> en collaboration avec des avocats, en évaluant les impacts (financiers, réputationnels) et les risques juridiques.</li>
-                            <li class="comp-item"><strong>Développer des plans de gestion de crise</strong> en coordination avec la direction, en identifiant les risques critiques (litige, non-conformités) et en déterminant les protocoles.</li>
-                            <li class="comp-item"><strong>Exécuter et suivre la mise en œuvre des décisions judiciaires</strong> en élaborant un plan d’action (ressources, délais) pour minimiser les risques de non-exécution.</li>
-                        </ul>
-                    </div>
-                    <div class="col-right">
-                        <h3 class="section-title text-[#475569]"><i class="fa-solid fa-file-signature text-[#D9A526]"></i> Modalités d'Examen</h3>
-                        <div class="bg-white p-5 rounded-lg border border-gray-200 shadow-sm justified-text">
-                            <span class="inline-block bg-[#475569] text-white px-3 py-1 rounded text-xs font-bold mb-3">Mises en situation professionnelle</span>
-                            <p class="mb-4 text-sm">Vous serez évalué(e) sur deux axes majeurs :</p>
-                            
-                            <div class="border-l-4 border-[#D9A526] pl-3 mb-3">
-                                <strong class="text-sm block">La Négociation Amiable</strong>
-                                <span class="text-xs text-gray-500">Capacité à transiger et rédiger un accord.</span>
-                            </div>
-
-                            <div class="border-l-4 border-[#D9A526] pl-3">
-                                <strong class="text-sm block">La Gestion de Contentieux</strong>
-                                <span class="text-xs text-gray-500">Stratégie judiciaire et gestion de crise.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="validation" class="tab-content">
-            <div class="bg-white rounded-16 p-10 border border-gray-200 shadow-sm rounded-xl">
-                <h2 class="text-2xl font-bold text-[#0F2C48] mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-circle-info text-[#D9A526]"></i> Conditions de Validation du Titre
-                </h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justified-text">
-                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
-                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-trophy text-[#D9A526] mr-2"></i> Obtention du Titre</h3>
-                        <p class="text-sm text-gray-700">La certification RNCP "Juriste d'Entreprise" n'est délivrée que si vous validez <strong>l'ensemble des 3 blocs de compétences</strong>. Aucun bloc ne peut être "sauté".</p>
-                    </div>
-
-                    <div class="bg-green-50 p-6 rounded-xl border border-green-100">
-                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-check-double text-green-600 mr-2"></i> Capitalisation</h3>
-                        <p class="text-sm text-gray-700">Chaque bloc est acquis <strong>définitivement</strong>. Si vous validez le Bloc 1 mais échouez au Bloc 2, le Bloc 1 reste validé à vie (capitalisation). Vous pouvez repasser les autres plus tard.</p>
-                    </div>
-
-                    <div class="bg-orange-50 p-6 rounded-xl border border-orange-100">
-                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-universal-access text-orange-500 mr-2"></i> Handicap</h3>
-                        <p class="text-sm text-gray-700">Sur avis du référent handicap, des aménagements sont possibles (tiers temps, assistance) sans remettre en cause la valeur du diplôme.</p>
-                    </div>
-                    
-                    <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                        <h3 class="text-lg font-bold text-[#0F2C48] mb-2"><i class="fa-solid fa-graduation-cap text-gray-500 mr-2"></i> Équivalences</h3>
-                        <p class="text-sm text-gray-700">Pour toute équivalence ou VAE, le candidat doit présenter son dossier au jury pour validation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- FOOTER "SINGLE LINE" -->
-    <footer class="main-footer" role="contentinfo">
-        <div class="footer-container">
             
-            <!-- GAUCHE : IDENTITÉ + CONTACT -->
-            <div class="footer-left">
-                <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
-                    <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
-                </a>
-                <div class="footer-details">
-                    <div class="footer-name">Mathilde Martine PAISLEY</div>
-                    <div class="footer-contact">
-                        📧 <a href="mailto:mathilde.martine.paisley@gmail.com">mathilde.martine.paisley@gmail.com</a><br>
-                        📲 <a href="tel:+33685900887">06 85 90 08 87</a>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-divider" style="height: 1px; width: 100%; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
 
-            <!-- DROITE : TOUT ALIGNÉ (Réseaux | Barre | Navigation) -->
-            <div class="footer-right">
-                
-                <!-- Réseaux Sociaux (Couleurs) -->
-                <div class="social-group">
-                    <a class="footer-emoji-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp" style="color: #25D366; border-color: rgba(37, 211, 102, 0.3);"><i class="fab fa-whatsapp"></i></a>
-                    <a class="footer-emoji-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord" style="color: #5865F2; border-color: rgba(88, 101, 242, 0.3);"><i class="fab fa-discord"></i></a>
-                    <a class="footer-emoji-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn" style="color: #0077b5; border-color: rgba(0, 119, 181, 0.3);"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="footer-emoji-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram" style="color: #E1306C; border-color: rgba(225, 48, 108, 0.3);"><i class="fab fa-instagram"></i></a>
-                    <a class="footer-emoji-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok" style="color: #00f2ea; border-color: rgba(0, 242, 234, 0.3);"><i class="fab fa-tiktok"></i></a>
-                </div>
-
-                <div class="footer-divider"></div>
-
-                <!-- Navigation (Emojis) -->
-                <div class="nav-group">
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Univers_Actes_Juridiques.html" title="Rédaction" target="_blank">✍️</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-                    <a class="footer-emoji-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
-                </div>
-
-            </div>
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
         </div>
-        <div class="copyright">
-            💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
-            By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
-        </div>
-    </footer>
+      </div>
 
-    <button id="scrollToTop" style="display:none; position:fixed; bottom:20px; right:20px; background:var(--cta); color:var(--brand-blue); border:none; padding:10px 15px; border-radius:50%; cursor:pointer;"><i class="fas fa-arrow-up"></i></button>
+      <div class="copyright">
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
+    </div>
+  </footer>
+  <!-- ==================== FIN FOOTER ==================== -->
+  
+  <script>
+    // Animation d'apparition des éléments (Fade Up)
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
 
-    <script>
-        // LOGIQUE INTERNE DE LA FICHE RNCP (ONGLETS)
-        function openTab(tabName) {
-            var i;
-            var x = document.getElementsByClassName("tab-content");
-            for (i = 0; i < x.length; i++) { x[i].classList.remove("active"); }
-            
-            var btns = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
-            
-            document.getElementById(tabName).classList.add("active");
-            event.currentTarget.classList.add("active");
-        }
-
-        // Script pour le bouton ScrollToTop
-        const scrollToTopBtn = document.getElementById("scrollToTop");
-        if(scrollToTopBtn) {
-            window.addEventListener("scroll", () => {
-                scrollToTopBtn.classList.toggle("visible", window.scrollY > 300);
-            });
-            scrollToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-        }
-
-        // Ajuster la hauteur du header pour la navigation secondaire (si elle existe)
-        function updateHeaderHeight() { 
-            const header = document.getElementById('mainHeader'); 
-            if(header) {
-                const height = header.offsetHeight + 'px';
-                document.documentElement.style.setProperty('--header-height', height);
-            }
-        }
-        window.addEventListener('load', updateHeaderHeight); 
-        window.addEventListener('resize', updateHeaderHeight);
-
-    </script>
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>

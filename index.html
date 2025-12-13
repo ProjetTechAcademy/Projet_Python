@@ -1,525 +1,578 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - The Dev Elite Club</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Accueil - The Dev Elite Club</title>
+
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        /* --- VARIABLES (Charte Mathilde) --- */
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+        
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+
+        /* --- VARIABLES (Contenu) --- */
+        --color-bg: var(--ivory);
+        --color-primary: var(--brand-blue);
+        --color-accent: var(--brandGold);
+        --color-alert: var(--bronze);
+    }
     
-    <!-- Import des Polices et Icônes -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
 
-    <style>
-        /* === STYLE GLOBAL (Même charte que le Programme) === */
-        :root {
-            --cta: #D9A526;       /* Or */
-            --brand-blue: #0F2C48; /* Bleu Nuit */
-            --ivory: #F6F2E8;     
-            --bronze: #B4792A;    
-        }
+    /* --- HEADER (V2 Optimisé) --- */
+    .top-bar { 
+        background: var(--brand-blue); 
+        padding: 12px 0; 
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%; 
+        padding: 0 40px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
-        body { 
-            margin: 0; 
-            background-color: var(--ivory); 
-            color: var(--brand-blue); 
-            font-family: 'Outfit', sans-serif; 
-            display: flex; flex-direction: column; min-height: 100vh;
-        }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
+    
+    /* Tooltip */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
 
-        /* --- HEADER --- */
-        .top-bar {
-            background-color: var(--brand-blue);
-            padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: sticky; top: 0; z-index: 10000;
-            border-bottom: 4px solid var(--cta);
-        }
-        
-        .top-bar-container {
-            max-width: 1400px; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-        }
+    /* Bouton Portfolio */
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
+        text-decoration: none; 
+        font-family: 'Fira Code', monospace;
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
+    }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
 
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        
-        .logo-placeholder {
-            width: 60px; height: 60px; border-radius: 50%; 
-            border: 2px solid var(--cta); background: white; color: var(--brand-blue);
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-        }
+    /* --- STYLES DASHBOARD --- */
+    .main-content { flex: 1; padding: 40px 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+    .welcome-section { text-align: center; margin-bottom: 50px; }
+    .welcome-title { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--brand-blue); margin-bottom: 10px; font-weight: 700; }
+    .welcome-subtitle { color: var(--brandGold); font-weight: 600; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+    
+    .status-badge { 
+        display: inline-flex; align-items: center; gap: 10px; 
+        background: white; padding: 10px 25px; border-radius: 50px; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-top: 20px;
+        border: 1px solid var(--ivory);
+    }
+    .status-dot { width: 12px; height: 12px; background: #22c55e; border-radius: 50%; animation: pulse-green 2s infinite; }
+    @keyframes pulse-green { 0% {box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);} 70% {box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);} 100% {box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);} }
 
-        .top-bar-center { display: flex; gap: 12px; align-items: center; }
-        
-        .header-icon-btn {
-            position: relative; width: 40px; height: 40px; border-radius: 50%;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .header-icon-btn:hover { 
-            transform: translateY(-3px) scale(1.1); 
-            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
-        }
-        
-        .header-icon-btn::after {
-            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
-            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
-            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-        }
-        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    /* Quick Access */
+    .quick-access-bar {
+        background: white; border-radius: 16px; padding: 20px;
+        display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;
+        margin-bottom: 40px; box-shadow: 4px 4px 0px var(--bronze); border: 1px solid var(--brandGold);
+    }
+    .quick-btn {
+        display: flex; flex-direction: column; align-items: center; gap: 10px;
+        text-decoration: none; color: var(--brand-blue); font-weight: 700; font-size: 0.95rem;
+        transition: 0.3s; padding: 15px; border-radius: 12px; flex: 1; min-width: 140px;
+        background: #f8fafc; border: 1px solid transparent; font-family: 'Fira Code', monospace;
+    }
+    .quick-btn:hover { background: var(--brand-blue); color: var(--brandGold); transform: translateY(-5px); border-color: var(--brandGold); }
+    .quick-icon { font-size: 2rem; color: var(--brandGold); margin-bottom: 5px; }
+    .quick-btn:hover .quick-icon { color: white; }
 
-        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-        .btn-portfolio-cosmic {
-            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
-            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
-        }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+    /* Dashboard Cards */
+    .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 40px; }
+    
+    .dash-card {
+        background: white; border-radius: 16px; padding: 30px;
+        box-shadow: 0 10px 30px rgba(15, 44, 72, 0.05); border: 1px solid rgba(15, 44, 72, 0.1);
+        display: flex; flex-direction: column; transition: transform 0.3s; position: relative; overflow: hidden;
+    }
+    .dash-card:hover { transform: translateY(-5px); border-color: var(--brandGold); box-shadow: 0 15px 40px rgba(15, 44, 72, 0.1); }
+    
+    .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+    .card-icon-lg { 
+        width: 50px; height: 50px; border-radius: 12px; 
+        background: rgba(217, 165, 38, 0.1); color: var(--brandGold); 
+        display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .card-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.4rem; color: var(--brand-blue); }
+    .card-subtitle { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; font-weight: 700; }
 
-        /* --- DASHBOARD SPECIFIC STYLES --- */
-        .welcome-section {
-            text-align: center; margin-bottom: 40px;
-        }
-        
-        .dashboard-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;
-            max-width: 1200px; margin: 0 auto;
-        }
+    /* Progress Circles */
+    .progress-circle { 
+        width: 120px; height: 120px; border-radius: 50%; 
+        background: conic-gradient(var(--brandGold) var(--percent), #e2e8f0 0); 
+        display: flex; align-items: center; justify-content: center; 
+        margin: 0 auto 20px; position: relative; transition: --percent 1s ease; 
+    }
+    .progress-circle::before { content: ''; position: absolute; width: 100px; height: 100px; background: white; border-radius: 50%; }
+    .progress-value { position: relative; font-weight: 800; font-size: 2rem; color: var(--brand-blue); font-family: 'Fira Code', monospace; }
 
-        .dash-card {
-            background: white; border-radius: 20px; padding: 25px;
-            box-shadow: 0 10px 30px rgba(15, 44, 72, 0.05);
-            border: 1px solid rgba(15, 44, 72, 0.05);
-            transition: all 0.3s ease; position: relative; overflow: hidden;
-            display: flex; flex-direction: column;
-        }
-        .dash-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(15, 44, 72, 0.1); border-color: var(--cta); }
+    /* Inputs & Buttons */
+    .styled-date-input {
+        width: 100%; padding: 12px; border: 2px solid #e2e8f0; border-radius: 8px;
+        font-family: 'Fira Code', monospace; color: var(--brand-blue); font-weight: 600; outline: none; transition: 0.3s;
+        background: #f8fafc;
+    }
+    .styled-date-input:focus { border-color: var(--brandGold); background: white; }
+    
+    .card-btn {
+        margin-top: auto; display: block; text-align: center;
+        background: var(--brand-blue); color: white; padding: 12px; border-radius: 8px;
+        text-decoration: none; font-weight: 700; transition: 0.3s; font-family: 'Fira Code', monospace;
+    }
+    .card-btn:hover { background: var(--brandGold); color: var(--brand-blue); }
 
-        .card-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
-        .card-icon-lg { 
-            width: 50px; height: 50px; border-radius: 12px; 
-            background: rgba(217, 165, 38, 0.1); color: var(--cta); 
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-        }
-        .card-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; color: var(--brand-blue); }
+    /* Countdown Box */
+    .countdown-box { margin-top: 15px; background: #f8fafc; padding: 15px; rounded-lg; border: 1px solid #e2e8f0; text-align: center; }
+    .countdown-time { font-size: 1.8rem; font-weight: 800; color: var(--brandGold); font-family: 'Fira Code', monospace; }
 
-        /* Progress Circles */
-        .progress-circle { width: 100px; height: 100px; border-radius: 50%; background: conic-gradient(var(--cta) var(--percent), #e2e8f0 0); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; position: relative; transition: --percent 1s ease; }
-        .progress-circle::before { content: ''; position: absolute; width: 80px; height: 80px; background: white; border-radius: 50%; }
-        .progress-value { position: relative; font-weight: 800; font-size: 1.5rem; color: var(--brand-blue); }
+    /* Animations Fade Up */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-        /* Action Buttons in Cards */
-        .card-btn {
-            margin-top: auto; display: block; text-align: center;
-            background: var(--brand-blue); color: white; padding: 12px; border-radius: 10px;
-            text-decoration: none; font-weight: 600; transition: 0.3s;
-        }
-        .card-btn:hover { background: var(--cta); color: var(--brand-blue); }
+    /* --- FOOTER (V2) --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 0; margin-top: auto; border-top: 4px solid var(--brandGold); font-family: 'Fira Code', monospace; font-size: 0.85rem; width: 100%; }
+    .footer-container { width: 100%; max-width: 100%; padding: 0 40px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { color: var(--brandGold); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); color: var(--footer-text); text-decoration: none; border: 1px solid rgba(217, 165, 38, 0.15); transition: all 0.2s; font-size: 1.1rem; }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 
-        /* Quick Access Section */
-        .quick-access-bar {
-            background: white; border-radius: 15px; padding: 20px;
-            display: flex; justify-content: space-around; flex-wrap: wrap; gap: 15px;
-            margin: 30px auto; max-width: 1200px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        .quick-btn {
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-            text-decoration: none; color: var(--brand-blue); font-weight: 600; font-size: 0.9rem;
-            transition: 0.3s; padding: 15px; border-radius: 12px; flex: 1; min-width: 120px;
-            border: 1px solid transparent;
-        }
-        .quick-btn:hover { background: #f8fafc; transform: translateY(-3px); color: var(--cta); border-color: var(--cta); }
-        .quick-icon { font-size: 1.8rem; color: var(--cta); margin-bottom: 5px; }
-
-        /* Styled Input for Date */
-        .styled-date-input {
-            width: 100%; padding: 10px; border: 2px solid #e2e8f0; border-radius: 8px;
-            font-family: 'Outfit', sans-serif; color: var(--brand-blue); font-weight: 600;
-            outline: none; transition: 0.3s;
-        }
-        .styled-date-input:focus { border-color: var(--cta); }
-
-        /* Footer */
-        .main-footer { background-color: var(--brand-blue); color: #F6F2E8; padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem; width: 100%; margin-top: auto; }
-        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        .footer-logo-placeholder { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--cta); background: #fff; color: var(--brand-blue); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
-        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
-        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-        .footer-link:hover { color: var(--cta); }
-        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
-        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
-        .icon-btn { position: relative; width: 45px; height: 45px; border-radius: 50%; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; text-decoration: none; transition: all 0.3s; cursor: pointer; color: #fff; }
-        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
-        .icon-btn::after { content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px); background-color: #fff; color: var(--brand-blue); padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100; }
-        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
-        .footer-bottom { text-align: center; padding: 15px 0; font-size: 0.8rem; color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); border-top: 1px solid rgba(255,255,255,0.05); width: 100%; }
-        @media (max-width: 768px) { .footer-content { flex-direction: column; align-items: center; text-align: center; } .footer-identity { flex-direction: column; text-align: center; } .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; } .icon-dock { justify-content: center; flex-wrap: wrap; } .dock-group { align-items: center; } .dock-separator { display: none; } }
-
-    </style>
+    /* Responsive */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; text-align: center; }
+        .top-left { margin-right: 0; flex-direction: column; }
+        .top-center { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; }
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; }
+        .footer-left { flex-direction: column; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; }
+        .footer-divider { display: none; }
+        .dashboard-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-<body class="bg-[#F6F2E8] text-gray-800 font-sans flex flex-col min-h-screen">
+<body onload="initDashboard()">
 
-    <!-- === HEADER === -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="top-bar-left">
-                <div class="logo-placeholder">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="identity-stack">
-                    <span class="club-title-main">💫 The Dev Elite Club By Studi ✨</span>
-                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
-                </div>
-            </div>
-            
-            <div class="top-bar-center">
-                <!-- Lien Accueil actif -->
-                <a href="https://projettechacademy.github.io/Projet_Python/" class="header-icon-btn" style="background: white; color: var(--cta); border-color: var(--cta);" aria-label="Start/Accueil" data-tooltip="Accueil">
-                    <i class="fas fa-home"></i> 
-                </a>
-                
-                <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
-                <a href="#" class="header-icon-btn" aria-label="Lexique" data-tooltip="Lexique">📜</a>
-                <a href="#" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
-                
-                <!-- Lien vers le Programme (Agenda) -->
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Programme & Planning">📅</a>
-                
-                <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
-                    <i class="fas fa-user"></i> 
-                </a>
-            </div>
-
-            <a href="#" class="btn-portfolio-cosmic">
-                <span>📄</span> Mon portfolio
-            </a>
+  <!-- ==================== HEADER ==================== -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="top-center" aria-label="Navigation principale">
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil" style="background: var(--brandGold); color: var(--brand-blue);">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+      </nav>
+
+      <!-- Bouton Portfolio -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
+           <i class="fa-solid fa-code"></i>
+           Mon Portfolio
+        </a>
+      </div>
     </div>
+  </div>
 
-    <!-- === CONTENU PRINCIPAL === -->
-    <main class="flex-grow p-6">
-        
-        <!-- Welcome Hero -->
-        <div class="welcome-section">
-            <h1 class="text-4xl font-bold text-[#0F2C48] mb-2 font-['Playfair_Display']">Accueil</h1>
-            <p class="text-[#D9A526] font-medium text-lg uppercase tracking-wider">Bienvenue au Club - The Dev Elite</p>
-            <div class="mt-4 inline-flex items-center gap-2 bg-white px-6 py-2 rounded-full shadow-sm border border-gray-100">
-                <span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span>
-                <span class="text-sm font-bold text-gray-600">Mode : Autonomie & Focus</span>
-            </div>
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="main-content">
+      
+      <!-- HERO WELCOME -->
+      <div class="welcome-section fade-up">
+          <h1 class="welcome-title">Bienvenue au Club</h1>
+          <p class="welcome-subtitle">The Dev Elite Club - Espace Python & Data</p>
+          <div class="status-badge">
+              <span class="status-dot"></span>
+              <span class="text-sm font-bold text-gray-600">Mode : Autonomie & Focus 🚀</span>
+          </div>
+      </div>
+
+      <!-- QUICK ACCESS BAR -->
+      <div class="quick-access-bar fade-up">
+          <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="quick-btn">
+              <i class="fas fa-layer-group quick-icon"></i>
+              <span>Mon Programme</span>
+          </a>
+          <a href="https://www.python.org/" target="_blank" class="quick-btn">
+              <i class="fab fa-python quick-icon"></i>
+              <span>Doc Python</span>
+          </a>
+          <a href="https://github.com/" target="_blank" class="quick-btn">
+              <i class="fab fa-github quick-icon"></i>
+              <span>Mon GitHub</span>
+          </a>
+          <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="quick-btn">
+              <i class="fas fa-user-astronaut quick-icon"></i>
+              <span>Espace Dev</span>
+          </a>
+      </div>
+
+      <!-- DASHBOARD GRID -->
+      <div class="dashboard-grid fade-up">
+          
+          <!-- CARTE 1 : OBJECTIF DATE -->
+          <div class="dash-card">
+              <div class="card-header">
+                  <div class="card-icon-lg"><i class="fas fa-bullseye"></i></div>
+                  <div>
+                      <div class="card-subtitle">Objectif</div>
+                      <div class="card-title">Prochaine Échéance</div>
+                  </div>
+              </div>
+              <div class="flex-grow flex flex-col justify-center">
+                  <p class="text-sm text-gray-500 mb-2 font-bold">Fixer ma deadline :</p>
+                  <input type="date" id="userDeadline" class="styled-date-input" onchange="updateDeadline()">
+                  
+                  <div class="countdown-box">
+                      <div class="text-xs uppercase font-bold text-gray-400">Temps Restant</div>
+                      <div class="countdown-time" id="countdown">-- j -- h</div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- CARTE 2 : PROGRESSION BLOC 1 -->
+          <div class="dash-card">
+              <div class="card-header">
+                  <div class="card-icon-lg"><i class="fas fa-pen-ruler"></i></div>
+                  <div>
+                      <div class="card-subtitle">Bloc 1</div>
+                      <div class="card-title">Conception</div>
+                  </div>
+              </div>
+              <div class="text-center">
+                  <div class="progress-circle" id="circle-b1" style="--percent: 0%">
+                      <span class="progress-value" id="val-b1">0%</span>
+                  </div>
+                  <p class="text-sm text-gray-500 mb-4">Analyse, CDC, UX/UI</p>
+              </div>
+              <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn">Accéder au Bloc 1</a>
+          </div>
+
+          <!-- CARTE 3 : PROGRESSION GLOBALE -->
+          <div class="dash-card" style="border: 2px solid var(--brandGold);">
+              <div class="absolute top-0 right-0 bg-[#D9A526] text-[#0F2C48] text-xs font-bold px-3 py-1 rounded-bl-lg">TOTAL</div>
+              <div class="card-header">
+                  <div class="card-icon-lg" style="background: var(--brand-blue); color: var(--brandGold);"><i class="fas fa-trophy"></i></div>
+                  <div>
+                      <div class="card-subtitle">Formation</div>
+                      <div class="card-title">Avancement Global</div>
+                  </div>
+              </div>
+              <div class="text-center">
+                  <div class="progress-circle" id="circle-global" style="--percent: 0%">
+                      <span class="progress-value" id="val-global">0%</span>
+                  </div>
+                  <p class="text-sm text-gray-500 mb-4">Lâche rien, tu gères ! 🔥</p>
+              </div>
+              <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn" style="background: var(--brandGold); color: var(--brand-blue);">Reprendre</a>
+          </div>
+
+      </div>
+
+      <!-- BLOCS SUIVANTS -->
+      <div class="dashboard-grid fade-up">
+           <!-- CARTE BLOC 2 -->
+           <div class="dash-card">
+              <div class="card-header">
+                  <div class="card-icon-lg"><i class="fas fa-tasks"></i></div>
+                  <div>
+                      <div class="card-subtitle">Bloc 2</div>
+                      <div class="card-title">Gestion & Tests</div>
+                  </div>
+              </div>
+              <div class="flex items-center justify-between mb-4">
+                  <div class="text-2xl font-bold text-[#0F2C48] font-code" id="val-b2-text">0%</div>
+                  <div class="w-2/3 h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div id="bar-b2" class="h-full bg-[#0F2C48]" style="width: 0%"></div>
+                  </div>
+              </div>
+              <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn">Accéder au Bloc 2</a>
+          </div>
+
+          <!-- CARTE BLOC 3 -->
+          <div class="dash-card">
+              <div class="card-header">
+                  <div class="card-icon-lg"><i class="fab fa-python"></i></div>
+                  <div>
+                      <div class="card-subtitle">Bloc 3</div>
+                      <div class="card-title">Dev Python</div>
+                  </div>
+              </div>
+              <div class="flex items-center justify-between mb-4">
+                  <div class="text-2xl font-bold text-[#0F2C48] font-code" id="val-b3-text">0%</div>
+                  <div class="w-2/3 h-2 bg-gray-100 rounded-full overflow-hidden">
+                      <div id="bar-b3" class="h-full bg-[#0F2C48]" style="width: 0%"></div>
+                  </div>
+              </div>
+              <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn">Accéder au Bloc 3</a>
+          </div>
+      </div>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <div class="footer-logo-img">
+             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
         </div>
-
-        <!-- Quick Access Bar -->
-        <div class="quick-access-bar">
-            <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="quick-btn">
-                <i class="fas fa-layer-group quick-icon"></i>
-                <span>Mon Programme</span>
-            </a>
-            <a href="https://www.python.org/" target="_blank" class="quick-btn">
-                <i class="fab fa-python quick-icon"></i>
-                <span>Doc Python</span>
-            </a>
-            <a href="https://github.com/" target="_blank" class="quick-btn">
-                <i class="fab fa-github quick-icon"></i>
-                <span>Mon GitHub</span>
-            </a>
-            <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="quick-btn">
-                <i class="fas fa-user-astronaut quick-icon"></i>
-                <span>Espace Dev</span>
-            </a>
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">📧 mathilde.martine.paisley@gmail.com</a>
+          <a href="tel:+33685900887" class="footer-contact-link">📲 06 85 90 08 87</a>
         </div>
+      </div>
 
-        <!-- Dashboard Grid (Progression & Objectifs) -->
-        <div class="dashboard-grid">
+      <div class="footer-right">
+        <div class="footer-links-row" aria-label="Liens utilitaires">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
             
-            <!-- CARTE 1 : CONFIGURATION OBJECTIF -->
-            <div class="dash-card">
-                <div class="card-header">
-                    <div class="card-icon-lg"><i class="fas fa-bullseye"></i></div>
-                    <div>
-                        <div class="text-xs text-gray-400 font-bold uppercase">Objectif</div>
-                        <div class="card-title">Prochaine Échéance</div>
-                    </div>
-                </div>
-                <div class="flex-grow flex flex-col justify-center">
-                    <p class="text-sm text-gray-500 mb-2">Définissez votre propre date limite :</p>
-                    <input type="date" id="userDeadline" class="styled-date-input" onchange="updateDeadline()">
-                    
-                    <div class="mt-4 bg-[#f8fafc] p-3 rounded-lg text-center border border-[#e2e8f0]">
-                        <div class="text-xs uppercase font-bold text-gray-400">Temps Restant</div>
-                        <div class="text-2xl font-bold text-[#D9A526]" id="countdown">-- j -- h</div>
-                    </div>
-                </div>
-            </div>
+        <div class="footer-divider"></div>
 
-            <!-- CARTE 2 : PROGRESSION BLOC 1 -->
-            <div class="dash-card">
-                <div class="card-header">
-                    <div class="card-icon-lg"><i class="fas fa-pen-ruler"></i></div>
-                    <div>
-                        <div class="text-xs text-gray-400 font-bold uppercase">Bloc 1</div>
-                        <div class="card-title">Conception</div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <!-- Cercle de progression dynamique -->
-                    <div class="progress-circle" id="circle-b1" style="--percent: 0%">
-                        <span class="progress-value" id="val-b1">0%</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mb-4">Analyse, CDC, UX/UI</p>
-                </div>
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn">Accéder au Bloc 1</a>
-            </div>
-
-            <!-- CARTE 3 : PROGRESSION GLOBALE -->
-            <div class="dash-card border-2 border-[#D9A526]">
-                <div class="absolute top-0 right-0 bg-[#D9A526] text-white text-xs font-bold px-3 py-1 rounded-bl-lg">TOTAL</div>
-                <div class="card-header">
-                    <div class="card-icon-lg" style="background: #0F2C48; color: #D9A526;"><i class="fas fa-trophy"></i></div>
-                    <div>
-                        <div class="text-xs text-gray-400 font-bold uppercase">Formation</div>
-                        <div class="card-title">Avancement Global</div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <div class="progress-circle" id="circle-global" style="--percent: 0%">
-                        <span class="progress-value" id="val-global">0%</span>
-                    </div>
-                    <p class="text-sm text-gray-500 mb-4">Continuez comme ça ! 🔥</p>
-                </div>
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn" style="background: var(--cta); color: white;">Reprendre les cours</a>
-            </div>
-
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
         </div>
+      </div>
 
-        <!-- Section Complémentaire (Bloc 2 & 3) -->
-        <div class="dashboard-grid mt-6">
-             <!-- CARTE BLOC 2 -->
-             <div class="dash-card">
-                <div class="card-header">
-                    <div class="card-icon-lg"><i class="fas fa-tasks"></i></div>
-                    <div>
-                        <div class="text-xs text-gray-400 font-bold uppercase">Bloc 2</div>
-                        <div class="card-title">Gestion & Tests</div>
-                    </div>
-                </div>
-                <div class="flex items-center justify-between mb-4">
-                    <div class="text-2xl font-bold text-[#0F2C48]" id="val-b2-text">0%</div>
-                    <div class="w-2/3 h-2 bg-gray-100 rounded-full overflow-hidden">
-                        <div id="bar-b2" class="h-full bg-[#0F2C48]" style="width: 0%"></div>
-                    </div>
-                </div>
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn">Accéder au Bloc 2</a>
-            </div>
+      <div class="copyright">
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
+    </div>
+  </footer>
 
-            <!-- CARTE BLOC 3 -->
-            <div class="dash-card">
-                <div class="card-header">
-                    <div class="card-icon-lg"><i class="fab fa-python"></i></div>
-                    <div>
-                        <div class="text-xs text-gray-400 font-bold uppercase">Bloc 3</div>
-                        <div class="card-title">Dev Python</div>
-                    </div>
-                </div>
-                <div class="flex items-center justify-between mb-4">
-                    <div class="text-2xl font-bold text-[#0F2C48]" id="val-b3-text">0%</div>
-                    <div class="w-2/3 h-2 bg-gray-100 rounded-full overflow-hidden">
-                        <div id="bar-b3" class="h-full bg-[#0F2C48]" style="width: 0%"></div>
-                    </div>
-                </div>
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="card-btn">Accéder au Bloc 3</a>
-            </div>
-        </div>
+  <script>
+    // Animation Fade Up
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    </main>
+    // --- LOGIQUE DASHBOARD ---
+    
+    function initDashboard() {
+        initDeadline();
+        calculateProgress();
+    }
 
-    <!-- === FOOTER === -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                
-                <div class="footer-identity">
-                    <div class="footer-logo-placeholder">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="footer-info-compact">
-                        <div class="footer-name">Mathilde Martine PAISLEY</div>
-                        <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-dock-col">
-                    <div class="dock-group">
-                        <div class="dock-label">Navigation & Réseaux</div>
-                        <div class="icon-dock">
-                            <!-- Liens Footer -->
-                            <a href="https://projettechacademy.github.io/Projet_Python/" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
-                            <a href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                            <a href="#" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                            <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
-                            <a href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" class="icon-btn" data-tooltip="Profil"><span class="brand-nav">👤</span></a>
-                            
-                            <div class="dock-separator"></div>
-
-                            <a href="#" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="footer-container">
-                <p>💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
-                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- SCRIPT DE CONNEXION (Dashboard Logic) -->
-    <script>
-        // 1. Structure pour le calcul (Identique à l'autre fichier pour cohérence des IDs)
-        // Note: On ne met PAS le détail ici, juste ce qu'il faut pour compter les items.
-        const programStructure = {
-            1: [14, 10, 14, 5, 12, 12, 4, 6, 2, 7, 11], // Nombre de sous-items par module (approximatif basé sur l'historique)
-            2: [12, 6, 10, 15, 8, 2, 10, 10, 8],
-            3: [8, 25, 10, 23, 18, 2, 42, 20, 3, 3, 10, 5]
-        };
-        // Pour être précis, on va utiliser une méthode plus simple : compter les clés cochées dans le localStorage qui commencent par B1, B2, B3.
-        
-        // 2. Gestion de la Deadline Utilisateur
-        function updateDeadline() {
-            const input = document.getElementById('userDeadline');
-            const dateVal = input.value;
-            if(dateVal) {
-                localStorage.setItem('myDevDeadline', dateVal);
-                startCountdown(dateVal);
-            }
+    // 1. Deadline
+    function updateDeadline() {
+        const input = document.getElementById('userDeadline');
+        const dateVal = input.value;
+        if(dateVal) {
+            localStorage.setItem('myDevDeadline', dateVal);
+            startCountdown(dateVal);
         }
+    }
 
-        function initDeadline() {
-            const savedDate = localStorage.getItem('myDevDeadline');
-            if(savedDate) {
-                document.getElementById('userDeadline').value = savedDate;
-                startCountdown(savedDate);
-            } else {
-                // Par défaut : date d'aujourd'hui + 30 jours
-                const today = new Date();
-                today.setDate(today.getDate() + 30);
-                const defaultDate = today.toISOString().split('T')[0];
-                document.getElementById('userDeadline').value = defaultDate;
-                updateDeadline(); // Sauve et lance
-            }
+    function initDeadline() {
+        const savedDate = localStorage.getItem('myDevDeadline');
+        if(savedDate) {
+            document.getElementById('userDeadline').value = savedDate;
+            startCountdown(savedDate);
+        } else {
+            // Par défaut : date d'aujourd'hui + 30 jours
+            const today = new Date();
+            today.setDate(today.getDate() + 30);
+            const defaultDate = today.toISOString().split('T')[0];
+            document.getElementById('userDeadline').value = defaultDate;
+            updateDeadline();
         }
+    }
 
-        function startCountdown(dateString) {
-            const targetDate = new Date(dateString).getTime();
-            
-            // Update immédiat
+    function startCountdown(dateString) {
+        const targetDate = new Date(dateString).getTime();
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+        renderTime(distance);
+
+        if(window.timerInterval) clearInterval(window.timerInterval);
+        window.timerInterval = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
             renderTime(distance);
+        }, 1000 * 60);
+    }
 
-            // Intervalle
-            if(window.timerInterval) clearInterval(window.timerInterval);
-            window.timerInterval = setInterval(() => {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
-                renderTime(distance);
-            }, 1000 * 60); // Update chaque minute suffisant pour un dashboard
+    function renderTime(distance) {
+        const el = document.getElementById('countdown');
+        if (distance < 0) {
+            el.innerText = "DATE DÉPASSÉE !";
+            el.style.color = "#ef4444";
+            return;
         }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        el.innerText = `${days}j ${hours}h`;
+        el.style.color = "#D9A526";
+    }
 
-        function renderTime(distance) {
-            const el = document.getElementById('countdown');
-            if (distance < 0) {
-                el.innerText = "ÉCHÉANCE PASSÉE !";
-                el.style.color = "#ef4444"; // Rouge
-                return;
-            }
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            el.innerText = `${days}j ${hours}h restants`;
-            el.style.color = "#D9A526"; // Or
-        }
+    // 2. Progression (Lecture du localStorage mis à jour par la page Programme)
+    function calculateProgress() {
+        const progressData = JSON.parse(localStorage.getItem('devEliteProgress')) || {};
+        const keys = Object.keys(progressData);
+        
+        let counts = { 1: 0, 2: 0, 3: 0 };
+        // Totaux approximatifs basés sur ton programme complet pour l'affichage
+        let totals = { 1: 97, 2: 81, 3: 169 }; 
 
-        // 3. Calcul de Progression (Basé sur le localStorage 'devEliteProgress')
-        function calculateProgress() {
-            const progressData = JSON.parse(localStorage.getItem('devEliteProgress')) || {};
-            const keys = Object.keys(progressData);
-            
-            // Estimation du nombre total d'items (basé sur votre programme complet)
-            // B1: ~100 items, B2: ~80 items, B3: ~150 items (Valeurs approximatives pour la démo dynamique)
-            // Idéalement, on importerait la structure exacte, mais pour alléger index.html on fait une estimation dynamique
-            
-            let counts = { 1: 0, 2: 0, 3: 0 };
-            let totals = { 1: 97, 2: 81, 3: 169 }; // Totaux précis basés sur votre fichier Programme
-
-            keys.forEach(key => {
-                if(key.startsWith('B1')) counts[1]++;
-                if(key.startsWith('B2')) counts[2]++;
-                if(key.startsWith('B3')) counts[3]++;
-            });
-
-            // Update UI
-            updateCircle(1, counts[1], totals[1]);
-            updateCircle(2, counts[2], totals[2]);
-            updateCircle(3, counts[3], totals[3]);
-            
-            // Global
-            const totalDone = counts[1] + counts[2] + counts[3];
-            const totalAll = totals[1] + totals[2] + totals[3];
-            updateCircle('global', totalDone, totalAll);
-        }
-
-        function updateCircle(id, val, max) {
-            const pct = Math.round((val / max) * 100);
-            const safePct = pct > 100 ? 100 : pct; // Cap à 100%
-            
-            // Cercle
-            const circle = document.getElementById(`circle-${id}`);
-            if(circle) circle.style.setProperty('--percent', `${safePct}%`);
-            
-            // Texte
-            const text = document.getElementById(`val-${id}`);
-            if(text) text.innerText = `${safePct}%`;
-
-            // Barres horizontales (pour B2 et B3 en bas)
-            const textLinear = document.getElementById(`val-${id}-text`);
-            const bar = document.getElementById(`bar-${id}`);
-            if(textLinear) textLinear.innerText = `${safePct}%`;
-            if(bar) bar.style.width = `${safePct}%`;
-        }
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', () => {
-            initDeadline();
-            calculateProgress();
+        keys.forEach(key => {
+            if(key.startsWith('B1')) counts[1]++;
+            if(key.startsWith('B2')) counts[2]++;
+            if(key.startsWith('B3')) counts[3]++;
         });
-    </script>
+
+        updateCircle(1, counts[1], totals[1]);
+        updateCircle(2, counts[2], totals[2]);
+        updateCircle(3, counts[3], totals[3]);
+        
+        const totalDone = counts[1] + counts[2] + counts[3];
+        const totalAll = totals[1] + totals[2] + totals[3];
+        updateCircle('global', totalDone, totalAll);
+    }
+
+    function updateCircle(id, val, max) {
+        const pct = Math.round((val / max) * 100);
+        const safePct = pct > 100 ? 100 : pct;
+        
+        // Cercle (Bloc 1 & Global)
+        const circle = document.getElementById(`circle-${id}`);
+        if(circle) circle.style.setProperty('--percent', `${safePct}%`);
+        
+        const text = document.getElementById(`val-${id}`);
+        if(text) text.innerText = `${safePct}%`;
+
+        // Barres (Bloc 2 & 3)
+        const textLinear = document.getElementById(`val-b${id}-text`);
+        const bar = document.getElementById(`bar-b${id}`);
+        if(textLinear) textLinear.innerText = `${safePct}%`;
+        if(bar) bar.style.width = `${safePct}%`;
+    }
+  </script>
 
 </body>
 </html>

@@ -3,48 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Acronymes Juridiques — The Jurist Elite Club ⚖️</title>
+  <title>Acronymes Dev - The Dev Elite Club 💻</title>
+
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root { 
+        /* --- VARIABLES (Charte Mathilde) --- */
         --brand-blue: #0F2C48; 
         --brandGold: #D9A526; 
         --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+        
         --footer-bg: #0F2C48; 
         --footer-text: #F6F2E8; 
-        
-        /* Ajout pour les cartes acronymes */
-        --card-bg: #FFFFFF;
-        --card-border-light: rgba(15, 44, 72, 0.1);
+
+        /* --- VARIABLES (Contenu) --- */
+        --color-bg: var(--ivory);
+        --color-primary: var(--brand-blue);
+        --color-accent: var(--brandGold);
+        --color-alert: var(--bronze);
     }
     
     body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
     
-    /* --- HEADER (V2 Optimisé - Bouton Expert) --- */
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
+
+    /* --- HEADER (V2 Optimisé) --- */
     .top-bar { 
-        background: linear-gradient(135deg, #B4792A, #F2C94C); 
-        padding: 12px 20px; 
+        background: var(--brand-blue); 
+        padding: 12px 0; 
         position: sticky; 
         top: 0; 
         z-index: 9999; 
-        border-bottom: 4px solid var(--brand-blue); 
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
     }
     
     .top-bar-container { 
         width: 100%; 
         max-width: 100%; 
-        padding: 0 10px; 
-        margin: 0; 
+        padding: 0 40px; 
         display: flex; 
         align-items: center; 
+        justify-content: space-between;
         gap: 16px; 
     }
     
@@ -57,167 +68,265 @@
     
     .logo-top { 
         width: 64px; height: 64px; 
-        border-radius: 8px; object-fit: cover; 
-        border: 2px solid var(--brand-blue); 
-        background: #fff; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
         transition: transform 0.3s ease;
     }
-    .logo-top:hover { transform: scale(1.05); }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
     .identity-stack { display: flex; flex-direction: column; }
-    .club-title-main { font-family: 'Playfair Display', serif; font-weight: 800; color: var(--brand-blue); font-size: 1.1rem; }
-    .club-subtitle { color: #fff; font-weight: 700; font-size: 0.85rem; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
     
-    .top-center { display: flex; gap: 10px; align-items: center; }
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
     
     .header-icon-btn { 
         width: 44px; height: 44px; flex-shrink: 0;
-        border-radius: 50%; 
+        border-radius: 8px; 
         display: inline-flex; align-items: center; justify-content: center; 
         text-decoration: none; 
-        background: linear-gradient(135deg, var(--brandGold), #B4792A); 
-        color: #fff; 
-        border: 1px solid rgba(255, 255, 255, 0.4); 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
         transition: all 0.2s ease;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         font-size: 1.2rem;
         position: relative;
     }
-    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); background: var(--brand-blue); border-color: var(--brandGold); }
-    .header-icon-btn img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
     
-    /* Bouton EXPERT Spécifique */
+    /* Tooltip */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
+
+    /* Bouton Portfolio */
     .btn-portfolio-cosmic { 
         padding: 8px 18px; 
-        border-radius: 999px; 
-        background: var(--brand-blue); 
-        color: var(--brandGold); 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
         text-decoration: none; 
+        font-family: 'Fira Code', monospace;
         font-weight: 700; 
         display: inline-flex; gap: 8px; align-items: center; 
         transition: background 0.3s, color 0.3s;
         white-space: nowrap;
-        box-shadow: 0 4px 10px rgba(15, 44, 72, 0.2);
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
     }
-    .btn-portfolio-cosmic:hover { background: #fff; color: var(--brand-blue); transform: translateY(-2px); }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
 
-    /* Main Content Placeholder */
-    .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
+    /* --- STYLES ACRONYMES --- */
+    .main-content { flex: 1; padding: 40px 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-    /* --- FOOTER (V2) --- */
-    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 18px; margin-top: auto; border-top: 4px solid var(--brandGold); }
-    .footer-container { max-width: 1400px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
-    .footer-left { display: flex; gap: 12px; align-items: center; }
-    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 2px solid var(--brandGold); background: #fff; }
-    
-    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
-    .footer-contact-link { 
-        color: var(--footer-text); 
-        text-decoration: none; 
-        transition: color 0.2s; 
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-    }
-    .footer-contact-link:hover { color: var(--brandGold); text-decoration: underline; }
-    
-    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
-    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
-    
-    .icon-btn { 
-        width: 44px; height: 44px; flex-shrink: 0;
-        border-radius: 50%; 
-        display: inline-flex; align-items: center; justify-content: center; 
-        background: rgba(255, 255, 255, 0.06); 
-        color: var(--footer-text); 
-        text-decoration: none; 
-        border: 1px solid rgba(217, 165, 38, 0.15); 
-        transition: all 0.2s;
-        font-size: 1.1rem;
-    }
-    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
-    
-    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
-
-    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
-
-    /* --- RESPONSIVE MOBILE --- */
-    @media (max-width: 1100px) {
-        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; padding-bottom: 5px; }
-        .top-left { margin-right: 0; flex-direction: column; text-align: center; }
-        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
-        .top-center::-webkit-scrollbar { height: 4px; }
-        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
-        .footer-container { flex-direction: column; text-align: center; }
-        .footer-left { flex-direction: column; }
-        .footer-details { align-items: center; margin-top: 10px; }
-        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
-        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
-        .footer-divider { display: none; } 
-    }
-
-    /* --- STYLES SPECIFIQUES ACRONYMES --- */
     .page-title {
         text-align: center;
-        font-family: 'Playfair Display', serif;
-        font-size: 2.5rem;
+        font-family: 'Fira Code', monospace;
+        font-size: 2.2rem;
         font-weight: 800;
         color: var(--brand-blue);
         margin-bottom: 10px;
     }
     .page-intro {
         text-align: center;
-        color: var(--brandGold);
+        color: var(--bronze);
         font-style: italic;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
+        font-family: 'Montserrat', sans-serif;
     }
 
-    /* Recherche */
-    .search-wrapper {
+    /* Contrôles (Recherche, Filtres) */
+    .controls-container {
         position: sticky;
         top: 90px;
         z-index: 50;
         background: rgba(246, 242, 232, 0.95);
-        padding: 10px 0;
-        backdrop-filter: blur(5px);
+        padding: 15px;
+        backdrop-filter: blur(8px);
         margin-bottom: 30px;
+        border-bottom: 1px solid rgba(15, 44, 72, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .top-controls {
         display: flex;
         justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
     }
+
     .search-input {
         width: 100%;
-        max-width: 600px;
-        padding: 16px 24px;
-        border-radius: 50px;
+        max-width: 500px;
+        padding: 12px 20px;
+        border-radius: 12px;
         border: 2px solid var(--brand-blue);
-        font-size: 1.1rem;
+        font-size: 1rem;
         outline: none;
         transition: all 0.3s;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        font-family: 'Outfit', sans-serif;
+        font-family: 'Fira Code', monospace;
+        color: var(--brand-blue);
+        background: white;
     }
     .search-input:focus {
         border-color: var(--brandGold);
-        box-shadow: 0 0 0 4px rgba(217, 165, 38, 0.2);
+        box-shadow: 0 0 0 3px rgba(217, 165, 38, 0.2);
+    }
+    
+    .btn-action {
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: 2px solid var(--brandGold);
+        background: var(--brand-blue);
+        color: var(--brandGold);
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s;
+        font-size: 0.9rem;
+    }
+    .btn-action:hover {
+        transform: translateY(-2px);
+        background: var(--brandGold);
+        color: var(--brand-blue);
+    }
+    
+    /* Filtres Alphabet */
+    .alpha-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+        padding: 5px;
+    }
+    .alpha-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+        border: 1px solid var(--brand-blue);
+        background: white;
+        color: var(--brand-blue);
+        font-family: 'Fira Code', monospace;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .alpha-btn:hover, .alpha-btn.active {
+        background: var(--brand-blue);
+        color: white;
+        border-color: var(--brand-blue);
+    }
+    .alpha-btn.all {
+        width: auto;
+        padding: 0 10px;
     }
 
-    /* Grille Acronymes */
+    /* Filtres Catégories (Pastilles) */
+    .cat-filter {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    /* Style de la pastille filtre (Cercle avec lettre) */
+    .cat-pill-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        color: white;
+        font-family: 'Fira Code', monospace;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid transparent;
+        position: relative;
+    }
+    
+    /* Tooltip pour le nom de la catégorie */
+    .cat-pill-btn:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--brand-blue);
+        color: var(--brandGold);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        font-family: 'Outfit', sans-serif;
+    }
+    
+    .cat-pill-btn:hover, .cat-pill-btn.active {
+        transform: scale(1.15);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        border-color: white;
+    }
+    
+    /* Style spécial pour "TOUS" */
+    .cat-pill-all {
+        background: var(--brand-blue);
+        width: auto;
+        padding: 0 15px;
+        border-radius: 20px;
+    }
+
+    /* Compteur */
+    #resultCount {
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Fira Code', monospace;
+        color: var(--brand-blue);
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    /* Grille Cartes */
     .acronym-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
         gap: 20px;
     }
 
     .acronym-card {
         background: white;
         border-radius: 12px;
-        padding: 20px;
+        padding: 25px;
         border-left: 5px solid var(--brand-blue);
-        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -229,40 +338,145 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         border-left-color: var(--brandGold);
     }
-
-    .acro-code {
-        font-family: 'Playfair Display', serif;
-        font-size: 1.6rem;
-        font-weight: 700;
-        color: var(--brand-blue);
-        margin-bottom: 8px;
-    }
-    .acro-meaning {
-        font-size: 1.05rem;
-        color: #333;
-        font-weight: 500;
-        line-height: 1.4;
-    }
-    .acro-cat {
-        display: inline-block;
-        margin-top: 12px;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        color: #B4792A;
-        font-weight: 700;
-        background: rgba(180, 121, 42, 0.1);
-        padding: 4px 10px;
-        border-radius: 99px;
-        align-self: flex-start;
-    }
-    .acro-id {
+    
+    .acro-id-badge {
         position: absolute;
         top: 10px;
         right: 10px;
         font-size: 0.7rem;
-        color: #ccc;
         font-weight: bold;
+        color: #e2e8f0;
+        font-family: 'Fira Code', monospace;
+    }
+
+    .acro-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+    }
+
+    .acro-code {
+        font-family: 'Fira Code', monospace;
+        font-size: 1.4rem;
+        font-weight: 800;
+        color: var(--brand-blue);
+    }
+
+    .btn-speak {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--brandGold);
+        font-size: 1.1rem;
+        transition: transform 0.2s;
+        padding: 5px;
+    }
+    .btn-speak:hover {
+        transform: scale(1.2);
+        color: var(--brand-blue);
+    }
+
+    .acro-meaning {
+        font-size: 0.95rem;
+        color: #4a5568;
+        font-weight: 600;
+        line-height: 1.4;
+        font-family: 'Outfit', sans-serif;
+    }
+    .acro-desc {
+        font-size: 0.85rem;
+        color: #718096;
+        margin-top: 6px;
+        font-style: italic;
+        line-height: 1.4;
+    }
+    
+    /* Style de la pastille dans la carte */
+    .acro-cat-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: 'Fira Code', monospace;
+        margin-top: 12px;
+        position: relative;
+        cursor: help;
+    }
+    /* Tooltip au survol dans la carte */
+    .acro-cat-pill:hover::after {
+        content: attr(title);
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--brand-blue);
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+        z-index: 50;
+    }
+    
+    /* Codes Couleurs Catégories */
+    .cat-web { background-color: #3b82f6; } 
+    .cat-data { background-color: #10b981; } 
+    .cat-python { background-color: #f59e0b; } 
+    .cat-devops { background-color: #ef4444; } 
+    .cat-security { background-color: #8b5cf6; } 
+    .cat-network { background-color: #6366f1; } 
+    .cat-system { background-color: #64748b; } 
+    .cat-cloud { background-color: #0ea5e9; } 
+    .cat-design { background-color: #ec4899; } 
+    .cat-business { background-color: #14b8a6; } 
+    .cat-hardware { background-color: #78716c; } 
+    .cat-algo { background-color: #f97316; } 
+    .cat-other { background-color: #94a3b8; }
+    .cat-mobile { background-color: #a855f7; }
+    .cat-test { background-color: #84cc16; }
+    .cat-git { background-color: #f43f5e; }
+    .cat-java { background-color: #b91c1c; }
+
+    .hidden { display: none; }
+
+    /* --- FOOTER (V2) --- */
+    .main-footer { background: var(--footer-bg); color: var(--footer-text); padding: 40px 0; margin-top: auto; border-top: 4px solid var(--brandGold); font-family: 'Fira Code', monospace; font-size: 0.85rem; width: 100%; }
+    .footer-container { width: 100%; max-width: 100%; padding: 0 40px; margin: 0 auto; display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { color: var(--brandGold); text-decoration: none; transition: color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); color: var(--footer-text); text-decoration: none; border: 1px solid rgba(217, 165, 38, 0.15); transition: all 0.2s; font-size: 1.1rem; }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; text-align: center; }
+        .top-left { margin-right: 0; flex-direction: column; }
+        .top-center { width: 100%; overflow-x: auto; justify-content: flex-start; padding-bottom: 10px; }
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; }
+        .footer-left { flex-direction: column; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; }
+        .footer-divider { display: none; }
+        .acronym-grid { grid-template-columns: 1fr; }
+        .controls-container { position: static; border-radius: 12px; margin-bottom: 20px; }
     }
   </style>
 </head>
@@ -271,521 +485,443 @@
   <!-- ==================== HEADER ==================== -->
   <div class="top-bar" id="mainHeader">
     <div class="top-bar-container">
-      
-      <!-- Logo & Titre (Aligné à Gauche) -->
       <div class="top-left">
-        <a href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">
-          <img class="logo-top" src="https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.png" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_juriste.jpg'" alt="Logo Juriste">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
         </a>
         <div class="identity-stack">
-          <div class="club-title-main">💫 The Jurist Elite Club By Studi ✨</div>
-          <div class="club-subtitle">La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION ! 🏝</div>
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
       </div>
 
-      <!-- Navigation Icônes (Collé à Expert à droite) -->
+      <!-- Navigation -->
       <nav class="top-center" aria-label="Navigation principale">
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">
-          <img src="https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpg" alt="Mathilde" style="width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Photo_Mathilde_Martine_PAISLEY.jpeg'">
-        </a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Start/Accueil" target="_blank">🏠</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning Live" target="_blank">📅</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique Latin" target="_blank">📜</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier de Compétence Élite" target="_blank">🛠️</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="Fiche RNCP" target="_blank">📚</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes" style="background: var(--brandGold); color: var(--brand-blue);">🔠</a>
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
       </nav>
 
-      <!-- Bouton EXPERT (BIEN PRÉSENT AVEC LABEL EXPERT) -->
+      <!-- Bouton Portfolio -->
       <div>
-        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" target="_blank" title="Mon Expertise / Projets">
-           <img src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo" style="width:24px; height:24px; border-radius:50%; object-fit:cover; border:1px solid #fff;" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'"> 
-           Expert
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
+           <i class="fa-solid fa-code"></i>
+           Mon Portfolio
         </a>
       </div>
     </div>
   </div>
-  <!-- ==================== FIN HEADER ==================== -->
 
-
-  <!-- ZONE DE CONTENU -->
+  <!-- ==================== MAIN CONTENT ==================== -->
   <main class="main-content">
-      <h1 class="page-title">Acronymes Juridiques</h1>
-      <p class="page-intro">"La maîtrise des sigles est la première étape vers l'expertise. Retrouvez ici la liste exhaustive des acronymes du droit français et européen." ⚖️</p>
+      
+      <div class="fade-up">
+          <h1 class="page-title"><i class="fa-solid fa-hashtag"></i> Acronymes du Dev</h1>
+          <p class="page-intro">
+              "Parce qu'un développeur qui ne connaît pas son JSON, c'est comme un boulanger sans farine. Voici le dictionnaire de survie (400+ termes)." 🐍
+          </p>
+      </div>
 
-      <!-- Recherche -->
-      <div class="search-wrapper">
-          <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un sigle (ex: Cass., GDPR, URSSAF...) 🔍">
+      <!-- Contrôles : Recherche, Filtres, Audio -->
+      <div class="controls-container fade-up">
+          
+          <!-- Ligne 1 : Recherche & Bouton Audio Global -->
+          <div class="top-controls">
+              <input type="text" id="searchInput" class="search-input" placeholder="Rechercher un sigle (ex: GIL, API, JSON...) 🔍">
+              <button id="globalSpeakBtn" class="btn-action" title="Lire la liste filtrée">
+                 <i class="fas fa-headphones-simple"></i> Lire tout
+              </button>
+          </div>
+
+          <!-- Ligne 2 : Filtres Catégories (Pastilles) -->
+          <div class="cat-filter" id="catFilter">
+              <button class="cat-pill-btn cat-pill-all active" data-cat="all" data-tooltip="Tout voir">Tous</button>
+              <button class="cat-pill-btn cat-web" data-cat="web" data-tooltip="Web">W</button>
+              <button class="cat-pill-btn cat-python" data-cat="python" data-tooltip="Python">P</button>
+              <button class="cat-pill-btn cat-data" data-cat="data" data-tooltip="Data">D</button>
+              <button class="cat-pill-btn cat-devops" data-cat="devops" data-tooltip="DevOps">O</button>
+              <button class="cat-pill-btn cat-security" data-cat="security" data-tooltip="Sécurité">S</button>
+              <button class="cat-pill-btn cat-network" data-cat="network" data-tooltip="Réseau">R</button>
+              <button class="cat-pill-btn cat-system" data-cat="system" data-tooltip="Système">Y</button>
+              <button class="cat-pill-btn cat-hardware" data-cat="hardware" data-tooltip="Hardware">H</button>
+              <button class="cat-pill-btn cat-cloud" data-cat="cloud" data-tooltip="Cloud">C</button>
+          </div>
+
+          <!-- Ligne 3 : Filtres Alphabet -->
+          <div class="alpha-filter" id="alphaFilter">
+              <button class="alpha-btn all active" data-letter="all">ALL</button>
+              <!-- Généré en JS : A, B, C... -->
+          </div>
       </div>
 
       <!-- Compteur -->
-      <div id="resultCount" class="text-center text-gray-500 mb-6 font-bold font-mono"></div>
+      <div id="resultCount" class="fade-up"></div>
 
       <!-- Grille -->
-      <div class="acronym-grid" id="acronymGrid">
+      <div class="acronym-grid fade-up" id="acronymGrid">
           <!-- Injection JS ici -->
       </div>
       
       <div id="noResult" class="text-center py-10 hidden">
-          <p class="text-xl text-yellow-600 font-bold">Aucun acronyme trouvé. 🤔</p>
+          <p class="text-xl text-yellow-600 font-bold font-code">404 - Acronyme Not Found 🤔</p>
       </div>
-  </main>
 
+  </main>
 
   <!-- ==================== FOOTER ==================== -->
   <footer class="main-footer" role="contentinfo">
     <div class="footer-container">
       <div class="footer-left">
-        <a href="https://projettechacademy.github.io/Juridique/index.html" target="_blank">
-          <!-- Logo MMPA -->
-          <img class="footer-logo-img" src="https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpeg" alt="Logo MMPA" onerror="this.src='https://projettechacademy.github.io/Juridique/Asset/Logo_MMPA.jpg'">
-        </a>
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+             <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
+        </div>
         
         <!-- DÉTAILS DE CONTACT -->
         <div class="footer-details">
           <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
-          
-          <!-- Email cliquable (minuscule m) -->
-          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">
-              📧 mathilde.martine.paisley@gmail.com
-          </a>
-          
-          <!-- Téléphone cliquable (dessous) -->
-          <a href="tel:0685900887" class="footer-contact-link">
-              📲 06 85 90 08 87
-          </a>
+          <a href="mailto:mathilde.martine.paisley@gmail.com" class="footer-contact-link">📧 mathilde.martine.paisley@gmail.com</a>
+          <a href="tel:+33685900887" class="footer-contact-link">📲 06 85 90 08 87</a>
         </div>
       </div>
 
       <div class="footer-right">
+        <!-- Navigation Footer -->
         <div class="footer-links-row" aria-label="Liens utilitaires">
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/A_propos_de_moi.html" title="A propos de moi" target="_blank">👤</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/index.html" title="Accueil" target="_blank">🏠</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Mon_Espace_Juriste_Tableau_de_bord_personnel.html" title="Mon Espace" target="_blank">📊</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/formation_live_juriste.html" title="Planning" target="_blank">📅</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Lexique_Latin_Juridique.html" title="Lexique" target="_blank">📜</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Atelier_de_Competence.html" title="Atelier" target="_blank">🛠️</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Portfolio_Mathilde-Martine-PAISLEY.html" title="Portfolio" target="_blank">🎨</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Fiche_RNCP_Juriste.html" title="RNCP" target="_blank">📚</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/00_Autres/Univers_Actes_Juridiques.html" title="Rédaction Juridique" target="_blank">✍️</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Jurist_Elite_Panorama_IA.html" title="Panorama IA" target="_blank">🤖</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Juridique/Acronymes.html" title="Acronymes" target="_blank">🔤</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
             
-            <div class="footer-divider"></div>
+        <div class="footer-divider"></div>
 
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
             <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
-            <a class="icon-btn" href="https://discord.gg/qwNPV8QzFt" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
             <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
-            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#E1306C;"></i></a>
-            <a class="icon-btn" href="https://www.tiktok.com/@enervyx/" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#00f2ea;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
         </div>
       </div>
 
       <div class="copyright">
-        💫 The Jurist Elite Club By Studi ✨ La Villa des Juristes Brisés 💔 sur l’Île de L’INSTRUCTION !🏝 <br> 
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
         By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
       </div>
     </div>
   </footer>
-  <!-- ==================== FIN FOOTER ==================== -->
 
   <script>
-    // --- BASE DE DONNÉES : ACRONYMES JURIDIQUES COMPLÈTE (LISTE 1-500) ---
+    // --- BASE DE DONNÉES : 400+ ACRONYMES DEV / PYTHON / TECH ---
     const dbAcronyms = [
-      { id: 1, c: "A. / Arr.", m: "Arrêté (texte réglementaire)", cat: "Texte / règlement" },
-      { id: 2, c: "Art. / art.", m: "Article (d’une loi, décret, code…)", cat: "Texte / code" },
-      { id: 3, c: "al. / §", m: "Alinéa (dans un texte de loi / décret / code)", cat: "Texte / code" },
-      { id: 4, c: "anc.", m: "Ancien / ancienne (texte abrogé ou antérieur)", cat: "Texte / code" },
-      { id: 5, c: "c. / C.", m: "Code (ex. « C. civ. »)", cat: "Texte / code" },
-      { id: 6, c: "C. civ.", m: "Code civil", cat: "Code" },
-      { id: 7, c: "C. com.", m: "Code de commerce", cat: "Code" },
-      { id: 8, c: "C. civ. loc.", m: "Code civil local (collectivités territoriales)", cat: "Code" },
-      { id: 9, c: "C. com. loc.", m: "Code de commerce local", cat: "Code" },
-      { id: 10, c: "C. déont. PNGN", m: "Code de déontologie police nationale & gendarmerie", cat: "Code / déontologie" },
-      { id: 11, c: "C. déont. comm. comptes", m: "Code de déontologie des commissaires aux comptes", cat: "Code / déontologie" },
-      { id: 12, c: "C. déont. agents pol. mun.", m: "Code de déontologie des agents de police municipale", cat: "Code / déontologie" },
-      { id: 13, c: "CA / C. App.", m: "Cour d’appel", cat: "Juridiction" },
-      { id: 14, c: "C. Cass. / Cass.", m: "Cour de cassation", cat: "Juridiction" },
-      { id: 15, c: "Cass. civ. 1ʳᵉ", m: "Chambre civile 1ʳᵉ", cat: "Juridiction" },
-      { id: 16, c: "Cass. civ. 2ᵉ", m: "Chambre civile 2ᵉ", cat: "Juridiction" },
-      { id: 17, c: "Cass. civ. 3ᵉ", m: "Chambre civile 3ᵉ", cat: "Juridiction" },
-      { id: 18, c: "Cass. com.", m: "Chambre commerciale", cat: "Juridiction" },
-      { id: 19, c: "Cass. crim.", m: "Chambre criminelle", cat: "Juridiction" },
-      { id: 20, c: "Cass. soc.", m: "Chambre sociale", cat: "Juridiction" },
-      { id: 21, c: "Cass. ch. mixte", m: "Chambre mixte", cat: "Juridiction" },
-      { id: 22, c: "Cass. ch. réun.", m: "Chambres réunies", cat: "Juridiction" },
-      { id: 23, c: "Ass. plén.", m: "Assemblée plénière", cat: "Juridiction" },
-      { id: 24, c: "Bull. civ.", m: "Bulletin civil de jurisprudence", cat: "Publication" },
-      { id: 25, c: "Bull. crim.", m: "Bulletin criminel de jurisprudence", cat: "Publication" },
-      { id: 26, c: "BICC", m: "Bulletin d’information de la Cour de cassation", cat: "Publication" },
-      { id: 27, c: "BODACC", m: "Bulletin Officiel des Annonces Civiles et Commerciales", cat: "Publication" },
-      { id: 28, c: "BOCC", m: "Bulletin officiel de la concurrence, consommation et répression des fraudes", cat: "Publication" },
-      { id: 29, c: "Dr. adm.", m: "Droit administratif", cat: "Discipline" },
-      { id: 30, c: "Dr. soc.", m: "Droit social", cat: "Discipline" },
-      { id: 31, c: "Dr. fam.", m: "Droit de la famille", cat: "Discipline" },
-      { id: 32, c: "Dr. sociétés", m: "Droit des sociétés", cat: "Discipline" },
-      { id: 33, c: "AJDA", m: "Actualité juridique : Droit administratif", cat: "Publication" },
-      { id: 34, c: "AJDI", m: "Actualité juridique : Droit immobilier", cat: "Publication" },
-      { id: 35, c: "AJP", m: "Actualité juridique : Droit pénal", cat: "Publication" },
-      { id: 36, c: "AJIL", m: "American Journal of International Law", cat: "Publication internationale" },
-      { id: 37, c: "AAI", m: "Autorité administrative indépendante", cat: "Institution" },
-      { id: 38, c: "AFNOR", m: "Association française de normalisation", cat: "Institution / norme" },
-      { id: 39, c: "ARCEP", m: "Autorité de régulation des communications électroniques et des postes", cat: "Institution" },
-      { id: 40, c: "ARJEL", m: "Autorité de régulation des jeux en ligne (ancien)", cat: "Institution" },
-      { id: 41, c: "AELE", m: "Association européenne de libre-échange", cat: "Institution internationale" },
-      { id: 42, c: "AFDI", m: "Annuaire français de droit international", cat: "Publication" },
-      { id: 43, c: "EURL", m: "Entreprise unipersonnelle à responsabilité limitée", cat: "Entreprise" },
-      { id: 44, c: "SARL", m: "Société à responsabilité limitée", cat: "Entreprise" },
-      { id: 45, c: "CDI", m: "Contrat à durée indéterminée", cat: "Contrat / droit du travail" },
-      { id: 46, c: "CDD", m: "Contrat à durée déterminée", cat: "Contrat / droit du travail" },
-      { id: 47, c: "CNE", m: "Contrat nouvelle embauche (historique)", cat: "Contrat / droit du travail" },
-      { id: 48, c: "TGI", m: "Tribunal de grande instance (ancien)", cat: "Juridiction" },
-      { id: 49, c: "TI", m: "Tribunal d’instance (ancien)", cat: "Juridiction" },
-      { id: 50, c: "TA", m: "Tribunal administratif", cat: "Juridiction" },
-      { id: 51, c: "TASS", m: "Tribunal des affaires de sécurité sociale", cat: "Juridiction" },
-      { id: 52, c: "TC", m: "Tribunal de commerce", cat: "Juridiction" },
-      { id: 53, c: "TJ", m: "Tribunal judiciaire", cat: "Juridiction" },
-      { id: 54, c: "JP", m: "Jurisprudence", cat: "Référence" },
-      { id: 55, c: "CE", m: "Conseil d’État", cat: "Juridiction / institution" },
-      { id: 56, c: "CAA", m: "Cour administrative d’appel", cat: "Juridiction" },
-      { id: 57, c: "CNIL", m: "Commission nationale de l’informatique et des libertés", cat: "Institution" },
-      { id: 58, c: "CNRS", m: "Centre national de la recherche scientifique", cat: "Institution / recherche" },
-      { id: 59, c: "OIT", m: "Organisation internationale du travail", cat: "Institution internationale" },
-      { id: 60, c: "ONU", m: "Organisation des Nations Unies", cat: "Institution internationale" },
-      { id: 61, c: "UE", m: "Union européenne", cat: "Institution internationale" },
-      { id: 62, c: "CJUE", m: "Cour de justice de l’Union européenne", cat: "Juridiction internationale" },
-      { id: 63, c: "CEDH", m: "Cour européenne des droits de l’homme", cat: "Juridiction internationale" },
-      { id: 64, c: "DUE", m: "Directive de l’Union européenne", cat: "Texte européen" },
-      { id: 65, c: "RGPD", m: "Règlement général sur la protection des données", cat: "Texte / réglementation" },
-      { id: 66, c: "INSEE", m: "Institut national de la statistique et des études économiques", cat: "Institution" },
-      { id: 67, c: "URSSAF", m: "Union de recouvrement des cotisations de sécurité sociale", cat: "Institution" },
-      { id: 68, c: "ACOSS", m: "Agence centrale des organismes de sécurité sociale", cat: "Institution" },
-      { id: 69, c: "MSA", m: "Mutualité sociale agricole", cat: "Institution" },
-      { id: 70, c: "RSI", m: "Régime social des indépendants (ancien)", cat: "Institution / historique" },
-      { id: 71, c: "UES", m: "Unité économique et sociale", cat: "Droit social" },
-      { id: 72, c: "OMC", m: "Organisation mondiale du commerce", cat: "Institution internationale" },
-      { id: 73, c: "OCDE", m: "Organisation de coopération et de développement économiques", cat: "Institution internationale" },
-      { id: 74, c: "BCE", m: "Banque centrale européenne", cat: "Institution financière" },
-      { id: 75, c: "FI", m: "Fonds d’investissement", cat: "Finance / droit des affaires" },
-      { id: 76, c: "IPO", m: "Initial public offering", cat: "Finance / droit des affaires" },
-      { id: 77, c: "M&A", m: "Mergers & acquisitions", cat: "Droit des affaires" },
-      { id: 78, c: "SAS", m: "Société par actions simplifiée", cat: "Entreprise" },
-      { id: 79, c: "SA", m: "Société anonyme", cat: "Entreprise" },
-      { id: 80, c: "SNC", m: "Société en nom collectif", cat: "Entreprise" },
-      { id: 81, c: "SCOP", m: "Société coopérative et participative", cat: "Entreprise" },
-      { id: 82, c: "SCIC", m: "Société coopérative d’intérêt collectif", cat: "Entreprise" },
-      { id: 83, c: "FCPE", m: "Fonds commun de placement d’entreprise", cat: "Finance / droit des affaires" },
-      { id: 84, c: "OPCVM", m: "Organisme de placement collectif en valeurs mobilières", cat: "Finance" },
-      { id: 85, c: "IS", m: "Impôt sur les sociétés", cat: "Fiscalité" },
-      { id: 86, c: "IR", m: "Impôt sur le revenu", cat: "Fiscalité" },
-      { id: 87, c: "TVA", m: "Taxe sur la valeur ajoutée", cat: "Fiscalité" },
-      { id: 88, c: "TFR", m: "Taxe sur les frais de rémunération", cat: "Fiscalité" },
-      { id: 89, c: "DALO", m: "Droit au logement opposable", cat: "Droit social / logement" },
-      { id: 90, c: "ALUR", m: "Accès au logement et un urbanisme rénové", cat: "Droit immobilier" },
-      { id: 91, c: "LME", m: "Loi de modernisation de l’économie", cat: "Loi / texte" },
-      { id: 92, c: "PACTE", m: "Plan d’action pour la croissance et la transformation des entreprises", cat: "Loi / texte" },
-      { id: 93, c: "DIF", m: "Droit individuel à la formation (historique)", cat: "Droit social" },
-      { id: 94, c: "CPF", m: "Compte personnel de formation", cat: "Droit social" },
-      { id: 95, c: "CICE", m: "Crédit d’impôt pour la compétitivité et l’emploi (historique)", cat: "Fiscalité" },
-      { id: 96, c: "CIR", m: "Crédit d’impôt recherche", cat: "Fiscalité / innovation" },
-      { id: 97, c: "CESE", m: "Conseil économique, social et environnemental", cat: "Institution" },
-      { id: 98, c: "CNB", m: "Conseil national des barreaux", cat: "Institution / droit" },
-      { id: 99, c: "OAPI", m: "Organisation africaine de la propriété intellectuelle", cat: "Institution internationale" },
-      { id: 100, c: "INPI", m: "Institut national de la propriété industrielle", cat: "Institution / droit des affaires" },
-      { id: 101, c: "CPI", m: "Code de la propriété intellectuelle", cat: "Code" },
-      { id: 105, c: "CRPA", m: "Code des relations entre le public et l’administration", cat: "Code" },
-      { id: 106, c: "CGCT", m: "Code général des collectivités territoriales", cat: "Code" },
-      { id: 107, c: "CGPPP", m: "Code général de la propriété des personnes publiques", cat: "Code" },
-      { id: 108, c: "CSP", m: "Code de la santé publique", cat: "Code" },
-      { id: 109, c: "CASF", m: "Code de l’action sociale et des familles", cat: "Code" },
-      { id: 110, c: "CES", m: "Conseil économique et social (historique)", cat: "Institution" },
-      { id: 111, c: "CRR", m: "Code de règlementation routière", cat: "Code" },
-      { id: 112, c: "CT", m: "Conseil territorial / comité technique", cat: "Juridiction / Institution" },
-      { id: 113, c: "CHSCT", m: "Comité d’hygiène, de sécurité et des conditions de travail (historique)", cat: "Droit social" },
-      { id: 114, c: "CSE", m: "Comité social et économique", cat: "Droit social / institution" },
-      { id: 115, c: "CP", m: "Code pénal", cat: "Code" },
-      { id: 116, c: "CPP", m: "Code de procédure pénale", cat: "Code" },
-      { id: 117, c: "CPC", m: "Code de procédure civile", cat: "Code" },
-      { id: 120, c: "LME", m: "Loi de modernisation de l’économie", cat: "Loi / texte" },
-      { id: 122, c: "LDF", m: "Loi de finances", cat: "Loi / texte" },
-      { id: 123, c: "LF", m: "Loi de finances", cat: "Loi / texte" },
-      { id: 124, c: "LFR", m: "Loi de finances rectificative", cat: "Loi / texte" },
-      { id: 125, c: "LCAP", m: "Loi sur la concurrence et les pratiques commerciales", cat: "Loi / texte" },
-      { id: 134, c: "FMI", m: "Fonds monétaire international", cat: "Institution internationale" },
-      { id: 201, c: "AA", m: "Autorité administrative", cat: "Institution" },
-      { id: 202, c: "AAA", m: "Autorité administrative indépendante (variante)", cat: "Institution" },
-      { id: 203, c: "AAI", m: "Autorité administrative indépendante", cat: "Institution" },
-      { id: 204, c: "AB", m: "Assemblée de base", cat: "Institution / sociale" },
-      { id: 205, c: "ABC", m: "Autorité bancaire centrale", cat: "Institution financière" },
-      { id: 206, c: "ABF", m: "Architecte des bâtiments de France", cat: "Institution" },
-      { id: 207, c: "AC", m: "Arrêté conjoint", cat: "Texte / réglementation" },
-      { id: 208, c: "ACC", m: "Accord collectif", cat: "Droit social / convention" },
-      { id: 209, c: "ACE", m: "Accord cadre européen", cat: "Droit / texte européen" },
-      { id: 210, c: "ACOSS", m: "Agence centrale des organismes de sécurité sociale", cat: "Institution" },
-      { id: 211, c: "ACT", m: "Action", cat: "Droit des sociétés / finance" },
-      { id: 212, c: "ACUE", m: "Agence universitaire de la francophonie (Europe)", cat: "Institution" },
-      { id: 213, c: "ADA", m: "Association pour le droit des affaires", cat: "Institution / ONG" },
-      { id: 214, c: "ADL", m: "Autorité de la concurrence locale", cat: "Institution" },
-      { id: 215, c: "ADN", m: "Autorité de déontologie nationale", cat: "Institution / déontologie" },
-      { id: 216, c: "AE", m: "Autorité européenne", cat: "Institution internationale" },
-      { id: 217, c: "AEM", m: "Autorité européenne des marchés", cat: "Institution internationale" },
-      { id: 218, c: "AFE", m: "Autorité financière européenne", cat: "Institution internationale" },
-      { id: 219, c: "AFP", m: "Agence France Presse (références presse juridique)", cat: "Institution / média" },
-      { id: 220, c: "AG", m: "Assemblée générale", cat: "Entreprise / société" },
-      { id: 221, c: "AGS", m: "Association pour la gestion du régime de garantie des créances des salariés", cat: "Institution / social" },
-      { id: 222, c: "AH", m: "Autorité hospitalière", cat: "Institution / santé" },
-      { id: 223, c: "AI", m: "Autorité indépendante", cat: "Institution" },
-      { id: 224, c: "AIA", m: "Autorité internationale administrative", cat: "Institution internationale" },
-      { id: 225, c: "AIF", m: "Autorité des investissements financiers", cat: "Institution / finance" },
-      { id: 226, c: "AJ", m: "Avocat judiciaire / action judiciaire", cat: "Droit / juridiction" },
-      { id: 227, c: "AJI", m: "Association des juristes internationaux", cat: "Institution / ONG" },
-      { id: 228, c: "AJT", m: "Assistance juridique et technique", cat: "Droit / prestation" },
-      { id: 229, c: "AL", m: "Assemblée législative", cat: "Institution / parlement" },
-      { id: 230, c: "ALE", m: "Accord de libre-échange", cat: "Droit international / commerce" },
-      { id: 231, c: "AMF", m: "Autorité des marchés financiers", cat: "Institution / finance" },
-      { id: 232, c: "AMI", m: "Assistance médicale internationale", cat: "Institution / santé" },
-      { id: 233, c: "AN", m: "Assemblée nationale", cat: "Institution / parlement" },
-      { id: 234, c: "ANACT", m: "Agence nationale pour l’amélioration des conditions de travail", cat: "Institution / social" },
-      { id: 235, c: "ANSM", m: "Agence nationale de sécurité du médicament", cat: "Institution / santé" },
-      { id: 236, c: "AO", m: "Appel d’offres", cat: "Droit / marchés publics" },
-      { id: 237, c: "APE", m: "Activité principale exercée", cat: "Droit des sociétés / entreprise" },
-      { id: 238, c: "API", m: "Accord de partenariat international", cat: "Droit / international" },
-      { id: 239, c: "AP", m: "Administration publique", cat: "Institution / droit public" },
-      { id: 240, c: "APA", m: "Allocation personnalisée d’autonomie", cat: "Droit social / protection" },
-      { id: 241, c: "APC", m: "Accord de partenariat commercial", cat: "Droit / commerce" },
-      { id: 242, c: "APCE", m: "Agence pour la création d’entreprises", cat: "Institution / entreprises" },
-      { id: 243, c: "APDF", m: "Autorité de protection des données financières", cat: "Institution / finance" },
-      { id: 244, c: "AP-HP", m: "Assistance publique – Hôpitaux de Paris", cat: "Institution / santé" },
-      { id: 245, c: "AQ", m: "Autorité de qualité", cat: "Institution / contrôle" },
-      { id: 246, c: "AR", m: "Arrêté", cat: "Texte / réglementation" },
-      { id: 247, c: "ARC", m: "Autorité de régulation des communications", cat: "Institution" },
-      { id: 248, c: "ARH", m: "Autorité régionale de santé", cat: "Institution / santé" },
-      { id: 249, c: "ART", m: "Autorité de régulation des transports", cat: "Institution / infrastructure" },
-      { id: 250, c: "ARS", m: "Agence régionale de santé", cat: "Institution / santé" },
-      { id: 251, c: "AS", m: "Assistant social", cat: "Droit social / protection" },
-      { id: 252, c: "ASA", m: "Autorisation spéciale d’absentéisme", cat: "Droit social / RH" },
-      { id: 253, c: "ASH", m: "Aide sociale à l’enfance", cat: "Droit social / protection" },
-      { id: 254, c: "ASSEDIC", m: "Association pour l’emploi dans l’industrie et le commerce (historique)", cat: "Institution / social" },
-      { id: 255, c: "AST", m: "Autorité de sécurité du travail", cat: "Institution / sécurité" },
-      { id: 256, c: "AT", m: "Accident du travail", cat: "Droit social / protection" },
-      { id: 257, c: "ATI", m: "Allocation temporaire d’insertion", cat: "Droit social / protection" },
-      { id: 258, c: "AV", m: "Avocat", cat: "Profession / droit" },
-      { id: 259, c: "AVP", m: "Avant-projet", cat: "Texte / projet de loi" },
-      { id: 260, c: "AVQ", m: "Aide à la vie quotidienne", cat: "Droit social / protection" },
-      { id: 261, c: "AWA", m: "Autorité du travail administratif", cat: "Institution / droit social" },
-      { id: 262, c: "BA", m: "Bulletin administratif", cat: "Publication" },
-      { id: 263, c: "BAC", m: "Baccalauréat (référence juridique sur diplômes)", cat: "Droit / éducation" },
-      { id: 264, c: "BAIIA", m: "Bénéfice avant intérêts, impôts et amortissements", cat: "Finance / droit des affaires" },
-      { id: 265, c: "BAN", m: "Banque", cat: "Institution / finance" },
-      { id: 266, c: "BAREM", m: "Barème", cat: "Droit / fiscalité" },
-      { id: 267, c: "BDF", m: "Banque de France", cat: "Institution / finance" },
-      { id: 268, c: "BE", m: "Bulletin officiel / Bulletin d’enseignement", cat: "Publication" },
-      { id: 269, c: "BEP", m: "Brevet d’études professionnelles", cat: "Droit / éducation" },
-      { id: 270, c: "BIC", m: "Bénéfices industriels et commerciaux", cat: "Fiscalité" },
-      { id: 271, c: "BIM", m: "Bulletin d’information ministériel", cat: "Publication" },
-      { id: 272, c: "BIS", m: "Référence légale (bis, ter…) / Bissextile", cat: "Texte / code" },
-      { id: 273, c: "BNC", m: "Bénéfices non commerciaux", cat: "Fiscalité" },
-      { id: 274, c: "BO", m: "Bulletin officiel", cat: "Publication" },
-      { id: 275, c: "BOAMP", m: "Bulletin officiel des annonces des marchés publics", cat: "Publication" },
-      { id: 276, c: "BOE", m: "Bulletin officiel de l’État (international / Espagne)", cat: "Publication" },
-      { id: 277, c: "BODACC", m: "Bulletin officiel des annonces civiles et commerciales", cat: "Publication" },
-      { id: 278, c: "BOE", m: "Bulletin officiel européen", cat: "Publication" },
-      { id: 279, c: "BOP", m: "Budget opérationnel de programme", cat: "Finance / droit public" },
-      { id: 280, c: "BOU", m: "Bourse", cat: "Finance / droit des affaires" },
-      { id: 281, c: "BR", m: "Bulletin réglementaire", cat: "Publication" },
-      { id: 282, c: "BRH", m: "Bulletin des ressources humaines", cat: "Publication / RH" },
-      { id: 283, c: "BS", m: "Bulletin de sécurité", cat: "Publication / sécurité" },
-      { id: 284, c: "BT", m: "Bulletin technique", cat: "Publication / technique" },
-      { id: 285, c: "BTP", m: "Bâtiment et travaux publics", cat: "Droit / entreprise" },
-      { id: 286, c: "BU", m: "Bibliothèque universitaire / documentation", cat: "Institution / recherche" },
-      { id: 287, c: "BUC", m: "Bureau de l’unité de contrôle", cat: "Institution / contrôle" },
-      { id: 288, c: "BUREAU", m: "Bureau administratif", cat: "Institution / administration" },
-      { id: 289, c: "BVC", m: "Bureau des vérifications et contrôles", cat: "Institution / contrôle" },
-      { id: 290, c: "BV", m: "Bulletin de vote", cat: "Droit électoral" },
-      { id: 291, c: "BW", m: "Banque mondiale", cat: "Institution internationale / finance" },
-      { id: 292, c: "CAA", m: "Cour administrative d’appel", cat: "Juridiction" },
-      { id: 293, c: "CACE", m: "Contrat d’appui au changement d’entreprise", cat: "Droit / entreprise" },
-      { id: 294, c: "CAD", m: "Code de l’administration de la défense", cat: "Code" },
-      { id: 295, c: "CAF", m: "Caisse d’allocations familiales", cat: "Institution / social" },
-      { id: 296, c: "CAP", m: "Certificat d’aptitude professionnelle", cat: "Droit / éducation" },
-      { id: 297, c: "CAPEB", m: "Confédération de l’artisanat et des petites entreprises du bâtiment", cat: "Institution / entreprise" },
-      { id: 298, c: "CAPM", m: "Caisse d’assurance pour le personnel maritime", cat: "Institution / social" },
-      { id: 299, c: "CARPA", m: "Caisse des règlements pécuniaires des avocats", cat: "Institution / finance" },
-      { id: 300, c: "CARSAT", m: "Caisse d’assurance retraite et de la santé au travail", cat: "Institution / social" },
-      { id: 301, c: "CAT", m: "Commission administrative paritaire", cat: "Institution / droit social" },
-      { id: 302, c: "CATS", m: "Comité d’action territoriale et sociale", cat: "Institution / social" },
-      { id: 303, c: "CB", m: "Code bancaire", cat: "Code / finance" },
-      { id: 304, c: "CBC", m: "Code de la banque et du crédit", cat: "Code / finance" },
-      { id: 305, c: "CBCT", m: "Code des brevets et du commerce technologique", cat: "Code / droit des affaires" },
-      { id: 306, c: "CC", m: "Code civil", cat: "Code" },
-      { id: 307, c: "CCH", m: "Code de la construction et de l’habitation", cat: "Code / droit immobilier" },
-      { id: 308, c: "CCAG", m: "Cahier des clauses administratives générales", cat: "Contrat / marchés publics" },
-      { id: 309, c: "CCI", m: "Chambre de commerce et d’industrie", cat: "Institution / entreprise" },
-      { id: 310, c: "CCIP", m: "Chambre de commerce et d’industrie de Paris", cat: "Institution / entreprise" },
-      { id: 311, c: "CCL", m: "Code des collectivités locales", cat: "Code / droit public" },
-      { id: 312, c: "CCNR", m: "Commission consultative nationale des comptes de résultats", cat: "Institution / finance" },
-      { id: 313, c: "CCP", m: "Code des marchés publics / Code de procédure civile", cat: "Code / contrat" },
-      { id: 314, c: "CCTP", m: "Cahier des clauses techniques particulières", cat: "Contrat / marché public" },
-      { id: 315, c: "CD", m: "Code du domaine", cat: "Code / droit public" },
-      { id: 316, c: "CDAD", m: "Conseil départemental de l’accès au droit", cat: "Institution / droit" },
-      { id: 317, c: "CDD", m: "Contrat à durée déterminée", cat: "Contrat / droit social" },
-      { id: 318, c: "CDI", m: "Contrat à durée indéterminée", cat: "Contrat / droit social" },
-      { id: 319, c: "CDE", m: "Contrat de développement économique", cat: "Contrat / droit des affaires" },
-      { id: 320, c: "CDF", m: "Code de la fonction publique", cat: "Code / droit public" },
-      { id: 321, c: "CDG", m: "Centre de gestion (fonction publique)", cat: "Institution / administration" },
-      { id: 322, c: "CDI", m: "Comité de direction", cat: "Institution / entreprise" },
-      { id: 324, c: "CE", m: "Conseil d’État", cat: "Juridiction / institution" },
-      { id: 325, c: "CECA", m: "Communauté européenne du charbon et de l’acier", cat: "Institution internationale / historique" },
-      { id: 326, c: "CEDEFOP", m: "Centre européen pour le développement de la formation professionnelle", cat: "Institution internationale" },
-      { id: 327, c: "CEE", m: "Communauté économique européenne (historique)", cat: "Institution internationale" },
-      { id: 328, c: "CESE", m: "Conseil économique, social et environnemental", cat: "Institution" },
-      { id: 329, c: "CESEDA", m: "Code de l’entrée et du séjour des étrangers et du droit d’asile", cat: "Code / droit public" },
-      { id: 330, c: "CETA", m: "Comprehensive Economic and Trade Agreement", cat: "Droit international / commerce" },
-      { id: 331, c: "CFA", m: "Contrat de formation en alternance", cat: "Droit social / éducation" },
-      { id: 332, c: "CFDT", m: "Confédération française démocratique du travail", cat: "Institution / syndicat" },
-      { id: 333, c: "CFE", m: "Cotisation foncière des entreprises", cat: "Fiscalité" },
-      { id: 334, c: "CFO", m: "Chief Financial Officer", cat: "Entreprise / direction" },
-      { id: 335, c: "CFPC", m: "Comité de formation professionnelle continue", cat: "Institution / RH" },
-      { id: 336, c: "CFPR", m: "Centre de formation professionnelle et de recherche", cat: "Institution / éducation" },
-      { id: 337, c: "CGCT", m: "Code général des collectivités territoriales", cat: "Code / droit public" },
-      { id: 338, c: "CGU", m: "Conditions générales d’utilisation", cat: "Contrat / droit numérique" },
-      { id: 339, c: "CHSCT", m: "Comité d’hygiène, de sécurité et des conditions de travail (historique)", cat: "Droit social" },
-      { id: 340, c: "CIR", m: "Crédit d’impôt recherche", cat: "Fiscalité / innovation" },
-      { id: 341, c: "CIS", m: "Code de l’investissement social", cat: "Code / droit social" },
-      { id: 342, c: "CJEU", m: "Cour de justice de l’Union européenne", cat: "Juridiction internationale" },
-      { id: 343, c: "CJUE", m: "Cour de justice de l’Union européenne", cat: "Juridiction internationale" },
-      { id: 344, c: "CLAN", m: "Comité local d’action nationale", cat: "Institution / administration" },
-      { id: 345, c: "CLA", m: "Clause", cat: "Contrat / droit civil" },
-      { id: 346, c: "CLC", m: "Code du logement et de la construction", cat: "Code / droit immobilier" },
-      { id: 347, c: "CLCV", m: "Consommation, logement et cadre de vie", cat: "Association / protection" },
-      { id: 348, c: "CNR", m: "Conseil national de la résistance (historique / juridique)", cat: "Institution historique" },
-      { id: 349, c: "CNIL", m: "Commission nationale de l’informatique et des libertés", cat: "Institution" },
-      { id: 350, c: "CNRS", m: "Centre national de la recherche scientifique", cat: "Institution / recherche" },
-      { id: 351, c: "CNSS", m: "Caisse nationale de sécurité sociale", cat: "Institution / social" },
-      { id: 352, c: "CNAV", m: "Caisse nationale d’assurance vieillesse", cat: "Institution / social" },
-      { id: 353, c: "CNFPT", m: "Centre national de la fonction publique territoriale", cat: "Institution / administration" },
-      { id: 354, c: "CNB", m: "Conseil national des barreaux", cat: "Institution / droit" },
-      { id: 355, c: "CNAM", m: "Caisse nationale de l’assurance maladie", cat: "Institution / social" },
-      { id: 356, c: "CNESER", m: "Conseil national de l’enseignement supérieur et de la recherche", cat: "Institution / éducation" },
-      { id: 357, c: "CO", m: "Code des obligations", cat: "Code / droit civil" },
-      { id: 358, c: "CO2", m: "Carbone / environnement (références juridiques environnementales)", cat: "Droit / environnement" },
-      { id: 359, c: "COG", m: "Contrat d’objectifs et de gestion", cat: "Contrat / administration" },
-      { id: 360, c: "COGIC", m: "Contrat d’objectifs et de gestion des institutions culturelles", cat: "Contrat / administration" },
-      { id: 361, c: "COMEX", m: "Comité exécutif", cat: "Institution / entreprise" },
-      { id: 362, c: "COP", m: "Comité opérationnel / conférence des parties", cat: "Institution / environnement" },
-      { id: 363, c: "COP21", m: "Conférence des parties 21 (climat)", cat: "Institution / environnement" },
-      { id: 364, c: "COPANT", m: "Comité permanent", cat: "Institution / administration" },
-      { id: 365, c: "CORDIS", m: "Community Research and Development Information Service", cat: "Institution / UE / recherche" },
-      { id: 366, c: "COT", m: "Comité opérationnel technique", cat: "Institution / entreprise" },
-      { id: 367, c: "COTER", m: "Comité territorial", cat: "Institution / administration" },
-      { id: 368, c: "CP", m: "Code pénal", cat: "Code" },
-      { id: 369, c: "CPP", m: "Code de procédure pénale", cat: "Code" },
-      { id: 370, c: "CPC", m: "Code de procédure civile", cat: "Code" },
-      { id: 371, c: "CPH", m: "Code du patrimoine / Conseil de Prud'hommes (selon contexte)", cat: "Code / Juridiction" },
-      { id: 372, c: "CPI", m: "Code de la propriété intellectuelle", cat: "Code" },
-      { id: 401, c: "DALO", m: "Droit au logement opposable", cat: "Droit social / logement" },
-      { id: 402, c: "DAT", m: "Délégation à l’aménagement du territoire", cat: "Institution / administration" },
-      { id: 403, c: "DDA", m: "Directive sur la distribution d’assurance", cat: "Droit / assurance" },
-      { id: 404, c: "DE", m: "Décret", cat: "Texte / règlement" },
-      { id: 405, c: "DEB", m: "Déclaration d’échanges de biens", cat: "Fiscalité / commerce" },
-      { id: 406, c: "DEC", m: "Décision", cat: "Texte / juridiction" },
-      { id: 407, c: "DEF", m: "Défenseur (des droits)", cat: "Juridiction / droit" },
-      { id: 408, c: "DEI", m: "Droit des étrangers et de l’immigration", cat: "Droit public" },
-      { id: 409, c: "DEM", m: "Démarche / procédure", cat: "Droit administratif" },
-      { id: 410, c: "DEPT", m: "Département", cat: "Institution / administration" },
-      { id: 411, c: "DGE", m: "Direction générale des entreprises", cat: "Institution / administration" },
-      { id: 412, c: "DGCCRF", m: "Direction générale de la concurrence, de la consommation et de la répression des fraudes", cat: "Institution / droit économique" },
-      { id: 413, c: "DGT", m: "Direction générale du travail", cat: "Institution / droit social" },
-      { id: 414, c: "DGFiP", m: "Direction générale des finances publiques", cat: "Institution / finance" },
-      { id: 415, c: "DILA", m: "Direction de l’information légale et administrative", cat: "Institution / documentation" },
-      { id: 416, c: "DLP", m: "Délégation locale de protection", cat: "Institution / droit social" },
-      { id: 417, c: "DLT", m: "Droit du travail", cat: "Discipline" },
-      { id: 418, c: "DNP", m: "Direction nationale de la protection", cat: "Institution / droit social" },
-      { id: 419, c: "DOJ", m: "Département de la justice (Department of Justice - US)", cat: "Institution / international" },
-      { id: 420, c: "DPC", m: "Développement professionnel continu", cat: "Droit social / formation" },
-      { id: 421, c: "DPAE", m: "Déclaration préalable à l’embauche", cat: "Droit social / RH" },
-      { id: 422, c: "DP", m: "Délégué du personnel", cat: "Droit social / RH" },
-      { id: 423, c: "DPS", m: "Droit de préemption salarié", cat: "Droit social / entreprise" },
-      { id: 424, c: "DPCE", m: "Droit de préemption communal et européen", cat: "Droit public / urbanisme" },
-      { id: 425, c: "DPE", m: "Diagnostic de performance énergétique", cat: "Droit immobilier / environnement" },
-      { id: 426, c: "DPU", m: "Droit de préemption urbain", cat: "Droit immobilier / urbanisme" },
-      { id: 427, c: "DRH", m: "Directeur des ressources humaines", cat: "Institution / entreprise" },
-      { id: 428, c: "DREETS", m: "Direction régionale de l’économie, de l’emploi, du travail et des solidarités", cat: "Institution / administration" },
-      { id: 429, c: "DSN", m: "Déclaration sociale nominative", cat: "Droit social / RH" },
-      { id: 430, c: "DSS", m: "Direction de la sécurité sociale", cat: "Institution / social" },
-      { id: 431, c: "DT", m: "Droit de transfert", cat: "Droit / entreprise" },
-      { id: 432, c: "DUT", m: "Diplôme universitaire de technologie", cat: "Droit / éducation" },
-      { id: 433, c: "DUE", m: "Directive de l’Union européenne", cat: "Droit européen" },
-      { id: 434, c: "DUV", m: "Déclaration unique de vente", cat: "Fiscalité / commerce" },
-      { id: 435, c: "EHPAD", m: "Établissement d’hébergement pour personnes âgées dépendantes", cat: "Droit social / santé" },
-      { id: 436, c: "EIRL", m: "Entreprise individuelle à responsabilité limitée", cat: "Entreprise" },
-      { id: 437, c: "EURL", m: "Entreprise unipersonnelle à responsabilité limitée", cat: "Entreprise" },
-      { id: 438, c: "EU", m: "European Union (Union européenne)", cat: "Institution internationale" },
-      { id: 439, c: "EPCI", m: "Établissement public de coopération intercommunale", cat: "Institution / administration" },
-      { id: 440, c: "ECTS", m: "European Credit Transfer and Accumulation System", cat: "Droit / éducation" },
-      { id: 441, c: "ED", m: "Éditeur", cat: "Publication / documentation" },
-      { id: 442, c: "EDH", m: "European Convention on Human Rights (CEDH)", cat: "Juridiction internationale" },
-      { id: 443, c: "EEG", m: "Électricité et énergie générale", cat: "Droit / énergie" },
-      { id: 444, c: "EI", m: "Entreprise individuelle", cat: "Entreprise" },
-      { id: 445, c: "EIRE", m: "Entreprise d’intérêt régional", cat: "Entreprise" },
-      { id: 446, c: "EL", m: "État / loi", cat: "Texte / code" },
-      { id: 447, c: "EMA", m: "État-major des armées", cat: "Institution / défense" },
-      { id: 448, c: "EMPL", m: "Emploi", cat: "Droit social / RH" },
-      { id: 449, c: "ENA", m: "École nationale d’administration", cat: "Institution / éducation" },
-      { id: 450, c: "EP", m: "Établissement public", cat: "Institution / droit public" },
-      { id: 451, c: "EPIC", m: "Établissement public à caractère industriel et commercial", cat: "Institution / droit public" },
-      { id: 452, c: "EPS", m: "Établissement public de santé", cat: "Institution / santé" },
-      { id: 453, c: "EPST", m: "Établissement public scientifique et technologique", cat: "Institution / recherche" },
-      { id: 454, c: "EUIPO", m: "Office de l’Union européenne pour la propriété intellectuelle", cat: "Institution internationale" },
-      { id: 455, c: "FCA", m: "Fonds de commerce et d’activité", cat: "Finance / entreprise" },
-      { id: 456, c: "FCP", m: "Fonds commun de placement", cat: "Finance" },
-      { id: 457, c: "FHF", m: "Fédération hospitalière de France", cat: "Institution / santé" },
-      { id: 458, c: "FIP", m: "Fonds d’investissement de proximité", cat: "Finance / entreprise" },
-      { id: 459, c: "FNE", m: "Fonds national pour l’emploi", cat: "Institution / social" },
-      { id: 460, c: "FPI", m: "Fonds de placement immobilier", cat: "Finance / droit immobilier" },
-      { id: 461, c: "FSE", m: "Fonds social européen", cat: "Institution / Europe / social" },
-      { id: 462, c: "FTT", m: "Fonds de transfert technique", cat: "Finance / entreprise" },
-      { id: 463, c: "GA", m: "Gestion administrative", cat: "Institution / administration" },
-      { id: 464, c: "GIE", m: "Groupement d’intérêt économique", cat: "Entreprise" },
-      { id: 465, c: "GIP", m: "Groupement d’intérêt public", cat: "Institution / droit public" },
-      { id: 466, c: "GRC", m: "Gestion des relations clients", cat: "Entreprise / droit commercial" },
-      { id: 467, c: "GRH", m: "Gestion des ressources humaines", cat: "Institution / entreprise" },
-      { id: 468, c: "GRETA", m: "Groupement d’établissements pour la formation continue des adultes", cat: "Institution / formation" },
-      { id: 469, c: "GTC", m: "Gestion technique centralisée", cat: "Institution / administration" },
-      { id: 470, c: "HCSF", m: "Haut conseil de stabilité financière", cat: "Institution / finance" },
-      { id: 471, c: "HLM", m: "Habitation à loyer modéré", cat: "Droit immobilier / social" },
-      { id: 472, c: "HR", m: "Human resources", cat: "Entreprise / RH" },
-      { id: 473, c: "IA", m: "Intelligence artificielle (références légales)", cat: "Droit / technologie" },
-      { id: 474, c: "IAE", m: "Institut d’administration des entreprises", cat: "Institution / éducation" },
-      { id: 475, c: "IARD", m: "Incendie, accidents et risques divers", cat: "Droit / assurance" },
-      { id: 476, c: "ICB", m: "International Chamber of Commerce", cat: "Institution internationale" },
-      { id: 477, c: "ICPE", m: "Installation classée pour la protection de l’environnement", cat: "Droit environnement / réglementation" },
-      { id: 478, c: "IGC", m: "Inspection générale des carrières", cat: "Institution / contrôle" },
-      { id: 479, c: "IGF", m: "Inspection générale des finances", cat: "Institution / contrôle" },
-      { id: 480, c: "IGPN", m: "Inspection générale de la police nationale", cat: "Institution / sécurité" },
-      { id: 481, c: "IGSS", m: "Inspection générale de la sécurité sociale", cat: "Institution / social" },
-      { id: 482, c: "IGP", m: "Indication géographique protégée", cat: "Droit / propriété industrielle" },
-      { id: 483, c: "ILO", m: "International Labour Organization", cat: "Institution internationale" },
-      { id: 484, c: "IMF", m: "International Monetary Fund", cat: "Institution internationale / finance" },
-      { id: 485, c: "INPI", m: "Institut national de la propriété industrielle", cat: "Institution / droit des affaires" },
-      { id: 486, c: "INSEE", m: "Institut national de la statistique et des études économiques", cat: "Institution" },
-      { id: 487, c: "IP", m: "Intellectual property", cat: "Droit / propriété industrielle" },
-      { id: 488, c: "IR", m: "Impôt sur le revenu", cat: "Fiscalité" },
-      { id: 489, c: "IS", m: "Impôt sur les sociétés", cat: "Fiscalité" },
-      { id: 490, c: "ISS", m: "Institut de sécurité sociale", cat: "Institution / social" },
-      { id: 491, c: "IT", m: "Information technology", cat: "Droit / numérique" },
-      { id: 492, c: "JAF", m: "Juges aux affaires familiales", cat: "Juridiction / droit civil" },
-      { id: 493, c: "JAPD", m: "Journée d’appel de préparation à la défense", cat: "Droit / militaire" },
-      { id: 494, c: "JDC", m: "Journée défense et citoyenneté", cat: "Droit / militaire" },
-      { id: 495, c: "JEX", m: "Juge de l’exécution", cat: "Juridiction / droit civil" },
-      { id: 496, c: "JIRS", m: "Juridiction interrégionale spécialisée", cat: "Juridiction / pénal" },
-      { id: 497, c: "JLD", m: "Juge des libertés et de la détention", cat: "Juridiction / pénal" },
-      { id: 498, c: "JOP", m: "Journal officiel de la propriété", cat: "Publication / droit" },
-      { id: 499, c: "JO", m: "Journal officiel", cat: "Publication / texte officiel" },
-      { id: 500, c: "JR", m: "Jurisprudence", cat: "Référence" }
+      // Web
+      { id: 1, c: "API", m: "Application Programming Interface", cat: "Web", desc: "Interface de communication.", example: "REST, GraphQL" },
+      { id: 2, c: "AJAX", m: "Asynchronous JavaScript and XML", cat: "Web", desc: "Requêtes asynchrones." },
+      { id: 3, c: "CDN", m: "Content Delivery Network", cat: "Web", desc: "Réseau de distribution (images, scripts)." },
+      { id: 4, c: "CMS", m: "Content Management System", cat: "Web", desc: "Système de gestion de contenu (WordPress)." },
+      { id: 5, c: "CSS", m: "Cascading Style Sheets", cat: "Web", desc: "Styles pour HTML." },
+      { id: 6, c: "DOM", m: "Document Object Model", cat: "Web", desc: "Structure HTML manipulable." },
+      { id: 7, c: "HTML", m: "HyperText Markup Language", cat: "Web", desc: "Structure des pages web." },
+      { id: 8, c: "HTTP", m: "HyperText Transfer Protocol", cat: "Web", desc: "Protocole web." },
+      { id: 9, c: "HTTPS", m: "HyperText Transfer Protocol Secure", cat: "Web", desc: "HTTP sécurisé." },
+      { id: 10, c: "JSON", m: "JavaScript Object Notation", cat: "Data", desc: "Format de données léger.", example: "{'key': 'value'}" },
+      { id: 11, c: "JWT", m: "JSON Web Token", cat: "Web", desc: "Jeton d'auth sécurisé." },
+      { id: 12, c: "MVC", m: "Model View Controller", cat: "Architecture", desc: "Pattern logiciel." },
+      { id: 13, c: "PWA", m: "Progressive Web App", cat: "Web", desc: "App web type natif." },
+      { id: 14, c: "REST", m: "Representational State Transfer", cat: "Web", desc: "Standard API." },
+      { id: 15, c: "SEO", m: "Search Engine Optimization", cat: "Web", desc: "Optimisation moteurs de recherche." },
+      { id: 16, c: "SPA", m: "Single Page Application", cat: "Web", desc: "App sur une seule page." },
+      { id: 17, c: "SSR", m: "Server-Side Rendering", cat: "Web", desc: "Rendu serveur." },
+      { id: 18, c: "URI", m: "Uniform Resource Identifier", cat: "Web", desc: "Identifiant ressource." },
+      { id: 19, c: "URL", m: "Uniform Resource Locator", cat: "Web", desc: "Adresse web." },
+      { id: 20, c: "W3C", m: "World Wide Web Consortium", cat: "Web", desc: "Standardisation web." },
+      { id: 21, c: "XML", m: "Extensible Markup Language", cat: "Data", desc: "Langage balisage données." },
+      { id: 22, c: "ARIA", m: "Accessible Rich Internet Applications", cat: "Web", desc: "Accessibilité web." },
+      { id: 23, c: "CORS", m: "Cross-Origin Resource Sharing", cat: "Web", desc: "Sécurité partage ressources." },
+      { id: 24, c: "CSP", m: "Content Security Policy", cat: "Web", desc: "Sécurité contenu." },
+      { id: 25, c: "XSS", m: "Cross-Site Scripting", cat: "Security", desc: "Faille injection script." },
+      { id: 26, c: "CSRF", m: "Cross-Site Request Forgery", cat: "Security", desc: "Falsification de requête." },
+
+      // Python (Grosse MAJ)
+      { id: 30, c: "ABC", m: "Abstract Base Class", cat: "Python", desc: "Classe abstraite de base." },
+      { id: 31, c: "ASGI", m: "Asynchronous Server Gateway Interface", cat: "Python", desc: "Interface serveur asynchrone." },
+      { id: 32, c: "BDFL", m: "Benevolent Dictator For Life", cat: "Python", desc: "Guido van Rossum (créateur)." },
+      { id: 33, c: "EAFP", m: "Easier to Ask for Forgiveness than Permission", cat: "Python", desc: "Style de code Python." },
+      { id: 34, c: "GIL", m: "Global Interpreter Lock", cat: "Python", desc: "Verrou interpréteur." },
+      { id: 35, c: "IDLE", m: "Integrated Development and Learning Environment", cat: "Python", desc: "IDE Python." },
+      { id: 36, c: "LBYL", m: "Look Before You Leap", cat: "Python", desc: "Style de code (opposé à EAFP)." },
+      { id: 37, c: "LEGB", m: "Local, Enclosing, Global, Built-in", cat: "Python", desc: "Règle de portée des variables." },
+      { id: 38, c: "MRO", m: "Method Resolution Order", cat: "Python", desc: "Ordre résolution méthodes." },
+      { id: 39, c: "PEP", m: "Python Enhancement Proposal", cat: "Python", desc: "Propositions amélioration." },
+      { id: 40, c: "PIP", m: "Pip Installs Packages", cat: "Python", desc: "Gestionnaire paquets." },
+      { id: 41, c: "PyPI", m: "Python Package Index", cat: "Python", desc: "Dépôt paquets." },
+      { id: 42, c: "REPL", m: "Read-Eval-Print Loop", cat: "Python", desc: "Shell interactif." },
+      { id: 43, c: "VENV", m: "Virtual Environment", cat: "Python", desc: "Env virtuel." },
+      { id: 44, c: "WSGI", m: "Web Server Gateway Interface", cat: "Python", desc: "Interface serveur web." },
+      { id: 45, c: "ZEN", m: "Zen of Python", cat: "Python", desc: "Philosophie (import this)." },
+      
+      // Data
+      { id: 50, c: "ACID", m: "Atomicity, Consistency, Isolation, Durability", cat: "Data", desc: "Fiabilité BDD." },
+      { id: 51, c: "BDD", m: "Base de Données", cat: "Data", desc: "Stockage." },
+      { id: 52, c: "BLOB", m: "Binary Large Object", cat: "Data", desc: "Donnée binaire." },
+      { id: 53, c: "CAP", m: "Consistency, Availability, Partition tolerance", cat: "Data", desc: "Théorème de Brewer." },
+      { id: 54, c: "CRUD", m: "Create, Read, Update, Delete", cat: "Data", desc: "Opérations de base." },
+      { id: 55, c: "CSV", m: "Comma-Separated Values", cat: "Data", desc: "Format tabulaire." },
+      { id: 56, c: "DBMS", m: "Database Management System", cat: "Data", desc: "SGBD." },
+      { id: 57, c: "ETL", m: "Extract, Transform, Load", cat: "Data", desc: "Pipeline données." },
+      { id: 58, c: "NoSQL", m: "Not Only SQL", cat: "Data", desc: "BDD non relationnelle." },
+      { id: 59, c: "ORM", m: "Object-Relational Mapping", cat: "Data", desc: "Mapping Objet-Relationnel." },
+      { id: 60, c: "SQL", m: "Structured Query Language", cat: "Data", desc: "Langage requête BDD." },
+      { id: 61, c: "YAML", m: "YAML Ain't Markup Language", cat: "Data", desc: "Format sérialisation." },
+
+      // DevOps & Cloud
+      { id: 70, c: "AWS", m: "Amazon Web Services", cat: "Cloud", desc: "Cloud Amazon." },
+      { id: 71, c: "CI/CD", m: "Continuous Integration / Deployment", cat: "DevOps", desc: "Automation." },
+      { id: 72, c: "IaaS", m: "Infrastructure as a Service", cat: "Cloud", desc: "Infra service." },
+      { id: 73, c: "PaaS", m: "Platform as a Service", cat: "Cloud", desc: "Plateforme service." },
+      { id: 74, c: "SaaS", m: "Software as a Service", cat: "Cloud", desc: "Logiciel service." },
+      { id: 75, c: "VM", m: "Virtual Machine", cat: "DevOps", desc: "Machine virtuelle." },
+      { id: 76, c: "VPS", m: "Virtual Private Server", cat: "Cloud", desc: "Serveur privé." },
+      { id: 77, c: "VPN", m: "Virtual Private Network", cat: "Network", desc: "Réseau privé." },
+      { id: 78, c: "SSH", m: "Secure Shell", cat: "Network", desc: "Accès distant." },
+      { id: 79, c: "Docker", m: "Conteneurisation", cat: "DevOps", desc: "Plateforme conteneurs." },
+      { id: 80, c: "K8s", m: "Kubernetes", cat: "DevOps", desc: "Orchestration conteneurs." },
+
+      // Concepts
+      { id: 90, c: "DRY", m: "Don't Repeat Yourself", cat: "Algo", desc: "Non redondance." },
+      { id: 91, c: "KISS", m: "Keep It Simple, Stupid", cat: "Algo", desc: "Simplicité." },
+      { id: 92, c: "YAGNI", m: "You Aren't Gonna Need It", cat: "Algo", desc: "Pas de superflu." },
+      { id: 93, c: "SOLID", m: "Single, Open, Liskov, Interface, Dependency", cat: "Algo", desc: "Principes POO." },
+      { id: 94, c: "TDD", m: "Test Driven Development", cat: "Test", desc: "Dév par tests." },
+      { id: 95, c: "OOP", m: "Object-Oriented Programming", cat: "Algo", desc: "POO." },
+      { id: 96, c: "MVP", m: "Minimum Viable Product", cat: "Business", desc: "Produit minimum." },
+      { id: 97, c: "UX", m: "User Experience", cat: "Design", desc: "Expérience utilisateur." },
+      { id: 98, c: "UI", m: "User Interface", cat: "Design", desc: "Interface utilisateur." },
+
+      // Tech & Divers (Extension vers 300)
+      { id: 100, c: "AI", m: "Artificial Intelligence", cat: "Tech", desc: "IA." },
+      { id: 101, c: "IoT", m: "Internet of Things", cat: "Tech", desc: "Objets connectés." },
+      { id: 102, c: "LLM", m: "Large Language Model", cat: "AI", desc: "Modèle langage." },
+      { id: 103, c: "NLP", m: "Natural Language Processing", cat: "AI", desc: "Traitement langue." },
+      { id: 104, c: "OCR", m: "Optical Character Recognition", cat: "Tech", desc: "Reconnaissance caractères." },
+      { id: 105, c: "OSS", m: "Open Source Software", cat: "Legal", desc: "Logiciel libre." },
+      { id: 106, c: "P2P", m: "Peer-to-Peer", cat: "Network", desc: "Pair à pair." },
+      { id: 107, c: "QR", m: "Quick Response", cat: "Tech", desc: "Code 2D." },
+      { id: 108, c: "RAM", m: "Random Access Memory", cat: "Hardware", desc: "Mémoire vive." },
+      { id: 109, c: "ROM", m: "Read-Only Memory", cat: "Hardware", desc: "Mémoire morte." },
+      { id: 110, c: "CPU", m: "Central Processing Unit", cat: "Hardware", desc: "Processeur." },
+      { id: 111, c: "GPU", m: "Graphics Processing Unit", cat: "Hardware", desc: "Processeur graphique." },
+      { id: 112, c: "CLI", m: "Command Line Interface", cat: "System", desc: "Ligne commande." },
+      { id: 113, c: "GUI", m: "Graphical User Interface", cat: "System", desc: "Interface graphique." },
+      { id: 114, c: "IP", m: "Internet Protocol", cat: "Network", desc: "Protocole Internet." },
+      { id: 115, c: "TCP", m: "Transmission Control Protocol", cat: "Network", desc: "Protocole transport." },
+      { id: 116, c: "UDP", m: "User Datagram Protocol", cat: "Network", desc: "Protocole non connecté." },
+      { id: 117, c: "DNS", m: "Domain Name System", cat: "Network", desc: "Résolution noms." },
+      { id: 118, c: "FTP", m: "File Transfer Protocol", cat: "Network", desc: "Transfert fichiers." },
+      { id: 119, c: "SFTP", m: "Secure File Transfer Protocol", cat: "Network", desc: "FTP sécurisé." },
+      { id: 120, c: "NPM", m: "Node Package Manager", cat: "Web", desc: "Paquets Node." },
+      { id: 121, c: "VCS", m: "Version Control System", cat: "DevOps", desc: "Git." },
+      { id: 122, c: "IDE", m: "Integrated Development Environment", cat: "DevOps", desc: "Env de dév." },
+      { id: 123, c: "SDK", m: "Software Development Kit", cat: "DevOps", desc: "Kit dév." },
+      { id: 124, c: "JDK", m: "Java Development Kit", cat: "Java", desc: "Kit Java." },
+      { id: 125, c: "JRE", m: "Java Runtime Environment", cat: "Java", desc: "Runtime Java." },
+      { id: 126, c: "JVM", m: "Java Virtual Machine", cat: "Java", desc: "Machine Java." },
+      { id: 127, c: "2FA", m: "Two-Factor Authentication", cat: "Security", desc: "Double auth." },
+      { id: 128, c: "ACL", m: "Access Control List", cat: "Security", desc: "Liste accès." },
+      { id: 129, c: "AES", m: "Advanced Encryption Standard", cat: "Security", desc: "Chiffrement." },
+      { id: 130, c: "ARP", m: "Address Resolution Protocol", cat: "Network", desc: "Résolution adresse." },
+      { id: 131, c: "ASCII", m: "American Standard Code", cat: "Data", desc: "Codage caractères." },
+      { id: 132, c: "BASH", m: "Bourne Again Shell", cat: "System", desc: "Shell." },
+      { id: 133, c: "BIOS", m: "Basic Input/Output System", cat: "Hardware", desc: "Démarrage." },
+      { id: 134, c: "CAPTCHA", m: "Completely Automated Public Turing test", cat: "Security", desc: "Test humain." },
+      { id: 135, c: "CC", m: "Creative Commons", cat: "Legal", desc: "Licence." },
+      { id: 136, c: "CD", m: "Continuous Delivery", cat: "DevOps", desc: "Livraison continue." },
+      { id: 137, c: "CGI", m: "Common Gateway Interface", cat: "Web", desc: "Interface web." },
+      { id: 138, c: "CISO", m: "Chief Information Security Officer", cat: "Business", desc: "RSSI." },
+      { id: 139, c: "CTO", m: "Chief Technology Officer", cat: "Business", desc: "Directeur Tech." },
+      { id: 140, c: "CVE", m: "Common Vulnerabilities and Exposures", cat: "Security", desc: "Failles." },
+      { id: 141, c: "DAO", m: "Data Access Object", cat: "Architecture", desc: "Accès données." },
+      { id: 142, c: "DDOS", m: "Distributed Denial of Service", cat: "Security", desc: "Déni service." },
+      { id: 143, c: "DHCP", m: "Dynamic Host Configuration Protocol", cat: "Network", desc: "IP dynamique." },
+      { id: 144, c: "DLL", m: "Dynamic Link Library", cat: "System", desc: "Bibliothèque." },
+      { id: 145, c: "DMA", m: "Direct Memory Access", cat: "Hardware", desc: "Accès mémoire." },
+      { id: 146, c: "DPI", m: "Dots Per Inch", cat: "Design", desc: "Résolution." },
+      { id: 147, c: "DRM", m: "Digital Rights Management", cat: "Legal", desc: "Droits numériques." },
+      { id: 148, c: "DSL", m: "Domain Specific Language", cat: "Algo", desc: "Langage dédié." },
+      { id: 149, c: "DTO", m: "Data Transfer Object", cat: "Architecture", desc: "Transfert données." },
+      { id: 150, c: "ERP", m: "Enterprise Resource Planning", cat: "Business", desc: "PGI." },
+      { id: 151, c: "FAT", m: "File Allocation Table", cat: "System", desc: "Système fichiers." },
+      { id: 152, c: "FIFO", m: "First In First Out", cat: "Algo", desc: "File." },
+      { id: 153, c: "FOSS", m: "Free and Open Source Software", cat: "Legal", desc: "Logiciel libre." },
+      { id: 154, c: "FPS", m: "Frames Per Second", cat: "Tech", desc: "Images/sec." },
+      { id: 155, c: "GDPR", m: "General Data Protection Regulation", cat: "Legal", desc: "RGPD." },
+      { id: 156, c: "GIF", m: "Graphics Interchange Format", cat: "Design", desc: "Image." },
+      { id: 157, c: "GIS", m: "Geographic Information System", cat: "Tech", desc: "SIG." },
+      { id: 158, c: "GUID", m: "Globally Unique Identifier", cat: "Data", desc: "ID unique." },
+      { id: 159, c: "HDD", m: "Hard Disk Drive", cat: "Hardware", desc: "Disque dur." },
+      { id: 160, c: "HDMI", m: "High-Definition Multimedia Interface", cat: "Hardware", desc: "Vidéo." },
+      { id: 161, c: "ICMP", m: "Internet Control Message Protocol", cat: "Network", desc: "Ping." },
+      { id: 162, c: "IMAP", m: "Internet Message Access Protocol", cat: "Network", desc: "Mail." },
+      { id: 163, c: "ISO", m: "International Organization for Standardization", cat: "Norme", desc: "Normes." },
+      { id: 164, c: "ISP", m: "Internet Service Provider", cat: "Network", desc: "FAI." },
+      { id: 165, c: "IT", m: "Information Technology", cat: "Tech", desc: "Informatique." },
+      { id: 166, c: "JAR", m: "Java ARchive", cat: "Java", desc: "Archive." },
+      { id: 167, c: "JPEG", m: "Joint Photographic Experts Group", cat: "Design", desc: "Image." },
+      { id: 168, c: "KPI", m: "Key Performance Indicator", cat: "Business", desc: "Indicateur." },
+      { id: 169, c: "LAN", m: "Local Area Network", cat: "Network", desc: "Réseau local." },
+      { id: 170, c: "LDAP", m: "Lightweight Directory Access Protocol", cat: "Network", desc: "Annuaire." },
+      { id: 171, c: "LIFO", m: "Last In First Out", cat: "Algo", desc: "Pile." },
+      { id: 172, c: "LTE", m: "Long Term Evolution", cat: "Network", desc: "4G." },
+      { id: 173, c: "MAC", m: "Media Access Control", cat: "Network", desc: "Adresse physique." },
+      { id: 174, c: "MBR", m: "Master Boot Record", cat: "System", desc: "Boot." },
+      { id: 175, c: "MD5", m: "Message Digest 5", cat: "Security", desc: "Hash." },
+      { id: 176, c: "MFA", m: "Multi-Factor Authentication", cat: "Security", desc: "Double auth." },
+      { id: 177, c: "MIME", m: "Multipurpose Internet Mail Extensions", cat: "Web", desc: "Type fichier." },
+      { id: 178, c: "MP3", m: "MPEG Audio Layer III", cat: "Tech", desc: "Audio." },
+      { id: 179, c: "MQTT", m: "Message Queuing Telemetry Transport", cat: "IoT", desc: "Msg léger." },
+      { id: 180, c: "MTU", m: "Maximum Transmission Unit", cat: "Network", desc: "Taille paquet." },
+      { id: 181, c: "MVVM", m: "Model View ViewModel", cat: "Architecture", desc: "Pattern." },
+      { id: 182, c: "NAS", m: "Network Attached Storage", cat: "Hardware", desc: "Stockage réseau." },
+      { id: 183, c: "NAT", m: "Network Address Translation", cat: "Network", desc: "Traduction adresse." },
+      { id: 184, c: "NDA", m: "Non-Disclosure Agreement", cat: "Legal", desc: "Confidentialité." },
+      { id: 185, c: "NFC", m: "Near Field Communication", cat: "Tech", desc: "Sans contact." },
+      { id: 186, c: "NFS", m: "Network File System", cat: "System", desc: "Fichiers réseau." },
+      { id: 187, c: "NFT", m: "Non-Fungible Token", cat: "Tech", desc: "Jeton." },
+      { id: 188, c: "NIC", m: "Network Interface Card", cat: "Hardware", desc: "Carte réseau." },
+      { id: 189, c: "NTFS", m: "New Technology File System", cat: "System", desc: "Système fichiers." },
+      { id: 190, c: "NTP", m: "Network Time Protocol", cat: "Network", desc: "Heure." },
+      { id: 191, c: "OAuth", m: "Open Authorization", cat: "Security", desc: "Autorisation." },
+      { id: 192, c: "ODBC", m: "Open Database Connectivity", cat: "Data", desc: "Connexion BDD." },
+      { id: 193, c: "OEM", m: "Original Equipment Manufacturer", cat: "Business", desc: "Fabricant." },
+      { id: 194, c: "OLAP", m: "Online Analytical Processing", cat: "Data", desc: "Analyse." },
+      { id: 195, c: "OLTP", m: "Online Transaction Processing", cat: "Data", desc: "Transaction." },
+      { id: 196, c: "OSI", m: "Open Systems Interconnection", cat: "Network", desc: "Modèle OSI." },
+      { id: 197, c: "OTP", m: "One Time Password", cat: "Security", desc: "MDP unique." },
+      { id: 198, c: "OWASP", m: "Open Web Application Security Project", cat: "Security", desc: "Sécurité." },
+      { id: 199, c: "PAN", m: "Personal Area Network", cat: "Network", desc: "Réseau personnel." },
+      { id: 200, c: "PC", m: "Personal Computer", cat: "Hardware", desc: "Ordi." },
+      { id: 201, c: "PCB", m: "Printed Circuit Board", cat: "Hardware", desc: "Circuit." },
+      { id: 202, c: "PCI", m: "Peripheral Component Interconnect", cat: "Hardware", desc: "Bus." },
+      { id: 203, c: "PDF", m: "Portable Document Format", cat: "Tech", desc: "Document." },
+      { id: 204, c: "PHP", m: "Hypertext Preprocessor", cat: "Web", desc: "Langage." },
+      { id: 205, c: "PID", m: "Process Identifier", cat: "System", desc: "ID Process." },
+      { id: 206, c: "PING", m: "Packet Internet Groper", cat: "Network", desc: "Test." },
+      { id: 207, c: "PKI", m: "Public Key Infrastructure", cat: "Security", desc: "Clé publique." },
+      { id: 208, c: "PNG", m: "Portable Network Graphics", cat: "Design", desc: "Image." },
+      { id: 209, c: "PoC", m: "Proof of Concept", cat: "Projet", desc: "Preuve." },
+      { id: 210, c: "POP3", m: "Post Office Protocol 3", cat: "Network", desc: "Mail." },
+      { id: 211, c: "POSIX", m: "Portable Operating System Interface", cat: "System", desc: "Unix." },
+      { id: 212, c: "POST", m: "Power On Self Test", cat: "Hardware", desc: "Test." },
+      { id: 213, c: "PPI", m: "Pixels Per Inch", cat: "Design", desc: "Densité." },
+      { id: 214, c: "PPP", m: "Point to Point Protocol", cat: "Network", desc: "Point à point." },
+      { id: 215, c: "PPTP", m: "Point to Point Tunneling Protocol", cat: "Network", desc: "VPN." },
+      { id: 216, c: "PS", m: "PostScript", cat: "Tech", desc: "Impression." },
+      { id: 217, c: "PSU", m: "Power Supply Unit", cat: "Hardware", desc: "Alim." },
+      { id: 218, c: "PXE", m: "Preboot Execution Environment", cat: "System", desc: "Boot réseau." },
+      { id: 219, c: "QA", m: "Quality Assurance", cat: "Test", desc: "Qualité." },
+      { id: 220, c: "QoS", m: "Quality of Service", cat: "Network", desc: "Qualité." },
+      { id: 221, c: "RAID", m: "Redundant Array of Independent Disks", cat: "Hardware", desc: "Disques." },
+      { id: 222, c: "RDP", m: "Remote Desktop Protocol", cat: "Network", desc: "Bureau distant." },
+      { id: 223, c: "RF", m: "Radio Frequency", cat: "Tech", desc: "Radio." },
+      { id: 224, c: "RFC", m: "Request For Comments", cat: "Norme", desc: "Standard." },
+      { id: 225, c: "RFID", m: "Radio Frequency Identification", cat: "Tech", desc: "Radio ID." },
+      { id: 226, c: "RGB", m: "Red Green Blue", cat: "Design", desc: "Couleur." },
+      { id: 227, c: "RIA", m: "Rich Internet Application", cat: "Web", desc: "App riche." },
+      { id: 228, c: "RIP", m: "Routing Information Protocol", cat: "Network", desc: "Routage." },
+      { id: 229, c: "RMI", m: "Remote Method Invocation", cat: "Java", desc: "Invocation." },
+      { id: 230, c: "ROI", m: "Return On Investment", cat: "Business", desc: "Retour invest." },
+      { id: 231, c: "ROM", m: "Read Only Memory", cat: "Hardware", desc: "Mémoire." },
+      { id: 232, c: "RPC", m: "Remote Procedure Call", cat: "DevOps", desc: "Appel distant." },
+      { id: 233, c: "RPM", m: "Red Hat Package Manager", cat: "System", desc: "Paquets." },
+      { id: 234, c: "RSA", m: "Rivest Shamir Adleman", cat: "Security", desc: "Crypto." },
+      { id: 235, c: "RSS", m: "Really Simple Syndication", cat: "Web", desc: "Flux." },
+      { id: 236, c: "RTF", m: "Rich Text Format", cat: "Tech", desc: "Texte." },
+      { id: 237, c: "RTP", m: "Real-time Transport Protocol", cat: "Network", desc: "Temps réel." },
+      { id: 238, c: "RTSP", m: "Real Time Streaming Protocol", cat: "Network", desc: "Streaming." },
+      { id: 239, c: "RTT", m: "Round Trip Time", cat: "Network", desc: "Latence." },
+      { id: 240, c: "S/MIME", m: "Secure/Multipurpose Internet Mail Extensions", cat: "Security", desc: "Mail sécu." },
+      { id: 241, c: "SAN", m: "Storage Area Network", cat: "Hardware", desc: "Stockage." },
+      { id: 242, c: "SATA", m: "Serial AT Attachment", cat: "Hardware", desc: "Disque." },
+      { id: 243, c: "SCM", m: "Source Control Management", cat: "DevOps", desc: "Sources." },
+      { id: 244, c: "SCSI", m: "Small Computer System Interface", cat: "Hardware", desc: "Interface." },
+      { id: 245, c: "SD", m: "Secure Digital", cat: "Hardware", desc: "Carte SD." },
+      { id: 246, c: "SDLC", m: "Software Development Life Cycle", cat: "DevOps", desc: "Cycle vie." },
+      { id: 247, c: "SDN", m: "Software Defined Networking", cat: "Network", desc: "Réseau log." },
+      { id: 248, c: "SE", m: "Software Engineering", cat: "DevOps", desc: "Génie log." },
+      { id: 249, c: "SFTP", m: "Secure File Transfer Protocol", cat: "Network", desc: "FTP sec." },
+      { id: 250, c: "SGML", m: "Standard Generalized Markup Language", cat: "Data", desc: "Balisage." },
+      { id: 251, c: "SHA", m: "Secure Hash Algorithm", cat: "Security", desc: "Hash." },
+      { id: 252, c: "SIM", m: "Subscriber Identity Module", cat: "Tech", desc: "Carte SIM." },
+      { id: 253, c: "SIP", m: "Session Initiation Protocol", cat: "Network", desc: "VoIP." },
+      { id: 254, c: "SKU", m: "Stock Keeping Unit", cat: "Business", desc: "Réf produit." },
+      { id: 255, c: "SLA", m: "Service Level Agreement", cat: "Business", desc: "Niveau service." },
+      { id: 256, c: "SLI", m: "Scalable Link Interface", cat: "Hardware", desc: "Lien GPU." },
+      { id: 257, c: "SMB", m: "Server Message Block", cat: "Network", desc: "Partage." },
+      { id: 258, c: "SMS", m: "Short Message Service", cat: "Tech", desc: "Message." },
+      { id: 259, c: "SMTP", m: "Simple Mail Transfer Protocol", cat: "Network", desc: "Envoi mail." },
+      { id: 260, c: "SNA", m: "Systems Network Architecture", cat: "Network", desc: "Archi réseau." },
+      { id: 261, c: "SNMP", m: "Simple Network Management Protocol", cat: "Network", desc: "Gestion." },
+      { id: 262, c: "SOA", m: "Service Oriented Architecture", cat: "Architecture", desc: "Services." },
+      { id: 263, c: "SOAP", m: "Simple Object Access Protocol", cat: "Web", desc: "Protocole." },
+      { id: 264, c: "SoC", m: "System on a Chip", cat: "Hardware", desc: "Puce." },
+      { id: 265, c: "SOHO", m: "Small Office/Home Office", cat: "Business", desc: "TPE." },
+      { id: 266, c: "SP", m: "Service Pack", cat: "System", desc: "MAJ." },
+      { id: 267, c: "SPI", m: "Serial Peripheral Interface", cat: "Hardware", desc: "Bus." },
+      { id: 268, c: "SSD", m: "Solid State Drive", cat: "Hardware", desc: "Disque flash." },
+      { id: 269, c: "SSID", m: "Service Set Identifier", cat: "Network", desc: "Nom Wi-Fi." },
+      { id: 270, c: "SSO", m: "Single Sign On", cat: "Security", desc: "Auth unique." },
+      { id: 271, c: "STP", m: "Spanning Tree Protocol", cat: "Network", desc: "Arbre." },
+      { id: 272, c: "SVG", m: "Scalable Vector Graphics", cat: "Design", desc: "Vecteur." },
+      { id: 273, c: "SVGA", m: "Super Video Graphics Array", cat: "Hardware", desc: "Vidéo." },
+      { id: 274, c: "SVN", m: "Subversion", cat: "DevOps", desc: "Versionning." },
+      { id: 275, c: "SW", m: "Software", cat: "Tech", desc: "Logiciel." },
+      { id: 276, c: "TCO", m: "Total Cost of Ownership", cat: "Business", desc: "Coût." },
+      { id: 277, c: "TCP", m: "Transmission Control Protocol", cat: "Network", desc: "Transport." },
+      { id: 278, c: "TFTP", m: "Trivial File Transfer Protocol", cat: "Network", desc: "FTP simple." },
+      { id: 279, c: "TIFF", m: "Tagged Image File Format", cat: "Design", desc: "Image." },
+      { id: 280, c: "TTL", m: "Time To Live", cat: "Network", desc: "Durée vie." },
+      { id: 281, c: "TTY", m: "Teletype", cat: "System", desc: "Terminal." },
+      { id: 282, c: "UEFI", m: "Unified Extensible Firmware Interface", cat: "System", desc: "Boot." },
+      { id: 283, c: "UL", m: "Upload", cat: "Network", desc: "Envoi." },
+      { id: 284, c: "UML", m: "Unified Modeling Language", cat: "Conception", desc: "Modélisation." },
+      { id: 285, c: "UNC", m: "Universal Naming Convention", cat: "System", desc: "Chemin." },
+      { id: 286, c: "UPS", m: "Uninterruptible Power Supply", cat: "Hardware", desc: "Onduleur." },
+      { id: 287, c: "USB", m: "Universal Serial Bus", cat: "Hardware", desc: "Bus." },
+      { id: 288, c: "UTF", m: "Unicode Transformation Format", cat: "Data", desc: "Encodage." },
+      { id: 289, c: "UTP", m: "Unshielded Twisted Pair", cat: "Hardware", desc: "Câble." },
+      { id: 290, c: "UUID", m: "Universally Unique Identifier", cat: "Data", desc: "ID." },
+      { id: 291, c: "VAR", m: "Value Added Reseller", cat: "Business", desc: "Revendeur." },
+      { id: 292, c: "VB", m: "Visual Basic", cat: "Langage", desc: "Langage." },
+      { id: 293, c: "VBA", m: "Visual Basic for Applications", cat: "Langage", desc: "Macro." },
+      { id: 294, c: "VBS", m: "Visual Basic Script", cat: "Langage", desc: "Script." },
+      { id: 295, c: "VDI", m: "Virtual Desktop Infrastructure", cat: "System", desc: "Bureau virt." },
+      { id: 296, c: "VGA", m: "Video Graphics Array", cat: "Hardware", desc: "Vidéo." },
+      { id: 297, c: "VoIP", m: "Voice over IP", cat: "Network", desc: "Voix IP." },
+      { id: 298, c: "W3C", m: "World Wide Web Consortium", cat: "Web", desc: "Standards." },
+      { id: 299, c: "WAN", m: "Wide Area Network", cat: "Network", desc: "Réseau étendu." },
+      { id: 300, c: "WAP", m: "Wireless Application Protocol", cat: "Network", desc: "Sans fil." },
+      { id: 301, c: "WLAN", m: "Wireless Local Area Network", cat: "Network", desc: "Wi-Fi." },
+      { id: 302, c: "WPA", m: "Wi-Fi Protected Access", cat: "Security", desc: "Sécu Wi-Fi." },
+      { id: 303, c: "WPF", m: "Windows Presentation Foundation", cat: "DevOps", desc: "UI Windows." },
+      { id: 304, c: "WWW", m: "World Wide Web", cat: "Web", desc: "Web." },
+      { id: 305, c: "WYSIWYG", m: "What You See Is What You Get", cat: "Web", desc: "Éditeur visuel." },
+      { id: 306, c: "XHTML", m: "Extensible HyperText Markup Language", cat: "Web", desc: "HTML strict." },
+      { id: 307, c: "ZIP", m: "Zone Improvement Plan", cat: "Tech", desc: "Compression." },
+      { id: 308, c: "ZSH", m: "Z Shell", cat: "System", desc: "Shell." }
     ];
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -793,46 +929,205 @@
       const searchInput = document.getElementById('searchInput');
       const countEl = document.getElementById('resultCount');
       const noResult = document.getElementById('noResult');
+      const alphaFilter = document.getElementById('alphaFilter');
+      const catFilter = document.getElementById('catFilter');
 
-      function renderCards() {
+      // --- 1. GÉNÉRATION DES FILTRES ALPHABÉTIQUES ---
+      const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+      alphabet.forEach(letter => {
+          const btn = document.createElement('button');
+          btn.className = 'alpha-btn';
+          btn.textContent = letter;
+          btn.dataset.letter = letter;
+          alphaFilter.appendChild(btn);
+      });
+
+      // --- 2. LOGIQUE DE FILTRAGE ---
+      let currentSearch = "";
+      let currentCat = "all";
+      let currentLetter = "all";
+
+      function filterData() {
+          const filtered = dbAcronyms.filter(item => {
+              const code = item.c.toLowerCase();
+              const meaning = item.m.toLowerCase();
+              const cat = item.cat.toLowerCase();
+              const desc = item.desc ? item.desc.toLowerCase() : '';
+              const firstLetter = code.charAt(0).toUpperCase();
+
+              // Filtre Texte
+              const matchSearch = code.includes(currentSearch) || meaning.includes(currentSearch) || desc.includes(currentSearch);
+              // Filtre Catégorie
+              const matchCat = currentCat === "all" || cat.includes(currentCat);
+              // Filtre Lettre
+              const matchLetter = currentLetter === "all" || firstLetter === currentLetter;
+
+              return matchSearch && matchCat && matchLetter;
+          });
+          renderCards(filtered);
+      }
+
+      // --- 3. AFFICHAGE DES CARTES ---
+      function getCategoryColor(cat) {
+          const c = cat.toLowerCase();
+          if (c.includes('web')) return 'cat-web';
+          if (c.includes('data')) return 'cat-data';
+          if (c.includes('python')) return 'cat-python';
+          if (c.includes('devops') || c.includes('cloud')) return 'cat-devops';
+          if (c.includes('security') || c.includes('sécu')) return 'cat-security';
+          if (c.includes('network') || c.includes('réseau')) return 'cat-network';
+          if (c.includes('system') || c.includes('système')) return 'cat-system';
+          if (c.includes('design') || c.includes('ui') || c.includes('ux')) return 'cat-design';
+          if (c.includes('java')) return 'cat-java';
+          if (c.includes('test')) return 'cat-test';
+          return 'cat-other';
+      }
+
+      function renderCards(data) {
         grid.innerHTML = '';
-        const search = searchInput.value.toLowerCase();
-        let visibleCount = 0;
-
-        dbAcronyms.forEach((item) => {
-          const code = item.c.toLowerCase();
-          const meaning = item.m.toLowerCase();
-          const cat = item.cat.toLowerCase();
-
-          if (code.includes(search) || meaning.includes(search) || cat.includes(search)) {
-            visibleCount++;
+        
+        data.forEach(item => {
             const card = document.createElement('div');
-            card.className = 'acronym-card';
+            card.className = 'acronym-card fade-up visible'; // Visible direct pour fluidité
+            const colorClass = getCategoryColor(item.cat);
+
             card.innerHTML = `
-              <div class="acro-id">#${item.id}</div>
-              <div class="acro-code">${item.c}</div>
+              <div class="acro-header">
+                  <div class="acro-code">${item.c}</div>
+                  <button class="btn-speak" onclick="speakText('${item.c.replace(/'/g, "\\'")}', '${item.m.replace(/'/g, "\\'")}')" title="Écouter">
+                    <i class="fas fa-volume-up"></i>
+                  </button>
+              </div>
               <div class="acro-meaning">${item.m}</div>
-              <div class="acro-cat">${item.cat}</div>
+              <div class="acro-desc">${item.desc || ''}</div>
+              ${item.example ? `<div style="margin-top:8px;font-size:0.8rem;color:#d97706;font-family:'Fira Code';">Ex: ${item.example}</div>` : ''}
+              <div class="acro-cat-pill ${colorClass}" title="${item.cat}">${item.cat.charAt(0).toUpperCase()}</div>
+              <div class="acro-id-badge">#${item.id}</div>
             `;
             grid.appendChild(card);
-          }
         });
 
-        countEl.textContent = `${visibleCount} Acronyme(s) trouvé(s)`;
+        countEl.textContent = `${data.length} Acronyme(s) trouvé(s)`;
         
-        if(visibleCount === 0) {
+        if(data.length === 0) {
             noResult.classList.remove('hidden');
         } else {
             noResult.classList.add('hidden');
         }
       }
 
-      // Écouteur de recherche
-      searchInput.addEventListener('input', renderCards);
+      // --- 4. ÉCOUTEURS D'ÉVÉNEMENTS ---
+      
+      // Recherche Texte
+      searchInput.addEventListener('input', (e) => {
+          currentSearch = e.target.value.toLowerCase();
+          filterData();
+      });
+
+      // Filtre Catégorie (Délégation sur les pastilles)
+      catFilter.addEventListener('click', (e) => {
+          if(e.target.classList.contains('cat-pill-btn')) {
+              // Gestion active class
+              document.querySelectorAll('.cat-pill-btn').forEach(btn => btn.classList.remove('active'));
+              e.target.classList.add('active');
+              
+              currentCat = e.target.dataset.cat;
+              filterData();
+          }
+      });
+
+      // Filtre Lettre (Délégation)
+      alphaFilter.addEventListener('click', (e) => {
+          if(e.target.classList.contains('alpha-btn')) {
+              // Gestion active class
+              document.querySelectorAll('.alpha-btn').forEach(btn => btn.classList.remove('active'));
+              e.target.classList.add('active');
+              
+              currentLetter = e.target.dataset.letter;
+              filterData();
+          }
+      });
 
       // Initialisation
-      renderCards();
+      renderCards(dbAcronyms);
+
+      // Gestion du bouton de lecture global (Reste inchangé mais appliqué aux filtres)
+      const globalSpeakBtn = document.getElementById('globalSpeakBtn');
+      globalSpeakBtn.addEventListener('click', function() {
+        if ('speechSynthesis' in window) {
+           if (globalSpeakBtn.classList.contains('speaking')) {
+               window.speechSynthesis.cancel();
+               globalSpeakBtn.classList.remove('speaking');
+               globalSpeakBtn.innerHTML = '<i class="fas fa-headphones-simple"></i> Lire tout';
+           } else {
+               globalSpeakBtn.classList.add('speaking');
+               globalSpeakBtn.innerHTML = '<i class="fas fa-stop"></i> Stop';
+               
+               // On lit SEULEMENT ce qui est visible (filtré)
+               let fullText = "Lecture de la liste. ";
+               const visibleCards = document.querySelectorAll('.acronym-card');
+               
+               if(visibleCards.length > 50) {
+                   if(!confirm(`Il y a ${visibleCards.length} acronymes. Voulez-vous vraiment tout lire ?`)) {
+                       globalSpeakBtn.classList.remove('speaking');
+                       return;
+                   }
+               }
+
+               visibleCards.forEach(card => {
+                   const code = card.querySelector('.acro-code').textContent;
+                   const meaning = card.querySelector('.acro-meaning').textContent;
+                   fullText += `${code}, ${meaning}. `;
+               });
+               
+               const utterance = new SpeechSynthesisUtterance(fullText);
+               const voices = window.speechSynthesis.getVoices();
+               // Force voix anglaise femme pour le global
+               const preferredVoice = voices.find(v => v.name.includes('Google US English')) || 
+                                      voices.find(v => v.name.includes('Zira')) || 
+                                      voices.find(v => v.lang.startsWith('en'));
+               
+               if (preferredVoice) {
+                   utterance.voice = preferredVoice;
+                   utterance.lang = 'en-US';
+               }
+               
+               utterance.rate = 0.9;
+               utterance.onend = function() {
+                   globalSpeakBtn.classList.remove('speaking');
+                   globalSpeakBtn.innerHTML = '<i class="fas fa-headphones-simple"></i> Lire tout';
+               };
+               
+               window.speechSynthesis.speak(utterance);
+           }
+        }
+      });
     });
+
+    // --- FONCTION DE SYNTHÈSE VOCALE INDIVIDUELLE ---
+    function speakText(acronym, meaning) {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel(); 
+
+            const textToRead = `${acronym}. ${meaning}`;
+            const utterance = new SpeechSynthesisUtterance(textToRead);
+            
+            const voices = window.speechSynthesis.getVoices();
+            // Force voix anglaise femme
+            const femaleEnglishVoice = voices.find(v => v.name.includes('Google US English')) || 
+                                       voices.find(v => v.name.includes('Zira')) || 
+                                       voices.find(v => v.lang === 'en-US' && v.name.includes('Female')) ||
+                                       voices.find(v => v.lang.startsWith('en'));
+
+            if (femaleEnglishVoice) {
+                utterance.voice = femaleEnglishVoice;
+                utterance.lang = 'en-US';
+            }
+            
+            utterance.rate = 0.85; 
+            window.speechSynthesis.speak(utterance);
+        }
+    }
   </script>
 </body>
 </html>

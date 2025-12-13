@@ -1,493 +1,607 @@
-<!DOCTYPE html>
-<html lang="fr">
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programme de Formation - The Dev Elite Club</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Planning & Cours - The Dev Elite Club</title>
+
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" type="image/svg+xml">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;600;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { 
+        /* --- VARIABLES (Charte Mathilde) --- */
+        --brand-blue: #0F2C48; 
+        --brandGold: #D9A526; 
+        --ivory: #F6F2E8; 
+        --bronze: #B4792A;
+        
+        --footer-bg: #0F2C48; 
+        --footer-text: #F6F2E8; 
+
+        /* --- VARIABLES (Contenu) --- */
+        --color-bg: var(--ivory);
+        --color-primary: var(--brand-blue);
+        --color-accent: var(--brandGold);
+        --color-alert: var(--bronze);
+        --color-text: #2c3e50;
+        --color-white: #ffffff;
+    }
     
-    <!-- Import des Polices et Icônes -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Montserrat:wght@500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    body { margin: 0; font-family: 'Outfit', sans-serif; background: var(--ivory); color: var(--brand-blue); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    /* Font pour le code */
+    .font-code { font-family: 'Fira Code', monospace; }
 
-    <style>
-        /* === STYLE DU HEADER ET FOOTER === */
-        :root {
-            --cta: #D9A526;       /* Or */
-            --brand-blue: #0F2C48; /* Bleu Nuit */
-            --ivory: #F6F2E8;     
-            --bronze: #B4792A;    
-        }
+    /* --- HEADER (V2 Optimisé - RESPONSIVE LARGE) --- */
+    .top-bar { 
+        background: var(--brand-blue); 
+        padding: 12px 0;
+        position: sticky; 
+        top: 0; 
+        z-index: 9999; 
+        border-bottom: 4px solid var(--brandGold); 
+        box-shadow: 0 4px 12px rgba(15, 44, 72, 0.3);
+        width: 100%;
+    }
+    
+    .top-bar-container { 
+        width: 100%; 
+        max-width: 100%;
+        padding: 0 40px;
+        display: flex; 
+        align-items: center; 
+        justify-content: space-between;
+        gap: 16px; 
+    }
+    
+    .top-left { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        margin-right: auto; 
+    }
+    
+    .logo-top { 
+        width: 64px; height: 64px; 
+        border-radius: 50%; object-fit: cover; 
+        border: 2px solid var(--brandGold); 
+        background: var(--ivory); padding: 0;
+        transition: transform 0.3s ease;
+    }
+    .logo-top:hover { transform: rotate(10deg) scale(1.1); }
 
-        body { 
-            margin: 0; 
-            background-color: var(--ivory); 
-            color: var(--brand-blue); 
-            font-family: 'Outfit', sans-serif; 
-            display: flex; flex-direction: column; min-height: 100vh;
-        }
+    .identity-stack { display: flex; flex-direction: column; }
+    .club-title-main { font-family: 'Fira Code', monospace; font-weight: 700; color: var(--ivory); font-size: 1.0rem; letter-spacing: -0.5px; }
+    .club-subtitle { color: var(--brandGold); font-weight: 600; font-size: 0.8rem; }
+    
+    .top-center { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; justify-content: center; }
+    
+    .header-icon-btn { 
+        width: 44px; height: 44px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        text-decoration: none; 
+        background: rgba(246, 242, 232, 0.1); 
+        color: var(--ivory); 
+        border: 1px solid rgba(217, 165, 38, 0.3); 
+        transition: all 0.2s ease;
+        font-size: 1.2rem;
+        position: relative;
+    }
+    .header-icon-btn:hover { transform: translateY(-3px); box-shadow: 0 0 15px rgba(217, 165, 38, 0.5); background: var(--brandGold); color: var(--brand-blue); border-color: var(--ivory); }
+    
+    /* Tooltip maison pour le survol */
+    .header-icon-btn::after, .icon-btn::after {
+        content: attr(title); 
+        position: absolute; 
+        top: 110%; left: 50%; transform: translateX(-50%);
+        background-color: white; color: var(--brand-blue); 
+        padding: 4px 8px; border-radius: 4px; 
+        font-size: 0.7rem; font-weight: 700; white-space: nowrap; 
+        opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 100;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .header-icon-btn:hover::after, .icon-btn:hover::after { opacity: 1; }
 
-        /* --- 1. HEADER (HAUT) --- */
-        .top-bar {
-            background-color: var(--brand-blue);
-            padding: 15px 0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            position: sticky; top: 0; z-index: 10000;
-            border-bottom: 4px solid var(--cta);
-        }
+    .btn-portfolio-cosmic { 
+        padding: 8px 18px; 
+        border-radius: 8px; 
+        background: var(--brandGold); 
+        color: var(--brand-blue); 
+        text-decoration: none; 
+        font-family: 'Fira Code', monospace;
+        font-weight: 700; 
+        display: inline-flex; gap: 8px; align-items: center; 
+        transition: background 0.3s, color 0.3s;
+        white-space: nowrap;
+        box-shadow: 4px 4px 0px var(--bronze);
+        border: 1px solid var(--ivory);
+    }
+    .btn-portfolio-cosmic:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--bronze); background: var(--ivory); }
+
+    /* Main Content Placeholder */
+    .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
+
+    /* --- STYLES CONTENU GENÉRIQUE --- */
+    section { padding: 40px 0; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--brand-blue); }
+    
+    /* Animation Fade Up */
+    .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* --- FOOTER (V2 - RESPONSIVE LARGE) --- */
+    .main-footer { 
+        background: var(--footer-bg); color: var(--footer-text); 
+        padding: 40px 0; 
+        margin-top: auto; border-top: 4px solid var(--brandGold); 
+        font-family: 'Fira Code', monospace; font-size: 0.85rem; 
+        width: 100%;
+    }
+    .footer-container { 
+        width: 100%;
+        max-width: 100%; 
+        padding: 0 40px; 
+        margin: 0 auto; 
+        display: flex; gap: 20px; align-items: center; justify-content: space-between; flex-wrap: wrap; 
+    }
+    .footer-left { display: flex; gap: 12px; align-items: center; }
+    .footer-logo-img { width: 60px; height: 60px; border-radius: 8px; border: 2px solid var(--brandGold); background: var(--ivory); padding: 0; overflow: hidden; }
+    .footer-logo-img img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .footer-details { color: var(--footer-text); opacity: 0.95; display: flex; flex-direction: column; gap: 4px; }
+    .footer-contact-link { 
+        color: var(--brandGold); 
+        text-decoration: none; 
+        transition: color 0.2s; 
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+    .footer-contact-link:hover { color: #fff; text-decoration: underline; }
+    
+    .footer-right { display: flex; flex-direction: column; align-items: flex-end; gap: 15px; }
+    .footer-links-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    
+    .icon-btn { 
+        width: 40px; height: 40px; flex-shrink: 0;
+        border-radius: 8px; 
+        display: inline-flex; align-items: center; justify-content: center; 
+        background: rgba(255, 255, 255, 0.06); 
+        color: var(--footer-text); 
+        text-decoration: none; 
+        border: 1px solid rgba(217, 165, 38, 0.15); 
+        transition: all 0.2s;
+        font-size: 1.1rem;
+    }
+    .icon-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: scale(1.1); border-color: #fff; }
+    
+    .footer-divider { width: 2px; height: 32px; background: rgba(255,255,255,0.3); margin: 0 12px; border-radius: 2px; }
+
+    .copyright { width: 100%; text-align: center; color: rgba(255, 255, 255, 0.35); margin-top: 24px; font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
+
+    /* --- RESPONSIVE MOBILE --- */
+    @media (max-width: 1100px) {
+        .top-bar-container { flex-direction: column; gap: 15px; align-items: center; text-align: center; padding-bottom: 5px; }
+        .top-left { margin-right: 0; flex-direction: column; text-align: center; }
+        .top-center { width: 100%; overflow-x: auto; padding-bottom: 10px; justify-content: flex-start; padding-left: 5px; padding-right: 5px; -webkit-overflow-scrolling: touch; }
+        .top-center::-webkit-scrollbar { height: 4px; }
+        .top-center::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.3); border-radius: 4px; }
         
-        .top-bar-container {
-            max-width: 1400px; margin: 0 auto; padding: 0 20px;
-            display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-        }
+        .footer-container { flex-direction: column; text-align: center; padding: 0 20px; } 
+        .footer-left { flex-direction: column; }
+        .footer-details { align-items: center; margin-top: 10px; }
+        .footer-right { align-items: center; width: 100%; margin-top: 20px; }
+        .footer-links-row { justify-content: center; width: 100%; overflow-x: auto; padding-bottom: 10px; }
+        .footer-divider { display: none; } 
+    }
 
-        .top-bar-left { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 320px; }
-        
-        /* Logo Icône */
-        .logo-placeholder {
-            width: 60px; height: 60px; border-radius: 50%; 
-            border: 2px solid var(--cta); background: white; color: var(--brand-blue);
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-        }
+    /* === STYLES SPÉCIFIQUES PROGRAMME & TABS === */
+    /* Ces styles sont nécessaires pour que l'accordéon et les onglets fonctionnent comme avant */
+    
+    /* Styles des Onglets */
+    .tab-btn {
+        transition: all 0.3s ease;
+        border-bottom: 4px solid transparent;
+        background-color: #fff;
+        color: var(--brand-blue);
+    }
+    .tab-btn.active {
+        background-color: var(--brand-blue);
+        color: var(--ivory);
+        border-bottom: 4px solid var(--brandGold);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .tab-btn:not(.active):hover {
+        background-color: #e2e8f0;
+        color: var(--brand-blue);
+    }
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease-in-out;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
 
-        .identity-stack { display: flex; flex-direction: column; justify-content: center; }
-        .club-title-main { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: #ffffff; line-height: 1.1; margin-bottom: 3px; }
-        .club-subtitle { font-family: 'Lato', sans-serif; font-size: 0.75rem; color: var(--cta); font-weight: 600; }
+    /* Checkboxes & Progress */
+    .checkbox-wrapper input[type="checkbox"] {
+        accent-color: var(--brandGold);
+        width: 1.2em; height: 1.2em; cursor: pointer;
+    }
+    .progress-bar-container {
+        background-color: #e2e8f0;
+        border-radius: 999px;
+        height: 14px;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .progress-bar-fill {
+        background: linear-gradient(90deg, var(--brandGold), var(--bronze));
+        height: 100%;
+        width: 0%;
+        transition: width 0.5s ease-in-out;
+        border-radius: 999px;
+    }
 
-        .top-bar-center { display: flex; gap: 12px; align-items: center; }
-        
-        .header-icon-btn {
-            position: relative; width: 40px; height: 40px; border-radius: 50%;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%);
-            border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; color: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .header-icon-btn:hover { 
-            transform: translateY(-3px) scale(1.1); 
-            background: linear-gradient(135deg, #FFD700 0%, #D9A526 100%);
-            box-shadow: 0 6px 15px rgba(217, 165, 38, 0.4); 
-        }
-        
-        .header-icon-btn::after {
-            content: attr(data-tooltip); position: absolute; top: 130%; left: 50%; transform: translateX(-50%) translateY(-10px);
-            background-color: #fff; color: var(--brand-blue); padding: 4px 10px; border-radius: 20px;
-            font-size: 0.7rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-        }
-        .header-icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    /* Accordion styles overrides for Ivory theme */
+    .accordion-header {
+        background-color: white;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+    .accordion-header:hover {
+        background-color: #fffdf5; /* Très léger jaune ivoire */
+    }
 
-        @keyframes cosmic-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-        .btn-portfolio-cosmic {
-            padding: 8px 20px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem;
-            background: linear-gradient(135deg, #D9A526 0%, #B4792A 100%); color: white !important; text-decoration: none; 
-            border: 1px solid rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; animation: cosmic-pulse 2s infinite;
-        }
-        .btn-portfolio-cosmic:hover { background: linear-gradient(135deg, #F1C40F 0%, #D9A526 100%); transform: translateY(-2px); }
+    /* === STYLES DES ICÔNES RESSOURCES === */
+    .resource-btn { 
+        background: none; border: none; cursor: pointer; 
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        font-size: 1.1rem; margin: 0 4px; 
+        padding: 6px;
+        border-radius: 6px;
+    }
+    .resource-btn:hover { background-color: rgba(0,0,0,0.05); transform: scale(1.1); }
 
-        /* --- 2. FOOTER (BAS) --- */
-        .main-footer {
-            background-color: var(--brand-blue); color: #F6F2E8;
-            padding-top: 50px; font-family: 'Lato', sans-serif; font-size: 0.95rem;
-            width: 100%; margin-top: auto; /* Pousse le footer en bas */
-        }
-        .footer-container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; padding-bottom: 30px; align-items: flex-start; }
-        
-        .footer-identity { display: flex; flex-direction: row; align-items: center; gap: 20px; min-width: 300px; }
-        
-        .footer-logo-placeholder {
-            width: 60px; height: 60px; border-radius: 8px; 
-            border: 2px solid var(--cta); background: #fff; color: var(--brand-blue);
-            display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-        }
+    /* Couleurs Icones */
+    .icon-video { color: rgba(239, 68, 68, 0.4); } 
+    .icon-video.active, .icon-video:hover { color: rgba(239, 68, 68, 1); opacity: 1; }
 
-        .footer-info-compact { display: flex; flex-direction: column; text-align: left; }
-        .footer-name { color: var(--cta); font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; line-height: 1.2; margin-bottom: 5px; margin-top:0; }
-        .footer-contact-stack { display: flex; flex-direction: column; gap: 5px; font-size: 0.85rem; opacity: 0.8; }
-        .footer-link { text-decoration: none; color: inherit; transition: color 0.3s; display: inline-block; }
-        .footer-link:hover { color: var(--cta); }
+    .icon-info { color: rgba(6, 182, 212, 0.4); } 
+    .icon-info.active, .icon-info:hover { color: rgba(6, 182, 212, 1); opacity: 1; }
 
-        .footer-dock-col { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; margin-left: auto; }
-        .dock-group { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; }
-        .dock-label { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; text-transform: uppercase; color: var(--cta); opacity: 0.7; }
-        .icon-dock { display: flex; gap: 15px; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+    .icon-pres { color: rgba(249, 115, 22, 0.4); }
+    .icon-pres.active, .icon-pres:hover { color: rgba(249, 115, 22, 1); opacity: 1; }
 
-        .icon-btn { 
-            position: relative; width: 45px; height: 45px; border-radius: 50%; 
-            background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(217, 165, 38, 0.3); 
-            display: flex; align-items: center; justify-content: center; 
-            font-size: 1.3rem; text-decoration: none; 
-            transition: all 0.3s; cursor: pointer; color: #fff; 
-        }
-        .icon-btn:hover { transform: translateY(-5px) scale(1.1); background: #fff; border-color: #fff; }
+    .icon-pdf { color: rgba(220, 38, 38, 0.4); }
+    .icon-pdf.active, .icon-pdf:hover { color: rgba(220, 38, 38, 1); opacity: 1; }
 
-        .icon-btn::after {
-            content: attr(data-tooltip); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%) translateY(10px);
-            background-color: #fff; color: var(--brand-blue); padding: 5px 12px; border-radius: 20px;
-            font-size: 0.75rem; font-weight: 700; white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2); pointer-events: none; z-index: 100;
-        }
-        .icon-btn:hover::after { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .icon-clock { color: rgba(217, 165, 38, 0.4); }
+    .icon-clock:hover { color: rgba(217, 165, 38, 1); }
 
-        .dock-separator { width: 1px; height: 30px; background-color: rgba(255,255,255,0.2); margin: 0 10px; }
-        .footer-bottom { 
-            text-align: center; padding: 15px 0; font-size: 0.8rem; 
-            color: rgba(255,255,255,0.4); background-color: rgba(0,0,0,0.2); 
-            border-top: 1px solid rgba(255,255,255,0.05); width: 100%;
-        }
+    /* === MODALE AGENDA === */
+    .modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(15, 44, 72, 0.85);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 20000; opacity: 0; visibility: hidden;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+    }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    
+    .modal-card {
+        background: var(--ivory); width: 90%; max-width: 450px;
+        border-radius: 16px; padding: 25px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 2px solid var(--brandGold);
+        text-align: center;
+    }
+    .modal-overlay.open .modal-card { transform: translateY(0); }
+    
+    .modal-title { font-family: 'Playfair Display', serif; color: var(--brand-blue); font-size: 1.6rem; font-weight: 700; margin-bottom: 10px; }
+    .modal-subtitle { color: #64748b; font-size: 0.95rem; margin-bottom: 24px; line-height: 1.5; }
+    
+    .delay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
+    .delay-btn {
+        background: white; border: 1px solid var(--brandGold); color: var(--brand-blue);
+        padding: 12px; border-radius: 8px; font-weight: 600; cursor: pointer;
+        transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+        font-family: 'Fira Code', monospace; font-size: 0.9rem;
+    }
+    .delay-btn:hover { background: var(--brandGold); color: var(--brand-blue); transform: translateY(-2px); box-shadow: 2px 2px 0px var(--bronze); }
+    
+    .close-modal {
+        background: transparent; border: none; color: #94a3b8; width: 100%; padding: 10px;
+        cursor: pointer; font-size: 0.9rem; text-decoration: underline;
+    }
+    .close-modal:hover { color: var(--brand-blue); }
 
-        @media (max-width: 768px) {
-            .footer-content { flex-direction: column; align-items: center; text-align: center; }
-            .footer-identity { flex-direction: column; text-align: center; }
-            .footer-dock-col { align-items: center; width: 100%; gap: 30px; margin-left: 0; }
-            .icon-dock { justify-content: center; flex-wrap: wrap; }
-            .dock-group { align-items: center; }
-            .dock-separator { display: none; }
-        }
-
-        /* --- STYLES SPÉCIFIQUES AU CONTENU (Programme) --- */
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
-        details[open] > summary .arrow { transform: rotate(90deg); }
-        .arrow { transition: transform 0.2s; display: inline-block; margin-right: 8px; }
-
-        /* Styles des Onglets */
-        .tab-btn {
-            transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
-        .tab-btn.active {
-            background-color: var(--brand-blue);
-            color: white;
-            border-bottom: 3px solid var(--cta);
-            transform: translateY(-2px);
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
-        }
-        .tab-btn:not(.active):hover {
-            background-color: #e2e8f0;
-            color: var(--brand-blue);
-        }
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.4s ease-in-out;
-        }
-        .tab-content.active {
-            display: block;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Styles Progression & Checkboxes */
-        .checkbox-wrapper input[type="checkbox"] {
-            accent-color: var(--cta);
-            width: 1.1em; height: 1.1em; cursor: pointer;
-        }
-        .checkbox-wrapper input:checked + a {
-            text-decoration: line-through; 
-            color: #94a3b8; /* Gris clair une fois coché */
-        }
-        .progress-bar-container {
-            background-color: #e2e8f0;
-            border-radius: 999px;
-            height: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-bar-fill {
-            background: linear-gradient(90deg, var(--cta), #f59e0b);
-            height: 100%;
-            width: 0%;
-            transition: width 0.5s ease-in-out;
-            border-radius: 999px;
-        }
-
-        /* === STYLES DES ICÔNES RESSOURCES === */
-        /* Configuration de base des boutons : transition fluide, pas de bordure */
-        .resource-btn { 
-            background: none; border: none; cursor: pointer; 
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-            font-size: 1rem; margin: 0 3px; 
-            padding: 4px;
-        }
-        
-        /* Effet au survol : on enlève la transparence et on grossit un peu */
-        .resource-btn:hover { opacity: 1; transform: scale(1.2); }
-
-        /* === COULEURS "FANTÔMES" (30%) ET ACTIVES (100%) === */
-        
-        /* VIDÉO : Rouge */
-        .icon-video { color: rgba(239, 68, 68, 0.3); } /* Rouge 30% */
-        .icon-video.active, .icon-video:hover { color: rgba(239, 68, 68, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(239, 68, 68, 0.2)); }
-
-        /* INFO : Cyan */
-        .icon-info { color: rgba(6, 182, 212, 0.3); } /* Cyan 30% */
-        .icon-info.active, .icon-info:hover { color: rgba(6, 182, 212, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(6, 182, 212, 0.2)); }
-
-        /* PRÉSENTATION : Orange */
-        .icon-pres { color: rgba(249, 115, 22, 0.3); } /* Orange 30% */
-        .icon-pres.active, .icon-pres:hover { color: rgba(249, 115, 22, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(249, 115, 22, 0.2)); }
-
-        /* PDF : Rouge Foncé */
-        .icon-pdf { color: rgba(220, 38, 38, 0.3); } /* Rouge foncé 30% */
-        .icon-pdf.active, .icon-pdf:hover { color: rgba(220, 38, 38, 1); opacity: 1; filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.2)); }
-
-        /* AGENDA : Or/Doré (Toujours dispo, donc pas de classe .active spécifique nécessaire pour la couleur de base, mais on le met en style "actif" au survol) */
-        .icon-clock { color: rgba(217, 165, 38, 0.3); } /* Or 30% */
-        .icon-clock:hover { color: rgba(217, 165, 38, 1); opacity: 1; transform: scale(1.2); }
-
-        /* === MODALE AGENDA === */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(15, 44, 72, 0.8); /* Bleu nuit transparent */
-            display: flex; justify-content: center; align-items: center;
-            z-index: 20000; opacity: 0; visibility: hidden;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        .modal-overlay.open { opacity: 1; visibility: visible; }
-        
-        .modal-card {
-            background: white; width: 90%; max-width: 450px;
-            border-radius: 20px; padding: 25px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            transform: translateY(20px); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border: 2px solid var(--cta);
-        }
-        .modal-overlay.open .modal-card { transform: translateY(0); }
-        
-        .modal-title { font-family: 'Playfair Display', serif; color: var(--brand-blue); font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; text-align: center; }
-        .modal-subtitle { text-align: center; color: #64748b; font-size: 0.9rem; margin-bottom: 20px; }
-        
-        .delay-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
-        .delay-btn {
-            background: #f1f5f9; border: 1px solid #e2e8f0; color: var(--brand-blue);
-            padding: 12px; border-radius: 10px; font-weight: 600; cursor: pointer;
-            transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .delay-btn:hover { background: var(--cta); color: white; border-color: var(--cta); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(217, 165, 38, 0.3); }
-        
-        .close-modal {
-            background: transparent; border: none; color: #94a3b8; width: 100%; padding: 10px;
-            cursor: pointer; font-size: 0.9rem; text-decoration: underline;
-        }
-        .close-modal:hover { color: var(--brand-blue); }
-
-    </style>
+  </style>
 </head>
-<body class="bg-[#F6F2E8] text-gray-800 font-sans flex flex-col min-h-screen">
+<body>
 
-    <!-- === ZONE HEADER === -->
-    <div class="top-bar">
-        <div class="top-bar-container">
-            <div class="top-bar-left">
-                <!-- Icône Code pour les Devs -->
-                <div class="logo-placeholder">
-                    <i class="fas fa-code"></i>
-                </div>
-                <div class="identity-stack">
-                    <span class="club-title-main">💫 The Dev Elite Club By Studi ✨</span>
-                    <span class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</span>
-                </div>
-            </div>
-            
-            <div class="top-bar-center">
-                <!-- LIEN ACCUEIL HEADER -->
-                <a href="https://projettechacademy.github.io/Projet_Python/" class="header-icon-btn" aria-label="Start/Accueil" data-tooltip="Accueil">
-                    <i class="fas fa-home"></i> 
-                </a>
-                
-                <a href="#" class="header-icon-btn" aria-label="Mon Espace" data-tooltip="Mon Espace">📊</a>
-                <a href="#" class="header-icon-btn" aria-label="Lexique" data-tooltip="Lexique">📜</a>
-                <a href="#" class="header-icon-btn" aria-label="Atelier" data-tooltip="Atelier">🛠️</a>
-                
-                <!-- LIEN PLANNING HEADER -->
-                <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html#" class="header-icon-btn" aria-label="Planning Live" data-tooltip="Planning">📅</a>
-                
-                <a href="#" class="header-icon-btn" aria-label="À propos de moi" data-tooltip="Profil">
-                    <i class="fas fa-user"></i> 
-                </a>
-            </div>
-
-            <a href="#" class="btn-portfolio-cosmic">
-                <span>📄</span> Mon portfolio
-            </a>
+  <!-- ==================== HEADER (HAUT) ==================== -->
+  <div class="top-bar" id="mainHeader">
+    <div class="top-bar-container">
+      
+      <!-- Logo & Titre (Aligné à Gauche) -->
+      <div class="top-left">
+        <a href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">
+          <!-- LOGO HEADER -->
+          <img class="logo-top" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="Logo Dev Elite Club">
+        </a>
+        <div class="identity-stack">
+          <div class="club-title-main">💫 The Dev Elite Club ✨</div>
+          <div class="club-subtitle">La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</div>
         </div>
-    </div>
+      </div>
 
-    <!-- CONTENU PRINCIPAL (Le Programme) -->
-    <main class="flex-grow p-6">
-        <div class="max-w-6xl mx-auto">
-            <!-- En-tête de section avec Barre Globale -->
-            <div class="text-center mb-8">
-                <h1 class="text-4xl font-bold text-[#0F2C48] mb-2 font-['Playfair_Display']">Programme de Formation Digital</h1>
-                <p class="text-[#D9A526] font-medium text-lg uppercase tracking-wider">The Dev Elite Club</p>
-                
-                <!-- Barre de Progression Globale -->
-                <div class="mt-6 max-w-md mx-auto">
-                    <div class="flex justify-between text-sm font-bold text-[#0F2C48] mb-1">
-                        <span>Progression Globale</span>
+      <!-- Navigation Icônes -->
+      <nav class="top-center" aria-label="Navigation principale">
+        
+        <!-- 1. Accueil -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+        
+        <!-- 2. Mon Espace -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+        
+        <!-- 3. Planning (PAGE ACTUELLE) -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours" style="background:var(--brandGold); color:var(--brand-blue); border-color:var(--ivory);">📅</a>
+        
+        <!-- 4. Atelier -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+
+        <!-- 5. Observatoire -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+
+        <!-- 6. RNCP -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+
+        <!-- 7. Lexique -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+
+        <!-- 8. Acronymes -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+
+        <!-- 9. Profil -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">👤</a>
+
+      </nav>
+
+      <!-- Bouton EXPERT / Portfolio (Lien 10) -->
+      <div>
+        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/CV_MMPA-CV-Mathilde-Martine-PAISLEY/" target="_blank" title="Mon Portfolio">
+          <i class="fa-solid fa-code"></i>
+          Mon Portfolio
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- ==================== FIN HEADER ==================== -->
+
+
+  <!-- ZONE DE CONTENU -->
+  <main class="main-content">
+    
+    <section class="fade-up">
+        <!-- En-tête du Programme -->
+        <div class="text-center mb-10 mt-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-3" style="font-family: 'Playfair Display', serif;">Programme de Formation</h1>
+            <p class="uppercase tracking-widest font-bold text-sm" style="color:var(--brandGold);">The Dev Elite Club</p>
+            
+            <!-- Barre de Progression Globale -->
+            <div class="mt-8 max-w-lg mx-auto bg-white p-6 rounded-2xl shadow-sm border border-orange-100 relative overflow-hidden">
+                <!-- Décoration d'arrière plan subtile -->
+                <div class="absolute -top-4 -right-4 w-16 h-16 bg-yellow-100 rounded-full opacity-50 blur-xl"></div>
+                <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
+
+                <div class="relative z-10">
+                    <div class="flex justify-between text-sm font-bold text-[#0F2C48] mb-2">
+                        <span>🚀 Progression Globale</span>
                         <span id="global-progress-text">0%</span>
                     </div>
-                    <div class="progress-bar-container">
+                    <div class="progress-bar-container mb-6">
                         <div id="global-progress-bar" class="progress-bar-fill"></div>
                     </div>
-                </div>
-            </div>
 
-            <!-- NAVIGATION DES ONGLETS -->
-            <div class="flex flex-wrap justify-center gap-4 mb-6">
-                <!-- Notez bien les IDs utilisés ici: 'btn-b1', 'btn-b2', etc. -->
-                <button onclick="openTab('b1')" id="btn-b1" class="tab-btn active px-8 py-4 rounded-xl font-bold text-lg shadow-sm bg-white text-[#0F2C48] flex items-center gap-3">
-                    <span class="bg-[#D9A526] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm">1</span>
-                    <div>Conception <br><span class="text-xs font-normal" id="prog-b1-text">0%</span></div>
-                </button>
-                <button onclick="openTab('b2')" id="btn-b2" class="tab-btn px-8 py-4 rounded-xl font-bold text-lg shadow-sm bg-white text-[#0F2C48] flex items-center gap-3">
-                    <span class="bg-gray-300 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center text-sm transition-colors group-hover:bg-[#D9A526]">2</span>
-                    <div>Gestion <br><span class="text-xs font-normal" id="prog-b2-text">0%</span></div>
-                </button>
-                <button onclick="openTab('b3')" id="btn-b3" class="tab-btn px-8 py-4 rounded-xl font-bold text-lg shadow-sm bg-white text-[#0F2C48] flex items-center gap-3">
-                    <span class="bg-gray-300 text-gray-600 rounded-full w-8 h-8 flex items-center justify-center text-sm transition-colors group-hover:bg-[#D9A526]">3</span>
-                    <div>Dev Python <br><span class="text-xs font-normal" id="prog-b3-text">0%</span></div>
-                </button>
-            </div>
-
-            <!-- CONTENU DES ONGLETS -->
-            <div class="bg-white rounded-2xl shadow-xl p-8 min-h-[500px]">
-
-                <!-- BLOC 1 CONTENT (ID: tab-b1) -->
-                <div id="tab-b1" class="tab-content active space-y-4">
-                    <div class="flex justify-between items-center mb-6 border-b-2 border-[#D9A526] pb-2">
-                        <h2 class="text-2xl font-bold text-[#0F2C48]">B1_Conception et spécification d'une solution digitale</h2>
-                        <div class="text-right">
-                            <span class="text-sm text-gray-500">Progression Bloc 1</span>
-                            <div class="w-32 h-2 bg-gray-200 rounded-full mt-1"><div id="bar-b1" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                    <!-- NOUVEAU BLOC COMMUNAUTÉ : PLUS GRAND & MIGNON -->
+                    <div class="border-t border-dashed border-gray-200 pt-4">
+                        <p class="text-sm text-gray-500 font-medium text-center mb-4">
+                            Une question ? Besoin de motivation ? <br> Rejoins la team ! 👇✨
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                            <!-- WhatsApp Button -->
+                            <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" 
+                               class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#25D366] text-white font-bold text-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-green-200 group w-full sm:w-auto">
+                                <i class="fab fa-whatsapp text-xl group-hover:scale-110 transition-transform"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            
+                            <!-- Discord Button -->
+                            <a href="https://discord.gg/redT9wEE6T" target="_blank" 
+                               class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-[#5865F2] text-white font-bold text-sm transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-indigo-200 group w-full sm:w-auto">
+                                <i class="fab fa-discord text-xl group-hover:scale-110 transition-transform"></i>
+                                <span>Discord</span>
+                            </a>
                         </div>
                     </div>
-                    <div id="modules-container-1"></div>
                 </div>
-
-                <!-- BLOC 2 CONTENT (ID: tab-b2) -->
-                <div id="tab-b2" class="tab-content space-y-4">
-                    <div class="flex justify-between items-center mb-6 border-b-2 border-[#D9A526] pb-2">
-                        <h2 class="text-2xl font-bold text-[#0F2C48]">B2_Gestion, pilotage et testing d'une Solution Digitale</h2>
-                        <div class="text-right">
-                            <span class="text-sm text-gray-500">Progression Bloc 2</span>
-                            <div class="w-32 h-2 bg-gray-200 rounded-full mt-1"><div id="bar-b2" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
-                        </div>
-                    </div>
-                    <div id="modules-container-2"></div>
-                </div>
-
-                <!-- BLOC 3 CONTENT (ID: tab-b3) -->
-                <div id="tab-b3" class="tab-content space-y-4">
-                    <div class="flex justify-between items-center mb-6 border-b-2 border-[#D9A526] pb-2">
-                        <h2 class="text-2xl font-bold text-[#0F2C48]">B3_Développement d’une solution digitale avec Python</h2>
-                        <div class="text-right">
-                            <span class="text-sm text-gray-500">Progression Bloc 3</span>
-                            <div class="w-32 h-2 bg-gray-200 rounded-full mt-1"><div id="bar-b3" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
-                        </div>
-                    </div>
-                    <div id="modules-container-3"></div>
-                </div>
-
             </div>
+        </div>
+
+        <!-- NAVIGATION DES ONGLETS -->
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <button onclick="openTab('b1')" id="btn-b1" class="tab-btn active px-6 py-4 rounded-xl font-bold text-lg shadow-sm flex items-center gap-3">
+                <span class="bg-[#D9A526] text-white rounded-full w-8 h-8 flex items-center justify-center text-sm shadow-md">1</span>
+                <div class="text-left leading-tight">Conception <br><span class="text-xs opacity-70 font-normal" id="prog-b1-text">0%</span></div>
+            </button>
+            <button onclick="openTab('b2')" id="btn-b2" class="tab-btn px-6 py-4 rounded-xl font-bold text-lg shadow-sm flex items-center gap-3">
+                <span class="bg-slate-300 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm">2</span>
+                <div class="text-left leading-tight">Gestion <br><span class="text-xs opacity-70 font-normal" id="prog-b2-text">0%</span></div>
+            </button>
+            <button onclick="openTab('b3')" id="btn-b3" class="tab-btn px-6 py-4 rounded-xl font-bold text-lg shadow-sm flex items-center gap-3">
+                <span class="bg-slate-300 text-slate-600 rounded-full w-8 h-8 flex items-center justify-center text-sm">3</span>
+                <div class="text-left leading-tight">Dev Python <br><span class="text-xs opacity-70 font-normal" id="prog-b3-text">0%</span></div>
+            </button>
+        </div>
+
+        <!-- CONTENU DES ONGLETS -->
+        <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8 min-h-[500px] border border-orange-100/50">
+
+            <!-- BLOC 1 CONTENT (ID: tab-b1) -->
+            <div id="tab-b1" class="tab-content active space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-[#D9A526] pb-4">
+                    <h2 class="text-2xl font-bold text-[#0F2C48]">B1_Conception et spécification</h2>
+                    <div class="text-right mt-2 md:mt-0">
+                        <span class="text-xs font-bold text-[#B4792A] uppercase tracking-wide">Progression Bloc 1</span>
+                        <div class="w-48 h-3 bg-gray-100 rounded-full mt-1 border border-gray-200"><div id="bar-b1" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                    </div>
+                </div>
+                <div id="modules-container-1"></div>
+            </div>
+
+            <!-- BLOC 2 CONTENT (ID: tab-b2) -->
+            <div id="tab-b2" class="tab-content space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-[#D9A526] pb-4">
+                    <h2 class="text-2xl font-bold text-[#0F2C48]">B2_Gestion et Pilotage</h2>
+                    <div class="text-right mt-2 md:mt-0">
+                        <span class="text-xs font-bold text-[#B4792A] uppercase tracking-wide">Progression Bloc 2</span>
+                        <div class="w-48 h-3 bg-gray-100 rounded-full mt-1 border border-gray-200"><div id="bar-b2" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                    </div>
+                </div>
+                <div id="modules-container-2"></div>
+            </div>
+
+            <!-- BLOC 3 CONTENT (ID: tab-b3) -->
+            <div id="tab-b3" class="tab-content space-y-4">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-[#D9A526] pb-4">
+                    <h2 class="text-2xl font-bold text-[#0F2C48]">B3_Développement Python & Web</h2>
+                    <div class="text-right mt-2 md:mt-0">
+                        <span class="text-xs font-bold text-[#B4792A] uppercase tracking-wide">Progression Bloc 3</span>
+                        <div class="w-48 h-3 bg-gray-100 rounded-full mt-1 border border-gray-200"><div id="bar-b3" class="h-full bg-[#D9A526] rounded-full transition-all" style="width:0%"></div></div>
+                    </div>
+                </div>
+                <div id="modules-container-3"></div>
+            </div>
+
+        </div>
+        
+        <div class="mt-8 text-center text-sm text-gray-500 bg-white/50 p-4 rounded-lg">
+            <i class="fas fa-info-circle text-[#D9A526] mr-2"></i> Cochez les cases pour suivre votre progression. Vos données sont sauvegardées automatiquement.
+        </div>
+    </section>
+
+  </main>
+
+
+  <!-- ==================== FOOTER (BAS) ==================== -->
+  <footer class="main-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-left">
+        <!-- LOGO FOOTER -->
+        <div class="footer-logo-img">
+            <img src="https://projettechacademy.github.io/Projet_Python/Asset/Logo_MMPA.jpeg" alt="Logo MMPA">
+        </div>
+        
+        <!-- DÉTAILS DE CONTACT -->
+        <div class="footer-details">
+          <div style="font-weight:700; font-size: 1.1rem; margin-bottom:4px;">Mathilde Martine PAISLEY</div>
+          
+          <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-contact-link">
+              📧 Mathilde.martine.paisley@gmail.com
+          </a>
+          
+          <a href="tel:+33685900887" class="footer-contact-link">
+              📲 06 85 90 08 87
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <!-- Navigation Footer -->
+        <div class="footer-links-row" aria-label="Liens utilitaires" style="margin-bottom: 10px;">
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
+        </div>
             
-            <div class="bg-gray-100 p-4 text-center text-xs text-gray-500 mt-8 rounded-lg">
-                Programme Structuré par Onglets
-            </div>
+        <div class="footer-divider" style="height: 1px; width: 100%; background: rgba(255,255,255,0.1); margin: 5px 0;"></div>
+
+        <!-- Réseaux Sociaux -->
+        <div class="footer-links-row">
+            <a class="icon-btn" href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp" style="color:#25D366;"></i></a>
+            <a class="icon-btn" href="https://discord.gg/redT9wEE6T" target="_blank" title="Discord"><i class="fab fa-discord" style="color:#5865F2;"></i></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin" style="color:#0077b5;"></i></a>
+            <a class="icon-btn" href="https://www.instagram.com/enervyx/" target="_blank" title="Instagram"><i class="fab fa-instagram" style="color:#C13584;"></i></a>
+            <a class="icon-btn" href="https://www.tiktok.com/@enervyx" target="_blank" title="TikTok"><i class="fab fa-tiktok" style="color:#ffffff;"></i></a>
         </div>
-    </main>
+      </div>
 
-    <!-- === ZONE FOOTER === -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                
-                <!-- Identité (Gauche) -->
-                <div class="footer-identity">
-                    <!-- Icône University pour le footer -->
-                    <div class="footer-logo-placeholder">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <div class="footer-info-compact">
-                        <div class="footer-name">Mathilde Martine PAISLEY</div>
-                        <div class="footer-contact-stack">
-                            <a href="mailto:Mathilde.martine.paisley@gmail.com" class="footer-link">📧 Mathilde.martine.paisley@gmail.com</a>
-                            <a href="tel:+33685900887" class="footer-link">📲 06 85 90 08 87</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Dock Navigation & Réseaux (Droite/Centré) -->
-                <div class="footer-dock-col">
-                    <div class="dock-group">
-                        <div class="dock-label">Navigation & Réseaux</div>
-                        <div class="icon-dock">
-                            <!-- Navigation -->
-                            <!-- LIEN ACCUEIL FOOTER -->
-                            <a href="https://projettechacademy.github.io/Projet_Python/" class="icon-btn" data-tooltip="Accueil"><span class="brand-nav">🏠</span></a>
-                            
-                            <a href="#" class="icon-btn" data-tooltip="Mon Espace"><span class="brand-nav">📊</span></a>
-                            <a href="#" class="icon-btn" data-tooltip="Lexique"><span class="brand-nav">📜</span></a>
-                            
-                            <!-- LIEN PLANNING FOOTER -->
-                            <a href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html#" class="icon-btn" data-tooltip="Planning"><span class="brand-nav">📅</span></a>
-                            
-                            <a href="#" class="icon-btn" data-tooltip="Profil"><span class="brand-nav">👤</span></a>
-                            
-                            <!-- Séparateur -->
-                            <div class="dock-separator"></div>
-
-                            <!-- Réseaux -->
-                            <a href="#" class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp brand-whatsapp"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="Discord"><i class="fab fa-discord brand-discord"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="LinkedIn"><i class="fab fa-linkedin brand-linkedin"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="Instagram"><i class="fab fa-instagram brand-instagram"></i></a>
-                            <a href="#" class="icon-btn" data-tooltip="TikTok"><i class="fab fa-tiktok brand-tiktok"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Copyright -->
-        <div class="footer-bottom">
-            <div class="footer-container">
-                <p>💫 The Dev Elite Club By Studi ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴</p>
-                <p>© 2025 Tous droits réservés – Création : 2025 – Dernière mise à jour : Décembre 2025</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- MODALE AGENDA -->
-    <div id="calendar-modal" class="modal-overlay">
-        <div class="modal-card">
-            <h3 class="modal-title">📅 Planifier ma révision</h3>
-            <p class="modal-subtitle">Choisissez quand vous souhaitez revoir : <br><strong id="modal-topic-name" class="text-[#D9A526]">Nom du sujet</strong></p>
-            
-            <div class="delay-grid">
-                <button class="delay-btn" onclick="addToCalendar(3)">🚀 Dans 3 Jours</button>
-                <button class="delay-btn" onclick="addToCalendar(7)">🧠 Dans 7 Jours</button>
-                <button class="delay-btn" onclick="addToCalendar(10)">📅 Dans 10 Jours</button>
-                <button class="delay-btn" onclick="addToCalendar(30)">📆 Dans 1 Mois</button>
-                <button class="delay-btn" onclick="addToCalendar(60)" style="grid-column: span 2;">🎓 Dans 2 Mois (Expert)</button>
-            </div>
-            
-            <button class="close-modal" onclick="closeCalendarModal()">Annuler</button>
-        </div>
+      <div class="copyright">
+        💫 The Dev Elite Club ✨ La Villa des Codeurs Brisés 💔 dans la Jungle du PYTHON ! 🌴 <br> 
+        By Mathilde Martine PAISLEY | © 2025 Tous droits réservés
+      </div>
     </div>
+  </footer>
+  <!-- ==================== FIN FOOTER ==================== -->
+  
+  <!-- MODALE AGENDA -->
+  <div id="calendar-modal" class="modal-overlay">
+      <div class="modal-card">
+          <h3 class="modal-title">📅 Planifier ma révision</h3>
+          <p class="modal-subtitle">Choisissez quand vous souhaitez revoir : <br><strong id="modal-topic-name" style="color:var(--brandGold);">Nom du sujet</strong></p>
+          
+          <div class="delay-grid">
+              <button class="delay-btn" onclick="addToCalendar(3)">🚀 Dans 3 Jours</button>
+              <button class="delay-btn" onclick="addToCalendar(7)">🧠 Dans 7 Jours</button>
+              <button class="delay-btn" onclick="addToCalendar(10)">📅 Dans 10 Jours</button>
+              <button class="delay-btn" onclick="addToCalendar(30)">📆 Dans 1 Mois</button>
+              <button class="delay-btn" onclick="addToCalendar(60)" style="grid-column: span 2;">🎓 Dans 2 Mois (Expert)</button>
+          </div>
+          
+          <button class="close-modal" onclick="closeCalendarModal()">Annuler</button>
+      </div>
+  </div>
 
-    <!-- SCRIPT EXTERNE (BDD) -->
-    <!-- Important : Ce fichier doit exister pour que les icônes s'activent -->
-    <script src="database.js"></script>
+  <!-- Script Animation & Logic -->
+  <script>
+    // Animation d'apparition
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, observerOptions);
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
-    <!-- SCRIPT POUR LES ONGLETS ET GÉNÉRATION DYNAMIQUE -->
-    <script>
-        // 1. Données du Programme (Injectées dynamiquement pour éviter la surcharge HTML)
+  <!-- SCRIPT EXTERNE (BDD) -->
+  <script src="database.js"></script>
+
+  <!-- SCRIPT LOGIQUE PROGRAMME -->
+  <script>
+        // 1. Données du Programme
         const programData = {
             1: [
                 { title: "B1_M01_Analyser les besoins client", topics: ["B1_M01_S001-La veille et l'innovation","B1_M01_S002-Les modes d'innovation","B1_M01_S003-Les entreprises et l'innovation","B1_M01_S004-La créativité moteur de l'innovation","B1_M01_S005-Panorama des techniques de créativité","B1_M01_S006-L'écosystème d'un projet digital","B1_M01_S007-Étude comparative, le benchmark des solutions existantes","B1_M01_S008-Définir la cible de la solution digitale","B1_M01_S009-Les principaux acteurs d’un projet digital : la maîtrise d’oeuvre","B1_M01_S010-Les principaux acteurs d’un projet digital : la maîtrise d’ouvrage","B1_M01_S011-Identifier les parties prenantes","B1_M01_S012-Etablir la gouvernance du projet, définir les rôles et les responsabilités","B1_M01_S013-Comprendre les enjeux et les retombées d’un projet","B1_M01_S014-Le cahier des charges : l'expression du besoin"] },
@@ -514,18 +628,18 @@
                 { title: "B2_M09_Audit et Solutions", topics: ["B2_M09_S001-La résolution d'une situation critique", "B2_M09_S002-Le suivi des indicateurs qualité", "B2_M09_S003-Conception de solution Design Thinking", "B2_M09_S004-Design Thinking: Empathie", "B2_M09_S005-Design Thinking: Définir la problématique", "B2_M09_S006-Design Thinking: Idéation", "B2_M09_S007-Design Thinking: Prototypage", "B2_M09_S008-Design Thinking: Test"] }
             ],
             3: [
-                { title: "B3_M01_Production de contenus digitaux", topics: ["B3_M01_S001-Comment et pourquoi se former à la production de contenus digitaux ?","B3_M01_S002-Introduction à la production de contenus digitaux","B3_M01_S003-La création de contenu digital en adéquation avec sa cible","B3_M01_S004-L'orientation artistique et le brief créatif","B3_M01_S005-La gestion de la production de contenus digitaux","B3_M01_S006-La mise en place opérationnelle de sa stratégie","B3_M01_S007-La proposition de production de contenu","B3_M01_S008-Application - Piloter la production"] },
-                { title: "B3_M02_HTML, CSS, Bootstrap", topics: ["B3_M02_S001-Introduction HTML et CSS","B3_M02_S002-Syntaxe générale de HTML","B3_M02_S003-L'organisation du texte","B3_M02_S004-Un langage hypertexte","B3_M02_S005-Le multimédia en HTML","B3_M02_S006-Introduction au CSS","B3_M02_S007-CSS3 : Le stylage du texte","B3_M02_S008-Structuration HTML5 et modèle de boîtes","B3_M02_S009-Les sélecteurs CSS","B3_M02_S010-La mise en page avec CSS","B3_M02_S011-La création de tableaux","B3_M02_S012-La création de formulaires","B3_M02_S013-Layout avec CSS Grid","B3_M02_S014-Les effets avancés de CSS","B3_M02_S015-Utiliser des documentations CSS","B3_M02_S016-Le responsive design","B3_M02_S017-Valider la qualité de son site","B3_M02_S018-Bootstrap: Hello world","B3_M02_S019-La grille bootstrap","B3_M02_S020-Les éléments bootstrap","B3_M02_S021-Les composants bootstrap","B3_M02_S022-Ouverture vers d'autres framework CSS","B3_M02_S023-SASS","B3_M02_S024-Le référencement des sites Web","B3_M02_S025-Déployer son site sur le Web"] },
-                { title: "B3_M03_JavaScript", topics: ["B3_M03_S001-La programmation événementielle en JavaScript","B3_M03_S002-Le formulaire HTML et JavaScript","B3_M03_S003-Initiation aux objets et aux classes","B3_M03_S004-L'API DOM","B3_M03_S005-Présentation de la librairie JQuery","B3_M03_S006-Les bases de JQuery","B3_M03_S007-La programmation AJAX","B3_M03_S008-Les promesses et l'API Fetch","B3_M03_S009-L'utilisation de JSON","B3_M03_S010-L'API Canvas en JavaScript"] },
-                { title: "B3_M04_PHP", topics: ["B3_M04_S001-PHP et HTML (sorties)","B3_M04_S002-Les types de données, les variables et les constantes","B3_M04_S003-Les opérateurs de comparaison","B3_M04_S004-Les fonctions","B3_M04_S005-Les tableaux","B3_M04_S006-Les conditions","B3_M04_S007-Les boucles","B3_M04_S008-Créer ses propres fonctions","B3_M04_S009-L'organisation des fichiers PHP","B3_M04_S010-Les superglobales Get, Post et Files","B3_M04_S011-Les superglobales Server, Env et Session","B3_M04_S012-La sécurité","B3_M04_S013-La manipulation des dates","B3_M04_S014-La manipulation des fichiers en PHP","B3_M04_S015-Les expressions régulières","B3_M04_S016-Utiliser la documentation PHP","B3_M04_S017-La préparation de l'environnement de travail","B3_M04_S018-POO concepts de base","B3_M04_S019-POO concepts avancés","B3_M04_S020-La gestion des erreurs","B3_M04_S021-POO Design Patterns","B3_M04_S022-POO L’encapsulation et la visibilité","B3_M04_S023-Le modèle MVC"] },
-                { title: "B3_M05_Base de données relationnelle", topics: ["B3_M05_S001-Intro SGBDR","B3_M05_S002-MCD et MLD","B3_M05_S003-Les diagrammes fonctionnels","B3_M05_S004-Le diagramme de classe","B3_M05_S005-Passage UML-Relationnel","B3_M05_S006-Création et alimentation BD SQL","B3_M05_S007-L'interrogation BD SQL","B3_M05_S008-PostgreSQL","B3_M05_S009-Connexion BD en PHP","B3_M05_S010-PHP/PDO","B3_M05_S011-Les requetes SQL","B3_M05_S012-Les fonctions SQL","B3_M05_S013-Les jointures SQL","B3_M05_S014-Gérer les accès utilisateurs","B3_M05_S015-Découverte d'un ORM PHP","B3_M05_S016-Projet : Créer et administrer une BD","B3_M05_S017-Introduction NOSQL","B3_M05_S018-Introduction à MongoDB"] },
-                { title: "B3_M06_BDD Non relationnelle", topics: ["B3_M06_S001-Introduction NOSQL","B3_M06_S002-Introduction à MongoDB"] },
-                { title: "B3_M07_Python Web", topics: ["B3_M07_S001-L'interpréteur de commande Python","B3_M07_S002-Environnements de travail","B3_M07_S003-Variables et types","B3_M07_S004-Portée des variables","B3_M07_S005-Conditions en Python","B3_M07_S006-Boucles en Python","B3_M07_S007-Les structures de données","B3_M07_S008-Structure programme - fonctions","B3_M07_S009-Qualité du code","B3_M07_S010-Structure programme - modules","B3_M07_S011-Tests unitaires","B3_M07_S012-Notions théoriques de classe","B3_M07_S013-Constructeur et self","B3_M07_S014-Les méthodes spéciales","B3_M07_S015-L'héritage","B3_M07_S016-Le décorateur","B3_M07_S017-Chaîne de caractères","B3_M07_S018-Gestion du temps","B3_M07_S019-Mathématiques","B3_M07_S020-Plus loin en mathématiques","B3_M07_S021-Graphiques","B3_M07_S022-Gestion des fichiers","B3_M07_S023-Requêtes HTTP","B3_M07_S024-BD relationnelles et Python","B3_M07_S025-Notion d'ORM","B3_M07_S026-Cadre théorique de Flask","B3_M07_S027-Template Jinja","B3_M07_S028-Déploiement Flask","B3_M07_S029-Cadre théorique de Django","B3_M07_S030-Les modèles en Django","B3_M07_S031-Les vues en Django","B3_M07_S032-API REST en Python","B3_M07_S033-Data visualisation","B3_M07_S034-Données et librairies","B3_M07_S035-Numpy","B3_M07_S036-Pandas","B3_M07_S037-Plus loin avec pandas","B3_M07_S038-Matplotlib","B3_M07_S039-Seaborn","B3_M07_S040-Bokeh","B3_M07_S041-Streamlit","B3_M07_S042-Présentations impactantes"] },
-                { title: "B3_M08_Mobile React Native", topics: ["B3_M08_S001-Le développement Mobile","B3_M08_S002-Intro React Native : Expo","B3_M08_S003-Les bases de React Native","B3_M08_S004-Les composants","B3_M08_S005-Props et states","B3_M08_S006-Flexbox","B3_M08_S007-Code différent par plateforme","B3_M08_S008-Redux","B3_M08_S009-Extensions Redux","B3_M08_S010-Organisation application","B3_M08_S011-Navigation","B3_M08_S012-Navigators","B3_M08_S013-Animation","B3_M08_S014-Emulateurs","B3_M08_S015-SQLITE","B3_M08_S016-APIs et modules natifs","B3_M08_S017-Debugging","B3_M08_S018-Déploiement stores","B3_M08_S019-React Native sans Expo","B3_M08_S020-Projet mobile"] },
-                { title: "B3_M09_Concevoir une API", topics: ["B3_M09_S001-Présentation des API","B3_M09_S002-Concevoir une API","B3_M09_S003-Gérer les accès à une API"] },
-                { title: "B3_M10_Utiliser des API", topics: ["B3_M10_S001-Les API d'authentification (OAuth, ..)","B3_M10_S002-Les API Google / AWS","B3_M10_S003-Les API de paiement"] },
-                { title: "B3_M11_Gestion de version", topics: ["B3_M11_S001-Ligne de commande","B3_M11_S002-Git et Github","B3_M11_S003-Les bases","B3_M11_S004-Interactions dépôt distant","B3_M11_S005-Naviguer dans l'historique","B3_M11_S006-Gestion des branches","B3_M11_S007-Rebaser","B3_M11_S008-Bonnes pratiques","B3_M11_S009-Projet Git/Github","B3_M11_S010-Intro Gitlab"] },
-                { title: "B3_M12_Maintenir et documenter", topics: ["B3_M12_S001-Documentation architecture et code","B3_M12_S002-Améliorer sa solution","B3_M12_S003-Documentation utilisateur","B3_M12_S004-Le pentest","B3_M12_S005-Gestion dette technique"] }
+                { title: "B3_M01_Production de contenus digitaux", topics: ["B3_M01_S001-Comment et pourquoi se former à la production de contenus digitaux ?", "B3_M01_S002-Introduction à la production de contenus digitaux", "B3_M01_S003-La création de contenu digital en adéquation avec sa cible", "B3_M01_S004-L'orientation artistique et le brief créatif", "B3_M01_S005-La gestion de la production de contenus digitaux", "B3_M01_S006-La mise en place opérationnelle de sa stratégie", "B3_M01_S007-La proposition de production de contenu", "B3_M01_S008-Application - Piloter la production"] },
+                { title: "B3_M02_HTML, CSS, Bootstrap", topics: ["B3_M02_S001-Introduction HTML et CSS", "B3_M02_S002-Syntaxe générale de HTML", "B3_M02_S003-L'organisation du texte", "B3_M02_S004-Un langage hypertexte", "B3_M02_S005-Le multimédia en HTML", "B3_M02_S006-Introduction au CSS", "B3_M02_S007-CSS3 : Le stylage du texte", "B3_M02_S008-Structuration HTML5 et modèle de boîtes", "B3_M02_S009-Les sélecteurs CSS", "B3_M02_S010-La mise en page avec CSS", "B3_M02_S011-La création de tableaux", "B3_M02_S012-La création de formulaires", "B3_M02_S013-Layout avec CSS Grid", "B3_M02_S014-Les effets avancés de CSS", "B3_M02_S015-Utiliser des documentations CSS", "B3_M02_S016-Le responsive design", "B3_M02_S017-Valider la qualité de son site", "B3_M02_S018-Bootstrap: Hello world", "B3_M02_S019-La grille bootstrap", "B3_M02_S020-Les éléments bootstrap", "B3_M02_S021-Les composants bootstrap", "B3_M02_S022-Ouverture vers d'autres framework CSS", "B3_M02_S023-SASS", "B3_M02_S024-Le référencement des sites Web", "B3_M02_S025-Déployer son site sur le Web"] },
+                { title: "B3_M03_JavaScript", topics: ["B3_M03_S001-La programmation événementielle en JavaScript", "B3_M03_S002-Le formulaire HTML et JavaScript", "B3_M03_S003-Initiation aux objets et aux classes", "B3_M03_S004-L'API DOM", "B3_M03_S005-Présentation de la librairie JQuery", "B3_M03_S006-Les bases de JQuery", "B3_M03_S007-La programmation AJAX", "B3_M03_S008-Les promesses et l'API Fetch", "B3_M03_S009-L'utilisation de JSON", "B3_M03_S010-L'API Canvas en JavaScript"] },
+                { title: "B3_M04_PHP", topics: ["B3_M04_S001-PHP et HTML (sorties)", "B3_M04_S002-Les types de données, les variables et les constantes", "B3_M04_S003-Les opérateurs de comparaison", "B3_M04_S004-Les fonctions", "B3_M04_S005-Les tableaux", "B3_M04_S006-Les conditions", "B3_M04_S007-Les boucles", "B3_M04_S008-Créer ses propres fonctions", "B3_M04_S009-L'organisation des fichiers PHP", "B3_M04_S010-Les superglobales Get, Post et Files", "B3_M04_S011-Les superglobales Server, Env et Session", "B3_M04_S012-La sécurité", "B3_M04_S013-La manipulation des dates", "B3_M04_S014-La manipulation des fichiers en PHP", "B3_M04_S015-Les expressions régulières", "B3_M04_S016-Utiliser la documentation PHP", "B3_M04_S017-La préparation de l'environnement de travail", "B3_M04_S018-POO concepts de base", "B3_M04_S019-POO concepts avancés", "B3_M04_S020-La gestion des erreurs", "B3_M04_S021-POO Design Patterns", "B3_M04_S022-POO L’encapsulation et la visibilité", "B3_M04_S023-Le modèle MVC"] },
+                { title: "B3_M05_Base de données relationnelle", topics: ["B3_M05_S001-Intro SGBDR", "B3_M05_S002-MCD et MLD", "B3_M05_S003-Les diagrammes fonctionnels", "B3_M05_S004-Le diagramme de classe", "B3_M05_S005-Passage UML-Relationnel", "B3_M05_S006-Création et alimentation BD SQL", "B3_M05_S007-L'interrogation BD SQL", "B3_M05_S008-PostgreSQL", "B3_M05_S009-Connexion BD en PHP", "B3_M05_S010-PHP/PDO", "B3_M05_S011-Les requetes SQL", "B3_M05_S012-Les fonctions SQL", "B3_M05_S013-Les jointures SQL", "B3_M05_S014-Gérer les accès utilisateurs", "B3_M05_S015-Découverte d'un ORM PHP", "B3_M05_S016-Projet : Créer et administrer une BD", "B3_M05_S017-Introduction NOSQL", "B3_M05_S018-Introduction à MongoDB"] },
+                { title: "B3_M06_BDD Non relationnelle", topics: ["B3_M06_S001-Introduction NOSQL", "B3_M06_S002-Introduction à MongoDB"] },
+                { title: "B3_M07_Python Web", topics: ["B3_M07_S001-L'interpréteur de commande Python", "B3_M07_S002-Environnements de travail", "B3_M07_S003-Variables et types", "B3_M07_S004-Portée des variables", "B3_M07_S005-Conditions en Python", "B3_M07_S006-Boucles en Python", "B3_M07_S007-Les structures de données", "B3_M07_S008-Structure programme - fonctions", "B3_M07_S009-Qualité du code", "B3_M07_S010-Structure programme - modules", "B3_M07_S011-Tests unitaires", "B3_M07_S012-Notions théoriques de classe", "B3_M07_S013-Constructeur et self", "B3_M07_S014-Les méthodes spéciales", "B3_M07_S015-L'héritage", "B3_M07_S016-Le décorateur", "B3_M07_S017-Chaîne de caractères", "B3_M07_S018-Gestion du temps", "B3_M07_S019-Mathématiques", "B3_M07_S020-Plus loin en mathématiques", "B3_M07_S021-Graphiques", "B3_M07_S022-Gestion des fichiers", "B3_M07_S023-Requêtes HTTP", "B3_M07_S024-BD relationnelles et Python", "B3_M07_S025-Notion d'ORM", "B3_M07_S026-Cadre théorique de Flask", "B3_M07_S027-Template Jinja", "B3_M07_S028-Déploiement Flask", "B3_M07_S029-Cadre théorique de Django", "B3_M07_S030-Les modèles en Django", "B3_M07_S031-Les vues en Django", "B3_M07_S032-API REST en Python", "B3_M07_S033-Data visualisation", "B3_M07_S034-Données et librairies", "B3_M07_S035-Numpy", "B3_M07_S036-Pandas", "B3_M07_S037-Plus loin avec pandas", "B3_M07_S038-Matplotlib", "B3_M07_S039-Seaborn", "B3_M07_S040-Bokeh", "B3_M07_S041-Streamlit", "B3_M07_S042-Présentations impactantes"] },
+                { title: "B3_M08_Mobile React Native", topics: ["B3_M08_S001-Le développement Mobile", "B3_M08_S002-Intro React Native : Expo", "B3_M08_S003-Les bases de React Native", "B3_M08_S004-Les composants", "B3_M08_S005-Props et states", "B3_M08_S006-Flexbox", "B3_M08_S007-Code différent par plateforme", "B3_M08_S008-Redux", "B3_M08_S009-Extensions Redux", "B3_M08_S010-Organisation application", "B3_M08_S011-Navigation", "B3_M08_S012-Navigators", "B3_M08_S013-Animation", "B3_M08_S014-Emulateurs", "B3_M08_S015-SQLITE", "B3_M08_S016-APIs et modules natifs", "B3_M08_S017-Debugging", "B3_M08_S018-Déploiement stores", "B3_M08_S019-React Native sans Expo", "B3_M08_S020-Projet mobile"] },
+                { title: "B3_M09_Concevoir une API", topics: ["B3_M09_S001-Présentation des API", "B3_M09_S002-Concevoir une API", "B3_M09_S003-Gérer les accès à une API"] },
+                { title: "B3_M10_Utiliser des API", topics: ["B3_M10_S001-Les API d'authentification (OAuth, ..)", "B3_M10_S002-Les API Google / AWS", "B3_M10_S003-Les API de paiement"] },
+                { title: "B3_M11_Gestion de version", topics: ["B3_M11_S001-Ligne de commande", "B3_M11_S002-Git et Github", "B3_M11_S003-Les bases", "B3_M11_S004-Interactions dépôt distant", "B3_M11_S005-Naviguer dans l'historique", "B3_M11_S006-Gestion des branches", "B3_M11_S007-Rebaser", "B3_M11_S008-Bonnes pratiques", "B3_M11_S009-Projet Git/Github", "B3_M11_S010-Intro Gitlab"] },
+                { title: "B3_M12_Maintenir et documenter", topics: ["B3_M12_S001-Documentation architecture et code", "B3_M12_S002-Améliorer sa solution", "B3_M12_S003-Documentation utilisateur", "B3_M12_S004-Le pentest", "B3_M12_S005-Gestion dette technique"] }
             ]
         };
 
@@ -539,14 +653,12 @@
         function openTab(idString) {
             // Nettoyage visuel de tous les contenus
             document.querySelectorAll('.tab-content').forEach(el => {
-                el.classList.remove('active'); // Utilisation de la classe .active définie en CSS
-                el.classList.add('hidden');    // Utilisation de la classe .hidden de Tailwind
+                el.classList.remove('active'); 
             });
 
             // Affichage du contenu ciblé (ex: tab-b1)
             const content = document.getElementById(`tab-${idString}`);
             if (content) {
-                content.classList.remove('hidden');
                 content.classList.add('active');
             }
             
@@ -581,9 +693,9 @@
             
             // Update UI styles (barré/débarré) sans recharger tout
             if (userProgress[id]) {
-                link.classList.add('line-through', 'text-slate-400');
+                link.classList.add('line-through', 'text-slate-400', 'opacity-50');
             } else {
-                link.classList.remove('line-through', 'text-slate-400');
+                link.classList.remove('line-through', 'text-slate-400', 'opacity-50');
             }
             
             // Recalcul des barres
@@ -653,15 +765,11 @@
             date.setDate(date.getDate() + daysToAdd);
             
             // Formatage pour Google Agenda : YYYYMMDD
-            // On ajoute 'T090000' pour mettre ça à 9h du matin par défaut (facultatif mais plus propre)
-            // Ou on met juste la date pour un événement "Journée entière" (recommandé pour des tâches)
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
             const dateString = `${year}${month}${day}`;
             
-            // Pour un événement d'une journée entière, start = end (ou start = day, end = day+1)
-            // Google Agenda accepte YYYYMMDD/YYYYMMDD pour un événement sur la journée
             const nextDay = new Date(date);
             nextDay.setDate(date.getDate() + 1);
             const nextYear = nextDay.getFullYear();
@@ -672,9 +780,7 @@
             // 2. Construction de l'URL
             const title = encodeURIComponent(`Révision : ${currentTopicForCalendar}`);
             
-            // Lien vers le lecteur (Attention : il faudra mettre votre VRAI domaine si ce n'est pas en local)
-            // Pour l'instant on met une URL relative qui sera cliquable si l'utilisateur est connecté,
-            // ou on peut mettre une URL absolue si vous hébergez sur Github Pages
+            // Lien vers le lecteur
             const link = `https://projettechacademy.github.io/Projet_Python/lecteur.html?id=${currentResKeyForCalendar}`;
             const details = encodeURIComponent(`C'est l'heure de la révision !\n\nLien direct vers le cours :\n${link}\n\nBon courage ! 🚀`);
             
@@ -714,35 +820,34 @@
                 const pctMod = totalMod === 0 ? 0 : Math.round((doneMod / totalMod) * 100);
                 
                 const html = `
-                <div class="module-accordion mb-4 border border-gray-200 rounded-lg overflow-hidden" id="${modId}">
-                    <div class="accordion-header bg-gray-50 p-4 cursor-pointer flex justify-between items-center hover:bg-gray-100 transition-colors" onclick="this.parentElement.classList.toggle('open'); this.parentElement.querySelector('.accordion-content').classList.toggle('hidden');">
-                        <div class="flex items-center gap-3 flex-1">
-                            <div class="w-1.5 h-6 bg-yellow-500 rounded-full"></div>
+                <div class="module-accordion mb-4 border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow" id="${modId}">
+                    <div class="accordion-header bg-white p-4 cursor-pointer flex justify-between items-center transition-colors" onclick="this.parentElement.classList.toggle('open'); this.parentElement.querySelector('.accordion-content').classList.toggle('hidden');">
+                        <div class="flex items-center gap-4 flex-1">
+                            <div class="w-1.5 h-8 bg-[#D9A526] rounded-full"></div>
                             <div>
-                                <h3 class="font-bold text-gray-800 text-sm md:text-base">${module.title}</h3>
+                                <h3 class="font-bold text-[#0F2C48] text-sm md:text-base font-['Montserrat']">${module.title}</h3>
                                 <div class="text-xs text-gray-400 mt-1 flex items-center gap-2">
-                                    <div class="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-20 h-1.5 bg-gray-200 rounded-full overflow-hidden">
                                         <div class="h-full bg-green-500" style="width:${pctMod}%"></div>
                                     </div>
-                                    <span>${doneMod}/${totalMod}</span>
+                                    <span class="font-mono">${doneMod}/${totalMod}</span>
                                 </div>
                             </div>
                         </div>
                         <i class="fas fa-chevron-down text-gray-400 transition-transform"></i>
                     </div>
                     
-                    <div class="accordion-content hidden bg-white border-t border-gray-100">
-                        <div class="p-1 space-y-1">
+                    <div class="accordion-content hidden bg-white border-t border-gray-100 pl-4 md:pl-8">
+                        <div class="p-2 space-y-1">
                             ${module.topics.map((topic, tIndex) => {
                                 // Clé pour localStorage (checkbox)
                                 const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
                                 
-                                // Clé pour database.js (ressources) - DOIT matcher la logique du fichier database.js
-                                // J'utilise la même logique que votre fichier uploadé
+                                // Clé pour database.js (ressources)
                                 const resKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '');
                                 
                                 const isChecked = userProgress[dbKey] ? 'checked' : '';
-                                const textStyle = userProgress[dbKey] ? 'line-through text-slate-400' : 'text-gray-700';
+                                const textStyle = userProgress[dbKey] ? 'line-through text-slate-400 opacity-50' : 'text-gray-700';
 
                                 // Vérification des ressources via database.js si disponible
                                 let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '';
@@ -756,24 +861,23 @@
                                 }
 
                                 return `
-                                <div class="flex items-center justify-between py-2 px-3 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors group">
-                                    <div class="flex items-center gap-3 flex-1 overflow-hidden">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between py-3 px-3 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors group rounded-md">
+                                    <div class="flex items-center gap-3 flex-1 overflow-hidden mb-2 md:mb-0">
                                         <div class="checkbox-wrapper">
                                             <input type="checkbox" id="${dbKey}" ${isChecked} onchange="toggleTopic('${dbKey}')">
                                         </div>
-                                        <a href="lecteur.html?id=${resKey}" target="_blank" id="link-${dbKey}" class="text-sm font-medium truncate flex-1 ${textStyle} hover:text-[#B4792A] transition-colors">
+                                        <a href="lecteur.html?id=${resKey}" target="_blank" id="link-${dbKey}" class="text-sm font-medium truncate flex-1 ${textStyle} hover:text-[#B4792A] transition-colors font-['Fira_Code']">
                                             ${topic}
                                         </a>
                                     </div>
                                     
                                     <!-- ICONS RESSOURCES (Partie Droite) -->
-                                    <div class="flex items-center gap-1 ml-2">
+                                    <div class="flex items-center gap-1 md:ml-4 justify-end">
                                         <button class="resource-btn icon-video ${hasVideo}" title="Vidéo" onclick="${videoLink ? `window.open('${videoLink}', '_blank')` : ''}"><i class="fas fa-video"></i></button>
                                         <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
                                         <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
                                         <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
-                                        <!-- BOUTON AGENDA (Réintégré avec la Modale) -->
                                         <button class="resource-btn icon-clock" title="Planifier révision" onclick="openCalendarModal('${topic.replace(/'/g, "\\'")}', '${resKey}')"><i class="far fa-clock"></i></button>
                                     </div>
                                 </div>`;
@@ -789,6 +893,7 @@
             openTab('b1'); 
             updateAllProgress(); 
         });
-    </script>
+  </script>
+
 </body>
 </html>
