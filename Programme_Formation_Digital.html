@@ -364,9 +364,10 @@
         
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours" style="background:var(--brandGold); color:var(--brand-blue); border-color:var(--ivory);">📅</a>
         
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+        <!-- NOUVEL ONGLETS : Cours Choisir (📚) -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/liste_cours_pdf.html" title="Cours Choisir">📚</a>
 
-        <!-- L'ancien lien Veille & Ressources (🔖) a été supprimé ici -->
+        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
 
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
 
@@ -510,9 +511,11 @@
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Roadmap">📅</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+
+            <!-- NOUVEL ONGLETS : Cours Choisir (📚) -->
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/liste_cours_pdf.html" title="Cours Choisir">📚</a>
             
-            <!-- L'ancien lien Veille & Ressources (🔖) a été supprimé ici -->
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
 
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
@@ -567,6 +570,8 @@
   </script>
 
   <script src="database.js"></script>
+  <!-- NOUVEL IMPORT : liens PDF récupérés -->
+  <script src="cours_links.js"></script>
 
   <script>
         // 1. Données du Programme (MIS À JOUR SELON VOTRE LISTE)
@@ -599,7 +604,7 @@
                 { title: "B3_M01_Piloter la production de contenus digitaux", topics: ["B3_M01_S001-Comment et pourquoi se former à la production de contenus digitaux ?", "B3_M01_S002-Introduction à la production de contenus digitaux", "B3_M01_S003-La création de contenu digital en adéquation avec sa cible", "B3_M01_S004-L'orientation artistique et le brief créatif", "B3_M01_S005-La gestion de la production de contenus digitaux", "B3_M01_S006-La mise en place opérationnelle de sa stratégie de production de contenus", "B3_M01_S007-La proposition de production de contenu", "B3_M01_S008-Application - Piloter la production de contenus digitaux"] },
                 { title: "B3_M02_Créer un site web avec HTML, CSS et le Framework Bootstrap", topics: ["B3_M02_S001-Introduction HTML et CSS", "B3_M02_S002-Syntaxe générale de HTML", "B3_M02_S003-L'organisation du texte", "B3_M02_S004-Un langage hypertexte", "B3_M02_S005-Le multimédia en HTML", "B3_M02_S006-Introduction au CSS", "B3_M02_S007-CSS3 : Le stylage du texte", "B3_M02_S008-La structuration logique en HTML5 et le modèle de boîtes en CSS3", "B3_M02_S009-Les sélecteurs CSS", "B3_M02_S010-La mise en page avec CSS", "B3_M02_S011-La création de tableaux", "B3_M02_S012-La création de formulaires", "B3_M02_S013-Layout avec CSS Grid", "B3_M02_S014-Les effets avancés de CSS", "B3_M02_S015-Utiliser des documentations CSS", "B3_M02_S016-Le responsive design", "B3_M02_S017-Valider la qualité de son site", "B3_M02_S018-L'installation et la prise en main du framework Bootstrap - Hello world", "B3_M02_S019-La grille bootstrap", "B3_M02_S020-Les éléments bootstrap", "B3_M02_S021-Les composants bootstrap", "B3_M02_S022-Ouverture vers d'autres framework CSS", "B3_M02_S023-SASS", "B3_M02_S024-Le référencement des sites Web", "B3_M02_S025-Déployer son site sur le Web"] },
                 { title: "B3_M03_Dynamiser vos sites web avec JavaScript", topics: ["B3_M03_S001-La programmation événementielle en JavaScript", "B3_M03_S002-Le formulaire HTML et JavaScript", "B3_M03_S003-Initiation aux objets et aux classes", "B3_M03_S004-L'API DOM", "B3_M03_S005-Présentation de la librairie JQuery", "B3_M03_S006-Les bases de JQuery", "B3_M03_S007-La programmation AJAX", "B3_M03_S008-Les promesses et l'API Fetch", "B3_M03_S009-L'utilisation de JSON", "B3_M03_S010-L'API Canvas en JavaScript"] },
-                { title: "B3_M04_Développer des sites web dynamiques avec PHP", topics: ["B3_M04_S001-PHP et HTML (sorties)", "B3_M04_S002-Les types de données, les variables et les constantes", "B3_M04_S003-Les opérateurs de comparaison et les expressions booléennes", "B3_M04_S004-Les fonctions", "B3_M04_S005-Les tableaux", "B3_M04_S006-Les conditions", "B3_M04_S007-Les boucles", "B3_M04_S008-Créer ses propres fonctions", "B3_M04_S009-L'organisation des fichiers PHP", "B3_M04_S010-Les superglobales Get, Post et Files", "B3_M04_S011-Les superglobales Server, Env et Session", "B3_M04_S012-La sécurité", "B3_M04_S013-La manipulation des dates", "B3_M04_S014-La manipulation des fichiers en PHP", "B3_M04_S015-Les expressions régulières", "B3_M04_S016-Utiliser la documentation PHP et Standard de codage PHP", "B3_M04_S017-La préparation de l'environnement de travail", "B3_M04_S018-La programmation Orientée Objet concepts de base", "B3_M04_S019-La programmation Orientée Objet concepts avancés", "B3_M04_S020-La gestion des erreurs", "B3_M04_S021-La programmation Orientée Objet Design Patterns", "B3_M04_S022-La programmation Orientée Objet L’encapsulation et la visibilité", "B3_M04_S023-Le modèle MVC"] },
+                { title: "B3_M04_Développer des sites web dynamiques avec PHP", topics: ["B3_M04_S001-PHP et HTML (sorties)", "B3_M04_S002-Les types de données, les variables et les constantes", "B3_M04_S003-Les opérateurs de comparaison et les expressions booléennes", "B3_M04_S004-Les fonctions", "B3_M04_S005-Les tableaux", "B3_M04_S006-Les conditions", "B3_M04_S007-Les boucles", "B3_M04_S008-Créer ses propres fonctions", "B3_M04_S009-L'organisation des fichiers PHP", "B3_M04_S010-Les superglobales Get, Post et Files"] },
                 { title: "B3_M05_Créer et administrer une base de données relationnelle", topics: ["B3_M05_S001-Introduction générale aux bases de données, notion de SGBDR", "B3_M05_S002-Modèle conceptuel de données et modèle logique de données", "B3_M05_S003-Les diagrammes fonctionnels", "B3_M05_S004-Le diagramme de classe", "B3_M05_S005-Introduction au passage UML- Relationnel", "B3_M05_S006-Création et alimentation de bases de données SQL", "B3_M05_S007-L'interrogation de bases de données SQL", "B3_M05_S008-Découvrir un autre SGBDR PostgreSQL", "B3_M05_S009-Connexion à la base de données en PHP", "B3_M05_S010-PHP/PDO : accès en lecture/écriture", "B3_M05_S011-Les requetes SQL", "B3_M05_S012-Les fonctions SQL", "B3_M05_S013-Les jointures SQL", "B3_M05_S014-Gérer les accès des utilisateurs au niveau PHP et BD", "B3_M05_S015-Découverte d'un ORM PHP", "B3_M05_S016-Projet : Créer et administrer une base de données", "B3_M05_S017-Introduction NOSQL", "B3_M05_S018-Introduction à MongoDB"] },
                 { title: "B3_M06_Créer et administrer une base de données non relationnelle", topics: ["B3_M06_S001-Introduction NOSQL", "B3_M06_S002-Introduction à MongoDB"] },
                 { title: "B3_M07_Développer une application web avec Python", topics: ["B3_M07_S001-L'interpréteur de commande Python", "B3_M07_S002-Environnements de travail", "B3_M07_S003-Variables et types de données", "B3_M07_S004-Portée des variables et notion de référence", "B3_M07_S005-Conditions en Python", "B3_M07_S006-Boucles en Python", "B3_M07_S007-Les structures de données en Python", "B3_M07_S008-Structure d'un programme - fonctions", "B3_M07_S009-Améliorer la qualité du code", "B3_M07_S010-Structure d'un programme - modules", "B3_M07_S011-Améliorer la qualité du code - les tests unitaires", "B3_M07_S012-Notions théoriques de classe", "B3_M07_S013-Constructeur et mot-clé self", "B3_M07_S014-Les méthodes spéciales", "B3_M07_S015-L'héritage", "B3_M07_S016-La notion de décorateur en Python", "B3_M07_S017-Chaîne de caractères en Python", "B3_M07_S018-La gestion du temps en Python", "B3_M07_S019-Mathématiques en Python", "B3_M07_S020-Plus loin en mathématiques", "B3_M07_S021-Visualiser des données sous formes de graphiques", "B3_M07_S022-Gestion des fichiers en Python", "B3_M07_S023-Requêtes HTTP", "B3_M07_S024-Les bases de données relationnelles et Python", "B3_M07_S025-Notion d'ORM (object-relational mapping)", "B3_M07_S026-Cadre théorique de Flask", "B3_M07_S027-Le moteur de template Jinja", "B3_M07_S028-Déploiement en ligne du site Flask", "B3_M07_S029-Cadre théorique de Django", "B3_M07_S030-Les modèles en Django", "B3_M07_S031-Les vues en Django", "B3_M07_S032-API REST en Python", "B3_M07_S033-La data visualisation avec Python", "B3_M07_S034-La présentation des données et des librairies", "B3_M07_S035-La librairie numpy", "B3_M07_S036-La librairie pandas première approche", "B3_M07_S037-Aller plus loin avec la librairie pandas", "B3_M07_S038-La librairie matplotlib", "B3_M07_S039-La librairie Seaborn", "B3_M07_S040-La librairie Bokeh", "B3_M07_S041-La data visualisation avancée avec Streamlit", "B3_M07_S042-Des présentations de résultats impactantes"] },
@@ -617,6 +622,13 @@
         // Variables pour la modale
         let currentTopicForCalendar = "";
         let currentResKeyForCalendar = "";
+
+        // Fonction pour nettoyer la clé de ressource pour le JavaScript
+        function cleanTopicName(topic) {
+            // Nettoyage pour créer une clé compatible JS (remplace espaces, tirets, etc. par des underscores)
+            // C'est la même logique que celle utilisée pour générer les clés dans cours_links.js
+            return topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+        }
 
         function openTab(idString) {
             // Nettoyage visuel de tous les contenus
@@ -699,7 +711,7 @@
                     data.forEach(module => {
                         module.topics.forEach(topic => {
                             // Nettoyage de la clé pour correspondre au format du HTML (dbKey)
-                            const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+                            const dbKey = cleanTopicName(topic);
                             totalBloc++;
                             if (userProgress[dbKey]) doneBloc++;
                         });
@@ -800,8 +812,7 @@
                 // Calcul progression module local
                 let totalMod = 0, doneMod = 0;
                 module.topics.forEach(t => {
-                   // Nettoyage de la clé pour correspondre au format du HTML (dbKey)
-                   const key = t.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
+                   const key = cleanTopicName(t);
                    totalMod++;
                    if(userProgress[key]) doneMod++;
                 });
@@ -828,27 +839,28 @@
                     <div class="accordion-content hidden bg-white border-t border-gray-100 pl-4 md:pl-8">
                         <div class="p-2 space-y-1">
                             ${module.topics.map((topic, tIndex) => {
-                                // Clé pour localStorage (checkbox)
-                                const dbKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '');
-                                
-                                // Clé pour database.js (ressources) - NOTE: La clé resKey devrait être identique à dbKey si le database.js est structuré de la même manière.
-                                const resKey = topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '');
+                                // Clés pour l'état de progression et les ressources
+                                const dbKey = cleanTopicName(topic);
+                                const resKey = cleanTopicName(topic);
                                 
                                 const isChecked = userProgress[dbKey] ? 'checked' : '';
                                 const isBtnActive = userProgress[dbKey] ? 'active' : '';
                                 const textStyle = userProgress[dbKey] ? 'line-through text-slate-400 opacity-50' : 'text-gray-700';
 
-                                // Vérification des ressources via database.js si disponible
-                                let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '', hasLink = ''; // Ajout de hasLink
-                                let videoLink = '', infoLink = '', presLink = '', pdfLink = '', linkLink = ''; // Ajout de linkLink
+                                // 1. Récupération des liens du fichier cours_links.js (pour l'icône Lien Externe 🔗)
+                                const linkLinkFromExternal = (typeof window.pdfLinks !== 'undefined' && window.pdfLinks[resKey]) ? window.pdfLinks[resKey] : null;
+                                const hasLink = linkLinkFromExternal ? 'active' : '';
+
+                                // 2. Récupération des autres liens depuis database.js (si présent)
+                                let hasVideo = '', hasInfo = '', hasPres = '', hasPdf = '';
+                                let videoLink = '', infoLink = '', presLink = '', pdfLink = '';
                                 
-                                // IMPORTANT : Si la BDD n'est pas chargée, ces liens seront vides, mais le code fonctionne.
                                 if (typeof window.dbRessources !== 'undefined' && window.dbRessources[resKey]) {
                                     if(window.dbRessources[resKey].video) { hasVideo = 'active'; videoLink = window.dbRessources[resKey].video; }
                                     if(window.dbRessources[resKey].info) { hasInfo = 'active'; infoLink = window.dbRessources[resKey].info; }
                                     if(window.dbRessources[resKey].pres) { hasPres = 'active'; presLink = window.dbRessources[resKey].pres; }
-                                    if(window.dbRessources[resKey].pdf) { hasPdf = 'active'; pdfLink = window.dbRessources[resKey].pdf; }
-                                    if(window.dbRessources[resKey].link) { hasLink = 'active'; linkLink = window.dbRessources[resKey].link; } // Récupération du nouveau lien
+                                    // Utilise le PDF de database.js si disponible, sinon on se concentre sur le 'link'
+                                    if(window.dbRessources[resKey].pdf) { hasPdf = 'active'; pdfLink = window.dbRessources[resKey].pdf; } 
                                 }
 
                                 return `
@@ -867,8 +879,8 @@
                                         <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
                                         <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
                                         <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
-                                        <!-- NOUVEL ÉMOJI DE RESSOURCE (Lien) -->
-                                        <button class="resource-btn icon-link ${hasLink}" title="Lien externe" onclick="${linkLink ? `window.open('${linkLink}', '_blank')` : ''}">🔗</button>
+                                        <!-- NOUVEL ÉMOJI DE RESSOURCE (Lien vers les PDF fournis) -->
+                                        <button class="resource-btn icon-link ${hasLink}" title="Lien direct Cours PDF" onclick="${linkLinkFromExternal ? `window.open('${linkLinkFromExternal}', '_blank')` : ''}">🔗</button>
                                         
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
                                         <button id="btn-check-${dbKey}" class="resource-btn icon-check ${isBtnActive}" title="Valider module" onclick="toggleTopic('${dbKey}')"><i class="fas fa-check-circle"></i></button>
