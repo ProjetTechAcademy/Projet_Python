@@ -22,7 +22,7 @@
         --footer-bg: #0F2C48; 
         --footer-text: #F6F2E8; 
 
-        /* --- VARIABLES (Contenu) --- */
+        /* --- VARIABLES (Contenu) */
         --color-bg: var(--ivory);
         --color-primary: var(--brand-blue);
         --color-accent: var(--brandGold);
@@ -36,7 +36,7 @@
     /* Font pour le code */
     .font-code { font-family: 'Fira Code', monospace; }
 
-    /* --- HEADER (V2 Optimisé - RESPONSIVE LARGE) --- */
+    /* --- HEADER (V2 Optimisé - RESPONSIVE LARGE) */
     .top-bar { 
         background: var(--brand-blue); 
         padding: 12px 0;
@@ -126,7 +126,7 @@
     /* Main Content Placeholder */
     .main-content { flex: 1; padding: 20px; max-width: 1400px; margin: 0 auto; width: 100%; }
 
-    /* --- STYLES CONTENU GENÉRIQUE --- */
+    /* --- STYLES CONTENU GENÉRIQUE */
     section { padding: 40px 0; }
     h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--brand-blue); }
     
@@ -134,7 +134,7 @@
     .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* --- FOOTER (V2 - RESPONSIVE LARGE) --- */
+    /* --- FOOTER (V2 - RESPONSIVE LARGE) */
     .main-footer { 
         background: var(--footer-bg); color: var(--footer-text); 
         padding: 40px 0; 
@@ -201,7 +201,6 @@
     }
 
     /* === STYLES SPÉCIFIQUES PROGRAMME & TABS === */
-    /* Ces styles sont nécessaires pour que l'accordéon et les onglets fonctionnent comme avant */
     
     /* Styles des Onglets */
     .tab-btn {
@@ -286,9 +285,10 @@
     .icon-pdf { color: rgba(220, 38, 38, 0.4); }
     .icon-pdf.active, .icon-pdf:hover { color: rgba(220, 38, 38, 1); opacity: 1; }
     
-    /* NOUVELLE ICÔNE : Lien externe (🔗) */
-    .icon-link { color: rgba(79, 70, 229, 0.4); } /* Indigo-500 opacity 40% */
-    .icon-link.active, .icon-link:hover { color: rgba(79, 70, 229, 1); opacity: 1; }
+    /* NOUVELLE ICÔNE : LIEN BOUQUIN (📚) */
+    /* Utilisez la même couleur que l'icône de l'onglet si souhaité, sinon Indigo pour un lien */
+    .icon-book { color: rgba(79, 70, 229, 0.4); } 
+    .icon-book.active, .icon-book:hover { color: rgba(79, 70, 229, 1); opacity: 1; }
 
 
     .icon-clock { color: rgba(217, 165, 38, 0.4); }
@@ -364,7 +364,7 @@
         
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours" style="background:var(--brandGold); color:var(--brand-blue); border-color:var(--ivory);">📅</a>
         
-        <!-- NOUVEL ONGLETS : Cours Choisir (📚) -->
+        <!-- ONGLETS : Cours Choisir (📚) -->
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/liste_cours_pdf.html" title="Cours Choisir">📚</a>
 
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
@@ -373,12 +373,11 @@
 
         <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
 
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
 
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+        <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
 
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Mon Profil">👤</a>
-
+        <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
       </nav>
 
       <div>
@@ -518,9 +517,13 @@
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
 
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
-            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="RNCP">🏅</a>
+
+            <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes">🔠</a>
+
             <a class="icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
         </div>
             
@@ -625,8 +628,14 @@
 
         // Fonction pour nettoyer la clé de ressource pour le JavaScript
         function cleanTopicName(topic) {
-            // Nettoyage pour créer une clé compatible JS (remplace espaces, tirets, deux-points, etc. par des underscores)
-            return topic.replace(/ /g, '_').replace(/-/g, '_').replace(/'/g, '').replace(/\?/g, '').replace(/:/g, '').replace(/\//g, '_').replace(/\(/g, '').replace(/\)/g, '');
+            // Nettoyage ultra-robuste pour garantir la correspondance exacte avec cours_links.js
+            // 1. Remplace tous les caractères non-alphanumériques (sauf le tiret bas et le tiret) par un underscore.
+            let cleaned = topic.replace(/[^\w-]/g, '_');
+            // 2. Réduit les multiples underscores
+            cleaned = cleaned.replace(/_+/g, '_');
+            // 3. Retire les underscores de début/fin
+            cleaned = cleaned.replace(/^_|_$/g, '');
+            return cleaned;
         }
 
         function openTab(idString) {
@@ -829,6 +838,7 @@
                                         <div class="h-full bg-green-500" style="width:${pctMod}%"></div>
                                     </div>
                                     <span class="font-mono">${doneMod}/${totalMod}</span>
+                                
                                 </div>
                             </div>
                         </div>
@@ -846,7 +856,7 @@
                                 const isBtnActive = userProgress[dbKey] ? 'active' : '';
                                 const textStyle = userProgress[dbKey] ? 'line-through text-slate-400 opacity-50' : 'text-gray-700';
 
-                                // 1. Récupération des liens du fichier cours_links.js (pour l'icône Lien Externe 🔗)
+                                // 1. Récupération des liens du fichier cours_links.js (pour l'icône BOUQUIN 📚)
                                 const linkLinkFromExternal = (typeof window.pdfLinks !== 'undefined' && window.pdfLinks[resKey]) ? window.pdfLinks[resKey] : null;
                                 const hasLink = linkLinkFromExternal ? 'active' : '';
 
@@ -878,8 +888,8 @@
                                         <button class="resource-btn icon-info ${hasInfo}" title="Infographie" onclick="${infoLink ? `window.open('${infoLink}', '_blank')` : ''}"><i class="fas fa-chart-pie"></i></button>
                                         <button class="resource-btn icon-pres ${hasPres}" title="Présentation" onclick="${presLink ? `window.open('${presLink}', '_blank')` : ''}"><i class="fas fa-project-diagram"></i></button>
                                         <button class="resource-btn icon-pdf ${hasPdf}" title="PDF" onclick="${pdfLink ? `window.open('${pdfLink}', '_blank')` : ''}"><i class="fas fa-file-pdf"></i></button>
-                                        <!-- NOUVEL ÉMOJI DE RESSOURCE (Lien vers les PDF fournis) -->
-                                        <button class="resource-btn icon-link ${hasLink}" title="Lien direct Cours PDF" onclick="${linkLinkFromExternal ? `window.open('${linkLinkFromExternal}', '_blank')` : ''}">🔗</button>
+                                        <!-- LIEN COURS PDF (utilise l'icône de livres empilés 📚) -->
+                                        <button class="resource-btn icon-book ${hasLink}" title="Lien direct Cours PDF" onclick="${linkLinkFromExternal ? `window.open('${linkLinkFromExternal}', '_blank')` : ''}">📚</button>
                                         
                                         <div class="w-px h-4 bg-gray-200 mx-1"></div>
                                         <button id="btn-check-${dbKey}" class="resource-btn icon-check ${isBtnActive}" title="Valider module" onclick="toggleTopic('${dbKey}')"><i class="fas fa-check-circle"></i></button>

@@ -1,7 +1,7 @@
 // ======================================================================
 // 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - STYLE 2025 PREMIUM
 // CORRECTION V2 : Ajout du bouton de Validation de Cours (Progression)
-// MISE À JOUR V3 : Intégration des liens externes (cours_links.js)
+// MISE À JOUR V4 : Remplacement de l'icône Lien externe (🔗) par Livres (📚)
 // ======================================================================
 (function() {
     
@@ -9,12 +9,20 @@
     const params = new URLSearchParams(window.location.search);
     let fileName = params.get('id');
 
+    // Fonction de nettoyage ultra-robuste (DOIT être identique à celle de Programme_Formation_Digital.html)
+    function cleanTopicName(topic) {
+        let cleaned = topic.replace(/[^\w-]/g, '_');
+        cleaned = cleaned.replace(/_+/g, '_');
+        return cleaned.replace(/^_|_$/g, '');
+    }
+
     if (!fileName) {
         // Fallback pour les fichiers locaux
         fileName = window.location.pathname.split('/').pop().replace('.html', '');
     }
 
-    const courseID = fileName.split('/').pop().replace('.html', ''); // ID du cours (ex: B1_M01_S001_...)
+    // Le courseID est la version nettoyée du titre de la section
+    const courseID = cleanTopicName(fileName); 
     const titleReadable = courseID ? courseID.replace(/_/g, ' ') : "Cours sans titre";
     
     // 2. CONNEXION BASE DE DONNÉES
@@ -34,7 +42,7 @@
             return;
         }
 
-        // On utilise la clé 'devEliteProgress' mise à jour par Mon_Espace_Dev.html
+        // On utilise la clé 'devEliteProgress' mise à jour par Programme_Formation_Digital.html
         const progressKey = 'devEliteProgress';
         let progress = JSON.parse(localStorage.getItem(progressKey)) || {};
         
@@ -67,12 +75,12 @@
         let isIcon = true;
         let isExternal = false;
         
-        // Cas spécial : Bouton Lien Externe (🔗)
+        // Cas spécial : Bouton BOUQUIN (📚)
         if (key === 'external_link') {
             link = externalLink;
-            icon = '🔗'; // Utilise l'émoji comme icône
+            icon = '📚'; // Utilise l'émoji bouquin
             isIcon = false;
-            color = '#4f46e5'; // Indigo
+            color = '#9333ea'; // Violet plus foncé
             isExternal = true;
         }
 
@@ -83,7 +91,7 @@
         const boxShadow = isActive ? `0 4px 12px ${color}40` : "none";
         
         // Couleur pour l'état hover
-        const hoverColor = isExternal ? '#4f46e5' : color;
+        const hoverColor = isExternal ? color : color;
 
 
         return `
@@ -155,7 +163,7 @@
             ${getBtn('info', 'fa-chart-pie', 'Infographie', '#06b6d4')}
             ${getBtn('pres', 'fa-project-diagram', 'Présentation', '#f97316')}
             ${getBtn('pdf', 'fa-file-pdf', 'Document PDF', '#dc2626')}
-            ${getBtn('external_link', '', 'Lien externe Cours PDF', '#4f46e5')} <!-- NOUVEAU BOUTON -->
+            ${getBtn('external_link', '', 'Lien direct Cours PDF', '#9333ea')} <!-- Icône Livres 📚 -->
             
             <div style="width:1px; height:30px; background:#e2e8f0; margin:0 15px;"></div>
             

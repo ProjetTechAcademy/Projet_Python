@@ -1,9 +1,7 @@
 /*
-* Ce fichier associe chaque clé de ressource (nettoyée : sans espaces, sans caractères spéciaux)
+* Ce fichier associe chaque clé de ressource (nettoyée)
 * à son URL de fichier PDF externe correspondante.
-* Les liens sont basés sur le fichier HTML que vous avez fourni.
-* Si le lien n'est pas disponible (class="no-link" dans votre source), la valeur est null.
-* NOTE : Les clés sont générées en remplaçant /, :, ' , ? , ( et ) par des underscores.
+* Clés uniformisées pour correspondre au programme principal.
 */
 const pdfLinks = {
     // ==================================================================================================================================================================================================================================================================================
@@ -16,12 +14,12 @@ const pdfLinks = {
     'B1_M01_S004-La_créativité_moteur_de_l_innovation': 'https://drive.google.com/file/d/1tODRjTqppJUo0zrtick37bVkRg7TvW2f/view?usp=drivesdk',
     'B1_M01_S005-Panorama_des_techniques_de_créativité': 'https://drive.google.com/file/d/1i5alCymO1ww1Fr-WhP5dMetpuhgSiDQ0/view?usp=drivesdk',
     'B1_M01_S006-L_écosystème_d_un_projet_digital': 'https://drive.google.com/file/d/1-IV5ce2tUFueTUhyGGbUKnzZsIL8tgWr/view?usp=drivesdk',
-    'B1_M01_S007-Étude_comparative,_le_benchmark_des_solutions_existantes': 'https://drive.google.com/file/d/1EI6qDWEjGgCOLpUZEv0iasOw5ykxV61g/view?usp=drivesdk',
+    'B1_M01_S007-Étude_comparative_le_benchmark_des_solutions_existantes': 'https://drive.google.com/file/d/1EI6qDWEjGgCOLpUZEv0iasOw5ykxV61g/view?usp=drivesdk',
     'B1_M01_S008-Définir_la_cible_de_la_solution_digitale': 'https://drive.google.com/file/d/1WTBQFPd32eCxF_N_kYY14-YUSNx5WluL/view?usp=drivesdk',
     'B1_M01_S009-Les_principaux_acteurs_d_un_projet_digital_-_la_maîtrise_d_oeuvre': null,
     'B1_M01_S010-Les_principaux_acteurs_d_un_projet_digital_-_la_maîtrise_d_ouvrage': 'https://drive.google.com/file/d/1zt3sVe_5-QUDfK-1QDyVp68euC02jQND/view?usp=drivesdk',
     'B1_M01_S011-Identifier_les_parties_prenantes': 'https://drive.google.com/file/d/1GcN8x_1WKz_KifwL-0a-Xk9XbCDIy5vz/view?usp=drivesdk',
-    'B1_M01_S012-Etablir_la_gouvernance_du_projet,_définir_les_rôles_et_les_responsabilités': 'https://drive.google.com/file/d/1m3zewoW_38SkDehJekQjvqKvYQwEqK2L/view?usp=drivesdk',
+    'B1_M01_S012-Etablir_la_gouvernance_du_projet_définir_les_rôles_et_les_responsabilités': 'https://drive.google.com/file/d/1m3zewoW_38SkDehJekQjvqKvYQwEqK2L/view?usp=drivesdk',
     'B1_M01_S013-Comprendre_les_enjeux_et_les_retombées_d_un_projet': 'https://drive.google.com/file/d/1HEewL7lvn4JWQa_-GjgBzZUyFwOtmfxW/view?usp=drivesdk',
     'B1_M01_S014-Le_cahier_des_charges_-_l_expression_du_besoin': 'https://drive.google.com/file/d/1oWx5iG5I7QL-dK40Y_fk2UTffIP1FTKe/view?usp=drivesdk',
 
@@ -53,9 +51,9 @@ const pdfLinks = {
 
     'B1_M04_S001-Présentation_de_l_application': 'https://drive.google.com/file/d/1IlDOlKPyR8q8p_0mbLyIWfiKqkBjZj6U/view?usp=drivesdk',
     'B1_M04_S002-L_application_Figma': 'https://drive.google.com/file/d/1S2QZ3u0j1f4ebqMkPdoXKzSbt5lRVQC2/view?usp=drivesdk',
-    'B1_M04_S003-Importation_et_exportation_de_fichiers,_utilisation_de_modèles': 'https://drive.google.com/file/d/1GmRxtyz4hoZj5KD_tKTMpkLWe-TDbBQh/view?usp=drivesdk',
-    'B1_M04_S004-Conception_avancée_menu_déroulant,_incrustation_d_écran,_personnaliser_le_design': 'https://drive.google.com/file/d/1-ToRK3cDGU6l9ZLE1DemTnP7itbeaGfj/view?usp=drivesdk',
-    'B1_M04_S005-Créer_un_prototype,_partager_et_exporter': 'https://drive.google.com/file/d/1yZGlMN8E0jWqgndQqWCfxgQRc18NcHZx/view?usp=drivesdk',
+    'B1_M04_S003-Importation_et_exportation_de_fichiers_utilisation_de_modèles': 'https://drive.google.com/file/d/1GmRxtyz4hoZj5KD_tKTMpkLWe-TDbBQh/view?usp=drivesdk',
+    'B1_M04_S004-Conception_avancée_menu_déroulant_incrustation_d_écran_personnaliser_le_design': 'https://drive.google.com/file/d/1-ToRK3cDGU6l9ZLE1DemTnP7itbeaGfj/view?usp=drivesdk',
+    'B1_M04_S005-Créer_un_prototype_partager_et_exporter': 'https://drive.google.com/file/d/1yZGlMN8E0jWqgndQqWCfxgQRc18NcHZx/view?usp=drivesdk',
 
     'B1_M05_S001-Introduction_à_l_organisation_d_un_projet_digital': 'https://drive.google.com/file/d/1xdKS2lJ-otA35gZna4dBRt9kECNJkBym/view?usp=drivesdk',
     'B1_M05_S002-Méthodologie_pour_piloter_un_projet_digital_une_démarche_itérative': 'https://drive.google.com/file/d/1uFGwTCh8JTkPEhBIIdA5jPfokSoS-xYy/view?usp=drivesdk',
@@ -160,7 +158,7 @@ const pdfLinks = {
     'B2_M04_S006-Les_diagrammes_des_paquets': 'https://drive.google.com/file/d/1Vqzajd8bDkHMWgo69t2xBcuWkRervwOH/view?usp=drivesdk',
     'B2_M04_S007-Les_diagrammes_de_structure_composite': 'https://drive.google.com/file/d/13WGvoMPNDVObrcvj8NfcJ67RGdCsSGGH/view?usp=drivesdk',
     'B2_M04_S008-Les_diagrammes_de_profils': 'https://drive.google.com/file/d/1Q38M9lDgW0ROvEnM0Hru-lYC0L4hAj21/view?usp=drivesdk',
-    'B2_M04_S009-Diagrammes_de_cas_d_utilisation_UML_(UML_use_case_diagram)': 'https://drive.google.com/file/d/16zm-wu5UizF516WXJEKb88VWc-fDW9lB/view?usp=drivesdk',
+    'B2_M04_S009-Diagrammes_de_cas_d_utilisation_UML__UML_use_case_diagram_': 'https://drive.google.com/file/d/16zm-wu5UizF516WXJEKb88VWc-fDW9lB/view?usp=drivesdk', 
     'B2_M04_S010-Les_diagrammes_états-transitions': 'https://drive.google.com/file/d/1Zebxm4dLr-G3Kkw-CmpUuLh5lVdz-8VC/view?usp=drivesdk',
     'B2_M04_S011-Les_diagrammes_d_activité': 'https://drive.google.com/file/d/1gVYYzprOUjGWd_PKGf-NZiWr-3TPboQY/view?usp=drivesdk',
     'B2_M04_S012-Les_diagrammes_de_séquence': 'https://drive.google.com/file/d/1fiyz_YzR-c_0cweQUitEj-7W3jIuDJ1-/view?usp=drivesdk',
@@ -180,16 +178,16 @@ const pdfLinks = {
     'B2_M06_S001-L_application_Smartsheet': null,
     'B2_M06_S002-La_plateforme_Monday': null,
 
-    'B2_M07_S001L_examen_des_exigences': null, // Correction de clé
+    'B2_M07_S001L_examen_des_exigences': null, 
     'B2_M07_S002-Les_tests_d’usabilité': null,
     'B2_M07_S003-Les_tests_unitaires': 'https://drive.google.com/file/d/1BSG1MkfTJnqsGWFtl1I3LPTlWpZr80PV/view?usp=drivesdk',
     'B2_M07_S004-Les_tests_d’intégration': 'https://drive.google.com/file/d/1mNHxJFD660xqK2vdWURpzmB88c4IGwJD/view?usp=drivesdk',
     'B2_M07_S005-Les_tests_des_composants': 'https://drive.google.com/file/d/1b-89Vjgtfmfw0JbK8P4bMyMrIN4doBdN/view?usp=drivesdk',
-    'B2_M07_S006-Les_tests_de_bout_en_bout_End_to_End': null, // Correction de clé
+    'B2_M07_S006-Les_tests_de_bout_en_bout__End_to_End_': null, 
     'B2_M07_S007-Les_tests_d’acceptation': null,
     'B2_M07_S008-Les_tests_de_régression': null,
     'B2_M07_S009-Intégration_continue': 'https://drive.google.com/file/d/1pvRzjiKNTyElBSW-Qa-Zy-kvBn3tVlfj/view?usp=drivesdk',
-    'B2_M07_S010-Le_déploiement_continu_(CD)': 'https://drive.google.com/file/d/1Al4jib4VCM6TRlWBFFaeZe0tZc3lZse2/view?usp=drivesdk',
+    'B2_M07_S010-Le_déploiement_continu__CD_': 'https://drive.google.com/file/d/1Al4jib4VCM6TRlWBFFaeZe0tZc3lZse2/view?usp=drivesdk', 
 
     'B2_M08_S001-Les_notions_de_test_unitaire_et_test_fonctionnel': null,
     'B2_M08_S002-Les_tests_unitaires_avec_PHPUnit': 'https://drive.google.com/file/d/1QyXdTqDPgrXvUzU1n4iwKZVAO83lClBD/view?usp=drivesdk',
@@ -200,16 +198,16 @@ const pdfLinks = {
     'B2_M08_S007-L_Ajax_avec_Axios_et_Symfony': 'https://drive.google.com/file/d/1bXyS9gXF0bbsXCbcTKF4QFg6fUSYU3n1/view?usp=drivesdk',
     'B2_M08_S008-Tests_d_intégration_et_recette_fonctionnelle': 'https://drive.google.com/file/d/1GeL8YZxuZ2Tq0ud2Vav3ell775zuDfiz/view?usp=drivesdk',
     'B2_M08_S009-Mesurer_son_application': 'https://drive.google.com/file/d/14BrSpdLpdbPgXD_3drC4urqejGb7K8IL/view?usp=drivesdk',
-    'B2_M08_S010-A/B_testing': null,
+    'B2_M08_S010-A_B_testing': null, 
 
     'B2_M09_S001-La_résolution_d_une_situation_critique_pour_la_survie_du_projet': 'https://drive.google.com/file/d/1x0Vy-J34GiOM7DSRokQgLFp66NS-c370/view?usp=drivesdk',
     'B2_M09_S002-Le_suivi_des_indicateurs_qualité_et_amélioration_continue': 'https://drive.google.com/file/d/1I0uN70Q1u1gTVKWzCVwqKJUlriSoFUBO/view?usp=drivesdk',
     'B2_M09_S003-La_conception_de_la_solution_grâce_au_Design_Thinking': 'https://drive.google.com/file/d/1K1KCHq7N8nWYEZyaVN41l_EnwNPXCF7I/view?usp=drivesdk',
-    'B2_M09_S004-Design_Thinking_La_phase_d_empathie,_la_compréhension_du_besoin': 'https://drive.google.com/file/d/1m5xTmUQcIN5ez6iuMFtqd_V2mc7wK5Th/view?usp=drivesdk',
+    'B2_M09_S004-Design_Thinking_La_phase_d_empathie_la_compréhension_du_besoin': 'https://drive.google.com/file/d/1m5xTmUQcIN5ez6iuMFtqd_V2mc7wK5Th/view?usp=drivesdk',
     'B2_M09_S005-Design_Thinking_Définir_la_problématique': 'https://drive.google.com/file/d/1Asj422Y9t_HF78WmJwGVSZqT0FdZXSHZ/view?usp=drivesdk',
     'B2_M09_S006-Design_Thinking_La_phase_d_idéation': 'https://drive.google.com/file/d/1-MoayOYhf8KeTuLiJXf2GhNQ0WBpIhaq/view?usp=drivesdk',
     'B2_M09_S007-Design_Thinking_La_phase_de_prototypage_de_la_solution': 'https://drive.google.com/file/d/1nMiX9sb7Nspgrj2lgkdeGeyLbgHyLVAh/view?usp=drivesdk',
-    'B2_M09_S008-Design_Thinking_La_phase_de_test_de_la_solution': 'https://drive.google.com/file/d/1QH1gTSB49JoDSg8B4300YoiXG4OsZfLL/view?usp=drivesdk',
+    'B2_M09_S008-Design_Thinking_La_phase_de_test_de_de_la_solution': 'https://drive.google.com/file/d/1QH1gTSB49JoDSg8B4300YoiXG4OsZfLL/view?usp=drivesdk',
 
     // ==================================================================================================================================================================================================================================================================================
     // BLOC 3
@@ -260,8 +258,8 @@ const pdfLinks = {
     'B3_M03_S009-L_utilisation_de_JSON': null,
     'B3_M03_S010-L_API_Canvas_en_JavaScript': null,
 
-    'B3_M04_S001-PHP_et_HTML_sorties': 'https://drive.google.com/file/d/1j3lWs4-oT7PK-3SxJKc3t9ALRQszzXwC/view?usp=drivesdk', // Correction de clé
-    'B3_M04_S002-Les_types_de_données_les_variables_et_les_constantes': 'https://drive.google.com/file/d/1A3eb5tABXkUkIe0dWKaZxzboOnUCuVG-/view?usp=drivesdk', // Correction de clé
+    'B3_M04_S001-PHP_et_HTML_sorties': 'https://drive.google.com/file/d/1j3lWs4-oT7PK-3SxJKc3t9ALRQszzXwC/view?usp=drivesdk', 
+    'B3_M04_S002-Les_types_de_données_les_variables_et_les_constantes': 'https://drive.google.com/file/d/1A3eb5tABXkUkIe0dWKaZxzboOnUCuVG-/view?usp=drivesdk', 
     'B3_M04_S003-Les_opérateurs_de_comparaison_et_les_expressions_booléennes': 'https://drive.google.com/file/d/1Y5UzV9oljKEVVKveeA92S4edSXdrWcjs/view?usp=drivesdk',
     'B3_M04_S004-Les_fonctions': 'https://drive.google.com/file/d/1Dx9n0fEjhRsqOLFfI__UqScxrLXgtA-y/view?usp=drivesdk',
     'B3_M04_S005-Les_tableaux': null,
@@ -269,7 +267,7 @@ const pdfLinks = {
     'B3_M04_S007-Les_boucles': 'https://drive.google.com/file/d/1A--l1TCKBycRdaw42G4brrkJzzJRffGR/view?usp=drivesdk',
     'B3_M04_S008-Créer_ses_propres_fonctions': 'https://drive.google.com/file/d/15sG6gpDCUjgGP_dR7cltiJ1ai7knB-Du/view?usp=drivesdk',
     'B3_M04_S009-L_organisation_des_fichiers_PHP': 'https://drive.google.com/file/d/1Y8OWqzvvH5XR_oUGtk8kid5Wk8nr0ZX6/view?usp=drivesdk',
-    'B3_M04_S010-Les_superglobales_Get_Post_et_Files': 'https://drive.google.com/file/d/14JhcnRwAWG-L6b7yUnfZoVAPOewoXbEu/view?usp=drivesdk', // Correction de clé
+    'B3_M04_S010-Les_superglobales_Get_Post_et_Files': 'https://drive.google.com/file/d/14JhcnRwAWG-L6b7yUnfZoVAPOewoXbEu/view?usp=drivesdk', 
     
     'B3_M04_S011-Les_superglobales_Server_Env_et_Session': null,
     'B3_M04_S012-La_sécurité': null,
