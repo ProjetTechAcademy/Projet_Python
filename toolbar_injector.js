@@ -1,6 +1,7 @@
 // ======================================================================
 // 🔧 MOTEUR DE LA BARRE D'OUTILS (MMPA🌹) - STYLE 2025 PREMIUM
 // CORRECTION V2 : Ajout du bouton de Validation de Cours (Progression)
+// MISE À JOUR V3 : Intégration des liens externes (cours_links.js)
 // ======================================================================
 (function() {
     
@@ -18,8 +19,13 @@
     
     // 2. CONNEXION BASE DE DONNÉES
     // Assurez-vous que window.dbRessources est disponible (chargé par database.js)
-    const globalDB = window.dbRessources || {};
-    const resources = globalDB[courseID] || {};
+    const dbRessources = window.dbRessources || {};
+    const resources = dbRessources[courseID] || {};
+    
+    // NOUVEAU: Connexion aux liens PDF externes (chargé par cours_links.js)
+    const externalPDFLinks = window.pdfLinks || {};
+    const externalLink = externalPDFLinks[courseID] || null;
+
 
     // 3. LOGIQUE DE VALIDATION DE COURS DANS LE LOCALSTORAGE
     function markCourseAsCompleted() {
@@ -57,27 +63,43 @@
 
     // 4. Fonction de Création de Bouton de Ressources
     const getBtn = (key, icon, label, color) => {
-        const link = resources[key]; 
-        const isActive = link && link.length > 0 && link !== courseID; 
+        let link = resources[key]; 
+        let isIcon = true;
+        let isExternal = false;
+        
+        // Cas spécial : Bouton Lien Externe (🔗)
+        if (key === 'external_link') {
+            link = externalLink;
+            icon = '🔗'; // Utilise l'émoji comme icône
+            isIcon = false;
+            color = '#4f46e5'; // Indigo
+            isExternal = true;
+        }
+
+        const isActive = link && link.length > 0; 
         const opacity = isActive ? "1" : "0.3";
         const cursor = isActive ? "pointer" : "default";
         const onclick = isActive ? `window.open('${link}', '_blank')` : "return false;";
         const boxShadow = isActive ? `0 4px 12px ${color}40` : "none";
+        
+        // Couleur pour l'état hover
+        const hoverColor = isExternal ? '#4f46e5' : color;
+
 
         return `
         <button 
             style="
                 width:40px; height:40px; border-radius:50%; 
-                background:white; color:${color}; border:1px solid ${color}40; 
+                background:white; color:${hoverColor}; border:1px solid ${hoverColor}40; 
                 opacity:${opacity}; cursor:${cursor}; 
                 display:flex; align-items:center; justify-content:center; 
                 font-size:16px; margin:0 5px; transition:all 0.2s ease;
                 box-shadow: ${boxShadow}; flex-shrink: 0;
             " 
-            onmouseover="if(${isActive}){ this.style.transform='translateY(-2px) scale(1.1)'; this.style.background='${color}'; this.style.color='white'; }" 
-            onmouseout="if(${isActive}){ this.style.transform='translateY(0) scale(1)'; this.style.background='white'; this.style.color='${color}'; }"
+            onmouseover="if(${isActive}){ this.style.transform='translateY(-2px) scale(1.1)'; this.style.background='${hoverColor}'; this.style.color='white'; }" 
+            onmouseout="if(${isActive}){ this.style.transform='translateY(0) scale(1)'; this.style.background='white'; this.style.color='${hoverColor}'; }"
             title="${label}" onclick="${onclick}">
-            <i class="fa-solid ${icon}"></i>
+            ${isIcon ? `<i class="fa-solid ${icon}"></i>` : icon}
         </button>`;
     };
     
@@ -133,6 +155,7 @@
             ${getBtn('info', 'fa-chart-pie', 'Infographie', '#06b6d4')}
             ${getBtn('pres', 'fa-project-diagram', 'Présentation', '#f97316')}
             ${getBtn('pdf', 'fa-file-pdf', 'Document PDF', '#dc2626')}
+            ${getBtn('external_link', '', 'Lien externe Cours PDF', '#4f46e5')} <!-- NOUVEAU BOUTON -->
             
             <div style="width:1px; height:30px; background:#e2e8f0; margin:0 15px;"></div>
             
