@@ -3,6 +3,7 @@
 * à son URL de fichier PDF externe correspondante.
 * Les liens sont basés sur le fichier HTML que vous avez fourni.
 * Si le lien n'est pas disponible (class="no-link" dans votre source), la valeur est null.
+* NOTE : Les clés sont générées en remplaçant /, :, ' , ? , ( et ) par des underscores.
 */
 const pdfLinks = {
     // ==================================================================================================================================================================================================================================================================================
@@ -179,12 +180,12 @@ const pdfLinks = {
     'B2_M06_S001-L_application_Smartsheet': null,
     'B2_M06_S002-La_plateforme_Monday': null,
 
-    'B2_M07_S001L’examen_des_exigences': null,
+    'B2_M07_S001L_examen_des_exigences': null, // Correction de clé
     'B2_M07_S002-Les_tests_d’usabilité': null,
     'B2_M07_S003-Les_tests_unitaires': 'https://drive.google.com/file/d/1BSG1MkfTJnqsGWFtl1I3LPTlWpZr80PV/view?usp=drivesdk',
     'B2_M07_S004-Les_tests_d’intégration': 'https://drive.google.com/file/d/1mNHxJFD660xqK2vdWURpzmB88c4IGwJD/view?usp=drivesdk',
     'B2_M07_S005-Les_tests_des_composants': 'https://drive.google.com/file/d/1b-89Vjgtfmfw0JbK8P4bMyMrIN4doBdN/view?usp=drivesdk',
-    'B2_M07_S006-Les_tests_de_bout_en_bout_(End_to_End)': null,
+    'B2_M07_S006-Les_tests_de_bout_en_bout_End_to_End': null, // Correction de clé
     'B2_M07_S007-Les_tests_d’acceptation': null,
     'B2_M07_S008-Les_tests_de_régression': null,
     'B2_M07_S009-Intégration_continue': 'https://drive.google.com/file/d/1pvRzjiKNTyElBSW-Qa-Zy-kvBn3tVlfj/view?usp=drivesdk',
@@ -259,8 +260,8 @@ const pdfLinks = {
     'B3_M03_S009-L_utilisation_de_JSON': null,
     'B3_M03_S010-L_API_Canvas_en_JavaScript': null,
 
-    'B3_M04_S001-PHP_et_HTML_(sorties)': 'https://drive.google.com/file/d/1j3lWs4-oT7PK-3SxJKc3t9ALRQszzXwC/view?usp=drivesdk',
-    'B3_M04_S002-Les_types_de_données,_les_variables_et_les_constantes': 'https://drive.google.com/file/d/1A3eb5tABXkUkIe0dWKaZxzboOnUCuVG-/view?usp=drivesdk',
+    'B3_M04_S001-PHP_et_HTML_sorties': 'https://drive.google.com/file/d/1j3lWs4-oT7PK-3SxJKc3t9ALRQszzXwC/view?usp=drivesdk', // Correction de clé
+    'B3_M04_S002-Les_types_de_données_les_variables_et_les_constantes': 'https://drive.google.com/file/d/1A3eb5tABXkUkIe0dWKaZxzboOnUCuVG-/view?usp=drivesdk', // Correction de clé
     'B3_M04_S003-Les_opérateurs_de_comparaison_et_les_expressions_booléennes': 'https://drive.google.com/file/d/1Y5UzV9oljKEVVKveeA92S4edSXdrWcjs/view?usp=drivesdk',
     'B3_M04_S004-Les_fonctions': 'https://drive.google.com/file/d/1Dx9n0fEjhRsqOLFfI__UqScxrLXgtA-y/view?usp=drivesdk',
     'B3_M04_S005-Les_tableaux': null,
@@ -268,10 +269,9 @@ const pdfLinks = {
     'B3_M04_S007-Les_boucles': 'https://drive.google.com/file/d/1A--l1TCKBycRdaw42G4brrkJzzJRffGR/view?usp=drivesdk',
     'B3_M04_S008-Créer_ses_propres_fonctions': 'https://drive.google.com/file/d/15sG6gpDCUjgGP_dR7cltiJ1ai7knB-Du/view?usp=drivesdk',
     'B3_M04_S009-L_organisation_des_fichiers_PHP': 'https://drive.google.com/file/d/1Y8OWqzvvH5XR_oUGtk8kid5Wk8nr0ZX6/view?usp=drivesdk',
-    'B3_M04_S010-Les_superglobales_Get,_Post_et_Files': 'https://drive.google.com/file/d/14JhcnRwAWG-L6b7yUnfZoVAPOewoXbEu/view?usp=drivesdk',
-    // Le reste des liens du bloc 3 (M04 à M12) n'était pas présent dans le code HTML fourni, donc ils sont initialisés à null.
+    'B3_M04_S010-Les_superglobales_Get_Post_et_Files': 'https://drive.google.com/file/d/14JhcnRwAWG-L6b7yUnfZoVAPOewoXbEu/view?usp=drivesdk', // Correction de clé
     
-    'B3_M04_S011-Les_superglobales_Server,_Env_et_Session': null,
+    'B3_M04_S011-Les_superglobales_Server_Env_et_Session': null,
     'B3_M04_S012-La_sécurité': null,
     'B3_M04_S013-La_manipulation_des_dates': null,
     'B3_M04_S014-La_manipulation_des_fichiers_en_PHP': null,
@@ -285,7 +285,7 @@ const pdfLinks = {
     'B3_M04_S022-La_programmation_Orientée_Objet_L_encapsulation_et_la_visibilité': null,
     'B3_M04_S023-Le_modèle_MVC': null,
 
-    'B3_M05_S001-Introduction_générale_aux_bases_de_données,_notion_de_SGBDR': null,
+    'B3_M05_S001-Introduction_générale_aux_bases_de_données_notion_de_SGBDR': null,
     'B3_M05_S002-Modèle_conceptuel_de_données_et_modèle_logique_de_données': null,
     'B3_M05_S003-Les_diagrammes_fonctionnels': null,
     'B3_M05_S004-Le_diagramme_de_classe': null,
@@ -294,7 +294,7 @@ const pdfLinks = {
     'B3_M05_S007-L_interrogation_de_bases_de_données_SQL': null,
     'B3_M05_S008-Découvrir_un_autre_SGBDR_PostgreSQL': null,
     'B3_M05_S009-Connexion_à_la_base_de_données_en_PHP': null,
-    'B3_M05_S010-PHP/PDO_accès_en_lecture/écriture': null,
+    'B3_M05_S010-PHP_PDO_accès_en_lecture_écriture': null,
     'B3_M05_S011-Les_requetes_SQL': null,
     'B3_M05_S012-Les_fonctions_SQL': null,
     'B3_M05_S013-Les_jointures_SQL': null,
@@ -331,7 +331,7 @@ const pdfLinks = {
     'B3_M07_S022-Gestion_des_fichiers_en_Python': null,
     'B3_M07_S023-Requêtes_HTTP': null,
     'B3_M07_S024-Les_bases_de_données_relationnelles_et_Python': null,
-    'B3_M07_S025-Notion_d_ORM_(object-relational_mapping)': null,
+    'B3_M07_S025-Notion_d_ORM_object-relational_mapping': null,
     'B3_M07_S026-Cadre_théorique_de_Flask': null,
     'B3_M07_S027-Le_moteur_de_template_Jinja': null,
     'B3_M07_S028-Déploiement_en_ligne_du_site_Flask': null,
@@ -375,8 +375,8 @@ const pdfLinks = {
     'B3_M09_S002-Concevoir_une_API': null,
     'B3_M09_S003-Gérer_les_accès_à_une_API': null,
 
-    'B3_M10_S001-Les_API_d_authentification_(OAuth,__)': null,
-    'B3_M10_S002-Les_API_Google_/_AWS': null,
+    'B3_M10_S001-Les_API_d_authentification__OAuth__': null,
+    'B3_M10_S002-Les_API_Google___AWS': null,
     'B3_M10_S003-Les_API_de_paiement': null,
 
     'B3_M11_S001-Introduction_à_la_ligne_de_commande': null,
