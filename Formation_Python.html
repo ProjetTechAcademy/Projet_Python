@@ -1122,7 +1122,20 @@
             progressStore[blocKey] = progressStore[blocKey] || {};
             progressStore[blocKey][subjectId] = progressStore[blocKey][subjectId] || {};
             progressStore[blocKey][subjectId][resourceType] = !progressStore[blocKey][subjectId][resourceType];
-            saveProgress();
+            
+            localStorage.setItem('progressStore', JSON.stringify(progressStore));
+            
+            // Mise à jour visuelle seulement pour cette ligne (méthode stable)
+            const [key, globalIndexStr] = subjectId.split('_');
+            const targetElement = document.getElementById(`subject-row-${subjectId}`);
+            if (targetElement) {
+                renderSingleSubjectRow(blocKey, subjectId, targetElement);
+            }
+
+            // Mettre à jour l'accueil si on y est
+            if (currentTab === 'accueil') {
+                renderAccueil();
+            }
         }
 
         // Nouvelle fonction pour valider l'entièreté d'un sujet
@@ -1131,7 +1144,6 @@
             const subject = getSubjectById(blocKey, subjectIndex);
             
             // Compte le nombre total de ressources disponibles (non nulles)
-            // L'audio est déjà inclus ici si le lien n'est pas null.
             const availableResources = Object.values(subject.links).filter(link => link !== null).length;
             
             // Si toutes les ressources sont déjà cochées, on décoche tout (toggle off)
@@ -1152,13 +1164,26 @@
                     progressStore[blocKey][subjectId][type] = newState;
                 }
             }
-            saveProgress();
+            
+            localStorage.setItem('progressStore', JSON.stringify(progressStore));
+
+            // Mise à jour visuelle seulement pour cette ligne (méthode stable)
+            const targetElement = document.getElementById(`subject-row-${subjectId}`);
+            if (targetElement) {
+                renderSingleSubjectRow(blocKey, subjectId, targetElement);
+            }
+            
+            // Mettre à jour l'accueil si on y est
+            if (currentTab === 'accueil') {
+                renderAccueil();
+            }
         }
 
         // Calcule le pourcentage de progression par sujet (uniquement sur les ressources disponibles)
         function getSubjectProgress(blocKey, subjectIndex) {
             const subjectId = `${blocKey}_${subjectIndex}`;
             const subject = getSubjectById(blocKey, subjectIndex);
+            if (!subject) return 0;
             
             let totalAvailable = 0;
             let completedCount = 0;
@@ -1197,6 +1222,148 @@
             }
             return null; // Devrait jamais arriver si l'index est bon
         }
+
+        // --- NOUVELLE FONCTION : Rendu d'une seule ligne de sujet (pour les mises à jour rapides) ---
+        function renderSingleSubjectRow(blocKey, subjectId, targetElement) {
+            // Recalculer l'index global à partir du subjectId
+            const globalIndex = parseInt(subjectId.split('_')[1]);
+            const session = getSubjectById(blocKey, globalIndex);
+
+            // Recalculer l'index local (sessionCounter) pour l'affichage
+            let sessionCounter = 0;
+            let found = false;
+            for (const moduleTitle in resources[blocKey].modules) {
+                const sessions = resources[blocKey].modules[moduleTitle];
+                for (let i = 0; i < sessions.length; i++) {
+                    if (sessions[i].title === session.title) {
+                        found = true;
+                        break;
+                    }
+                    sessionCounter++;
+                }
+                if (found) break;
+            }
+            sessionCounter++;
+            const sessionNumber = String(sessionCounter).padStart(3, '0');
+            
+            
+            const progressPercent = getSubjectProgress(blocKey, globalIndex);
+            const isFullyCompleted = progressPercent === 100;
+            
+            let linksHtml = '';
+            let resourceCount = 0;
+
+            for (const linkType in session.links) {
+                const link = session.links[linkType];
+                const meta = linkIcons[linkType] || { icon: "fas fa-link", title: linkType, linkClass: "bg-gray-500 hover:bg-gray-600" };
+                
+                const isAvailable = link !== null;
+                if(isAvailable) { resourceCount++; }
+
+                const isChecked = isResourceCompleted(blocKey, subjectId, linkType);
+
+                let linkButton;
+                
+                if (isAvailable) {
+                    linkButton = `
+                        <a href="${link}" target="_blank" title="${meta.title} (Lien)"
+                            class="resource-link-btn inline-flex items-center justify-center w-8 h-8 rounded-full text-white ${meta.linkClass}">
+                            <i class="${meta.icon}"></i>
+                        </a>
+                    `;
+                } else {
+                    linkButton = `
+                        <span title="${meta.title} (Lien en attente)" class="inline-flex items-center justify-center w-8 h-8 rounded-full text-white ${meta.linkClass} empty-link-button">
+                            <i class="${meta.icon}"></i>
+                        </span>
+                    `;
+                }
+                
+                const checkButton = `
+                    <button title="${meta.title} (Marquer comme lu)" 
+                            onclick="toggleResourceCompletion('${blocKey}', '${subjectId}', '${linkType}')"
+                            class="progress-check-btn inline-flex items-center justify-center w-6 h-6 rounded-full text-white text-sm transition duration-150 
+                                   ${isChecked ? 'bg-progress hover:bg-red-500' : 'bg-gray-300 hover:bg-gray-400'}"
+                                   ${!isAvailable ? 'disabled' : ''}>
+                        <i class="fas ${isChecked ? 'fa-check' : 'fa-plus'}"></i>
+                    </button>
+                `;
+
+                linksHtml += `
+                    <div class="flex items-center space-x-1">
+                        ${linkButton}
+                        ${checkButton}
+                    </div>
+                `;
+            }
+
+            const isAwaitingAll = resourceCount === 0;
+            const lineClass = isAwaitingAll ? 'awaiting-subject' : 'text-gray-700';
+            
+            let rawTitle = session.title;
+            let sNumber = '';
+            let cleanTitle = rawTitle;
+
+            const match = rawTitle.match(/^(S\d+)\s*-\s*(.*)/);
+            if (match) {
+                sNumber = match[1];
+                cleanTitle = match[2].trim();
+            } else if (rawTitle.startsWith('S000')) {
+                sNumber = 'S000';
+                cleanTitle = rawTitle.substring(4).replace(/^ - /, '').trim();
+            }
+            
+            const finalTitle = `${sNumber} - ${cleanTitle}`;
+
+
+            const accentColorClassInner = (blocKey === 'B1') ? 'text-b1' : (blocKey === 'B2') ? 'text-amber-500' : 'text-title';
+            const isCompletedLineClass = isFullyCompleted ? 'border-l-4 border-progress' : 'border-l-4 border-gray-100';
+
+
+            targetElement.outerHTML = `
+                <div id="subject-row-${subjectId}" class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white p-3 rounded-lg shadow-sm border border-gray-100 ${isCompletedLineClass}">
+                    
+                    <!-- Checkbox et Numéro -->
+                    <div class="flex items-center flex-grow min-w-0 mb-2 sm:mb-0">
+                        <label for="check_${subjectId}" class="text-base font-medium cursor-pointer ${lineClass} flex items-center min-w-0">
+                            <span class="font-mono ${accentColorClassInner} mr-2 font-bold flex-shrink-0">${sessionNumber}.</span>
+                            <span class="truncate">${finalTitle}</span>
+                            ${isAwaitingAll ? `<i class="fas fa-triangle-exclamation text-alert ml-3 awaiting-indicator" title="Sujet en attente de ressources"></i>` : ''}
+                        </label>
+                    </div>
+
+                    <!-- Barres de Progression et Boutons -->
+                    <div class="flex items-center space-x-2 flex-shrink-0 mt-2 sm:mt-0">
+                        
+                        <!-- Boutons d'avancement des ressources -->
+                        <div class="link-icon-container flex space-x-2 flex-shrink-0">
+                            ${linksHtml}
+                        </div>
+                        
+                        <!-- Bouton POURCENTAGE D'AVANCEMENT -->
+                        <button title="${progressPercent}% d'avancement des ressources" class="w-16 bg-gray-200 text-title py-1 rounded-lg text-xs font-bold text-progress">
+                            ${progressPercent}%
+                        </button>
+                        
+                        <!-- Bouton VALIDATION TOTALE -->
+                        <button onclick="validateSubjectLine('${blocKey}', ${globalIndex})" 
+                                title="${isFullyCompleted ? 'Décocher tout' : 'Valider toute la ligne'}" 
+                                class="w-8 h-8 rounded-full text-white transition duration-150 flex items-center justify-center 
+                                       ${isFullyCompleted ? 'bg-progress hover:bg-red-500' : 'bg-gray-400 hover:bg-progress'}">
+                            <i class="fas ${isFullyCompleted ? 'fa-check' : 'fa-plus'}"></i>
+                        </button>
+
+                        <!-- Bouton HORLOGE (Planification) -->
+                        <button onclick="showPlanningOptions('${blocKey}', ${globalIndex}, '${finalTitle.replace(/'/g, "\\'")}')" 
+                                title="Planifier la relecture (Google Agenda)" 
+                                class="w-8 h-8 rounded-full bg-title hover:bg-gray-600 text-white transition duration-150 flex items-center justify-center">
+                            <i class="fas fa-clock"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
 
         // --- FONCTION UTILITAIRE : GÉNERER UN LIEN GOOGLE AGENDA ---
         function generateGoogleCalendarLink(title, daysFromNow, subjectTitle) {
@@ -1541,13 +1708,17 @@
                     const finalTitle = `${sNumber} - ${cleanTitle}`;
 
 
+                    const accentColorClassInner = (blocKey === 'B1') ? 'text-b1' : (blocKey === 'B2') ? 'text-amber-500' : 'text-title';
+                    const isCompletedLineClass = isFullyCompleted ? 'border-l-4 border-progress' : 'border-l-4 border-gray-100';
+
+
                     html += `
-                        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div id="subject-row-${subjectId}" class="flex flex-col sm:flex-row items-start sm:items-center justify-between bg-white p-3 rounded-lg shadow-sm border border-gray-100">
                             
                             <!-- Checkbox et Numéro -->
                             <div class="flex items-center flex-grow min-w-0 mb-2 sm:mb-0">
                                 <label for="check_${blocKey}_${currentSubjectIndex}" class="text-base font-medium cursor-pointer ${lineClass} flex items-center min-w-0">
-                                    <span class="font-mono ${accentColorClass} mr-2 font-bold flex-shrink-0">${sessionNumber}.</span>
+                                    <span class="font-mono ${accentColorClassInner} mr-2 font-bold flex-shrink-0">${sessionNumber}.</span>
                                     <span class="truncate">${finalTitle}</span>
                                     ${isAwaitingAll ? `<i class="fas fa-triangle-exclamation text-alert ml-3 awaiting-indicator" title="Sujet en attente de ressources"></i>` : ''}
                                 </label>
@@ -1624,12 +1795,6 @@
                 button.querySelector('.accordion-icon').style.transform = 'rotate(0deg)';
                 button.classList.remove('active');
             } else {
-                // Fermer les autres pour ne pas encombrer l'écran (optionnel, mais préférable)
-                // Commenté pour ne pas fermer les autres accordéons si l'utilisateur veut en ouvrir plusieurs.
-                /*
-                document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
-                document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('active'));
-                */
                 // Ouvrir l'actuel
                 content.style.maxHeight = content.scrollHeight + "px";
                 button.classList.add('active');
