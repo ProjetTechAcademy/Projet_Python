@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liste des cours - Formation Développeur Web Python</title>
+    <title>Formation Développeur Web Python</title>
     <!-- Chargement de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Chargement de Font Awesome pour les icônes -->
@@ -25,6 +25,8 @@
             --color-alert: #B4792A; /* Bronze */
             --color-progress: #E91E63; /* Rose (Progression) */
             --color-b1: #B91C1C; /* Rouge foncé (pour B1) */
+            --color-b2: #f59e0b; /* Ambre pour B2 */
+            --color-b3: #0F2C48; /* Bleu Nuit pour B3 */
             
             /* Mapping pour les styles Header/Footer */
             --brand-blue: var(--color-title);
@@ -48,6 +50,10 @@
         .text-progress { color: var(--color-progress); }
         .bg-b1 { background-color: var(--color-b1); }
         .border-b1 { border-color: var(--color-b1); }
+        .bg-b2 { background-color: var(--color-b2); }
+        .border-b2 { border-color: var(--color-b2); }
+        .bg-b3 { background-color: var(--color-b3); }
+        .border-b3 { border-color: var(--color-b3); }
 
         /* Styles généraux pour le contenu de la page */
         body {
@@ -363,19 +369,17 @@
         }
 
         
-        /* --- STYLES SPÉCIFIQUES À LA PAGE DE COURS (MAINTENUS) --- */
+        /* --- STYLES SPÉCIFIQUES À LA PAGE DE COURS (MAINTENUS & AMÉLIORÉS) --- */
 
-        .bloc-accent-b1 { border-left-color: var(--color-b1); }
-        .bloc-accent-b2 { border-left-color: #f59e0b; }
-        .bloc-accent-b3 { border-left-color: var(--color-title); }
-        .text-accent-b1 { color: var(--color-b1); }
-        .text-accent-b2 { color: #f59e0b; }
-        .text-accent-b3 { color: var(--color-title); }
+        /* Couleurs d'accentuation des blocs */
+        .bloc-accent-b1, .text-accent-b1 { color: var(--color-b1); }
+        .bloc-section.border-b1 { border-left-color: var(--color-b1); }
         
-        /* CSS du conteneur de lien, ajusté pour permettre le pointer-events: none sur .empty-link-button */
-        .link-icon-container {
-            /* Styles pour le conteneur des liens */
-        }
+        .bloc-accent-b2, .text-accent-b2 { color: var(--color-b2); }
+        .bloc-section.border-amber-500 { border-left-color: var(--color-b2); }
+
+        .bloc-accent-b3, .text-accent-b3 { color: var(--color-b3); }
+        .bloc-section.border-title { border-left-color: var(--color-b3); }
         
         /* Style pour les boutons de lien réels (s'applique aux <a> ou <button> à l'intérieur) */
         .resource-link-btn {
@@ -398,10 +402,14 @@
             cursor: default;
         }
 
-        /* Styles des onglets */
+        /* Styles des onglets (Hover design) */
         .tab-button {
             transition: all 0.2s;
             border-bottom: 3px solid transparent;
+        }
+        .tab-button:hover:not(.active-tab) { /* Ajout d'un fond léger au survol */
+             background-color: #f8f8f8;
+             border-radius: 8px 8px 0 0;
         }
         .tab-button.active-tab {
             border-bottom-color: var(--color-cta);
@@ -450,16 +458,16 @@
             background-color: white; /* Rendu clair */
         }
         .home-card.border-b1 { border-left: 4px solid var(--color-b1); }
-        .home-card.border-amber-500 { border-left: 4px solid #f59e0b; }
-        .home-card.border-title { border-left: 4px solid var(--color-title); }
+        .home-card.border-amber-500 { border-left: 4px solid var(--color-b2); }
+        .home-card.border-title { border-left: 4px solid var(--color-b3); }
 
         /* Styles pour les sections des blocs - Fond Ivoire et bordure accentuée */
         .bloc-section {
             background-color: white; /* Rendu clair pour le grand bloc */
         }
         .bloc-section.border-b1 { border-left-color: var(--color-b1); }
-        .bloc-section.border-amber-500 { border-left-color: #f59e0b; }
-        .bloc-section.border-title { border-left-color: var(--color-title); }
+        .bloc-section.border-amber-500 { border-left-color: var(--color-b2); }
+        .bloc-section.border-title { border-left-color: var(--color-b3); }
         
         .awaiting-subject { color: #5a6678; font-style: italic; }
         .awaiting-indicator { animation: pulse 1s infinite; }
@@ -542,17 +550,17 @@
 
         <div id="app-container" class="max-w-7xl mx-auto">
             
-            <!-- TITRE PRINCIPAL (Designé et Centré) -->
+            <!-- TITRE PRINCIPAL CORRIGÉ -->
             <header class="text-center mb-8 p-6 rounded-xl bg-white shadow-lg border-b-4 border-cta">
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-title" style="font-family: 'Playfair Display', serif;">
-                    Liste des cours - Formation Développeur Web Python
+                    Formation Développeur Web Python
                 </h1>
                 <p class="mt-2 text-lg text-gray-600">
-                    Suivi des modules et planification des relectures pour la montée en compétence.
+                    Programme de formation
                 </p>
             </header>
 
-            <!-- Navigation Tabs (Reste Blanc) -->
+            <!-- Navigation Tabs (Améliorée) -->
             <div class="bg-white rounded-xl shadow-lg mb-8 p-4">
                 <nav class="flex space-x-4 border-b border-gray-200">
                     <button onclick="showTab('accueil')" id="tab-accueil" class="tab-button active-tab px-4 py-2 text-lg font-medium text-title border-cta">
@@ -1090,15 +1098,15 @@
         // --- MAPPING DES ICÔNES ET COULEURS ---
         const linkIcons = {
             // Boutons CTA: Jaune #D9A526
-            "Cours_Python": { icon: "fas fa-book-open", class: "bg-cta hover-bg-cta", title: "Cours Python", linkClass: "bg-cta hover-bg-cta" },
+            "Cours_Python": { icon: "fas fa-book-open", title: "Cours Python", linkClass: "bg-cta hover:bg-yellow-600" },
             // Video: Rouge (Standard alerte)
-            "Video": { icon: "fas fa-video", class: "bg-red-500 hover:bg-red-600", title: "Vidéo", linkClass: "bg-red-500 hover:bg-red-600" },
+            "Video": { icon: "fas fa-video", title: "Vidéo", linkClass: "bg-red-500 hover:bg-red-600" },
             // Infographie: Bronze #B4792A (Alerte / Éditions spéciales)
-            "Infographie": { icon: "fas fa-chart-pie", class: "bg-alert hover:bg-alert-darker", title: "Infographie", linkClass: "bg-alert hover:bg-alert-darker" }, 
+            "Infographie": { icon: "fas fa-chart-pie", title: "Infographie", linkClass: "bg-alert hover:bg-orange-700" }, 
             // Présentation: Bleu foncé #0F2C48 (Titres & séparations - Utilisation d'un bleu foncé pour les liens importants)
-            "Présentation": { icon: "fas fa-chalkboard-user", class: "bg-title hover:bg-title-darker", title: "Présentation", linkClass: "bg-title hover:bg-gray-600" },
+            "Présentation": { icon: "fas fa-chalkboard-user", title: "Présentation", linkClass: "bg-title hover:bg-gray-600" },
             // Audio (MP3) : Nouveau
-            "Audio": { icon: "fas fa-volume-up", class: "bg-green-600 hover:bg-green-700", title: "Audio (MP3)", linkClass: "bg-green-600 hover:bg-green-700" }
+            "Audio": { icon: "fas fa-volume-up", title: "Audio (MP3)", linkClass: "bg-green-600 hover:bg-green-700" }
         };
 
         // --- GESTION DES DONNÉES DE PROGRESSION (MOCK FIREBASE) ---
@@ -1123,6 +1131,7 @@
             const subject = getSubjectById(blocKey, subjectIndex);
             
             // Compte le nombre total de ressources disponibles (non nulles)
+            // L'audio est déjà inclus ici si le lien n'est pas null.
             const availableResources = Object.values(subject.links).filter(link => link !== null).length;
             
             // Si toutes les ressources sont déjà cochées, on décoche tout (toggle off)
@@ -1262,6 +1271,7 @@
             document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('active-tab', 'text-title', 'border-cta');
                 btn.classList.add('text-gray-600');
+                btn.classList.remove('bg-gray-100'); // Supprimer le fond au changement d'onglet
             });
             const activeTabButton = document.getElementById(`tab-${tabName}`);
             activeTabButton.classList.add('active-tab', 'text-title');
@@ -1457,7 +1467,7 @@
                     // Création des icônes de lien et boutons d'avancement par ressource
                     for (const linkType in session.links) {
                         const link = session.links[linkType];
-                        const meta = linkIcons[linkType] || { icon: "fas fa-link", class: "bg-gray-500 hover:bg-gray-600", title: linkType, linkClass: "bg-gray-500 hover:bg-gray-600" };
+                        const meta = linkIcons[linkType] || { icon: "fas fa-link", title: linkType, linkClass: "bg-gray-500 hover:bg-gray-600" };
                         
                         // Détermine si la ressource existe (lien non null)
                         const isAvailable = link !== null;
@@ -1467,7 +1477,7 @@
                         const isChecked = isResourceCompleted(blocKey, subjectId, linkType);
 
                         
-                        // *** LOGIQUE CORRIGÉE ICI ***
+                        // *** LOGIQUE LIEN : <a> si disponible, <span> si non disponible (avec opacité) ***
                         let linkButton;
                         
                         if (isAvailable) {
@@ -1506,7 +1516,7 @@
                             </div>
                         `;
                     }
-                    // Fin de la logique corrigée des liens
+                    // Fin de la logique des liens
 
 
                     // Détermine si la ligne est entièrement vide de liens
@@ -1615,9 +1625,11 @@
                 button.classList.remove('active');
             } else {
                 // Fermer les autres pour ne pas encombrer l'écran (optionnel, mais préférable)
+                // Commenté pour ne pas fermer les autres accordéons si l'utilisateur veut en ouvrir plusieurs.
+                /*
                 document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
                 document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('active'));
-
+                */
                 // Ouvrir l'actuel
                 content.style.maxHeight = content.scrollHeight + "px";
                 button.classList.add('active');
