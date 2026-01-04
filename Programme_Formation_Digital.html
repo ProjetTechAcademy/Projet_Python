@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAIA - Cockpit Digital V5.2</title>
+    <title>PAIA - Cockpit Digital V5.3 (Accordion Fix)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -204,6 +204,8 @@
         /* Header XL (Style python.html) */
         .header-main { height: 90px; }
         .header-title { font-size: 1.25rem; font-weight: 900; }
+        .nav-link-xl { font-size: 1rem; font-weight: 800; color: rgba(255,255,255,0.6); }
+        .nav-link-xl:hover, .nav-link-xl.active { color: var(--color-gold); transform: translateY(-2px); }
         
         /* Footer (Style python.html) */
         footer { background: rgba(2, 6, 23, 0.95); border-top: 2px solid rgba(217, 165, 38, 0.1); }
@@ -383,7 +385,8 @@
         function switchTab(t) {
             window.curTab = t;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('tab-' + t)?.classList.add('active');
+            const btn = document.getElementById('tab-' + t);
+            if(btn) btn.classList.add('active');
             if (t === 'accueil') renderAccueil(); 
             else if (t === 'lexique') renderLexique();
             else renderBloc(t);
@@ -569,6 +572,23 @@
             document.getElementById('container').innerHTML = html + `</div>`;
         }
 
+        // --- CORRECTION DE LA FERMETURE DE L'ACCORDÉON ---
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // Si le bloc est ouvert (hauteur non nulle et différente de 0px)
+            if(content.style.maxHeight && content.style.maxHeight !== "0px") {
+                // On ferme
+                content.style.maxHeight = "0px";
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // On ouvre
+                content.style.maxHeight = content.scrollHeight + "px";
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
         function toggleAgenda(code) {
             const menu = document.getElementById('agenda-' + code);
             const isVisible = menu.style.display === 'block';
@@ -581,13 +601,6 @@
             const iso = d.toISOString().replace(/-|:|\.\d\d\d/g, "");
             const calUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=RELECTURE+PAIA:+${encodeURIComponent(title)}&dates=${iso}/${iso}&details=Document:+${url}&sf=true&output=xml`;
             window.open(calUrl, '_blank');
-        }
-
-        function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            const icon = document.getElementById('icon-' + id);
-            if(content.style.maxHeight) { content.style.maxHeight = null; icon.style.transform = 'rotate(0deg)'; }
-            else { content.style.maxHeight = content.scrollHeight + "px"; icon.style.transform = 'rotate(180deg)'; }
         }
 
         function updateProgress(code, cat) {
@@ -612,7 +625,8 @@
         }
 
         function calculateBlocPercent(b) {
-            let t = 0; let d = 0; if(!resources[b]) return 0;
+            let t = 0; let d = 0;
+            if(!resources[b]) return 0;
             for (let m in resources[b].modules) { resources[b].modules[m].forEach(s => { catKeys.forEach(k => { t++; if (progress[`${s.code}_${k}`]) d++; }); }); }
             return t > 0 ? Math.round((d/t)*100) : 0;
         }
