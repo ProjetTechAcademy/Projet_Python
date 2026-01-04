@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAIA - Formation Python Cockpit V2.0</title>
+    <title>PAIA - Cockpit Digital V5.2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
@@ -15,6 +15,16 @@
             --color-glow: rgba(217, 165, 38, 0.35);
             --color-done: #10b981;
             --gradient-vibe: linear-gradient(135deg, #FFD700 0%, #D9A526 50%, #B4792A 100%);
+            
+             /* Variables pour le header mis à jour */
+            --brandGold: #D9A526; 
+            --brand-blue: #0F2C48;
+
+             /* Codes Couleurs Lexique */
+            --cat-python: #FFD43B; --cat-html: #E44D26; --cat-css: #264DE4; --cat-js: #F7DF1E;
+            --cat-django: #092E20; --cat-sql: #00758F; --cat-logic: #A855F7; --cat-web: #3B82F6;
+            --cat-tools: #64748B; --cat-security: #EF4444; --cat-meta: #EC4899; --cat-devops: #06B6D4;
+            --cat-ml: #D946EF;
         }
 
         body {
@@ -29,7 +39,7 @@
 
         h1, h2, h3, .font-space { font-family: 'Space Grotesk', sans-serif; }
 
-        /* Arrière-plan Cockpit */
+        /* Arrière-plan Cockpit (Style python.html) */
         .vibe-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
@@ -60,7 +70,31 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Accordéon Modules */
+        /* Styles Header & Navigation (Mise à jour demandée) */
+        .header-icon-btn { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 1.2rem; transition: all 0.3s; }
+        .header-icon-btn:hover, .header-icon-btn.active { background: var(--color-gold); color: #020617; }
+        
+         /* Nouveau Style Bouton Portfolio */
+        .btn-portfolio-cosmic {
+            background: linear-gradient(135deg, var(--brandGold), #F7DF1E);
+            color: var(--brand-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.4);
+            transition: 0.3s;
+            display: flex; align-items: center; gap: 8px;
+            text-decoration: none;
+        }
+        .btn-portfolio-cosmic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(217, 165, 38, 0.6);
+            color: #000;
+        }
+
+        /* Accordéon Modules (Style python.html) */
         .module-card {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -91,7 +125,7 @@
         }
         .session-row:hover { background: rgba(255, 255, 255, 0.02); }
 
-        /* Navigation & Actions */
+        /* Navigation & Actions (Style python.html) */
         .icon-btn-vibe {
             width: 48px; height: 48px; border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
@@ -120,7 +154,7 @@
         }
         .btn-pill-action:hover { transform: scale(1.08); box-shadow: 0 0 25px var(--color-glow); }
 
-        /* Floating Nav */
+        /* Floating Nav (Style python.html) */
         .floating-nav {
             position: fixed; bottom: 30px; right: 30px;
             display: flex; flex-direction: column; gap: 10px; z-index: 1000;
@@ -134,7 +168,7 @@
         }
         .nav-circle:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* Agenda Popover */
+        /* Agenda Popover (Style python.html) */
         .agenda-menu {
             position: absolute; right: 0; top: 110%;
             background: #0f172a; border: 1.5px solid var(--color-gold);
@@ -150,24 +184,37 @@
         }
         .agenda-item:hover { background: var(--color-gold); color: #020617; transform: translateX(5px); }
 
-        /* Tabs XL */
+        /* Tabs XL (Style python.html) */
         .tab-btn {
             padding: 12px 32px; border-radius: 16px;
             font-weight: 900; color: rgba(255, 255, 255, 0.4);
             transition: 0.3s; font-size: 0.9rem; letter-spacing: 0.08em;
         }
         .tab-btn.active { background: var(--color-gold); color: #020617; box-shadow: 0 0 25px var(--color-glow); }
+        
+        /* Styles pour le Lexique (Intégration propre) */
+        .lexique-sub-filter { padding: 8px 16px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); cursor: pointer; transition: 0.2s; white-space: nowrap; }
+        .lexique-sub-filter.active { background: white; color: #020617; border-color: white; transform: scale(1.05); }
+        .lexique-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 1rem; transition: all 0.3s; display: flex; flex-direction: column; height: 100%; position: relative; overflow: hidden; min-height: 120px; }
+        .lexique-card:hover { background: rgba(255, 255, 255, 0.07); transform: translateY(-3px); }
+        .cat-indicator { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+        .loader-tts { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.1); border-top-color: var(--color-gold); border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
+        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Header XL */
+        /* Header XL (Style python.html) */
         .header-main { height: 90px; }
         .header-title { font-size: 1.25rem; font-weight: 900; }
-        .nav-link-xl { font-size: 1rem; font-weight: 800; color: rgba(255,255,255,0.6); }
-        .nav-link-xl:hover, .nav-link-xl.active { color: var(--color-gold); transform: translateY(-2px); }
-
+        
+        /* Footer (Style python.html) */
         footer { background: rgba(2, 6, 23, 0.95); border-top: 2px solid rgba(217, 165, 38, 0.1); }
         .social-link { font-size: 1.8rem; transition: all 0.3s; color: rgba(255,255,255,0.3); }
         .social-link:hover { transform: scale(1.2) translateY(-5px); color: var(--color-gold); }
         .social-link.instagram:hover { color: #E4405F; }
+        
+        #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 2000; pointer-events: none; }
+        .toast { background: rgba(0,0,0,0.9); color: #fff; padding: 12px 24px; border-radius: 12px; margin-top: 10px; opacity: 0; transition: opacity 0.3s; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; pointer-events: auto; }
+        .toast.show { opacity: 1; }
+
     </style>
 </head>
 <body>
@@ -177,7 +224,6 @@
         <div class="blob" style="bottom: 5%; right: 5%; background: rgba(15, 44, 72, 0.4);"></div>
     </div>
 
-    <!-- Header XL -->
     <header class="fixed top-0 w-full z-50 backdrop-blur-2xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 header-main flex items-center justify-between">
             <div class="flex items-center gap-5 group cursor-pointer" onclick="location.href='index.html'">
@@ -191,36 +237,24 @@
                 </div>
             </div>
 
-            <nav class="hidden lg:flex items-center gap-10">
-                
-                    <!-- Navigation -->
-      <nav class="top-center" aria-label="Navigation principale">
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
-        </nav>
-      
-    <nav class="hidden lg:flex items-center gap-10">
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes" style="background: var(--brandGold); color: var(--brand-blue);">🔠</a>
-        <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
-     </nav>
-
-      <!-- Bouton Portfolio -->
-      <div>
-        <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
-           <i class="fa-solid fa-code"></i>
-           Mon Portfolio
-        </a>
-      </div>
-    </div>
-  </div>
-              
-               
+             <nav class="hidden lg:flex items-center gap-3 top-center" aria-label="Navigation principale">
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/index.html" title="Accueil">🏠</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Mon_Espace_Dev.html" title="Mon Espace">📊</a>
+                <a class="header-icon-btn active" href="https://projettechacademy.github.io/Projet_Python/Programme_Formation_Digital.html" title="Planning & Cours">📅</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Atelier_de_Competence.html" title="Atelier">🛠️</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Observatoire_Dev_Elite_Club.html" title="Observatoire">🚀</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Fiche_RNCP_Dev.html" title="Fiche RNCP">🏅</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Lexique_dev.html" title="Lexique">📜</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/Acronymes.html" title="Acronymes" style="background: var(--brandGold); color: var(--brand-blue);">🔠</a>
+                <a class="header-icon-btn" href="https://projettechacademy.github.io/Projet_Python/A_propos_de_moi.html" title="Profil">👤</a>
             </nav>
+
+            <div class="hidden lg:block">
+                <a class="btn-portfolio-cosmic" href="https://projettechacademy.github.io/MMPA_Portfolio-Mathilde_PAISLEY/" target="_blank" title="Mon Portfolio">
+                <i class="fa-solid fa-code"></i>
+                Mon Portfolio
+                </a>
+            </div>
         </div>
     </header>
 
@@ -231,26 +265,24 @@
             <div id="loading" class="mt-12 flex justify-center"><i class="fas fa-circle-notch animate-spin text-4xl text-gold"></i></div>
         </div>
 
-        <!-- Navigation Tabs XL -->
         <div class="flex justify-center mb-16">
-            <div class="glass-card p-2.5 flex gap-3">
+            <div class="glass-card p-2.5 flex gap-3 flex-wrap justify-center">
                 <button onclick="switchTab('accueil')" id="tab-accueil" class="tab-btn active">SYNTHÈSE</button>
                 <button onclick="switchTab('B1')" id="tab-B1" class="tab-btn">BLOC 1</button>
                 <button onclick="switchTab('B2')" id="tab-B2" class="tab-btn">BLOC 2</button>
                 <button onclick="switchTab('B3')" id="tab-B3" class="tab-btn">BLOC 3</button>
+                <button onclick="switchTab('lexique')" id="tab-lexique" class="tab-btn">COMPENDIUM 📜</button>
             </div>
         </div>
 
         <div id="container" class="space-y-10 pb-20"></div>
     </main>
 
-    <!-- Navigation Flottante -->
     <div class="floating-nav">
         <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="nav-circle" title="Remonter"><i class="fas fa-chevron-up"></i></button>
         <button onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" class="nav-circle" title="Descendre"><i class="fas fa-chevron-down"></i></button>
     </div>
 
-    <!-- Footer Slim Mis à Jour -->
     <footer class="py-10">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-10">
             <div class="text-center md:text-left">
@@ -275,25 +307,57 @@
         </div>
     </footer>
 
+    <div id="toast-container"></div>
+
     <script>
+        // URLs et Config
         const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQRK_tBmpTFXHK-e-U-cy_XbjLY2cx4FVbP7X0fhLs34B8DLzIr6yUP_eYo4ueAIzFBABopTCQdd-TK/pub?gid=0&single=true&output=csv";
+        const LEXIQUE_JSON = "lexique.json"; 
+        
         let resources = { "B1": { modules: {} }, "B2": { modules: {} }, "B3": { modules: {} } };
+        let lexiqueData = [];
         let progress = JSON.parse(localStorage.getItem('paia_elite_v2_progress') || '{}');
+        let activeLexCat = 'all';
+        let currentUtterance = null; // Pour l'audio natif
 
         const catKeys = ["Intro_Python_Gamma", "Cours_Python", "Audio", "Excel", "Infographie", "Présentation", "Video"];
         const catEmojis = { "Intro_Python_Gamma": "☝️", "Cours_Python": "🐍", "Audio": "🎧", "Excel": "📊", "Infographie": "🖼️", "Présentation": "📽️", "Video": "📹" };
+        const lexCategories = { 
+            all: 'TOUT 📑', python: 'PYTHON 🐍', html: 'HTML 🏗️', css: 'CSS 🎨', js: 'JS ⚡', 
+            sql: 'SQL 🗄️', django: 'DJANGO 🎸', ml: 'DATA & ML 🧠', logic: 'LOGIQUE', security: 'SECU', 
+            tools: 'OUTILS', devops: 'DEVOPS', meta: 'META'
+        };
 
+        // --- INITIALISATION ---
         function init() {
             Papa.parse(CSV_URL, {
                 download: true, header: true, skipEmptyLines: true,
                 complete: (results) => {
                     parseData(results.data);
-                    document.getElementById('loading').classList.add('hidden');
-                    switchTab('accueil');
+                    
+                    fetch(LEXIQUE_JSON)
+                        .then(response => {
+                            if (!response.ok) throw new Error("Impossible de trouver le fichier " + LEXIQUE_JSON);
+                            return response.json();
+                        })
+                        .then(data => {
+                            lexiqueData = data; 
+                            document.getElementById('loading').classList.add('hidden');
+                            switchTab('accueil');
+                            // Chargement forcé des voix pour Chrome
+                            if ('speechSynthesis' in window) window.speechSynthesis.getVoices();
+                        })
+                        .catch(err => {
+                            console.error("Erreur JSON:", err);
+                            showToast("⚠️ Fichier lexique.json introuvable !");
+                            document.getElementById('loading').classList.add('hidden');
+                            switchTab('accueil');
+                        });
                 }
             });
         }
 
+        // --- PARSING DES DONNÉES DU COCKPIT ---
         function parseData(data) {
             let curBloc = null; let curMod = null;
             data.forEach(row => {
@@ -315,12 +379,14 @@
             });
         }
 
+        // --- NAVIGATION ET AFFICHAGE ---
         function switchTab(t) {
             window.curTab = t;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const btn = document.getElementById('tab-' + t);
-            if(btn) btn.classList.add('active');
-            if (t === 'accueil') renderAccueil(); else renderBloc(t);
+            document.getElementById('tab-' + t)?.classList.add('active');
+            if (t === 'accueil') renderAccueil(); 
+            else if (t === 'lexique') renderLexique();
+            else renderBloc(t);
         }
 
         function renderAccueil() {
@@ -342,18 +408,109 @@
             document.getElementById('container').innerHTML = html + `</div>`;
         }
 
-        function toggleAccordion(id) {
-            const content = document.getElementById(id);
-            const icon = document.getElementById('icon-' + id);
-            if(content.style.maxHeight) {
-                content.style.maxHeight = null;
-                icon.style.transform = 'rotate(0deg)';
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-                icon.style.transform = 'rotate(180deg)';
+        function renderLexique() {
+            let html = `<div class="glass-card p-10 border-l-[16px] border-gold">
+                <div class="flex flex-col lg:flex-row justify-between items-center gap-6 mb-10">
+                    <div class="text-left w-full">
+                        <h3 class="text-5xl font-black uppercase tracking-tighter">Compendium</h3>
+                        <p class="text-[11px] text-white/40 font-black uppercase tracking-[0.4em] mt-2">Lexique Intégral : ${lexiqueData.length} Termes</p>
+                    </div>
+                    <div class="relative w-full lg:w-96">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
+                        <input type="text" id="lexSearch" oninput="filterLexique()" placeholder="Rechercher..." 
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-4 pr-4 outline-none focus:border-gold transition-all text-white font-bold">
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2 mb-10 no-scrollbar overflow-x-auto pb-4">
+                    ${Object.entries(lexCategories).map(([key, label]) => `
+                        <button onclick="setLexCat('${key}')" class="lexique-sub-filter ${activeLexCat === key ? 'active' : ''}">${label}</button>
+                    `).join('')}
+                </div>
+
+                <div id="lexiqueGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"></div>
+            </div>`;
+            
+            document.getElementById('container').innerHTML = html;
+            filterLexique();
+        }
+
+        function setLexCat(cat) { activeLexCat = cat; renderLexique(); }
+
+        function filterLexique() {
+            const val = document.getElementById('lexSearch')?.value.toLowerCase() || "";
+            const grid = document.getElementById('lexiqueGrid');
+            if(!grid) return;
+
+            const filtered = lexiqueData.filter(item => {
+                const matchesCat = activeLexCat === 'all' || item.cat === activeLexCat;
+                const matchesSearch = (item.fr && item.fr.toLowerCase().includes(val)) || (item.en && item.en.toLowerCase().includes(val));
+                return matchesCat && matchesSearch;
+            });
+
+            grid.innerHTML = filtered.map(item => `
+                <div class="lexique-card group">
+                    <div class="cat-indicator bg-[var(--cat-${item.cat})] shadow-[0_0_10px_var(--cat-${item.cat})]"></div>
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="text-[8px] font-black text-white/10 italic">#${item.id}</span>
+                        <button onclick="speakTerm('${item.en.replace(/'/g, "\\'")}', this)" class="text-gold opacity-30 group-hover:opacity-100 transition-all">
+                            <i class="fas fa-volume-up"></i>
+                            <div class="loader-tts"></div>
+                        </button>
+                    </div>
+                    <h4 class="text-[14px] font-black text-white leading-tight mb-1">${item.en ? item.en.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''}</h4>
+                    <span class="text-[10px] font-bold text-white/40 uppercase">${item.fr ? item.fr.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''}</span>
+                    <div class="mt-auto pt-2 flex justify-between items-center text-[8px] font-black uppercase text-white/10 tracking-widest">
+                        <span>${item.def}</span>
+                        <span class="bg-white/5 px-2 py-0.5 rounded">${item.ctx}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showToast(msg) {
+            const container = document.getElementById('toast-container');
+            const el = document.createElement('div');
+            el.className = 'toast show';
+            el.innerText = msg;
+            container.appendChild(el);
+            setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 300); }, 3000);
+        }
+
+        // --- AUDIO NATIF ---
+        function speakTerm(text, btn) {
+            const icon = btn.querySelector('i');
+            const loader = btn.querySelector('.loader-tts');
+            
+            icon.style.display = 'none'; 
+            loader.style.display = 'block';
+
+            if (!('speechSynthesis' in window)) {
+                showToast("Navigateur incompatible.");
+                resetIcon(); return;
+            }
+
+            window.speechSynthesis.cancel(); 
+
+            const utter = new SpeechSynthesisUtterance(text);
+            utter.lang = 'en-US';
+            utter.rate = 0.9; 
+
+            currentUtterance = utter; 
+
+            utter.onend = function() { resetIcon(); };
+            utter.onerror = function() { resetIcon(); showToast("Erreur lecture."); };
+
+            setTimeout(() => { window.speechSynthesis.speak(utter); }, 10);
+
+            function resetIcon() {
+                icon.style.display = 'block'; 
+                loader.style.display = 'none';
+                currentUtterance = null;
             }
         }
 
+        // --- RENDU BLOCS (DESIGN ORIGINAL PYTHON.HTML) ---
         function renderBloc(b) {
             let html = `<div class="glass-card p-10 border-l-[16px] border-gold">
                 <div class="flex justify-between items-end mb-14">
@@ -426,6 +583,13 @@
             window.open(calUrl, '_blank');
         }
 
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            if(content.style.maxHeight) { content.style.maxHeight = null; icon.style.transform = 'rotate(0deg)'; }
+            else { content.style.maxHeight = content.scrollHeight + "px"; icon.style.transform = 'rotate(180deg)'; }
+        }
+
         function updateProgress(code, cat) {
             const key = `${code}_${cat}`; progress[key] = !progress[key];
             localStorage.setItem('paia_elite_v2_progress', JSON.stringify(progress));
@@ -448,8 +612,7 @@
         }
 
         function calculateBlocPercent(b) {
-            let t = 0; let d = 0;
-            if(!resources[b]) return 0;
+            let t = 0; let d = 0; if(!resources[b]) return 0;
             for (let m in resources[b].modules) { resources[b].modules[m].forEach(s => { catKeys.forEach(k => { t++; if (progress[`${s.code}_${k}`]) d++; }); }); }
             return t > 0 ? Math.round((d/t)*100) : 0;
         }
