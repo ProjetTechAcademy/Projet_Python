@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAIA - Slate Horizon Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #0F2C48; /* Couleur de ton logo */
+            --color-gold-muted: #B4792A; /* Bronze/Or mat */
+            --color-slate-bg: #0F172A; /* Fond ardoise profond */
+            --color-slate-card: #1E293B; /* Cartes gris bleu */
+            --color-text-soft: #E2E8F0; /* Blanc nuage doux */
+            --color-text-dim: #94A3B8; /* Gris pour textes secondaires */
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--color-slate-bg);
+            color: var(--color-text-soft);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-space { font-family: 'Space Grotesk', sans-serif; }
+
+        /* Animation de fond subtile */
+        .ambient-glow {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(15, 44, 72, 0.2) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(180, 121, 42, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        /* Header avec la couleur du logo */
+        .header-bg {
+            background-color: var(--color-navy);
+            border-bottom: 2px solid var(--color-gold-muted);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Glassmorphism Industriel */
+        .tech-card {
+            background: var(--color-slate-card);
+            border: 1px solid rgba(226, 232, 240, 0.05);
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-gold-muted);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .tech-card::after {
+            content: '';
+            position: absolute; inset: 0;
+            border-radius: 24px;
+            background: linear-gradient(135deg, transparent, rgba(180, 121, 42, 0.03));
+            pointer-events: none;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 220px);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+        }
+
+        @media (max-width: 640px) {
+            .bento-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Boutons Flottants */
+        .nav-btn {
+            width: 50px; height: 50px; border-radius: 12px;
+            background: var(--color-navy); color: white;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .nav-btn:hover { background: var(--color-gold-muted); transform: scale(1.1); }
+
+        /* Couleurs Réseaux directes */
+        .social-link { font-size: 1.8rem; transition: 0.3s; }
+        .social-link:hover { transform: scale(1.2); filter: drop-shadow(0 0 10px currentColor); }
+        .c-whatsapp { color: #25D366; }
+        .c-discord { color: #5865F2; }
+        .c-linkedin { color: #0077b5; }
+        .c-instagram { color: #E4405F; }
+
+        .text-soft { color: var(--color-text-soft); }
+        .text-dim { color: var(--color-text-dim); }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <!-- Header XL Pro -->
+    <header class="fixed top-0 w-full z-50 header-bg">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-5 group cursor-pointer" onclick="location.href='index.html'">
+                <img class="w-14 h-14 rounded-full border-2 border-white/20 shadow-lg transition-transform group-hover:rotate-12" src="https://projettechacademy.github.io/Projet_Python/Asset/2127845D-F95D-49C0-A22B-88C07817841B.png" alt="PAIA Logo">
+                <div>
+                    <h1 class="text-lg font-extrabold text-white tracking-tight uppercase">💫 PAIA✨By Mathilde Martine PAISLEY</h1>
+                    <p class="text-[9px] text-white/60 font-bold uppercase tracking-[0.3em]">Payroll Automation & Intelligent Architecture</p>
+                </div>
+            </div>
+
+            <nav class="hidden lg:flex items-center gap-6">
+                <a href="python.html" class="text-sm font-black text-white/80 hover:text-white uppercase tracking-widest transition">🐍 Python</a>
+                <a href="paie.html" class="text-sm font-black text-white/80 hover:text-white uppercase tracking-widest transition">📊 Paie</a>
+                <a href="rh.html" class="text-sm font-black text-white/80 hover:text-white uppercase tracking-widest transition">⚖️ RH</a>
+                <a href="digitale.html" class="text-sm font-black text-white/80 hover:text-white uppercase tracking-widest transition">🌐 Digital</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-32 pb-24 px-6 max-w-7xl mx-auto flex-grow w-full">
+        <!-- Hero Section -->
+        <div class="mb-16 flex flex-col md:flex-row items-end justify-between gap-8 border-l-4 border-gold-muted pl-8">
+            <div class="max-w-3xl">
+                <h2 class="text-5xl md:text-7xl font-black mb-4 tracking-tighter text-white">
+                    Nexus <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-amber-500">Stratégique.</span>
+                </h2>
+                <p class="text-lg text-dim font-medium max-w-2xl">
+                    Accédez à vos ressources de formation et optimisez votre expertise digitale avec l'architecture de <span class="text-white">Mathilde Martine PAISLEY</span>.
+                </p>
+            </div>
+            <div class="hidden md:flex gap-4">
+                <div class="tech-card px-6 py-4 text-center">
+                    <span class="block text-2xl font-black text-white">2025</span>
+                    <span class="text-[9px] uppercase font-bold text-dim">Édition Slate</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bento Grid -->
+        <div class="bento-grid">
+            <!-- Python -->
+            <a href="python.html" class="tech-card p-10 col-span-2 row-span-2 flex flex-col justify-between group overflow-hidden">
+                <div class="flex justify-between items-start relative z-10">
+                    <div class="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center text-4xl shadow-inner">🐍</div>
+                    <i class="fas fa-external-link-alt text-white/20 group-hover:text-white transition-all"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-black mb-3">Python Elite</h3>
+                    <p class="text-dim text-sm leading-relaxed">Scripting, Automation & Logiciels complexes.</p>
+                    <div class="mt-6 flex gap-2">
+                        <span class="px-3 py-1 bg-white/5 rounded text-[10px] font-black uppercase text-blue-400">Mastery</span>
+                    </div>
+                </div>
+                <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500/5 blur-3xl rounded-full"></div>
+            </a>
+
+            <!-- Paie -->
+            <a href="paie.html" class="tech-card p-8 col-span-2 group">
+                <div class="flex items-center gap-6">
+                    <div class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center text-3xl">📊</div>
+                    <div>
+                        <h3 class="text-xl font-black">Gestion Paie</h3>
+                        <p class="text-dim text-[10px] uppercase font-bold">Payroll Performance</p>
+                    </div>
+                    <i class="fas fa-chevron-right ml-auto text-white/10 group-hover:text-white transition-all"></i>
+                </div>
+            </a>
+
+            <!-- RH -->
+            <a href="rh.html" class="tech-card p-8 group">
+                <div class="flex flex-col justify-between h-full">
+                    <div class="text-3xl mb-4 text-purple-400">⚖️</div>
+                    <h3 class="text-lg font-black">Management RH</h3>
+                </div>
+            </a>
+
+            <!-- Digital -->
+            <a href="digitale.html" class="tech-card p-8 group">
+                <div class="flex flex-col justify-between h-full">
+                    <div class="text-3xl mb-4 text-cyan-400">🌐</div>
+                    <h3 class="text-lg font-black">Culture Digitale</h3>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <!-- Navigation Flottante -->
+    <div class="fixed bottom-8 right-8 flex flex-col gap-3">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="nav-btn shadow-2xl"><i class="fas fa-chevron-up"></i></button>
+        <button onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" class="nav-btn shadow-2xl"><i class="fas fa-chevron-down"></i></button>
+    </div>
+
+    <!-- Footer XL Pop -->
+    <footer class="py-12 bg-black/30 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-10">
+            <div class="text-center lg:text-left">
+                <h4 class="text-xl font-black text-white tracking-tighter">Mathilde Martine PAISLEY</h4>
+                <div class="flex flex-col gap-1 mt-4">
+                    <p class="text-xs text-dim font-bold"><i class="fas fa-envelope text-gold-muted mr-3"></i> mathilde.martine.paisley@gmail.com</p>
+                    <p class="text-xs text-dim font-bold"><i class="fas fa-phone-alt text-gold-muted mr-3"></i> 06 85 90 08 87</p>
+                </div>
+            </div>
+
+            <!-- Réseaux Sociaux Peps -->
+            <div class="flex gap-10">
+                <a href="https://chat.whatsapp.com/IoMXFl4o2otExYKCPVj22b" target="_blank" class="social-link c-whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://discord.gg/redT9wEE6T" target="_blank" class="social-link c-discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.linkedin.com/in/mathilde-martine-paisley-1a4422382/" target="_blank" class="social-link c-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/enervyx/" target="_blank" class="social-link c-instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            
+            <div class="text-center lg:text-right">
+                <p class="text-[10px] text-white/20 uppercase font-black tracking-[0.5em]">PAIA © 2025 | BY MPA</p>
+                <p class="text-[8px] text-white/10 uppercase mt-2 font-bold tracking-widest">Mastery of Digital Systems</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
