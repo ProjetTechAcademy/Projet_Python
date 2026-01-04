@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAIA - Cockpit Digital V5.3 (Accordion Fix)</title>
+    <title>PAIA - Formation Python Cockpit V2.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;500;700;800&display=swap" rel="stylesheet">
     <style>
+        /* --- CSS STRICTEMENT IDENTIQUE A PYTHON.HTML --- */
         :root {
             --color-gold: #D9A526;
             --color-navy: #0F2C48;
             --color-glow: rgba(217, 165, 38, 0.35);
             --color-done: #10b981;
             --gradient-vibe: linear-gradient(135deg, #FFD700 0%, #D9A526 50%, #B4792A 100%);
-            
-             /* Variables pour le header mis à jour */
-            --brandGold: #D9A526; 
-            --brand-blue: #0F2C48;
-
-             /* Codes Couleurs Lexique */
+            /* Ajout couleurs pour le lexique uniquement */
             --cat-python: #FFD43B; --cat-html: #E44D26; --cat-css: #264DE4; --cat-js: #F7DF1E;
             --cat-django: #092E20; --cat-sql: #00758F; --cat-logic: #A855F7; --cat-web: #3B82F6;
             --cat-tools: #64748B; --cat-security: #EF4444; --cat-meta: #EC4899; --cat-devops: #06B6D4;
             --cat-ml: #D946EF;
+            
+            /* Variables pour le header mis à jour */
+            --brandGold: #D9A526; 
+            --brand-blue: #0F2C48;
         }
 
         body {
@@ -39,7 +39,6 @@
 
         h1, h2, h3, .font-space { font-family: 'Space Grotesk', sans-serif; }
 
-        /* Arrière-plan Cockpit (Style python.html) */
         .vibe-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
@@ -54,7 +53,6 @@
 
         @keyframes move { from { transform: translate(-10%, -10%) scale(1); } to { transform: translate(20%, 20%) scale(1.3); } }
 
-        /* Effets de dégradés vibrants */
         .text-gradient {
             background: var(--gradient-vibe);
             -webkit-background-clip: text;
@@ -70,31 +68,7 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Styles Header & Navigation (Mise à jour demandée) */
-        .header-icon-btn { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 1.2rem; transition: all 0.3s; }
-        .header-icon-btn:hover, .header-icon-btn.active { background: var(--color-gold); color: #020617; }
-        
-         /* Nouveau Style Bouton Portfolio */
-        .btn-portfolio-cosmic {
-            background: linear-gradient(135deg, var(--brandGold), #F7DF1E);
-            color: var(--brand-blue);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            box-shadow: 0 0 15px rgba(217, 165, 38, 0.4);
-            transition: 0.3s;
-            display: flex; align-items: center; gap: 8px;
-            text-decoration: none;
-        }
-        .btn-portfolio-cosmic:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(217, 165, 38, 0.6);
-            color: #000;
-        }
-
-        /* Accordéon Modules (Style python.html) */
+        /* --- STYLES BLOCS 1, 2, 3 (PYTHON.HTML) --- */
         .module-card {
             background: rgba(255, 255, 255, 0.01);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -125,7 +99,6 @@
         }
         .session-row:hover { background: rgba(255, 255, 255, 0.02); }
 
-        /* Navigation & Actions (Style python.html) */
         .icon-btn-vibe {
             width: 48px; height: 48px; border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
@@ -154,7 +127,7 @@
         }
         .btn-pill-action:hover { transform: scale(1.08); box-shadow: 0 0 25px var(--color-glow); }
 
-        /* Floating Nav (Style python.html) */
+        /* Floating Nav */
         .floating-nav {
             position: fixed; bottom: 30px; right: 30px;
             display: flex; flex-direction: column; gap: 10px; z-index: 1000;
@@ -168,46 +141,52 @@
         }
         .nav-circle:hover { transform: scale(1.1) rotate(10deg); }
 
-        /* Agenda Popover (Style python.html) */
-        .agenda-menu {
-            position: absolute; right: 0; top: 110%;
-            background: #0f172a; border: 1.5px solid var(--color-gold);
-            border-radius: 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.8);
-            display: none; min-width: 240px; z-index: 100; padding: 12px;
-            backdrop-filter: blur(25px);
-        }
-        .agenda-item {
-            padding: 10px 14px; font-size: 0.8rem; font-weight: 700;
-            border-radius: 10px; cursor: pointer; color: #fff; transition: 0.2s;
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 4px;
-        }
-        .agenda-item:hover { background: var(--color-gold); color: #020617; transform: translateX(5px); }
-
-        /* Tabs XL (Style python.html) */
+        /* Tabs XL */
         .tab-btn {
             padding: 12px 32px; border-radius: 16px;
             font-weight: 900; color: rgba(255, 255, 255, 0.4);
             transition: 0.3s; font-size: 0.9rem; letter-spacing: 0.08em;
         }
         .tab-btn.active { background: var(--color-gold); color: #020617; box-shadow: 0 0 25px var(--color-glow); }
+
+        /* Header XL */
+        .header-main { height: 90px; }
+        .header-title { font-size: 1.25rem; font-weight: 900; }
         
-        /* Styles pour le Lexique (Intégration propre) */
+        /* Styles Header & Navigation (Mise à jour demandée) */
+        .header-icon-btn { width: 42px; height: 42px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); font-size: 1.2rem; transition: all 0.3s; }
+        .header-icon-btn:hover, .header-icon-btn.active { background: var(--color-gold); color: #020617; }
+        .nav-link-xl { font-size: 1rem; font-weight: 800; color: rgba(255,255,255,0.6); }
+        .nav-link-xl:hover, .nav-link-xl.active { color: var(--color-gold); transform: translateY(-2px); }
+
+        /* Nouveau Style Bouton Portfolio */
+        .btn-portfolio-cosmic {
+            background: linear-gradient(135deg, var(--brandGold), #F7DF1E);
+            color: var(--brand-blue);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            box-shadow: 0 0 15px rgba(217, 165, 38, 0.4);
+            transition: 0.3s;
+            display: flex; align-items: center; gap: 8px;
+            text-decoration: none;
+        }
+        .btn-portfolio-cosmic:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(217, 165, 38, 0.6);
+            color: #000;
+        }
+
+        /* Lexique Styles */
         .lexique-sub-filter { padding: 8px 16px; border-radius: 12px; font-size: 0.75rem; font-weight: 800; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.6); cursor: pointer; transition: 0.2s; white-space: nowrap; }
         .lexique-sub-filter.active { background: white; color: #020617; border-color: white; transform: scale(1.05); }
-        .lexique-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 1rem; transition: all 0.3s; display: flex; flex-direction: column; height: 100%; position: relative; overflow: hidden; min-height: 120px; }
+        .lexique-card { background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 1rem; transition: all 0.3s; display: flex; flex-direction: column; height: 100%; position: relative; overflow: hidden; min-height: 140px; }
         .lexique-card:hover { background: rgba(255, 255, 255, 0.07); transform: translateY(-3px); }
         .cat-indicator { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
         .loader-tts { width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.1); border-top-color: var(--color-gold); border-radius: 50%; animation: spin 0.8s linear infinite; display: none; }
-        @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* Header XL (Style python.html) */
-        .header-main { height: 90px; }
-        .header-title { font-size: 1.25rem; font-weight: 900; }
-        .nav-link-xl { font-size: 1rem; font-weight: 800; color: rgba(255,255,255,0.6); }
-        .nav-link-xl:hover, .nav-link-xl.active { color: var(--color-gold); transform: translateY(-2px); }
-        
-        /* Footer (Style python.html) */
         footer { background: rgba(2, 6, 23, 0.95); border-top: 2px solid rgba(217, 165, 38, 0.1); }
         .social-link { font-size: 1.8rem; transition: all 0.3s; color: rgba(255,255,255,0.3); }
         .social-link:hover { transform: scale(1.2) translateY(-5px); color: var(--color-gold); }
@@ -216,7 +195,6 @@
         #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 2000; pointer-events: none; }
         .toast { background: rgba(0,0,0,0.9); color: #fff; padding: 12px 24px; border-radius: 12px; margin-top: 10px; opacity: 0; transition: opacity 0.3s; border: 1px solid rgba(255,255,255,0.2); font-weight: bold; pointer-events: auto; }
         .toast.show { opacity: 1; }
-
     </style>
 </head>
 <body>
@@ -312,7 +290,6 @@
     <div id="toast-container"></div>
 
     <script>
-        // URLs et Config
         const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQRK_tBmpTFXHK-e-U-cy_XbjLY2cx4FVbP7X0fhLs34B8DLzIr6yUP_eYo4ueAIzFBABopTCQdd-TK/pub?gid=0&single=true&output=csv";
         const LEXIQUE_JSON = "lexique.json"; 
         
@@ -320,7 +297,6 @@
         let lexiqueData = [];
         let progress = JSON.parse(localStorage.getItem('paia_elite_v2_progress') || '{}');
         let activeLexCat = 'all';
-        let currentUtterance = null; // Pour l'audio natif
 
         const catKeys = ["Intro_Python_Gamma", "Cours_Python", "Audio", "Excel", "Infographie", "Présentation", "Video"];
         const catEmojis = { "Intro_Python_Gamma": "☝️", "Cours_Python": "🐍", "Audio": "🎧", "Excel": "📊", "Infographie": "🖼️", "Présentation": "📽️", "Video": "📹" };
@@ -330,7 +306,6 @@
             tools: 'OUTILS', devops: 'DEVOPS', meta: 'META'
         };
 
-        // --- INITIALISATION ---
         function init() {
             Papa.parse(CSV_URL, {
                 download: true, header: true, skipEmptyLines: true,
@@ -346,7 +321,6 @@
                             lexiqueData = data; 
                             document.getElementById('loading').classList.add('hidden');
                             switchTab('accueil');
-                            // Chargement forcé des voix pour Chrome
                             if ('speechSynthesis' in window) window.speechSynthesis.getVoices();
                         })
                         .catch(err => {
@@ -359,7 +333,6 @@
             });
         }
 
-        // --- PARSING DES DONNÉES DU COCKPIT ---
         function parseData(data) {
             let curBloc = null; let curMod = null;
             data.forEach(row => {
@@ -381,12 +354,10 @@
             });
         }
 
-        // --- NAVIGATION ET AFFICHAGE ---
         function switchTab(t) {
             window.curTab = t;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const btn = document.getElementById('tab-' + t);
-            if(btn) btn.classList.add('active');
+            document.getElementById('tab-' + t)?.classList.add('active');
             if (t === 'accueil') renderAccueil(); 
             else if (t === 'lexique') renderLexique();
             else renderBloc(t);
@@ -412,16 +383,18 @@
         }
 
         function renderLexique() {
-            let html = `<div class="glass-card p-10 border-l-[16px] border-gold">
+            let html = `<div class="glass-card p-6 md:p-10 border-l-[16px] border-gold">
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-6 mb-10">
                     <div class="text-left w-full">
-                        <h3 class="text-5xl font-black uppercase tracking-tighter">Compendium</h3>
-                        <p class="text-[11px] text-white/40 font-black uppercase tracking-[0.4em] mt-2">Lexique Intégral : ${lexiqueData.length} Termes</p>
+                        <h3 class="text-4xl font-black text-gradient uppercase tracking-tight">Compendium Master</h3>
+                        <p class="text-[10px] text-white/30 font-black uppercase tracking-[0.4em]">
+                            Lexique Intégral : ${lexiqueData.length > 0 ? lexiqueData.length : 'Chargement...'} Termes
+                        </p>
                     </div>
                     <div class="relative w-full lg:w-96">
                         <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-white/30"></i>
                         <input type="text" id="lexSearch" oninput="filterLexique()" placeholder="Rechercher..." 
-                            class="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-4 pr-4 outline-none focus:border-gold transition-all text-white font-bold">
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-12 pr-4 outline-none focus:border-gold transition-all text-white font-bold">
                     </div>
                 </div>
 
@@ -451,21 +424,22 @@
                 return matchesCat && matchesSearch;
             });
 
+            // MODIFICATION POUR LISIBILITÉ DU LEXIQUE (TEXTE CLAIR)
             grid.innerHTML = filtered.map(item => `
                 <div class="lexique-card group">
                     <div class="cat-indicator bg-[var(--cat-${item.cat})] shadow-[0_0_10px_var(--cat-${item.cat})]"></div>
                     <div class="flex justify-between items-start mb-2">
-                        <span class="text-[8px] font-black text-white/10 italic">#${item.id}</span>
-                        <button onclick="speakTerm('${item.en.replace(/'/g, "\\'")}', this)" class="text-gold opacity-30 group-hover:opacity-100 transition-all">
+                        <span class="text-[8px] font-black text-white/20 italic">#${item.id}</span>
+                        <button onclick="speakTerm('${item.en.replace(/'/g, "\\'")}', this)" class="text-gold opacity-50 group-hover:opacity-100 transition-all">
                             <i class="fas fa-volume-up"></i>
                             <div class="loader-tts"></div>
                         </button>
                     </div>
-                    <h4 class="text-[14px] font-black text-white leading-tight mb-1">${item.en ? item.en.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''}</h4>
-                    <span class="text-[10px] font-bold text-white/40 uppercase">${item.fr ? item.fr.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''}</span>
-                    <div class="mt-auto pt-2 flex justify-between items-center text-[8px] font-black uppercase text-white/10 tracking-widest">
-                        <span>${item.def}</span>
-                        <span class="bg-white/5 px-2 py-0.5 rounded">${item.ctx}</span>
+                    <h4 class="text-[15px] font-black text-white leading-tight mb-1">${item.en ? item.en.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''}</h4>
+                    <span class="text-[11px] font-bold text-gold uppercase tracking-wide">${item.fr ? item.fr.replace(/</g, "&lt;").replace(/>/g, "&gt;") : ''}</span>
+                    <div class="mt-auto pt-3 flex flex-col gap-1">
+                        <span class="text-[10px] font-medium text-gray-300 leading-snug">${item.def}</span>
+                        <span class="self-end bg-white/10 px-2 py-0.5 rounded text-[9px] text-white font-bold">${item.ctx}</span>
                     </div>
                 </div>
             `).join('');
@@ -480,84 +454,77 @@
             setTimeout(() => { el.classList.remove('show'); setTimeout(() => el.remove(), 300); }, 3000);
         }
 
-        // --- AUDIO NATIF ---
+        // --- AUDIO IMPORTÉ D'ACRONYMES.HTML ---
         function speakTerm(text, btn) {
             const icon = btn.querySelector('i');
             const loader = btn.querySelector('.loader-tts');
             
-            icon.style.display = 'none'; 
-            loader.style.display = 'block';
+            icon.style.display = 'none'; loader.style.display = 'block';
 
-            if (!('speechSynthesis' in window)) {
-                showToast("Navigateur incompatible.");
-                resetIcon(); return;
-            }
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); 
 
-            window.speechSynthesis.cancel(); 
+                const utterance = new SpeechSynthesisUtterance(text);
+                
+                const voices = window.speechSynthesis.getVoices();
+                // Recherche stricte de la voix US
+                const femaleEnglishVoice = voices.find(v => v.name.includes('Google US English')) || 
+                                           voices.find(v => v.name.includes('Zira')) || 
+                                           voices.find(v => v.lang === 'en-US' && v.name.includes('Female')) ||
+                                           voices.find(v => v.lang.startsWith('en'));
 
-            const utter = new SpeechSynthesisUtterance(text);
-            utter.lang = 'en-US';
-            utter.rate = 0.9; 
+                if (femaleEnglishVoice) {
+                    utterance.voice = femaleEnglishVoice;
+                    utterance.lang = 'en-US';
+                }
+                
+                utterance.rate = 0.85; 
 
-            currentUtterance = utter; 
+                utterance.onend = function() {
+                    icon.style.display = 'block'; loader.style.display = 'none';
+                };
+                
+                utterance.onerror = function() {
+                    console.error("Erreur TTS");
+                    icon.style.display = 'block'; loader.style.display = 'none';
+                };
 
-            utter.onend = function() { resetIcon(); };
-            utter.onerror = function() { resetIcon(); showToast("Erreur lecture."); };
-
-            setTimeout(() => { window.speechSynthesis.speak(utter); }, 10);
-
-            function resetIcon() {
-                icon.style.display = 'block'; 
-                loader.style.display = 'none';
-                currentUtterance = null;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                 icon.style.display = 'block'; loader.style.display = 'none';
+                 alert("Audio non supporté");
             }
         }
 
-        // --- RENDU BLOCS (DESIGN ORIGINAL PYTHON.HTML) ---
+        // --- RENDU BLOCS (Design d'origine) ---
         function renderBloc(b) {
             let html = `<div class="glass-card p-10 border-l-[16px] border-gold">
-                <div class="flex justify-between items-end mb-14">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14 gap-6">
                     <div>
-                        <h3 class="text-5xl font-black uppercase tracking-tighter">Cockpit ${b}</h3>
+                        <h3 class="text-4xl font-black uppercase tracking-tighter">Cockpit ${b}</h3>
                         <p class="text-[11px] text-white/40 font-black uppercase tracking-[0.4em] mt-2">Architecture Digitale Avancée</p>
                     </div>
                     <span class="text-4xl font-black text-gold">${calculateBlocPercent(b)}%</span>
                 </div>`;
-            
             let modIdx = 0;
             for (let m in resources[b].modules) {
                 const modId = `mod-content-${modIdx++}`;
                 html += `<div class="module-card">
                     <div class="module-header" onclick="toggleAccordion('${modId}')">
-                        <h3 class="font-space">${m}</h3>
-                        <i id="icon-${modId}" class="fas fa-chevron-down text-gold transition-transform duration-300"></i>
+                        <h3 class="text-sm font-black uppercase text-gold tracking-widest font-space">${m}</h3>
+                        <i id="icon-${modId}" class="fas fa-chevron-down text-gold transition-transform"></i>
                     </div>
                     <div id="${modId}" class="session-container" style="max-height:0px;">`;
-                
                 resources[b].modules[m].forEach(s => {
-                    const firstUrl = Object.values(s.links).find(l => l && l !== "null" && l.trim() !== "") || "#";
                     html += `<div class="session-row" data-code="${s.code}">
-                        <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-8 mb-8">
-                            <div class="flex items-center gap-5">
-                                <span class="text-[12px] font-black text-gold font-space bg-gold/15 px-4 py-1.5 rounded-lg border border-gold/20">${s.code}</span>
-                                <span class="text-lg font-bold text-white/95">${s.label}</span>
+                        <div class="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 mb-6">
+                            <div class="flex items-center gap-4">
+                                <span class="text-[10px] font-black text-navy bg-gold px-3 py-1 rounded-lg">${s.code}</span>
+                                <span class="text-md font-bold text-white/90">${s.label}</span>
                             </div>
-                            <div class="flex items-center gap-5">
-                                <button onclick="validateLine('${s.code}')" class="btn-pill-action">Valider Session</button>
-                                <div class="agenda-container">
-                                    <button onclick="toggleAgenda('${s.code}')" class="w-12 h-12 rounded-full bg-white/5 border border-blue-400/40 flex items-center justify-center text-blue-400 hover:bg-blue-400 hover:text-[#020617] transition-all shadow-lg"><i class="fas fa-calendar-alt"></i></button>
-                                    <div id="agenda-${s.code}" class="agenda-menu">
-                                        <div class="text-[10px] font-black text-white/50 p-3 border-b border-white/10 uppercase mb-3">Planifier Relecture</div>
-                                        ${[3, 10, 30, 60, 90, 120].map(d => `
-                                            <div class="agenda-item" onclick="planCal('${s.label}', '${firstUrl}', ${d})">
-                                                <span>Dans ${d} jours</span> <i class="fas fa-plus-circle opacity-40"></i>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                </div>
-                            </div>
+                            <button onclick="validateLine('${s.code}')" class="bg-white/10 hover:bg-gold hover:text-navy px-4 py-1.5 rounded-full text-[10px] font-black uppercase transition-all">Valider Session</button>
                         </div>
-                        <div class="flex gap-4 flex-wrap">`;
+                        <div class="flex gap-3 flex-wrap">`;
                     catKeys.forEach(k => {
                         const l = s.links[k]; const av = l && l !== "null" && l.trim() !== "";
                         html += `<div class="icon-btn-vibe ${av ? '' : 'empty'} ${progress[`${s.code}_${k}`] ? 'done' : ''}" 
@@ -572,35 +539,20 @@
             document.getElementById('container').innerHTML = html + `</div>`;
         }
 
-        // --- CORRECTION DE LA FERMETURE DE L'ACCORDÉON ---
+        // --- CORRECTION FERMETURE ACCORDÉON ---
         function toggleAccordion(id) {
             const content = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
             
-            // Si le bloc est ouvert (hauteur non nulle et différente de 0px)
+            // Si la hauteur est définie et différente de 0px, c'est que c'est ouvert -> on ferme
             if(content.style.maxHeight && content.style.maxHeight !== "0px") {
-                // On ferme
                 content.style.maxHeight = "0px";
                 icon.style.transform = 'rotate(0deg)';
             } else {
-                // On ouvre
+                // Sinon on ouvre
                 content.style.maxHeight = content.scrollHeight + "px";
                 icon.style.transform = 'rotate(180deg)';
             }
-        }
-
-        function toggleAgenda(code) {
-            const menu = document.getElementById('agenda-' + code);
-            const isVisible = menu.style.display === 'block';
-            document.querySelectorAll('.agenda-menu').forEach(m => m.style.display = 'none');
-            if(!isVisible) menu.style.display = 'block';
-        }
-
-        function planCal(title, url, days) {
-            const d = new Date(); d.setDate(d.getDate() + days);
-            const iso = d.toISOString().replace(/-|:|\.\d\d\d/g, "");
-            const calUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=RELECTURE+PAIA:+${encodeURIComponent(title)}&dates=${iso}/${iso}&details=Document:+${url}&sf=true&output=xml`;
-            window.open(calUrl, '_blank');
         }
 
         function updateProgress(code, cat) {
@@ -625,13 +577,11 @@
         }
 
         function calculateBlocPercent(b) {
-            let t = 0; let d = 0;
-            if(!resources[b]) return 0;
+            let t = 0; let d = 0; if(!resources[b]) return 0;
             for (let m in resources[b].modules) { resources[b].modules[m].forEach(s => { catKeys.forEach(k => { t++; if (progress[`${s.code}_${k}`]) d++; }); }); }
             return t > 0 ? Math.round((d/t)*100) : 0;
         }
 
-        window.onclick = (e) => { if (!e.target.closest('.agenda-container')) document.querySelectorAll('.agenda-menu').forEach(m => m.style.display = 'none'); };
         window.onload = init;
     </script>
 </body>
